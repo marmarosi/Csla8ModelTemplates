@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Csla" Version="8.0.0-R24021201" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Resources\Csla8ModelTemplates.Resources.csproj" />
     <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
