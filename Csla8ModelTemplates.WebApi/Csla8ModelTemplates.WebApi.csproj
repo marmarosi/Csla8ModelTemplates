@@ -13,4 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Csla8ModelTemplates.Dal.MySql\Csla8ModelTemplates.Dal.MySql.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Models\Csla8ModelTemplates.Models.csproj" />
+  </ItemGroup>
+
 </Project>

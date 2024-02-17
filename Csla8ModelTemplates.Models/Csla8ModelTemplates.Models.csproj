@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Resources\Csla8ModelTemplates.Resources.csproj" />
+    <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
+    <ProjectReference Include="..\Csla8RestApi.Models\Csla8RestApi.Models.csproj" />
+  </ItemGroup>
+
 </Project>

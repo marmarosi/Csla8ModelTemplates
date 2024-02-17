@@ -1,4 +1,4 @@
-﻿namespace Csla8ModelTemplates.Dal
+﻿namespace Csla8RestApi.Dal
 {
     public class Class1
     {
