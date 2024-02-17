@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>9b2ae12b-d192-4048-9d73-e71397938077</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>Csla8ModelTemplates.WebApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
