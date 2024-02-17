@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8RestApi.Models", "Csla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8RestApi.Snippets", "Csla8RestApi.Snippets\Csla8RestApi.Snippets.csproj", "{24074E39-3FE9-4A2B-8FB0-3333C530BDD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Entities", "Csla8ModelTemplates.Entities\Csla8ModelTemplates.Entities.csproj", "{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,18 @@ Global
 		{24074E39-3FE9-4A2B-8FB0-3333C530BDD7}.Release|arm64.Build.0 = Release|arm64
 		{24074E39-3FE9-4A2B-8FB0-3333C530BDD7}.Release|x86.ActiveCfg = Release|x86
 		{24074E39-3FE9-4A2B-8FB0-3333C530BDD7}.Release|x86.Build.0 = Release|x86
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Debug|arm64.Build.0 = Debug|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Release|arm64.ActiveCfg = Release|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Release|arm64.Build.0 = Release|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF93A411-2FDD-4ED7-B9BA-6F8673BFE2A6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

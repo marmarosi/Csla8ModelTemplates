@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Entities\Csla8ModelTemplates.Entities.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Resources\Csla8ModelTemplates.Resources.csproj" />
     <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
   </ItemGroup>
