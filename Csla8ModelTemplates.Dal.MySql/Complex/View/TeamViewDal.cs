@@ -49,7 +49,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.View
                     TeamKey = e.TeamKey,
                     TeamCode = e.TeamCode,
                     TeamName = e.TeamName,
-                    Players = e.Players
+                    Players = e.Players!
                         .Select(p => new TeamViewPlayerDao
                         {
                             PlayerKey = p.PlayerKey,

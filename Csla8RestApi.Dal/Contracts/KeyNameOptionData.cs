@@ -6,7 +6,7 @@ namespace Csla8RestApi.Dal.Contracts
     public class KeyNameOptionData
     {
         public long? Key { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 
     /// <summary>

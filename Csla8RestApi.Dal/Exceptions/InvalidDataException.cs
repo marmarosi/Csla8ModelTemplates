@@ -1,11 +1,8 @@
-using System.Runtime.Serialization;
-
 namespace Csla8RestApi.Dal.Exceptions
 {
     /// <summary>
     /// Represents an exception when the operation cannot be executed for some wrong data.
     /// </summary>
-    [Serializable]
     public class InvalidDataException : DalException
     {
         #region Constructors
@@ -30,18 +27,6 @@ namespace Csla8RestApi.Dal.Exceptions
             Exception innerException
             )
             : base(message, innerException)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance.
-        /// </summary>
-        /// <param name="info">The serialization info that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The streaming context that contains contextual information about the source or destination.</param>
-        protected InvalidDataException(
-            SerializationInfo info,
-            StreamingContext context
-            )
-            : base(info, context)
         { }
 
         #endregion Constructors

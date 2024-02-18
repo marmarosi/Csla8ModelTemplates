@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     /// </summary>
     public class TeamListPlayerData
     {
-        public string PlayerCode { get; set; }
-        public string PlayerName { get; set; }
+        public string? PlayerCode { get; set; }
+        public string? PlayerName { get; set; }
     }
 
     /// <summary>
@@ -22,6 +22,6 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     /// </summary>
     public class TeamListPlayerDto : TeamListPlayerData
     {
-        public string PlayerId { get; set; }
+        public string? PlayerId { get; set; }
     }
 }

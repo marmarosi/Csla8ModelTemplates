@@ -39,7 +39,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Selection.WithCode
         {
             var choice = DbContext.Teams
                 .Where(e =>
-                    criteria.TeamName == null || e.TeamName.Contains(criteria.TeamName)
+                    criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 )
                 .Select(e => new CodeNameOptionDao
                 {

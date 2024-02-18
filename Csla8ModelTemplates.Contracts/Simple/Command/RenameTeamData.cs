@@ -5,7 +5,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.Command
     /// </summary>
     public class RenameTeamData
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
     }
 
     /// <summary>
@@ -17,7 +17,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.Command
 
         public RenameTeamDao(
             long? teamKey,
-            string teamName
+            string? teamName
             )
         {
             TeamKey = teamKey;
@@ -31,6 +31,6 @@ namespace Csla8ModelTemplates.Contracts.Simple.Command
     [Serializable]
     public class RenameTeamDto : RenameTeamData
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
     }
 }

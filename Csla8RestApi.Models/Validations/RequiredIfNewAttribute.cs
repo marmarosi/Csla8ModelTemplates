@@ -19,20 +19,20 @@ namespace Csla8RestApi.Models.Validations
         /// Validates the specified value with respect to the current validation attribute.
         /// </summary>
         /// <param name="value">The value to validate.</param>
-        /// <param name="context">The context information about the validation operation.</param>
+        /// <param name="validationContext">The context information about the validation operation.</param>
         /// <returns><c>true</c> if value is valid; otherwise, <c>false</c>.</returns>
-        protected override ValidationResult IsValid(
-            object value,
-            ValidationContext context
+        protected override ValidationResult? IsValid(
+            object? value,
+            ValidationContext validationContext
             )
         {
             // Set resource type and resource name for error message.
-            this.SetErrorMessage(context, "RequiredIfNew");
+            this.SetErrorMessage(validationContext, "RequiredIfNew");
 
             // Validate the value.
-            BusinessBase model = (BusinessBase)context.ObjectInstance;
+            BusinessBase model = (BusinessBase)validationContext.ObjectInstance;
             if (model.IsNew)
-                return base.IsValid(value, context);
+                return base.IsValid(value, validationContext);
             else
                 return null;
         }

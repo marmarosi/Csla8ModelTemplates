@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Full
     /// </summary>
     public class ArrangedTeamListItemData
     {
-        public string TeamCode { get; set; }
-        public string TeamName { get; set; }
+        public string? TeamCode { get; set; }
+        public string? TeamName { get; set; }
     }
 
     /// <summary>
@@ -22,6 +22,6 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Full
     /// </summary>
     public class ArrangedTeamListItemDto : ArrangedTeamListItemData
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
     }
 }

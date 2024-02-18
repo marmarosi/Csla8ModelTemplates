@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla.Data;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Junction.Edit;
@@ -42,10 +42,10 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             set => SetProperty(GroupCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> GroupNameProperty = RegisterProperty<string>(nameof(GroupName));
+        public static readonly PropertyInfo<string?> GroupNameProperty = RegisterProperty<string?>(nameof(GroupName));
         [Required]
         [MaxLength(100)]
-        public string GroupName
+        public string? GroupName
         {
             get => GetProperty(GroupNameProperty);
             set => SetProperty(GroupNameProperty, value);
@@ -165,7 +165,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         {
             long? groupKey = KeyHash.Decode(ID.Group, dto.GroupId);
             Group team = groupKey.HasValue ?
-                await Get(factory, dto.GroupId) :
+                await Get(factory, dto.GroupId!) :
                 await New(factory);
             team.SetValuesOnBuild(dto, childFactory);
             return team;

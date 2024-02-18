@@ -38,7 +38,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.List
         {
             var list = DbContext.Teams
                 .Where(e =>
-                    criteria.TeamName == null || e.TeamName.Contains(criteria.TeamName)
+                    criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 )
                 .Select(e => new SimpleTeamListItemDao
                 {

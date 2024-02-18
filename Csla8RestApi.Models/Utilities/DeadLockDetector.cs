@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal;
+using Csla8RestApi.Dal;
 using System.Reflection;
 
 namespace Csla8RestApi.Models.Utilities
@@ -29,19 +29,19 @@ namespace Csla8RestApi.Models.Utilities
         /// </summary>
         /// <param name="exception">The exception to check.</param>
         /// <returns>Returns true when the exception is a deadlock one; otherwise false.</returns>
-        public DeadlockException CheckException(
+        public DeadlockException? CheckException(
             Exception exception
             )
         {
             Exception original = exception;
-            while (original.InnerException != null)
+            while (original.InnerException is not null)
                 original = original.InnerException;
 
-            DeadlockException result = null;
+            DeadlockException? result = null;
 
             foreach (var method in Methods)
             {
-                bool isDeadLock = (bool)method.Value.Invoke(null, new object[] { original });
+                bool isDeadLock = (bool)method.Value.Invoke(null, [original])!;
                 if (isDeadLock)
                 {
                     result = new DeadlockException(original.Message, exception);

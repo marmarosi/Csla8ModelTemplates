@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Simple.View
     /// </summary>
     public class SimpleTeamViewData
     {
-        public string TeamCode { get; set; }
-        public string TeamName { get; set; }
+        public string? TeamCode { get; set; }
+        public string? TeamName { get; set; }
     }
 
     /// <summary>
@@ -22,6 +22,6 @@ namespace Csla8ModelTemplates.Contracts.Simple.View
     /// </summary>
     public class SimpleTeamViewDto : SimpleTeamViewData
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
     }
 }

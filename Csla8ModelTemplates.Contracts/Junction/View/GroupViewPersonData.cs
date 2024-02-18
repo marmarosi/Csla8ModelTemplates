@@ -5,7 +5,7 @@ namespace Csla8ModelTemplates.Contracts.Junction.View
     /// </summary>
     public class GroupViewPersonData
     {
-        public string PersonName { get; set; }
+        public string? PersonName { get; set; }
     }
 
     /// <summary>
@@ -21,6 +21,6 @@ namespace Csla8ModelTemplates.Contracts.Junction.View
     /// </summary>
     public class GroupViewPersonDto : GroupViewPersonData
     {
-        public string PersonId { get; set; }
+        public string? PersonId { get; set; }
     }
 }

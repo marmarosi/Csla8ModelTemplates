@@ -1,5 +1,4 @@
 using Csla8RestApi.Dal;
-using System.Runtime.Serialization;
 using System.Text;
 
 namespace Csla8RestApi.Models
@@ -7,35 +6,36 @@ namespace Csla8RestApi.Models
     /// <summary>
     /// Represents an error occurred on the backend.
     /// </summary>
-    [Serializable]
+#pragma warning disable S3376 // Attribute, EventArgs, and Exception type names should end with the type being extended
     public class BackendError : ApplicationException
+#pragma warning restore S3376 // Attribute, EventArgs, and Exception type names should end with the type being extended
     {
         #region Properties
 
         /// <summary>
         /// Gets or sets the name of the error type.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets or sets the error message.
         /// </summary>
-        public new string Message { get; set; }
+        public new string? Message { get; set; }
 
         /// <summary>
         /// Gets or sets the summary of error messages.
         /// </summary>
-        public string Summary { get; set; }
+        public string? Summary { get; set; }
 
         /// <summary>
         /// Gets or sets the source of error messages.
         /// </summary>
-        public new string Source { get; set; }
+        public new string? Source { get; set; }
 
         /// <summary>
         /// Gets or sets the summary of error messages.
         /// </summary>
-        public new string StackTrace { get; set; }
+        public new string? StackTrace { get; set; }
 
         #endregion
 
@@ -81,30 +81,18 @@ namespace Csla8RestApi.Models
             string summary
             )
         {
-            if (exception != null)
+            if (exception is not null)
             {
-                while (exception.InnerException != null)
+                while (exception.InnerException is not null)
                     exception = exception.InnerException;
 
                 Message = exception.Message;
                 Name = exception.GetType().Name;
                 Summary = summary;
-                Source = exception.TargetSite.DeclaringType?.FullName;
+                Source = exception.TargetSite?.DeclaringType?.FullName;
                 StackTrace = exception.StackTrace;
             }
         }
-
-        /// <summary>
-        /// Initializes a new instance.
-        /// </summary>
-        /// <param name="info">The serialization info that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The streaming context that contains contextual information about the source or destination.</param>
-        protected BackendError(
-            SerializationInfo info,
-            StreamingContext context
-            )
-            : base(info, context)
-        { }
 
         #endregion Constructors
 
@@ -120,15 +108,15 @@ namespace Csla8RestApi.Models
             var summary = new StringBuilder();
             statusCode = 500; // StatusCodes.Status500InternalServerError
 
-            while (ex != null)
+            while (ex is not null)
             {
                 string line = String.Format("{0} {1} * {2}", prefix, ex.GetType().Name, ex.Message);
-                if (ex.Source != null)
+                if (ex.Source is not null)
                     line += String.Format(" [ {0} ]", ex.Source);
                 summary.AppendLine(line);
 
                 if (ex is BackendException)
-                    statusCode = (ex as BackendException).StatusCode;
+                    statusCode = (ex as BackendException)!.StatusCode;
 
                 ex = ex.InnerException;
                 prefix = "        ";

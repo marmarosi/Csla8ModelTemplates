@@ -5,7 +5,7 @@ namespace Csla8RestApi.Dal.Contracts
     /// </summary>
     public class IdNameOptionData
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 
     /// <summary>
@@ -21,6 +21,6 @@ namespace Csla8RestApi.Dal.Contracts
     /// </summary>
     public class IdNameOptionDto : IdNameOptionData
     {
-        public string Id { get; set; }
+        public string? Id { get; set; }
     }
 }

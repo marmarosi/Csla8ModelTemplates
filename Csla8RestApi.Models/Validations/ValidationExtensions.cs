@@ -31,7 +31,7 @@ namespace Csla8RestApi.Models.Validations
                 if (attrs == null || attrs.Length == 0)
                     throw new BackendException("ValidationResourceType attribute is missing from the business object.");
 
-                ValidationResourceTypeAttribute attr = attrs[0] as ValidationResourceTypeAttribute;
+                ValidationResourceTypeAttribute attr = (attrs[0] as ValidationResourceTypeAttribute)!;
                 validation.ErrorMessageResourceType = attr.ResourceType;
 
                 // Set the resource name.

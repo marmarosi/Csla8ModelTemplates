@@ -1,12 +1,12 @@
-﻿namespace Csla8ModelTemplates.Contracts.Junction.Edit
+namespace Csla8ModelTemplates.Contracts.Junction.Edit
 {
     /// <summary>
     /// Defines the editable group data.
     /// </summary>
     public class GroupData
     {
-        public string GroupCode { get; set; }
-        public string GroupName { get; set; }
+        public string? GroupCode { get; set; }
+        public string? GroupName { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
     }
 
@@ -29,7 +29,7 @@
     /// </summary>
     public class GroupDto : GroupData
     {
-        public string GroupId { get; set; }
+        public string? GroupId { get; set; }
         public List<GroupPersonDto> Persons { get; set; }
 
         public GroupDto()

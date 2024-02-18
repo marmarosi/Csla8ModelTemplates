@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Simple.Edit
     /// </summary>
     public class SimpleTeamData
     {
-        public string TeamCode { get; set; }
-        public string TeamName { get; set; }
+        public string? TeamCode { get; set; }
+        public string? TeamName { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
     }
 
@@ -23,6 +23,6 @@ namespace Csla8ModelTemplates.Contracts.Simple.Edit
     /// </summary>
     public class SimpleTeamDto : SimpleTeamData
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
     }
 }

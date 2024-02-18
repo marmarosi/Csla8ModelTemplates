@@ -39,14 +39,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.List
             var list = DbContext.Teams
                 .Include(e => e.Players)
                 .Where(e =>
-                    criteria.TeamName == null || e.TeamName.Contains(criteria.TeamName)
+                    criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 )
                 .Select(e => new TeamListItemDao
                 {
                     TeamKey = e.TeamKey,
                     TeamCode = e.TeamCode,
                     TeamName = e.TeamName,
-                    Players = e.Players.Select(i => new TeamListPlayerDao
+                    Players = e.Players!.Select(i => new TeamListPlayerDao
                     {
                         PlayerKey = i.PlayerKey,
                         PlayerCode = i.PlayerCode,

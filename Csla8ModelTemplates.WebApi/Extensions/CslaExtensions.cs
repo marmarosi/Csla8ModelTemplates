@@ -13,7 +13,7 @@ namespace Csla8ModelTemplates.WebApi.Extensions
         /// Configures the CSLA business object library.
         /// </summary>
         /// <param name="services">The service collection.</param>
-        public static void AddCslaLibrary(
+        public static void Add_Csla(
             this IServiceCollection services
             )
         {

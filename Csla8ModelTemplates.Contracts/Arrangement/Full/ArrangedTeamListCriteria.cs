@@ -8,6 +8,6 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Full
     [Serializable]
     public class ArrangedTeamListCriteria : PaginatedSortedListCriteria
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
     }
 }

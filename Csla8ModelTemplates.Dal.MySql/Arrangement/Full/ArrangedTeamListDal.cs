@@ -40,7 +40,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Arrangement.Full
             // Filter the teams.
             var query = DbContext.Teams
                 .Where(e =>
-                    criteria.TeamName == null || e.TeamName.Contains(criteria.TeamName)
+                    criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 );
 
             // Sort the items.

@@ -1,5 +1,4 @@
 using System.Net;
-using System.Runtime.Serialization;
 
 namespace Csla8RestApi.Dal
 {
@@ -7,7 +6,6 @@ namespace Csla8RestApi.Dal
     /// This class is the base exception that is thrown when a
     /// non-fatal application error occurs in the application.
     /// </summary>
-    [Serializable]
     public class BackendException : ApplicationException
     {
         #region Constructors
@@ -45,20 +43,6 @@ namespace Csla8RestApi.Dal
             Exception inner
             )
             : base(message, inner)
-        {
-            Init(HttpStatusCode.BadRequest);
-        }
-
-        /// <summary>
-        /// Initializes a new instance.
-        /// </summary>
-        /// <param name="info">The serialization info that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The streaming context that contains contextual information about the source or destination.</param>
-        protected BackendException(
-            SerializationInfo info,
-            StreamingContext context
-            )
-            : base(info, context)
         {
             Init(HttpStatusCode.BadRequest);
         }

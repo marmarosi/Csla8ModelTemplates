@@ -41,8 +41,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Command
 
             var counts = DbContext.Teams
                 .Include(e => e.Players)
-                .Where(e => teamName == "" || e.TeamName.Contains(teamName))
-                .Select(e => new { e.TeamKey, Count = e.Players.Count })
+                .Where(e => teamName == "" || e.TeamName!.Contains(teamName))
+                .Select(e => new { e.TeamKey, Count = e.Players!.Count })
                 .AsNoTracking()
                 .ToList();
 

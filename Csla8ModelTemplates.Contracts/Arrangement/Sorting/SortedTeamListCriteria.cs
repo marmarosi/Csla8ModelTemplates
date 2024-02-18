@@ -8,6 +8,6 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Sorting
     [Serializable]
     public class SortedTeamListCriteria : SortedListCriteria
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
     }
 }

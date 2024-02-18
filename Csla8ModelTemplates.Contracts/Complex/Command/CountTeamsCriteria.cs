@@ -6,7 +6,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Command
     [Serializable]
     public class CountTeamsCriteria
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
 
         public CountTeamsCriteria()
         { }

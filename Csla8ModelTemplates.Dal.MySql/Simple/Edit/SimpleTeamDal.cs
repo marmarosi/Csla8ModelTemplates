@@ -76,8 +76,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Edit
                     e.TeamCode == dao.TeamCode
                 )
                 .FirstOrDefault();
-            if (team != null)
-                throw new DataExistException(DalText.SimpleTeam_TeamCodeExists.With(dao.TeamCode));
+            if (team is not null)
+                throw new DataExistException(DalText.SimpleTeam_TeamCodeExists.With(dao.TeamCode!));
 
             // Create the new team.
             team = new Team
@@ -125,7 +125,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Edit
                     .Where(e => e.TeamCode == dao.TeamCode && e.TeamKey != team.TeamKey)
                     .Count();
                 if (exist > 0)
-                    throw new DataExistException(DalText.SimpleTeam_TeamCodeExists.With(dao.TeamCode));
+                    throw new DataExistException(DalText.SimpleTeam_TeamCodeExists.With(dao.TeamCode!));
             }
 
             // Update the team.

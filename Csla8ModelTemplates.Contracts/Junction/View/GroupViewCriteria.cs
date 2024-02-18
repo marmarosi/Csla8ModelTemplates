@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Junction.View
 {
@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Contracts.Junction.View
     [Serializable]
     public class GroupViewParams
     {
-        public string GroupId { get; set; }
+        public string? GroupId { get; set; }
 
         public GroupViewParams(
             string groupId

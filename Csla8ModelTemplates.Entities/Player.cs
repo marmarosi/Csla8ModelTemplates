@@ -13,12 +13,12 @@ namespace Csla8ModelTemplates.Entities
         public long? TeamKey { get; set; }
 
         [MaxLength(10)]
-        public string PlayerCode { get; set; }
+        public string? PlayerCode { get; set; }
 
         [MaxLength(100)]
-        public string PlayerName { get; set; }
+        public string? PlayerName { get; set; }
 
         [ForeignKey("TeamKey")]
-        public Team Team { get; set; }
+        public virtual Team? Team { get; set; }
     }
 }

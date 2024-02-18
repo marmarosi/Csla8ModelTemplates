@@ -6,6 +6,6 @@ namespace Csla8ModelTemplates.Contracts.Simple.Set
     [Serializable]
     public class SimpleTeamSetCriteria
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
     }
 }

@@ -1,61 +1,29 @@
-//var builder = WebApplication.CreateBuilder(args);
-
-//// Add services to the container.
-
-//builder.Services.AddControllers();
-//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
-//var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
-//app.UseHttpsRedirection();
-
-//app.UseAuthorization();
-
-//app.MapControllers();
-
-//app.Run();
-
 using Csla8ModelTemplates.WebApi.Extensions;
 
 // ---------- Create the app builder.
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.ConfigureAppConfiguration(ConfigExtensions.Build);
+//builder.Host.Add_JsonConfiguratioFile();
 
 // ********** Add services to the container.
 
-builder.Services.AddCors(CorsExtensions.Setup);
-
-builder.Services.AddSwaggerGenerator(builder.Environment);
-
-builder.Services.AddDataAccessLayers();
-
-builder.Services.AddCslaLibrary();
-
+builder.Services.Add_Cors(builder.Environment);
+builder.Services.Add_Swagger(builder.Environment);
+builder.Services.Add_DataAccessLayers();
+builder.Services.Add_Csla();
 builder.Services.AddControllers();
 
 // ---------- Build the application.
 var app = builder.Build();
 
-app.RunStorageSeeders();
+app.Run_StorageSeeders();
 
 // ********** Configure the HTTP request pipeline.
 
-app.UseSwaggerDocumentation();
-
+app.Use_Swagger();
 app.UseHttpsRedirection();
-
+app.Use_Cors();
 app.UseAuthorization();
-
 app.MapControllers();
 
 // ---------- Start the application.

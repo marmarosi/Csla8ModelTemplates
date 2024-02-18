@@ -27,8 +27,8 @@ namespace Csla8RestApi.Models.Utilities
             {
                 var problemDetails = objectResult.Value as ProblemDetails;
                 Console.WriteLine("========== >>> " + testName);
-                Console.WriteLine("           >>> " + problemDetails.Title);
-                Console.WriteLine("           >>> " + problemDetails.Detail);
+                Console.WriteLine("           >>> " + problemDetails?.Title);
+                Console.WriteLine("           >>> " + problemDetails?.Detail);
                 if (objectResult.StatusCode == StatusCodes.Status423Locked)
                     return true;
             }

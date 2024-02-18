@@ -10,9 +10,9 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     {
         public long? PlayerKey { get; set; }
         [JsonIgnore]
-        public string __teamCode { get; set; } // for error messages
+        public string? __teamCode { get; set; } // for error messages
         [JsonIgnore]
-        public string __playerCode { get; set; } // for error messages
+        public string? __playerCode { get; set; } // for error messages
 
         public TeamSetPlayerCriteria()
         { }

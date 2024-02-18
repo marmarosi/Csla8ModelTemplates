@@ -12,7 +12,7 @@ namespace Csla8RestApi.Models
     {
         #region Business Methods
 
-        private string HashModel;
+        private string? HashModel;
 
         public static readonly PropertyInfo<long?> KeyProperty = RegisterProperty<long?>(nameof(Key));
         public long? Key
@@ -24,8 +24,8 @@ namespace Csla8RestApi.Models
         public static readonly PropertyInfo<long?> IdProperty = RegisterProperty<long?>(nameof(Id), RelationshipTypes.PrivateField);
         public string Id
         {
-            get => KeyHash.Encode(HashModel, Key);
-            private set => Key = KeyHash.Decode(HashModel, value);
+            get => KeyHash.Encode(HashModel!, Key);
+            private set => Key = KeyHash.Decode(HashModel!, value);
         }
 
         public static readonly PropertyInfo<string> NameProperty = RegisterProperty<string>(nameof(Name));

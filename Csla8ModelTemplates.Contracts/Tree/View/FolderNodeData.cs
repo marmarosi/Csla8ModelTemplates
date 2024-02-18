@@ -1,4 +1,4 @@
-﻿namespace Csla8ModelTemplates.Contracts.Tree.View
+namespace Csla8ModelTemplates.Contracts.Tree.View
 {
     /// <summary>
     /// Defines the read-only folder node data.
@@ -6,7 +6,7 @@
     public class FolderNodeData
     {
         public int? FolderOrder { get; set; }
-        public string FolderName { get; set; }
+        public string? FolderName { get; set; }
         public int? Level { get; set; }
     }
 
@@ -17,7 +17,7 @@
     {
         public long? FolderKey { get; set; }
         public long? ParentKey { get; set; }
-        public List<FolderNodeDao> Children { get; set; }
+        public List<FolderNodeDao>? Children { get; set; }
     }
 
     /// <summary>
@@ -25,8 +25,8 @@
     /// </summary>
     public class FolderNodeDto : FolderNodeData
     {
-        public string FolderId { get; set; }
-        public string ParentId { get; set; }
-        public List<FolderNodeDto> Children { get; set; }
+        public string? FolderId { get; set; }
+        public string? ParentId { get; set; }
+        public List<FolderNodeDto>? Children { get; set; }
     }
 }

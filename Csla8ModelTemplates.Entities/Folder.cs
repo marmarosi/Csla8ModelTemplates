@@ -17,11 +17,11 @@ namespace Csla8ModelTemplates.Entities
         public int? FolderOrder { get; set; }
 
         [MaxLength(100)]
-        public string FolderName { get; set; }
+        public string? FolderName { get; set; }
 
         [ForeignKey("ParentKey")]
-        public Folder Parent { get; set; }
+        public virtual Folder? Parent { get; set; }
 
-        public ICollection<Folder> Children { get; set; }
+        public virtual ICollection<Folder>? Children { get; set; }
     }
 }

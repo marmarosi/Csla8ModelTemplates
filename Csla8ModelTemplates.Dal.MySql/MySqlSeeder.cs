@@ -75,7 +75,7 @@ namespace Csla8ModelTemplates.Dal.MySql
                 };
                 context.Groups.Add(group);
                 context.SaveChanges();
-                groupKeys.Add(group.GroupKey.Value);
+                groupKeys.Add(group.GroupKey!.Value);
             }
 
             #endregion
@@ -93,7 +93,7 @@ namespace Csla8ModelTemplates.Dal.MySql
                 };
                 context.Persons.Add(person);
                 context.SaveChanges();
-                personKeys.Add(person.PersonKey.Value);
+                personKeys.Add(person.PersonKey!.Value);
             }
 
             #endregion
@@ -128,7 +128,7 @@ namespace Csla8ModelTemplates.Dal.MySql
             int level,
             long? parentKey,
             long? rootKey,
-            string parentPath
+            string? parentPath
             )
         {
             int count = level == 1 ? 3 : random.Next(1, 5);
@@ -170,7 +170,7 @@ namespace Csla8ModelTemplates.Dal.MySql
             long? parentKey,
             long? rootKey,
             int? folderOrder,
-            string parentPath
+            string? parentPath
             )
         {
             return new Folder

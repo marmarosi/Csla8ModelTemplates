@@ -154,8 +154,8 @@ namespace Csla8ModelTemplates.WebApi
             }
 
             // Check deadlock exception.
-            DeadlockException deadlock = DeadLock.CheckException(exception);
-            if (deadlock != null)
+            DeadlockException? deadlock = DeadLock.CheckException(exception);
+            if (deadlock is not null)
                 return Problem(
                     deadlock.Message,
                     null,
@@ -168,7 +168,7 @@ namespace Csla8ModelTemplates.WebApi
             int statusCode;
             BackendError backend = BackendError.Evaluate(exception, out statusCode);
 
-            Logger.LogError(exception, backend.Summary, null);
+            Logger.LogError(exception, backend.Summary);
 
             // Report the issue.
             return Problem(backend.Summary, null, statusCode, exception.Message, null);

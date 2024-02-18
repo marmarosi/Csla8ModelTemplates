@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.Edit
     /// </summary>
     public class TeamData
     {
-        public string TeamCode { get; set; }
-        public string TeamName { get; set; }
+        public string? TeamCode { get; set; }
+        public string? TeamName { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
     }
 
@@ -29,7 +29,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Edit
     /// </summary>
     public class TeamDto : TeamData
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
         public List<TeamPlayerDto> Players { get; set; }
 
         public TeamDto()

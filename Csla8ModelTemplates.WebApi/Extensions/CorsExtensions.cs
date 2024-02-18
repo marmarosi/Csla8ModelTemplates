@@ -1,27 +1,51 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Csla8ModelTemplates.WebApi.Extensions
 {
     /// <summary>
-    /// Provide methods to configure CORS.
+    /// Provides methods to configure CORS.
     /// </summary>
     internal static class CorsExtensions
     {
         /// <summary>
-        /// Sets up cross origin resource sharing servcies.
+        /// Configure CORS to limit the API availability.
         /// </summary>
-        /// <param name="options">Provides prorammatic configuration for CORS.</param>
-        public static void Setup(
-            CorsOptions options
+        /// <param name="services">The service collection.</param>
+        /// <param name="environment">The hosting environment.</param>
+        public static void Add_Cors(
+            this IServiceCollection services,
+            IWebHostEnvironment environment
             )
         {
-            options.AddPolicy(
-                "Csla8ModelTemplatesPolicy",
-                builder => builder
-                    .AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
+            var configuration = services.BuildServiceProvider().GetService<IConfiguration>();
+
+            if (environment.IsProduction())
+            {
+                var allowedHosts = configuration!.GetValue<string>("AllowedHosts")!.Split(';');
+                services.AddCors(options => options.AddPolicy(
+                    "Csla8ModelTemplatesPolicy",
+                    policyBuilder => policyBuilder
+                        .WithOrigins(allowedHosts)
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        )
                 );
+            }
+        }
+
+        /// <summary>
+        /// Use CORS in the application.
+        /// </summary>
+        /// <param name="app">The web application.</param>
+        public static void Use_Cors(
+            this WebApplication app
+            )
+        {
+            if (app.Environment.IsProduction())
+            {
+                app.UseCors();
+            }
         }
     }
 }

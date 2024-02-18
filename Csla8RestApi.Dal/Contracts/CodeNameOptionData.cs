@@ -5,8 +5,8 @@ namespace Csla8RestApi.Dal.Contracts
     /// </summary>
     public class CodeNameOptionData
     {
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public string? Code { get; set; }
+        public string? Name { get; set; }
     }
 
     /// <summary>

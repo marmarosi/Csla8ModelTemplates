@@ -1,5 +1,3 @@
-using System;
-
 namespace Csla8RestApi.Dal.Contracts
 {
     /// <summary>
@@ -11,11 +9,11 @@ namespace Csla8RestApi.Dal.Contracts
         /// <summary>
         /// Specifies the properties to sort a list of items by.
         /// </summary>
-        public string SortBy { get; set; }
+        public required string SortBy { get; set; }
 
         /// <summary>
         /// Specifies the direction in which to sort a list of items.
         /// </summary>
-        public SortDirection SortDirection { get; set; }
+        public required SortDirection SortDirection { get; set; }
     }
 }

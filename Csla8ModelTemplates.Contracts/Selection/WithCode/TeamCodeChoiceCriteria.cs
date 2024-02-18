@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Selection.WithCode
 {
@@ -8,6 +8,6 @@ namespace Csla8ModelTemplates.Contracts.Selection.WithCode
     [Serializable]
     public class TeamCodeChoiceCriteria : ChoiceCriteria
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
     }
 }

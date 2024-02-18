@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.View
     [Serializable]
     public class SimpleTeamViewParams
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
 
         public SimpleTeamViewParams(
             string teamId

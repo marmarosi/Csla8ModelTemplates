@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 
 namespace Csla8RestApi.Dal
 {
@@ -23,7 +23,7 @@ namespace Csla8RestApi.Dal
         /// </summary>
         /// <param name="exception">The exception to check.</param>
         /// <returns>Returns true when the exception is a deadlock one; otherwise false.</returns>
-        public DeadlockException CheckException(
+        public DeadlockException? CheckException(
             Exception exception
             );
     }

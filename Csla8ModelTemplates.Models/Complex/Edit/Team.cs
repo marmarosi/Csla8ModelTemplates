@@ -42,10 +42,10 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             set => SetProperty(TeamCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> TeamNameProperty = RegisterProperty<string>(nameof(TeamName));
+        public static readonly PropertyInfo<string?> TeamNameProperty = RegisterProperty<string?>(nameof(TeamName));
         [Required]
         [MaxLength(100)]
-        public string TeamName
+        public string? TeamName
         {
             get => GetProperty(TeamNameProperty);
             set => SetProperty(TeamNameProperty, value);
@@ -163,9 +163,9 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             TeamDto dto
             )
         {
-            long? teamKey = KeyHash.Decode(ID.Team, dto.TeamId);
+            long? teamKey = KeyHash.Decode(ID.Team, dto!.TeamId);
             Team team = teamKey.HasValue ?
-                await Get(factory, dto.TeamId) :
+                await Get(factory, dto.TeamId!) :
                 await New(factory);
             team.SetValuesOnBuild(dto, childFactory);
             return team;

@@ -11,11 +11,11 @@ namespace Csla8ModelTemplates.Entities
         public long? GroupKey { get; set; }
 
         [MaxLength(10)]
-        public string GroupCode { get; set; }
+        public string? GroupCode { get; set; }
 
         [MaxLength(100)]
-        public string GroupName { get; set; }
+        public string? GroupName { get; set; }
 
-        public ICollection<GroupPerson> Persons { get; set; }
+        public virtual ICollection<GroupPerson>? Persons { get; set; }
     }
 }

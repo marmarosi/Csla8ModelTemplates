@@ -1,5 +1,3 @@
-using System;
-
 namespace Csla8RestApi.Dal.Contracts
 {
     /// <summary>

@@ -52,7 +52,7 @@ namespace Csla8ModelTemplates.Dal.MySql
             {
                 var auditableEntity = insertedEntry as Timestamped;
                 //If the inserted object is an Auditable. 
-                if (auditableEntity != null)
+                if (auditableEntity is not null)
                 {
                     auditableEntity.Timestamp = DateTimeOffset.UtcNow;
                 }
@@ -66,7 +66,7 @@ namespace Csla8ModelTemplates.Dal.MySql
             {
                 //If the inserted object is an Auditable. 
                 var auditableEntity = modifiedEntry as Timestamped;
-                if (auditableEntity != null)
+                if (auditableEntity is not null)
                 {
                     auditableEntity.Timestamp = DateTimeOffset.UtcNow;
                 }

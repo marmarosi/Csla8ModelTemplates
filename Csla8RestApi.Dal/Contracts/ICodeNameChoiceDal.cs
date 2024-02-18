@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Csla8RestApi.Dal.Contracts
 {
     /// <summary>

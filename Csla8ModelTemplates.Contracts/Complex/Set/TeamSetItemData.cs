@@ -7,8 +7,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     /// </summary>
     public class TeamSetItemData
     {
-        public string TeamCode { get; set; }
-        public string TeamName { get; set; }
+        public string? TeamCode { get; set; }
+        public string? TeamName { get; set; }
         public DateTimeOffset? Timestamp { get; set; }
     }
 
@@ -31,7 +31,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     /// </summary>
     public class TeamSetItemDto : TeamSetItemData
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
         public List<TeamSetPlayerDto> Players { get; set; }
 
         public TeamSetItemDto()
@@ -53,7 +53,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
 
         protected List<TeamSetPlayerDao> PlayersToDao()
         {
-            List<TeamSetPlayerDao> list = new List<TeamSetPlayerDao>();
+            var list = new List<TeamSetPlayerDao>();
 
             foreach (TeamSetPlayerDto player in Players)
                 list.Add(player.ToDao());

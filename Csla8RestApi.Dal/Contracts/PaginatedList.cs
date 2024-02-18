@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Csla8RestApi.Dal.Contracts
 {
     /// <summary>
@@ -10,7 +7,7 @@ namespace Csla8RestApi.Dal.Contracts
     public class PaginatedList<T> : IPaginatedList<T>
         where T : class
     {
-        public List<T> Data { get; set; }
+        public required List<T> Data { get; set; }
         public int TotalCount { get; set; }
     }
 }

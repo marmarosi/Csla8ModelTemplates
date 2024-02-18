@@ -56,7 +56,7 @@ namespace Csla8ModelTemplates.Configuration
             Exception ex
             )
         {
-            return ex is MySqlException && (ex as MySqlException).Number == 1213;
+            return ex is MySqlException && (ex as MySqlException)!.Number == 1213;
         }
 
         /// <summary>

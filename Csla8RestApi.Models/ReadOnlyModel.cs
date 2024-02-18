@@ -21,7 +21,7 @@ namespace Csla8RestApi.Models
         public D ToDto<D>() where D : class
         {
             Type type = typeof(D);
-            D dto = Activator.CreateInstance(type) as D;
+            D dto = (D)Activator.CreateInstance(type)!;
 
             List<IPropertyInfo> cslaProperties = FieldManager.GetRegisteredProperties();
             List<PropertyInfo> dtoProperties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -31,26 +31,26 @@ namespace Csla8RestApi.Models
             foreach (var dtoProperty in dtoProperties)
             {
                 var cslaProperty = cslaProperties.Find(pi => pi.Name == dtoProperty.Name);
-                if (cslaProperty != null)
+                if (cslaProperty is not null)
                 {
-                    if (cslaProperty.Type.GetInterface(nameof(IReadOnlyList)) != null)
+                    if (cslaProperty.Type.GetInterface(nameof(IReadOnlyList)) is not null)
                     {
                         Type childType = dtoProperty.PropertyType.GenericTypeArguments[0];
-                        IReadOnlyList cslaBase = GetProperty(cslaProperty) as IReadOnlyList;
+                        IReadOnlyList cslaBase = (IReadOnlyList)GetProperty(cslaProperty)!;
                         object value = cslaProperty.Type
-                            .GetMethod("ToDto")
+                            .GetMethod("ToDto")!
                             .MakeGenericMethod(childType)
-                            .Invoke(cslaBase, null);
+                            .Invoke(cslaBase, null)!;
                         dtoProperty.SetValue(dto, value);
                     }
-                    else if (cslaProperty.Type.GetInterface(nameof(IReadOnlyModel)) != null)
+                    else if (cslaProperty.Type.GetInterface(nameof(IReadOnlyModel)) is not null)
                     {
                         Type childType = dtoProperty.PropertyType;
-                        IReadOnlyModel cslaBase = GetProperty(cslaProperty) as IReadOnlyModel;
+                        IReadOnlyModel cslaBase = (IReadOnlyModel)GetProperty(cslaProperty)!;
                         object value = cslaProperty.Type
-                            .GetMethod("ToDto")
+                            .GetMethod("ToDto")!
                             .MakeGenericMethod(childType)
-                            .Invoke(cslaBase, null);
+                            .Invoke(cslaBase, null)!;
                         dtoProperty.SetValue(dto, value);
                     }
                     else
@@ -69,7 +69,7 @@ namespace Csla8RestApi.Models
         public IPaginatedList<D> ToPaginatedDto<D>() where D : class
         {
             Type type = typeof(PaginatedList<D>);
-            PaginatedList<D> dto = Activator.CreateInstance(type) as PaginatedList<D>;
+            PaginatedList<D> dto = (PaginatedList<D>)Activator.CreateInstance(type)!;
 
             List<IPropertyInfo> cslaProperties = FieldManager.GetRegisteredProperties();
             List<PropertyInfo> dtoProperties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -79,26 +79,26 @@ namespace Csla8RestApi.Models
             foreach (var dtoProperty in dtoProperties)
             {
                 var cslaProperty = cslaProperties.Find(pi => pi.Name == dtoProperty.Name);
-                if (cslaProperty != null)
+                if (cslaProperty is not null)
                 {
-                    if (cslaProperty.Type.GetInterface(nameof(IReadOnlyList)) != null)
+                    if (cslaProperty.Type.GetInterface(nameof(IReadOnlyList)) is not null)
                     {
                         Type childType = dtoProperty.PropertyType.GenericTypeArguments[0];
-                        IReadOnlyList cslaBase = GetProperty(cslaProperty) as IReadOnlyList;
+                        IReadOnlyList cslaBase = (IReadOnlyList)GetProperty(cslaProperty)!;
                         object value = cslaProperty.Type
-                            .GetMethod("ToDto")
+                            .GetMethod("ToDto")!
                             .MakeGenericMethod(childType)
-                            .Invoke(cslaBase, null);
+                            .Invoke(cslaBase, null)!;
                         dtoProperty.SetValue(dto, value);
                     }
-                    else if (cslaProperty.Type.GetInterface(nameof(IReadOnlyModel)) != null)
+                    else if (cslaProperty.Type.GetInterface(nameof(IReadOnlyModel)) is not null)
                     {
                         Type childType = dtoProperty.PropertyType;
-                        IReadOnlyModel cslaBase = GetProperty(cslaProperty) as IReadOnlyModel;
+                        IReadOnlyModel cslaBase = (IReadOnlyModel)GetProperty(cslaProperty)!;
                         object value = cslaProperty.Type
-                            .GetMethod("ToDto")
+                            .GetMethod("ToDto")!
                             .MakeGenericMethod(childType)
-                            .Invoke(cslaBase, null);
+                            .Invoke(cslaBase, null)!;
                         dtoProperty.SetValue(dto, value);
                     }
                     else

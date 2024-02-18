@@ -11,11 +11,11 @@ namespace Csla8ModelTemplates.Entities
         public long? TeamKey { get; set; }
 
         [MaxLength(10)]
-        public string TeamCode { get; set; }
+        public string? TeamCode { get; set; }
 
         [MaxLength(100)]
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
 
-        public ICollection<Player> Players { get; set; }
+        public virtual ICollection<Player>? Players { get; set; }
     }
 }

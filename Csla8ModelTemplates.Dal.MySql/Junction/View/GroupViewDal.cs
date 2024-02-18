@@ -49,11 +49,11 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.View
                     GroupKey = e.GroupKey,
                     GroupCode = e.GroupCode,
                     GroupName = e.GroupName,
-                    Persons = e.Persons
+                    Persons = e.Persons!
                         .Select(m => new GroupViewPersonDao
                         {
                             PersonKey = m.PersonKey,
-                            PersonName = m.Person.PersonName
+                            PersonName = m.Person!.PersonName
                         })
                         .ToList()
                 })

@@ -50,7 +50,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     TeamKey = e.TeamKey,
                     TeamCode = e.TeamCode,
                     TeamName = e.TeamName,
-                    Players = e.Players
+                    Players = e.Players!
                         .Select(p => new TeamPlayerDao
                         {
                             PlayerKey = p.PlayerKey,
@@ -87,8 +87,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     e.TeamCode == dao.TeamCode
                 )
                 .FirstOrDefault();
-            if (team != null)
-                throw new DataExistException(DalText.Team_TeamCodeExists.With(dao.TeamCode));
+            if (team is not null)
+                throw new DataExistException(DalText.Team_TeamCodeExists.With(dao.TeamCode!));
 
             // Create the new team.
             team = new Team
@@ -137,7 +137,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     .Where(e => e.TeamCode == dao.TeamCode && e.TeamKey != team.TeamKey)
                     .Count();
                 if (exist > 0)
-                    throw new DataExistException(DalText.Team_TeamCodeExists.With(dao.TeamCode));
+                    throw new DataExistException(DalText.Team_TeamCodeExists.With(dao.TeamCode!));
             }
 
             // Update the team.

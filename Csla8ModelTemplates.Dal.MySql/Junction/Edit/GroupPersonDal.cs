@@ -46,12 +46,12 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                 )
                 .AsNoTracking()
                 .FirstOrDefault();
-            if (groupPerson != null)
-                throw new DataExistException(DalText.GroupPerson_Exists.With(dao.PersonName));
+            if (groupPerson is not null)
+                throw new DataExistException(DalText.GroupPerson_Exists.With(dao.PersonName!));
 
             // Create the new group-person.
             Person person = DbContext.Persons.Find(dao.PersonKey)
-                ?? throw new DataExistException(DalText.GroupPerson_NotFound.With(dao.PersonName));
+                ?? throw new DataExistException(DalText.GroupPerson_NotFound.With(dao.PersonName!));
             groupPerson = new GroupPerson
             {
                 GroupKey = dao.GroupKey,
@@ -61,7 +61,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
 
             int count = DbContext.SaveChanges();
             if (count == 0)
-                throw new InsertFailedException(DalText.GroupPerson_InsertFailed.With(dao.PersonName));
+                throw new InsertFailedException(DalText.GroupPerson_InsertFailed.With(dao.PersonName!));
 
             // Return new data.
             dao.PersonName = person.PersonName;
@@ -87,14 +87,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     )
                 .AsNoTracking()
                 .FirstOrDefault()
-                ?? throw new DataNotFoundException(DalText.GroupPerson_NotFound.With(dao.PersonName));
+                ?? throw new DataNotFoundException(DalText.GroupPerson_NotFound.With(dao.PersonName!));
 
             // Delete the group-person.
             DbContext.GroupPersons.Remove(groupPerson);
 
             int count = DbContext.SaveChanges();
             if (count == 0)
-                throw new DeleteFailedException(DalText.GroupPerson_DeleteFailed.With(dao.PersonName));
+                throw new DeleteFailedException(DalText.GroupPerson_DeleteFailed.With(dao.PersonName!));
         }
 
         #endregion Delete

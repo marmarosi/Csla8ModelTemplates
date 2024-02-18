@@ -1,11 +1,11 @@
-﻿namespace Csla8ModelTemplates.Contracts.Junction.Edit
+namespace Csla8ModelTemplates.Contracts.Junction.Edit
 {
     /// <summary>
     /// Defines the editable group-person data.
     /// </summary>
     public class GroupPersonData
     {
-        public string PersonName { get; set; }
+        public string? PersonName { get; set; }
     }
 
     /// <summary>
@@ -22,7 +22,7 @@
     /// </summary>
     public class GroupPersonDto : GroupPersonData
     {
-        public string PersonId { get; set; }
+        public string? PersonId { get; set; }
 
         public GroupPersonDto()
         { }

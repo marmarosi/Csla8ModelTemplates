@@ -49,11 +49,11 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     GroupKey = e.GroupKey,
                     GroupCode = e.GroupCode,
                     GroupName = e.GroupName,
-                    Persons = e.Persons.Select(m => new GroupPersonDao
+                    Persons = e.Persons!.Select(m => new GroupPersonDao
                     {
                         GroupKey = m.GroupKey,
                         PersonKey = m.PersonKey,
-                        PersonName = m.Person.PersonName
+                        PersonName = m.Person!.PersonName
                     }).ToList(),
                     Timestamp = e.Timestamp
                 })
@@ -82,8 +82,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     e.GroupCode == dao.GroupCode
                 )
                 .FirstOrDefault();
-            if (group != null)
-                throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode));
+            if (group is not null)
+                throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode!));
 
             // Create the new group.
             group = new Group
@@ -131,7 +131,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     .Where(e => e.GroupCode == dao.GroupCode && e.GroupKey != group.GroupKey)
                     .Count();
                 if (exist > 0)
-                    throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode));
+                    throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode!));
             }
 
             // Update the group.

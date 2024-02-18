@@ -38,7 +38,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Selection.WithId
             )
         {
             var choice = DbContext.Teams
-                .Where(e => criteria.TeamName == null || e.TeamName.Contains(criteria.TeamName))
+                .Where(e => criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName))
                 .Select(e => new IdNameOptionDao
                 {
                     Key = e.TeamKey,

@@ -8,10 +8,12 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     /// </summary>
     public class TeamSetPlayerData
     {
-        public string PlayerCode { get; set; }
-        public string PlayerName { get; set; }
+        public string? PlayerCode { get; set; }
+        public string? PlayerName { get; set; }
         [JsonIgnore]
-        public string __teamCode; // for error messages
+#pragma warning disable S1104
+        public string? __teamCode; // for error messages
+#pragma warning restore S1104
     }
 
     /// <summary>
@@ -28,8 +30,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     /// </summary>
     public class TeamSetPlayerDto : TeamSetPlayerData
     {
-        public string PlayerId { get; set; }
-        public string TeamId { get; set; }
+        public string? PlayerId { get; set; }
+        public string? TeamId { get; set; }
 
         public TeamSetPlayerDao ToDao()
         {

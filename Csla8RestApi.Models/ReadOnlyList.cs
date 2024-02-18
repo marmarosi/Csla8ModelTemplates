@@ -20,17 +20,17 @@ namespace Csla8RestApi.Models
         public IList<D> ToDto<D>() where D : class
         {
             Type type = typeof(List<D>);
-            IList<D> instance = Activator.CreateInstance(type) as IList<D>;
+            IList<D>? instance = Activator.CreateInstance(type) as IList<D>;
 
             foreach (C item in Items)
             {
-                D child = item.GetType()
-                    .GetMethod("ToDto")
+                D? child = item.GetType()
+                    .GetMethod("ToDto")!
                     .MakeGenericMethod(typeof(D))
                     .Invoke(item, null) as D;
-                instance.Add(child);
+                instance!.Add(child!);
             }
-            return instance;
+            return instance!;
         }
     }
 }

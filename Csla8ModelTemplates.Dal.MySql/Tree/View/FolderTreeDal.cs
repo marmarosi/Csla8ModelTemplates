@@ -27,7 +27,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Tree.View
 
         #region Fetch
 
-        private List<FolderNodeDao> AllFolders { get; set; }
+        private List<FolderNodeDao>? AllFolders { get; set; }
 
         /// <summary>
         /// Gets the specified folder tree.
@@ -69,7 +69,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Tree.View
             )
         {
             // Get the folders of the level.
-            var folders = AllFolders
+            var folders = AllFolders!
                 .Where(o => o.ParentKey == parentKey)
                 .OrderBy(o => o.FolderOrder)
                 .ToList();

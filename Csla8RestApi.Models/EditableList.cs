@@ -22,16 +22,16 @@ namespace Csla8RestApi.Models
         public IList<Dto> ToDto()
         {
             Type type = typeof(List<Dto>);
-            IList<Dto> instance = Activator.CreateInstance(type) as IList<Dto>;
+            IList<Dto>? instance = Activator.CreateInstance(type) as IList<Dto>;
 
             foreach (C item in Items)
             {
-                Dto child = item.GetType()
-                    .GetMethod("ToDto")
+                Dto? child = item.GetType()
+                    .GetMethod("ToDto")!
                     .Invoke(item, null) as Dto;
-                instance.Add(child);
+                instance!.Add(child!);
             }
-            return instance;
+            return instance!;
         }
 
         #endregion
@@ -56,7 +56,7 @@ namespace Csla8RestApi.Models
                 C item = Items[i];
                 long? keyValue = GetKeyValue(item, keyName);
                 Predicate<Dto> match = (o) => GetKeyValue(o, keyName) == keyValue;
-                Dto dto = list.Find(match);
+                Dto dto = list.Find(match)!;
 
                 if (dto == null)
                     RemoveItem(i);
@@ -84,7 +84,7 @@ namespace Csla8RestApi.Models
             )
         {
             return something.GetType()
-                .GetProperty(propertyName)
+                .GetProperty(propertyName)!
                 .GetValue(something) as long?;
         }
 
@@ -110,7 +110,7 @@ namespace Csla8RestApi.Models
                 C item = Items[i];
                 string idValue = GeIdtValue(item, idName);
                 bool match(Dto o) => GeIdtValue(o, idName) == idValue;
-                Dto dto = list.Find(match);
+                Dto dto = list.Find(match)!;
 
                 if (dto == null)
                     RemoveItem(i);
@@ -137,9 +137,9 @@ namespace Csla8RestApi.Models
             string propertyName
             )
         {
-            return something.GetType()
-                .GetProperty(propertyName)
-                .GetValue(something) as string;
+            return (string)something.GetType()
+                .GetProperty(propertyName)!
+                .GetValue(something)!;
         }
 
         #endregion

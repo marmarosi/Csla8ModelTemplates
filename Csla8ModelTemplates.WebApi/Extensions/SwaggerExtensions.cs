@@ -1,4 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 
@@ -14,7 +14,7 @@ namespace Csla8ModelTemplates.WebApi.Extensions
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="environment">The web hosting environment the application is running in.</param>
-        public static void AddSwaggerGenerator(
+        public static void Add_Swagger(
             this IServiceCollection services,
             IWebHostEnvironment environment
             )
@@ -28,11 +28,11 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     new OpenApiInfo
                     {
                         Version = "v1",
-                        Title = "CSLA 6 REST API",
-                        Description = string.Format("CSLA 6 model templates used in REST API ● Version {0}",
+                        Title = "CSLA 8 REST API",
+                        Description = string.Format("CSLA 8 model templates used in REST API ● Version {0}",
                             Assembly
-                                .GetEntryAssembly()
-                                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                                .GetEntryAssembly()!
+                                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()!
                                 .InformationalVersion
                         )
                     }
@@ -47,7 +47,7 @@ namespace Csla8ModelTemplates.WebApi.Extensions
         /// Registers the Swagger middlewares.
         /// </summary>
         /// <param name="app">The web application.</param>
-        public static void UseSwaggerDocumentation(
+        public static void Use_Swagger(
             this WebApplication app
             )
         {

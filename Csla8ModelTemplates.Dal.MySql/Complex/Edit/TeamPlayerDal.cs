@@ -45,8 +45,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     e.PlayerCode == dao.PlayerCode
                 )
                 .FirstOrDefault();
-            if (player != null)
-                throw new DataExistException(DalText.Player_PlayerCodeExists.With(dao.PlayerCode));
+            if (player is not null)
+                throw new DataExistException(DalText.Player_PlayerCodeExists.With(dao.PlayerCode!));
 
             // Create the new player.
             player = new Player
@@ -59,7 +59,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             int count = DbContext.SaveChanges();
             if (count == 0)
-                throw new InsertFailedException(DalText.Player_InsertFailed.With(player.PlayerCode));
+                throw new InsertFailedException(DalText.Player_InsertFailed.With(player.PlayerCode!));
 
             // Return new data.
             dao.PlayerKey = player.PlayerKey;
@@ -96,7 +96,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     )
                     .Count();
                 if (exist > 0)
-                    throw new DataExistException(DalText.Player_PlayerCodeExists.With(dao.PlayerCode));
+                    throw new DataExistException(DalText.Player_PlayerCodeExists.With(dao.PlayerCode!));
             }
 
             // Update the player.
@@ -105,7 +105,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             int count = DbContext.SaveChanges();
             if (count == 0)
-                throw new UpdateFailedException(DalText.Player_UpdateFailed.With(player.PlayerCode));
+                throw new UpdateFailedException(DalText.Player_UpdateFailed.With(player.PlayerCode!));
 
             // Return new data.
         }
@@ -138,7 +138,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             count = DbContext.SaveChanges();
             if (count == 0)
-                throw new DeleteFailedException(DalText.Player_DeleteFailed.With(player.PlayerCode));
+                throw new DeleteFailedException(DalText.Player_DeleteFailed.With(player.PlayerCode!));
         }
 
         #endregion Delete

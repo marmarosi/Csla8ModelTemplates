@@ -34,6 +34,6 @@ namespace Csla8RestApi.Models.Validations
         /// <value>
         /// The alias name of the object.
         /// </value>
-        public string ObjectName { get; set; }
+        public string? ObjectName { get; set; }
     }
 }

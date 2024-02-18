@@ -11,11 +11,11 @@ namespace Csla8ModelTemplates.Entities
         public long? PersonKey { get; set; }
 
         [MaxLength(10)]
-        public string PersonCode { get; set; }
+        public string? PersonCode { get; set; }
 
         [MaxLength(100)]
-        public string PersonName { get; set; }
+        public string? PersonName { get; set; }
 
-        public ICollection<GroupPerson> Groups { get; set; }
+        public virtual ICollection<GroupPerson>? Groups { get; set; }
     }
 }

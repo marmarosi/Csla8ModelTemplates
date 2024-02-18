@@ -45,9 +45,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
                     e.PlayerCode == dao.PlayerCode
                 )
                 .FirstOrDefault();
-            if (player != null)
+            if (player is not null)
                 throw new DataExistException(DalText.TeamSetPlayer_PlayerCodeExists
-                    .With(dao.__teamCode, dao.PlayerCode));
+                    .With(dao.__teamCode!, dao.PlayerCode!));
 
             // Create the new player.
             player = new Player
@@ -61,7 +61,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
             int count = DbContext.SaveChanges();
             if (count == 0)
                 throw new InsertFailedException(DalText.TeamSetPlayer_InsertFailed
-                    .With(dao.__teamCode, dao.PlayerCode));
+                    .With(dao.__teamCode!, dao.PlayerCode!));
 
             // Return new data.
             dao.PlayerKey = player.PlayerKey;
@@ -86,7 +86,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
                 )
                 .FirstOrDefault()
                 ?? throw new DataNotFoundException(DalText.TeamSetPlayer_NotFound
-                    .With(dao.__teamCode, dao.PlayerCode));
+                    .With(dao.__teamCode!, dao.PlayerCode!));
 
             // Check unique player code.
             if (player.PlayerCode != dao.PlayerCode)
@@ -100,7 +100,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
                     .Count();
                 if (exist > 0)
                     throw new DataExistException(DalText.TeamSetPlayer_PlayerCodeExists
-                        .With(dao.__teamCode, dao.PlayerCode));
+                        .With(dao.__teamCode!, dao.PlayerCode!));
             }
 
             // Update the player.
@@ -110,7 +110,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
             int count = DbContext.SaveChanges();
             if (count == 0)
                 throw new UpdateFailedException(DalText.TeamSetPlayer_UpdateFailed
-                    .With(dao.__teamCode, dao.PlayerCode));
+                    .With(dao.__teamCode!, dao.PlayerCode!));
 
             // Return new data.
         }
@@ -137,7 +137,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
                 .AsNoTracking()
                 .FirstOrDefault()
                 ?? throw new DataNotFoundException(DalText.TeamSetPlayer_NotFound
-                    .With(criteria.__teamCode, criteria.__playerCode));
+                    .With(criteria.__teamCode!, criteria.__playerCode!));
 
             // Delete the player.
             DbContext.Players.Remove(player);
@@ -145,7 +145,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
             count = DbContext.SaveChanges();
             if (count == 0)
                 throw new DeleteFailedException(DalText.TeamSetPlayer_DeleteFailed
-                    .With(criteria.__teamCode, criteria.__playerCode));
+                    .With(criteria.__teamCode!, criteria.__playerCode!));
         }
 
         #endregion Delete

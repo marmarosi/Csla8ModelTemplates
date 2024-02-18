@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.Edit
     [Serializable]
     public class SimpleTeamParams
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
 
         public SimpleTeamParams(
             string teamId

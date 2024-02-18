@@ -9,13 +9,15 @@ namespace Csla8RestApi.Models.Validations
     public class NotZero<T> : CommonBusinessRule
       where T : IComparable
     {
-        private T Zero { get; set; }
+#pragma warning disable S1144, S3459 // Unused private types or members should be removed
+        private T? Zero { get; set; }
+#pragma warning restore S1144, S3459 // Unused private types or members should be removed
 
         /// <summary>
         /// Gets or sets the format string used
         /// to format the Min value.
         /// </summary>
-        public string Format { get; set; }
+        public string? Format { get; set; }
 
         /// <summary>
         /// Creates an instance of the rule.
@@ -62,15 +64,21 @@ namespace Csla8RestApi.Models.Validations
         /// Rule implementation.
         /// </summary>
         /// <param name="context">Rule context.</param>
-        protected override void Execute(IRuleContext context)
+        protected override void Execute(
+#pragma warning disable CSLA0017
+            IRuleContext context
+#pragma warning restore CSLA0017
+            )
         {
-            var value = context.InputPropertyValues[PrimaryProperty] != null
+#pragma warning disable S3358
+            var value = context.InputPropertyValues[PrimaryProperty] is not null
                             ? (T)context.InputPropertyValues[PrimaryProperty]
-                            : PrimaryProperty.DefaultValue != null
+                            : PrimaryProperty.DefaultValue is not null
                                 ? (T)PrimaryProperty.DefaultValue
                                 : default;
+#pragma warning restore S3358
 
-            var result = value.CompareTo(Zero);
+            var result = value!.CompareTo(Zero);
             if (result == 0)
             {
                 string outValue;

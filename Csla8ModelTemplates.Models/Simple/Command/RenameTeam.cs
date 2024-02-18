@@ -29,8 +29,8 @@ namespace Csla8ModelTemplates.Models.Simple.Command
             set => TeamKey = KeyHash.Decode(ID.Team, value);
         }
 
-        public static readonly PropertyInfo<string> TeamNameProperty = RegisterProperty<string>(c => c.TeamName);
-        public string TeamName
+        public static readonly PropertyInfo<string?> TeamNameProperty = RegisterProperty<string?>(c => c.TeamName);
+        public string? TeamName
         {
             get => ReadProperty(TeamNameProperty);
             private set => LoadProperty(TeamNameProperty, value);
@@ -98,7 +98,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
             )
         {
             // Execute the command.
-            TeamId = dto.TeamId;
+            TeamId = dto.TeamId!;
             TeamName = dto.TeamName;
             Validate();
 

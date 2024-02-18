@@ -44,8 +44,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                     e.TeamCode == dao.TeamCode
                 )
                 .FirstOrDefault();
-            if (team != null)
-                throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode));
+            if (team is not null)
+                throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
 
             // Create the new team.
             team = new Team
@@ -57,7 +57,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
 
             int count = DbContext.SaveChanges();
             if (count == 0)
-                throw new InsertFailedException(DalText.SimpleTeamSetItem_InsertFailed.With(team.TeamCode));
+                throw new InsertFailedException(DalText.SimpleTeamSetItem_InsertFailed.With(team.TeamCode!));
 
             // Return new data.
             dao.TeamKey = team.TeamKey;
@@ -82,9 +82,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                     e.TeamKey == dao.TeamKey
                 )
                 .FirstOrDefault()
-                ?? throw new DataNotFoundException(DalText.SimpleTeamSetItem_NotFound.With(dao.TeamCode));
+                ?? throw new DataNotFoundException(DalText.SimpleTeamSetItem_NotFound.With(dao.TeamCode!));
             if (team.Timestamp != dao.Timestamp)
-                throw new ConcurrencyException(DalText.SimpleTeamSetItem_Concurrency.With(dao.TeamCode));
+                throw new ConcurrencyException(DalText.SimpleTeamSetItem_Concurrency.With(dao.TeamCode!));
 
             // Check unique team code.
             if (team.TeamCode != dao.TeamCode)
@@ -96,7 +96,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                     )
                     .Count();
                 if (exist > 0)
-                    throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode));
+                    throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
             }
 
             // Update the team.
@@ -105,7 +105,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
 
             int count = DbContext.SaveChanges();
             if (count == 0)
-                throw new UpdateFailedException(DalText.SimpleTeamSetItem_UpdateFailed.With(team.TeamCode));
+                throw new UpdateFailedException(DalText.SimpleTeamSetItem_UpdateFailed.With(team.TeamCode!));
 
             // Return new data.
             dao.Timestamp = team.Timestamp;
@@ -150,14 +150,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
 
             count = DbContext.SaveChanges();
             if (count != players.Count)
-                throw new DeleteFailedException(DalText.SimpleTeamSetItem_Delete_Players.With(team.TeamCode));
+                throw new DeleteFailedException(DalText.SimpleTeamSetItem_Delete_Players.With(team.TeamCode!));
 
             // Delete the team.
             DbContext.Teams.Remove(team);
 
             count = DbContext.SaveChanges();
             if (count == 0)
-                throw new DeleteFailedException(DalText.SimpleTeamSetItem_DeleteFailed.With(team.TeamCode));
+                throw new DeleteFailedException(DalText.SimpleTeamSetItem_DeleteFailed.With(team.TeamCode!));
         }
 
         #endregion Delete

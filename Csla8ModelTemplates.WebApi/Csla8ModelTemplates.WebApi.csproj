@@ -10,6 +10,14 @@
     <DocumentationFile>Csla8ModelTemplates.WebApi.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;S125</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;S125</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Csla" Version="8.0.0-R24021201" />
     <PackageReference Include="Csla.AspNetCore" Version="8.0.0-R24021201" />

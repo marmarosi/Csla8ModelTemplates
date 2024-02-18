@@ -6,6 +6,6 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     [Serializable]
     public class TeamListCriteria
     {
-        public string TeamName { get; set; }
+        public string? TeamName { get; set; }
     }
 }

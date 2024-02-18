@@ -70,15 +70,18 @@ namespace Csla8RestApi.Models
                     if (base.IsValid)
                         return true;
                     else
-                    {
-                        List<ValidationMessage> messages = new List<ValidationMessage>();
-                        CollectMessages(this, "", ref messages);
-                        throw new BrokenRulesException(messages);
-                    }
+                        return HandleValidationError();
                 }
                 else
                     return base.IsValid;
             }
+        }
+
+        private bool HandleValidationError()
+        {
+            var messages = new List<ValidationMessage>();
+            CollectMessages(this, "", ref messages);
+            throw new BrokenRulesException(messages);
         }
 
         #endregion
@@ -104,7 +107,7 @@ namespace Csla8RestApi.Models
             List<IPropertyInfo> propertyInfos = FieldManager.GetRegisteredProperties().ToList();
             foreach (var propertyInfo in propertyInfos)
             {
-                if (propertyInfo.Type.GetInterface(nameof(IBusinessBase)) != null)
+                if (propertyInfo.Type.GetInterface(nameof(IBusinessBase)) is not null)
                 {
                     IEditableModel<Dto> child = (IEditableModel<Dto>)GetProperty(propertyInfo);
                     child.CollectMessages(
@@ -113,13 +116,13 @@ namespace Csla8RestApi.Models
                         ref messages
                         );
                 }
-                else if (propertyInfo.Type.GetInterface(nameof(IEditableCollection)) != null)
+                else if (propertyInfo.Type.GetInterface(nameof(IEditableCollection)) is not null)
                 {
                     var property = GetProperty(propertyInfo);
                     var collection = (IList)property;
                     for (int i = 0; i < collection.Count; i++)
                     {
-                        IEditableModel<Dto> child = (IEditableModel<Dto>)collection[i];
+                        IEditableModel<Dto> child = (IEditableModel<Dto>)collection[i]!;
                         child.CollectMessages(
                             (BusinessBase)child,
                             prefix + propertyInfo.Name + "[" + i + "].",
@@ -158,7 +161,7 @@ namespace Csla8RestApi.Models
         public Dto ToDto()
         {
             Type type = typeof(Dto);
-            Dto dto = Activator.CreateInstance(type) as Dto;
+            Dto dto = (Dto)Activator.CreateInstance(type)!;
 
             List<IPropertyInfo> cslaProperties = FieldManager.GetRegisteredProperties();
             List<PropertyInfo> dtoProperties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
@@ -168,11 +171,11 @@ namespace Csla8RestApi.Models
             foreach (var dtoProperty in dtoProperties)
             {
                 var cslaProperty = cslaProperties.Find(pi => pi.Name == dtoProperty.Name);
-                if (cslaProperty != null)
+                if (cslaProperty is not null)
                 {
-                    if (cslaProperty.Type.GetInterface(nameof(IEditableList<Dto, T>) + "`2") != null)
+                    if (cslaProperty.Type.GetInterface(nameof(IEditableList<Dto, T>) + "`2") is not null)
                         SetDtoValue(dto, dtoProperty, cslaProperty);
-                    else if (cslaProperty.Type.GetInterface(nameof(IEditableModel<Dto>) + "`1") != null)
+                    else if (cslaProperty.Type.GetInterface(nameof(IEditableModel<Dto>) + "`1") is not null)
                         SetDtoValue(dto, dtoProperty, cslaProperty);
                     else
                         dtoProperty.SetValue(dto, GetProperty(cslaProperty));
@@ -190,8 +193,8 @@ namespace Csla8RestApi.Models
         {
             var cslaBase = GetProperty(cslaProperty);
             object value = cslaProperty.Type
-                .GetMethod("ToDto")
-                .Invoke(cslaBase, null);
+                .GetMethod("ToDto")!
+                .Invoke(cslaBase, null)!;
             dtoProperty.SetValue(dto, value);
         }
 

@@ -1,4 +1,4 @@
-﻿using HashidsNet;
+using HashidsNet;
 
 namespace Csla8RestApi.Dal.Contracts
 {
@@ -13,7 +13,7 @@ namespace Csla8RestApi.Dal.Contracts
             string model
             )
         {
-            Hashids hashids;
+            Hashids? hashids;
             if (!_hashids.TryGetValue(model, out hashids))
             {
                 hashids = new Hashids($"a-{model}-Z", 11);
@@ -45,7 +45,7 @@ namespace Csla8RestApi.Dal.Contracts
         /// <returns>The key of the business object.</returns>
         public static long? Decode(
             string model,
-            string hashid
+            string? hashid
             )
         {
             if (string.IsNullOrWhiteSpace(hashid))

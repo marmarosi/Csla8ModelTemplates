@@ -8,30 +8,32 @@ namespace Csla8ModelTemplates.WebApi.Extensions
     internal static class ConfigExtensions
     {
         /// <summary>
-        /// 
+        /// Adds shared seetings to application configuration.
         /// </summary>
-        /// <param name="context">Context containing the common services on the IHost.</param>
-        /// <param name="configBuilder">The application configuration builder.</param>
-        public static void Build(
-            HostBuilderContext context,
-            IConfigurationBuilder configBuilder
+        /// <param name="builder">Configuration builder.</param>
+        public static void Add_JsonConfiguratioFile(
+            this ConfigureHostBuilder builder
             )
         {
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            //var webRootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            //var basePath = Path.Join(webRootPath, "../../..");
-            //var sharedSettings = Path.Join(basePath, "../Shared/SharedSettings.json");
+#pragma warning disable ASP0013
+            builder.ConfigureAppConfiguration(config => {
+                var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                //var webRootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                //var basePath = Path.Join(webRootPath, "../../..");
+                //var sharedSettings = Path.Join(basePath, "../Shared/SharedSettings.json");
 
-            //configBuilder.SetBasePath(basePath);
+                //config.SetBasePath(basePath);
 
-            //configBuilder.AddJsonFile(sharedSettings, false, true);
-            //configBuilder.AddJsonFile("appsettings.json", false, true);
-            //configBuilder.AddJsonFile($"appsettings.{environment}.json", true, true);
+                //config.AddJsonFile(sharedSettings, false, true);
+                //config.AddJsonFile("appsettings.json", false, true);
+                //config.AddJsonFile($"appsettings.{environment}.json", true, true);
 
-            //configBuilder.AddJsonFile($"appsettings.{Environment.MachineName}.json", true, true);
-            configBuilder.AddJsonFile($"appsettings.{environment}.json", true, true);
+                //config.AddJsonFile($"appsettings.{Environment.MachineName}.json", true, true);
+                config.AddJsonFile($"appsettings.{environment}.json", true, true);
 
-            configBuilder.AddEnvironmentVariables();
+                config.AddEnvironmentVariables();
+            });
+#pragma warning disable ASP0013
         }
     }
 }

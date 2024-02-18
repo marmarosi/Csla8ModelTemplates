@@ -11,8 +11,8 @@ namespace Csla8ModelTemplates.Models.Complex.Command
     {
         #region Properties
 
-        public static readonly PropertyInfo<string> TeamNameProperty = RegisterProperty<string>(nameof(TeamName));
-        public string TeamName
+        public static readonly PropertyInfo<string?> TeamNameProperty = RegisterProperty<string?>(nameof(TeamName));
+        public string? TeamName
         {
             get => ReadProperty(TeamNameProperty);
             private set => LoadProperty(TeamNameProperty, value);

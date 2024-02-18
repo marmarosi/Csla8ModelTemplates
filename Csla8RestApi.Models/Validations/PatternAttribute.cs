@@ -21,22 +21,25 @@ namespace Csla8RestApi.Models.Validations
         /// <value>
         /// The suffix of the resource name.
         /// </value>
-        public string Suffix { get; set; }
+        public string? Suffix { get; set; }
 
         /// <summary>
         /// Validates the specified value with respect to the current validation attribute.
         /// </summary>
         /// <param name="value">The value to validate.</param>
-        /// <param name="context">The context information about the validation operation.</param>
+        /// <param name="validationContext">The context information about the validation operation.</param>
         /// <returns><c>true</c> if value is valid; otherwise, <c>false</c>.</returns>
-        protected override ValidationResult IsValid(object value, ValidationContext context)
+        protected override ValidationResult? IsValid(
+            object? value,
+            ValidationContext validationContext
+            )
         {
             // Set resource type and resource name for error message.
             string nameSuffix = string.IsNullOrWhiteSpace(Suffix) ? "Pattern" : Suffix;
-            this.SetErrorMessage(context, nameSuffix);
+            this.SetErrorMessage(validationContext, nameSuffix);
 
             // Validate the value.
-            return base.IsValid(value, context);
+            return base.IsValid(value, validationContext);
         }
     }
 }
