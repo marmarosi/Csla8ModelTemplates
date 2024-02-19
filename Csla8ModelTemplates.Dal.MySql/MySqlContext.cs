@@ -44,9 +44,9 @@ namespace Csla8ModelTemplates.Dal.MySql
             bool acceptAllChangesOnSuccess
             )
         {
-            var insertedEntries = this.ChangeTracker.Entries()
-                               .Where(x => x.State == EntityState.Added)
-                               .Select(x => x.Entity);
+            var insertedEntries = ChangeTracker.Entries()
+                .Where(x => x.State == EntityState.Added)
+                .Select(x => x.Entity);
 
             foreach (var insertedEntry in insertedEntries)
             {
@@ -58,9 +58,9 @@ namespace Csla8ModelTemplates.Dal.MySql
                 }
             }
 
-            var modifiedEntries = this.ChangeTracker.Entries()
-                       .Where(x => x.State == EntityState.Modified)
-                       .Select(x => x.Entity);
+            var modifiedEntries = ChangeTracker.Entries()
+                .Where(x => x.State == EntityState.Modified)
+                .Select(x => x.Entity);
 
             foreach (var modifiedEntry in modifiedEntries)
             {
@@ -71,7 +71,7 @@ namespace Csla8ModelTemplates.Dal.MySql
                     auditableEntity.Timestamp = DateTimeOffset.UtcNow;
                 }
             }
-
+            var cs = base.Database.GetConnectionString();
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 

@@ -26,4 +26,8 @@
     <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

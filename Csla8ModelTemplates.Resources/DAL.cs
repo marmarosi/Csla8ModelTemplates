@@ -1,5 +1,6 @@
 namespace Csla8ModelTemplates.Resources
 {
+#pragma warning disable S101
     /// <summary>
     /// Defines the names of the database configurations.
     /// </summary>
@@ -13,4 +14,5 @@ namespace Csla8ModelTemplates.Resources
         public const string SQLite = "SQLite";
         public const string SQLServer = "SQLServer";
     }
+#pragma warning restore S101
 }

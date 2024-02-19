@@ -1,3 +1,4 @@
+using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Dal.MySql;
 using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
@@ -19,17 +20,24 @@ namespace Csla8ModelTemplates.Configuration
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="configuration">Teh application configuration.</param>
+        /// <param name="detector">The dead lock detector.</param>
         public static void AddMySqlDal(
             this IServiceCollection services,
-            IDeadLockDetector? detector = null,
-            IConfiguration? configuration = null
+            IConfiguration? configuration = null,
+            IDeadLockDetector? detector = null
             )
         {
             // Configure database.
             if (configuration is null)
+            {
+                //services.AddDbContext<MySqlContext>(options => options
+                //    .UseMySQL($"name=ConnectionStrings:{DAL.MySQL}")
+                //    );
+                configuration = ConfigurationCreator.Create();
                 services.AddDbContext<MySqlContext>(options => options
-                    .UseMySQL($"name=ConnectionStrings:{DAL.MySQL}")
+                    .UseMySQL(configuration.GetConnectionString(DAL.MySQL)!)
                     );
+            }
             else
                 services.AddDbContext<MySqlContext>(options =>
                     options.UseMySQL(configuration.GetConnectionString(DAL.MySQL)!)

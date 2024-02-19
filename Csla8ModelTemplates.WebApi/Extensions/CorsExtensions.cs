@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Cors.Infrastructure;
-
 namespace Csla8ModelTemplates.WebApi.Extensions
 {
     /// <summary>

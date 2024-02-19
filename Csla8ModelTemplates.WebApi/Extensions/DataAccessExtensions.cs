@@ -37,7 +37,7 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //    services.AddFirebirdDal(detector);
                     //    break;
                     case DAL.MySQL:
-                        services.AddMySqlDal(detector);
+                        services.AddMySqlDal(_configuration, detector);
                         break;
                     //case DAL.Oracle:
                     //    services.AddOracleDal(detector);

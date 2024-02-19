@@ -1,4 +1,5 @@
 using Csla8ModelTemplates.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Csla8ModelTemplates.Dal.MySql
 {
@@ -21,9 +22,10 @@ namespace Csla8ModelTemplates.Dal.MySql
             string contentRootPath
             )
         {
-            if (isDevelopment)
-                context.Database.EnsureDeleted();
+            //if (isDevelopment)
+            //    context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
+            context.Database.Migrate();
             if (!isDevelopment)
                 return;
 
