@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.Edit
     /// </summary>
     public interface ITeamPlayerDal
     {
-        void Insert(TeamPlayerDao dao);
-        void Update(TeamPlayerDao dao);
-        void Delete(TeamPlayerCriteria criteria);
+        Task InsertAsync(TeamPlayerDao dao);
+        Task UpdateAsync(TeamPlayerDao dao);
+        Task DeleteAsync(TeamPlayerCriteria criteria);
     }
 }

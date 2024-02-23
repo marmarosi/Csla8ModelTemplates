@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla8ModelTemplates.Contracts.Junction.View;
 using Csla8RestApi.Models;
 
@@ -29,14 +29,14 @@ namespace Csla8ModelTemplates.Models.Junction.View
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<GroupViewPersonDao> list,
             [Inject] IChildDataPortal<GroupViewPerson> itemPortal
             )
         {
             // Load values from persistent storage.
             foreach (var item in list)
-                Items.Add(itemPortal.FetchChild(item));
+                Items.Add(await itemPortal.FetchChildAsync(item));
         }
 
         #endregion

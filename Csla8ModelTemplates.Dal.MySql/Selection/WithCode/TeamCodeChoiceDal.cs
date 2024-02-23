@@ -33,11 +33,11 @@ namespace Csla8ModelTemplates.Dal.MySql.Selection.WithCode
         /// </summary>
         /// <param name="criteria">The criteria of the team choice.</param>
         /// <returns>The data transfer object of the requested team choice.</returns>
-        public List<CodeNameOptionDao> Fetch(
+        public async Task<List<CodeNameOptionDao>> FetchAsync(
             TeamCodeChoiceCriteria criteria
             )
         {
-            var choice = DbContext.Teams
+            var choice = await DbContext.Teams
                 .Where(e =>
                     criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 )
@@ -48,7 +48,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Selection.WithCode
                 })
                 .OrderBy(o => o.Name)
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             return choice;
         }

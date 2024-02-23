@@ -29,20 +29,20 @@ namespace Csla8ModelTemplates.Models.Complex.Set
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<TeamSetPlayerDao> list,
             [Inject] IChildDataPortal<TeamSetPlayer> childPortal
             )
         {
             foreach (var item in list)
-                Add(childPortal.FetchChild(item));
+                Add(await childPortal.FetchChildAsync(item));
         }
 
         [UpdateChild]
-        protected void Update()
+        protected async Task UpdateAsync()
         {
             // Update values in persistent storage.
-            Child_Update();
+            await Child_UpdateAsync();
         }
 
         #endregion

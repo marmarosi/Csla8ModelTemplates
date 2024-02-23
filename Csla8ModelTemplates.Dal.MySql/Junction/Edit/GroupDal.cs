@@ -35,12 +35,12 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
         /// </summary>
         /// <param name="criteria">The criteria of the group.</param>
         /// <returns>The requested group.</returns>
-        public GroupDao Fetch(
+        public async Task<GroupDao> FetchAsync(
             GroupCriteria criteria
             )
         {
             // Get the specified group.
-            var group = DbContext.Groups
+            var group = await DbContext.Groups
                 .Where(e =>
                     e.GroupKey == criteria.GroupKey
                  )
@@ -58,7 +58,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     Timestamp = e.Timestamp
                 })
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.Group_NotFound);
 
             return group;
@@ -72,16 +72,16 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
         /// Creates a new group using the specified data.
         /// </summary>
         /// <param name="dao">The data of the group.</param>
-        public void Insert(
+        public async Task InsertAsync(
             GroupDao dao
             )
         {
             // Check unique group code.
-            var group = DbContext.Groups
+            var group = await DbContext.Groups
                 .Where(e =>
                     e.GroupCode == dao.GroupCode
                 )
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             if (group is not null)
                 throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode!));
 
@@ -91,9 +91,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                 GroupCode = dao.GroupCode,
                 GroupName = dao.GroupName
             };
-            DbContext.Groups.Add(group);
+            await DbContext.Groups.AddAsync(group);
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new InsertFailedException(DalText.Group_InsertFailed);
 
@@ -110,16 +110,16 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
         /// Updates an existing group using the specified data.
         /// </summary>
         /// <param name="dao">The data of the group.</param>
-        public void Update(
+        public async Task UpdateAsync(
             GroupDao dao
             )
         {
             // Get the specified group.
-            var group = DbContext.Groups
+            var group = await DbContext.Groups
                 .Where(e =>
                     e.GroupKey == dao.GroupKey
                 )
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.Group_NotFound);
             if (group.Timestamp != dao.Timestamp)
                 throw new ConcurrencyException(DalText.Group_Concurrency);
@@ -127,9 +127,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
             // Check unique group code.
             if (group.GroupCode != dao.GroupCode)
             {
-                int exist = DbContext.Groups
+                int exist = await DbContext.Groups
                     .Where(e => e.GroupCode == dao.GroupCode && e.GroupKey != group.GroupKey)
-                    .Count();
+                    .CountAsync();
                 if (exist > 0)
                     throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode!));
             }
@@ -139,10 +139,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
             group.GroupName = dao.GroupName;
             group.Timestamp = DateTime.Now; // Force update timestamp.
 
-            int count = DbContext.SaveChanges();
-            if (count == 0)
-                throw new UpdateFailedException(DalText.Group_UpdateFailed);
-
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new UpdateFailedException(DalText.Group_UpdateFailed);
 
@@ -158,30 +155,30 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
         /// Deletes the specified group.
         /// </summary>
         /// <param name="criteria">The criteria of the group.</param>
-        public void Delete(
+        public async Task DeleteAsync(
             GroupCriteria criteria
             )
         {
             // Get the specified group.
-            var group = DbContext.Groups
+            var group = await DbContext.Groups
                 .Where(e =>
                     e.GroupKey == criteria.GroupKey
                  )
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.Group_NotFound);
 
             // Check or delete references
             //int dependents = 0;
 
-            //dependents = DbContext.Others.Count(e => e.GroupKey == criteria.GroupKey);
+            //dependents = await DbContext.Others.CountAsync(e => e.GroupKey == criteria.GroupKey);
             //if (dependents > 0)
             //    throw new DeleteFailedException(DalText.Group_Delete_Others);
 
             // Delete the group.
             DbContext.Groups.Remove(group);
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new DeleteFailedException(DalText.Group_DeleteFailed);
         }

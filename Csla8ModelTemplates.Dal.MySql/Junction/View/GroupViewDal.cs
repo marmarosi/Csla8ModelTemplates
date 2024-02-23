@@ -34,12 +34,12 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.View
         /// </summary>
         /// <param name="criteria">The criteria of the group.</param>
         /// <returns>The requested group view.</returns>
-        public GroupViewDao Fetch(
+        public async Task<GroupViewDao> FetchAsync(
             GroupViewCriteria criteria
             )
         {
             // Get the specified group.
-            var group = DbContext.Groups
+            var group = await DbContext.Groups
                 .Include(e => e.Persons)
                 .Where(e =>
                     e.GroupKey == criteria.GroupKey
@@ -58,7 +58,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.View
                         .ToList()
                 })
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.Group_NotFound);
 
             return group;

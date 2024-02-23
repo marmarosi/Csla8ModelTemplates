@@ -34,17 +34,17 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
         /// Creates a new player using the specified data.
         /// </summary>
         /// <param name="dao">The data of the player.</param>
-        public void Insert(
+        public async Task InsertAsync(
             TeamSetPlayerDao dao
             )
         {
             // Check unique player code.
-            var player = DbContext.Players
+            var player = await DbContext.Players
                 .Where(e =>
                     e.TeamKey == dao.TeamKey &&
                     e.PlayerCode == dao.PlayerCode
                 )
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             if (player is not null)
                 throw new DataExistException(DalText.TeamSetPlayer_PlayerCodeExists
                     .With(dao.__teamCode!, dao.PlayerCode!));
@@ -56,9 +56,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
                 PlayerCode = dao.PlayerCode,
                 PlayerName = dao.PlayerName
             };
-            DbContext.Players.Add(player);
+            await DbContext.Players.AddAsync(player);
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new InsertFailedException(DalText.TeamSetPlayer_InsertFailed
                     .With(dao.__teamCode!, dao.PlayerCode!));
@@ -75,29 +75,29 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
         /// Updates an existing player using the specified data.
         /// </summary>
         /// <param name="dao">The data of the player.</param>
-        public void Update(
+        public async Task UpdateAsync(
             TeamSetPlayerDao dao
             )
         {
             // Get the specified player.
-            var player = DbContext.Players
+            var player = await DbContext.Players
                 .Where(e =>
                     e.PlayerKey == dao.PlayerKey
                 )
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.TeamSetPlayer_NotFound
                     .With(dao.__teamCode!, dao.PlayerCode!));
 
             // Check unique player code.
             if (player.PlayerCode != dao.PlayerCode)
             {
-                int exist = DbContext.Players
+                int exist = await DbContext.Players
                     .Where(e =>
                         e.TeamKey == dao.TeamKey &&
                         e.PlayerCode == dao.PlayerCode &&
                         e.PlayerKey != player.PlayerKey
                     )
-                    .Count();
+                    .CountAsync();
                 if (exist > 0)
                     throw new DataExistException(DalText.TeamSetPlayer_PlayerCodeExists
                         .With(dao.__teamCode!, dao.PlayerCode!));
@@ -107,7 +107,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
             player.PlayerCode = dao.PlayerCode;
             player.PlayerName = dao.PlayerName;
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new UpdateFailedException(DalText.TeamSetPlayer_UpdateFailed
                     .With(dao.__teamCode!, dao.PlayerCode!));
@@ -123,26 +123,26 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
         /// Deletes the specified player.
         /// </summary>
         /// <param name="criteria">The criteria of the player.</param>
-        public void Delete(
+        public async Task DeleteAsync(
             TeamSetPlayerCriteria criteria
             )
         {
             int count = 0;
 
             // Get the specified player.
-            var player = DbContext.Players
+            var player = await DbContext.Players
                 .Where(e =>
                     e.PlayerKey == criteria.PlayerKey
                  )
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.TeamSetPlayer_NotFound
                     .With(criteria.__teamCode!, criteria.__playerCode!));
 
             // Delete the player.
             DbContext.Players.Remove(player);
 
-            count = DbContext.SaveChanges();
+            count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new DeleteFailedException(DalText.TeamSetPlayer_DeleteFailed
                     .With(criteria.__teamCode!, criteria.__playerCode!));

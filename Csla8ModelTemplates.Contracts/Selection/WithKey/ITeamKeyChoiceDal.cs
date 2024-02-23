@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Selection.WithKey
 {
@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Selection.WithKey
     /// </summary>
     public interface ITeamKeyChoiceDal : IKeyNameChoiceDal<TeamKeyChoiceCriteria>
     {
-        new List<KeyNameOptionDao> Fetch(TeamKeyChoiceCriteria criteria);
+        new Task<List<KeyNameOptionDao>> FetchAsync(TeamKeyChoiceCriteria criteria);
     }
 }

@@ -51,7 +51,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var list = await TeamList.Get(Factory, criteria);
+                var list = await TeamList.GetAsync(Factory, criteria);
                 return Ok(list.ToDto<TeamListItemDto>());
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var team = await TeamView.Get(Factory, id);
+                var team = await TeamView.GetAsync(Factory, id);
                 return Ok(team.ToDto<TeamViewDto>());
             }
             catch (Exception ex)
@@ -100,7 +100,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var team = await Team.New(Factory);
+                var team = await Team.NewAsync(Factory);
                 return Ok(team.ToDto());
             }
             catch (Exception ex)
@@ -128,7 +128,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 return Created(Uri, await RetryOnDeadlock(async () =>
                 {
-                    var team = await Team.Build(Factory, ChildFactory, dto);
+                    var team = await Team.BuildAsync(Factory, ChildFactory, dto);
                     if (team.IsValid)
                     {
                         team = await team.SaveAsync();
@@ -159,7 +159,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var team = await Team.Get(Factory, id);
+                var team = await Team.GetAsync(Factory, id);
                 return Ok(team.ToDto());
             }
             catch (Exception ex)
@@ -187,7 +187,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 return Ok(await RetryOnDeadlock(async () =>
                 {
-                    var team = await Team.Build(Factory, ChildFactory, dto);
+                    var team = await Team.BuildAsync(Factory, ChildFactory, dto);
                     if (team.IsSavable)
                     {
                         team = await team.SaveAsync();
@@ -219,7 +219,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 await RetryOnDeadlock(async () =>
                 {
-                    await Team.Delete(Factory, id);
+                    await Team.DeleteAsync(Factory, id);
                 });
                 return NoContent();
             }
@@ -246,7 +246,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var teams = await TeamSet.Get(Factory, criteria);
+                var teams = await TeamSet.GetAsync(Factory, criteria);
                 return Ok(teams.ToDto());
             }
             catch (Exception ex)
@@ -276,7 +276,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 return Ok(await RetryOnDeadlock(async () =>
                 {
-                    var teams = await TeamSet.Build(Factory, ChildFactory, criteria, dto);
+                    var teams = await TeamSet.BuildAsync(Factory, ChildFactory, criteria, dto);
                     if (teams.IsSavable)
                     {
                         teams = await teams.SaveAsync();
@@ -307,7 +307,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var command = await CountTeams.Execute(Factory, criteria);
+                var command = await CountTeams.ExecuteAsync(Factory, criteria);
                 return Ok(command.Results.ToDto<CountTeamsResultDto>());
             }
             catch (Exception ex)

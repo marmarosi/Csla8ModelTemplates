@@ -88,7 +88,7 @@ namespace Csla8ModelTemplates.Models.Complex.View
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
         /// <returns>The requested team view.</returns>
-        public static async Task<TeamView> Get(
+        public static async Task<TeamView> GetAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -102,16 +102,16 @@ namespace Csla8ModelTemplates.Models.Complex.View
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamViewCriteria criteria,
             [Inject] ITeamViewDal dal,
             [Inject] IChildDataPortal<TeamViewPlayers> itemsPortal
             )
         {
             // Load values from persistent storage.
-            TeamViewDao dao = dal.Fetch(criteria);
+            TeamViewDao dao = await dal.FetchAsync(criteria);
             DataMapper.Map(dao, this, "Players");
-            Players = itemsPortal.FetchChild(dao.Players);
+            Players = await itemsPortal.FetchChildAsync(dao.Players);
         }
 
         #endregion

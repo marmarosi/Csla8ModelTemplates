@@ -22,12 +22,9 @@ namespace Csla8ModelTemplates.Dal.MySql
             string contentRootPath
             )
         {
-            //if (isDevelopment)
-            //    context.Database.EnsureDeleted();
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-            context.Database.Migrate();
-            if (!isDevelopment)
-                return;
+            //context.Database.Migrate();
 
             #region Team data
 
@@ -36,6 +33,7 @@ namespace Csla8ModelTemplates.Dal.MySql
                 int serialNumber = i + 1;
                 Team team = new Team
                 {
+                    TeamGuid = Guid.NewGuid(),
                     TeamCode = $"T-{serialNumber.ToString("0000")}",
                     TeamName = $"Team entry number {serialNumber}",
                 };

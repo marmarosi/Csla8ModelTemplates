@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal;
+using Csla8RestApi.Dal;
 
 namespace Csla8ModelTemplates.Contracts.Junction.Edit
 {
@@ -7,9 +7,9 @@ namespace Csla8ModelTemplates.Contracts.Junction.Edit
     /// </summary>
     public interface IGroupDal : ITransactionalDal
     {
-        GroupDao Fetch(GroupCriteria criteria);
-        void Insert(GroupDao dao);
-        void Update(GroupDao dao);
-        void Delete(GroupCriteria criteria);
+        Task<GroupDao> FetchAsync(GroupCriteria criteria);
+        Task InsertAsync(GroupDao dao);
+        Task UpdateAsync(GroupDao dao);
+        Task DeleteAsync(GroupCriteria criteria);
     }
 }

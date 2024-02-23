@@ -7,9 +7,9 @@ namespace Csla8ModelTemplates.Contracts.Simple.Edit
     /// </summary>
     public interface ISimpleTeamDal : ITransactionalDal
     {
-        SimpleTeamDao Fetch(SimpleTeamCriteria criteria);
-        void Insert(SimpleTeamDao dao);
-        void Update(SimpleTeamDao dao);
-        void Delete(SimpleTeamCriteria criteria);
+        Task<SimpleTeamDao> FetchAsync(SimpleTeamCriteria criteria);
+        Task InsertAsync(SimpleTeamDao dao);
+        Task UpdateAsync(SimpleTeamDao dao);
+        Task DeleteAsync(SimpleTeamCriteria criteria);
     }
 }

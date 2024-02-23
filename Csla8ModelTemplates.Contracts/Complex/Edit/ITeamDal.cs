@@ -7,9 +7,9 @@ namespace Csla8ModelTemplates.Contracts.Complex.Edit
     /// </summary>
     public interface ITeamDal : ITransactionalDal
     {
-        TeamDao Fetch(TeamCriteria criteria);
-        void Insert(TeamDao dao);
-        void Update(TeamDao dao);
-        void Delete(TeamCriteria criteria);
+        Task<TeamDao> FetchAsync(TeamCriteria criteria);
+        Task InsertAsync(TeamDao dao);
+        Task UpdateAsync(TeamDao dao);
+        Task DeleteAsync(TeamCriteria criteria);
     }
 }

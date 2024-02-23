@@ -128,7 +128,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <returns>The new group.</returns>
-        public static async Task<Group> New(
+        public static async Task<Group> NewAsync(
             IDataPortalFactory factory
             )
         {
@@ -141,7 +141,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the group.</param>
         /// <returns>The requested editable group instance.</returns>
-        public static async Task<Group> Get(
+        public static async Task<Group> GetAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -157,7 +157,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// <param name="childFactory">The child data portal factory.</param>
         /// <param name="dto"></param>
         /// <returns>The team built.</returns>
-        public static async Task<Group> Build(
+        public static async Task<Group> BuildAsync(
             IDataPortalFactory factory,
             IChildDataPortalFactory childFactory,
             GroupDto dto
@@ -165,8 +165,8 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         {
             long? groupKey = KeyHash.Decode(ID.Group, dto.GroupId);
             Group team = groupKey.HasValue ?
-                await Get(factory, dto.GroupId!) :
-                await New(factory);
+                await GetAsync(factory, dto.GroupId!) :
+                await NewAsync(factory);
             team.SetValuesOnBuild(dto, childFactory);
             return team;
         }
@@ -176,7 +176,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the group.</param>
-        public static async Task Delete(
+        public static async Task DeleteAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -191,34 +191,37 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
 
         [Create]
         [RunLocal]
-        private void Create(
+        private async Task CreateAsync(
             [Inject] IChildDataPortal<GroupPersons> itemsPortal
             )
         {
             // Load default values.
-            Persons = itemsPortal.CreateChild();
-            //LoadProperty(GroupCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await Task.Run(async () =>
+            {
+                //LoadProperty(GroupCodeProperty, "");
+                Persons = await itemsPortal.CreateChildAsync();
+                await BusinessRules.CheckRulesAsync();
+            });
         }
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             GroupCriteria criteria,
             [Inject] IGroupDal dal,
             [Inject] IChildDataPortal<GroupPersons> itemsPortal
             )
         {
             // Load values from persistent storage.
-            GroupDao dao = dal.Fetch(criteria);
+            GroupDao dao = await dal.FetchAsync(criteria);
             using (BypassPropertyChecks)
             {
                 DataMapper.Map(dao, this, "Persons");
-                Persons = itemsPortal.FetchChild(dao.Persons);
+                Persons = await itemsPortal.FetchChildAsync(dao.Persons);
             }
         }
 
         [Insert]
-        protected void Insert(
+        protected async Task InsertAsync(
             [Inject] IGroupDal dal
             )
         {
@@ -228,19 +231,19 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
                 using (BypassPropertyChecks)
                 {
                     var dao = Copy.PropertiesFrom(this).Omit("Persons").ToNew<GroupDao>();
-                    dal.Insert(dao);
+                    await dal.InsertAsync(dao);
 
                     // Set new data.
                     GroupKey = dao.GroupKey;
                     Timestamp = dao.Timestamp;
                 }
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
                 dal.Commit(transaction);
             }
         }
 
         [Update]
-        protected void Update(
+        protected async Task UpdateAsync(
             [Inject] IGroupDal dal
             )
         {
@@ -252,29 +255,29 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
                     using (BypassPropertyChecks)
                     {
                         var dao = Copy.PropertiesFrom(this).Omit("Persons").ToNew<GroupDao>();
-                        dal.Update(dao);
+                        await dal.UpdateAsync(dao);
 
                         // Set new data.
                         Timestamp = dao.Timestamp;
                     }
                 }
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
                 dal.Commit(transaction);
             }
         }
 
         [DeleteSelf]
-        protected void DeleteSelf(
+        protected async Task DeleteSelfAsync(
             [Inject] IGroupDal dal,
             [Inject] IChildDataPortal<GroupPersons> itemPortal
             )
         {
             using (BypassPropertyChecks)
-                Delete(new GroupCriteria(GroupKey), dal, itemPortal);
+                await DeleteAsync(new GroupCriteria(GroupKey), dal, itemPortal);
         }
 
         [Delete]
-        protected void Delete(
+        protected async Task DeleteAsync(
             GroupCriteria criteria,
             [Inject] IGroupDal dal,
             [Inject] IChildDataPortal<GroupPersons> itemPortal
@@ -284,12 +287,12 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             using (var transaction = dal.BeginTransaction())
             {
                 if (!GroupKey.HasValue)
-                    Fetch(criteria, dal, itemPortal);
+                    await FetchAsync(criteria, dal, itemPortal);
 
                 Persons.Clear();
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
 
-                dal.Delete(criteria);
+                await dal.DeleteAsync(criteria);
                 dal.Commit(transaction);
             }
         }

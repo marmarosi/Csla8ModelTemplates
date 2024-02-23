@@ -34,7 +34,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria of the team set.</param>
         /// <returns>The requested team set.</returns>
-        public static async Task<SimpleTeamSet> Get(
+        public static async Task<SimpleTeamSet> GetAsync(
             IDataPortalFactory factory,
             SimpleTeamSetCriteria criteria
             )
@@ -50,7 +50,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
         /// <param name="criteria">The criteria of the team set.</param>
         /// <param name="list">The data transer objects of the team set.</param>
         /// <returns>The team set built.</returns>
-        public static async Task<SimpleTeamSet> Build(
+        public static async Task<SimpleTeamSet> BuildAsync(
             IDataPortalFactory factory,
             IChildDataPortalFactory childFactory,
             SimpleTeamSetCriteria criteria,
@@ -66,15 +66,16 @@ namespace Csla8ModelTemplates.Models.Simple.Set
 
         #region Data Access
 
-        [Create]
-        [RunLocal]
-        private void Create()
-        {
-            // Load default values.
-        }
+        //[Create]
+        //[RunLocal]
+        //private async Task CreateAsync()
+        //{
+        //    // Load default values.
+        //    Child_Create();
+        //}
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             SimpleTeamSetCriteria criteria,
             [Inject] ISimpleTeamSetDal dal,
             [Inject] IChildDataPortal<SimpleTeamSetItem> itemPortal
@@ -83,21 +84,21 @@ namespace Csla8ModelTemplates.Models.Simple.Set
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<SimpleTeamSetItemDao> list = dal.Fetch(criteria);
+                List<SimpleTeamSetItemDao> list = await dal.FetchAsync(criteria);
                 foreach (SimpleTeamSetItemDao item in list)
-                    Add(itemPortal.FetchChild(item));
+                    Add(await itemPortal.FetchChildAsync(item));
             }
         }
 
         [Update]
-        protected void Update(
+        protected async Task UpdateAsync(
             [Inject] ISimpleTeamSetDal dal
             )
         {
             // Update values in persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                Child_Update();
+                await Child_UpdateAsync();
                 dal.Commit(transaction);
             }
         }

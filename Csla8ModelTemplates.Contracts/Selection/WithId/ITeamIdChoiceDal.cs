@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Selection.WithId
 {
@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Selection.WithId
     /// </summary>
     public interface ITeamIdChoiceDal : IIdNameChoiceDal<TeamIdChoiceCriteria>
     {
-        new List<IdNameOptionDao> Fetch(TeamIdChoiceCriteria criteria);
+        new Task<List<IdNameOptionDao>> FetchAsync(TeamIdChoiceCriteria criteria);
     }
 }

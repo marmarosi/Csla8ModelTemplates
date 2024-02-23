@@ -65,7 +65,7 @@ namespace Csla8ModelTemplates.Models.Arrangement.Full
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria of the read-only team.</param>
         /// <returns>The requested read-only team list.</returns>
-        public static async Task<ArrangedTeamList> Get(
+        public static async Task<ArrangedTeamList> GetAsync(
             IDataPortalFactory factory,
             ArrangedTeamListCriteria criteria
             )
@@ -78,14 +78,14 @@ namespace Csla8ModelTemplates.Models.Arrangement.Full
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             ArrangedTeamListCriteria criteria,
             [Inject] IArrangedTeamListDal dal,
             [Inject] IChildDataPortal<ArrangedTeamListItems> itemsPortal
             )
         {
             // Load values from persistent storage.
-            IPaginatedList<ArrangedTeamListItemDao> dao = dal.Fetch(criteria);
+            IPaginatedList<ArrangedTeamListItemDao> dao = await dal.FetchAsync(criteria);
             Data = itemsPortal.FetchChild(dao.Data);
             TotalCount = dao.TotalCount;
         }

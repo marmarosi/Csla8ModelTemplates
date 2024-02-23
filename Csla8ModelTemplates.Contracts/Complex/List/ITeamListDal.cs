@@ -5,6 +5,6 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     /// </summary>
     public interface ITeamListDal
     {
-        List<TeamListItemDao> Fetch(TeamListCriteria criteria);
+        Task<List<TeamListItemDao>> FetchAsync(TeamListCriteria criteria);
     }
 }

@@ -120,7 +120,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <returns>The new team.</returns>
-        public static async Task<SimpleTeam> New(
+        public static async Task<SimpleTeam> NewAsync(
             IDataPortalFactory factory
             )
         {
@@ -133,7 +133,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
-        public static async Task<SimpleTeam> Get(
+        public static async Task<SimpleTeam> GetAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -149,7 +149,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         /// <param name="childFactory">The child data portal factory.</param>
         /// <param name="dto"></param>
         /// <returns>The team built.</returns>
-        public static async Task<SimpleTeam> Build(
+        public static async Task<SimpleTeam> BuildAsync(
             IDataPortalFactory factory,
             IChildDataPortalFactory childFactory,
             SimpleTeamDto dto
@@ -157,8 +157,8 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         {
             long? teamKey = KeyHash.Decode(ID.Team, dto.TeamId);
             SimpleTeam team = teamKey.HasValue ?
-                await Get(factory, dto.TeamId!) :
-                await New(factory);
+                await GetAsync(factory, dto.TeamId!) :
+                await NewAsync(factory);
             team.SetValuesOnBuild(dto, childFactory);
             return team;
         }
@@ -168,7 +168,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
-        public static async Task Delete(
+        public static async Task DeleteAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -183,27 +183,30 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
 
         [Create]
         [RunLocal]
-        private void Create()
+        private async Task CreateAsync()
         {
             // Load default values.
-            //LoadProperty(TeamCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await Task.Run(async () =>
+            {
+                //LoadProperty(TeamCodeProperty, "");
+                await BusinessRules.CheckRulesAsync();
+            });
         }
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             SimpleTeamCriteria criteria,
             [Inject] ISimpleTeamDal dal
             )
         {
             // Load values from persistent storage.
-            SimpleTeamDao dao = dal.Fetch(criteria);
+            SimpleTeamDao dao = await dal.FetchAsync(criteria);
             using (BypassPropertyChecks)
                 DataMapper.Map(dao, this);
         }
 
         [Insert]
-        protected void Insert(
+        protected async Task InsertAsync(
             [Inject] ISimpleTeamDal dal
             )
         {
@@ -213,7 +216,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
                 using (BypassPropertyChecks)
                 {
                     var dao = Copy.PropertiesFrom(this).ToNew<SimpleTeamDao>();
-                    dal.Insert(dao);
+                    await dal.InsertAsync(dao);
 
                     // Set new data.
                     TeamKey = dao.TeamKey;
@@ -224,7 +227,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         }
 
         [Update]
-        protected void Update(
+        protected async Task UpdateAsync(
             [Inject] ISimpleTeamDal dal
             )
         {
@@ -234,7 +237,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
                 using (BypassPropertyChecks)
                 {
                     var dao = Copy.PropertiesFrom(this).ToNew<SimpleTeamDao>();
-                    dal.Update(dao);
+                    await dal.UpdateAsync(dao);
 
                     // Set new data.
                     Timestamp = dao.Timestamp;
@@ -244,16 +247,16 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         }
 
         [DeleteSelf]
-        protected void DeleteSelf(
+        protected async Task DeleteSelfAsync(
             [Inject] ISimpleTeamDal dal
             )
         {
             using (BypassPropertyChecks)
-                Delete(new SimpleTeamCriteria(TeamKey), dal);
+                await DeleteAsync(new SimpleTeamCriteria(TeamKey), dal);
         }
 
         [Delete]
-        protected void Delete(
+        protected async Task DeleteAsync(
             SimpleTeamCriteria criteria,
             [Inject] ISimpleTeamDal dal
             )
@@ -261,7 +264,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                dal.Delete(criteria);
+                await dal.DeleteAsync(criteria);
                 dal.Commit(transaction);
             }
         }

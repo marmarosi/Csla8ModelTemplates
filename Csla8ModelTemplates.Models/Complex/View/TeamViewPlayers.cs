@@ -29,14 +29,14 @@ namespace Csla8ModelTemplates.Models.Complex.View
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<TeamViewPlayerDao> list,
             [Inject] IChildDataPortal<TeamViewPlayer> itemPortal
             )
         {
             // Load values from persistent storage.
             foreach (var item in list)
-                Items.Add(itemPortal.FetchChild(item));
+                Items.Add(await itemPortal.FetchChildAsync(item));
         }
 
         #endregion

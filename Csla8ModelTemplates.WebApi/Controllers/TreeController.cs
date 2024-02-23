@@ -42,7 +42,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var choice = await RootFolderChoice.Get(Factory);
+                var choice = await RootFolderChoice.GetAsync(Factory);
                 return Ok(choice.ToDto<IdNameOptionDto>());
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var tree = await FolderTree.Get(Factory, id);
+                var tree = await FolderTree.GetAsync(Factory, id);
                 return Ok(tree.ToDto<FolderNodeDto>());
             }
             catch (Exception ex)

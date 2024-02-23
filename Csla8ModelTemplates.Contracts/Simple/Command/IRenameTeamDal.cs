@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Simple.Command
     /// </summary>
     public interface IRenameTeamDal : ITransactionalDal
     {
-        void Execute(RenameTeamDao dao);
+        Task ExecuteAsync(RenameTeamDao dao);
     }
 }

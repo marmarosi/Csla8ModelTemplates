@@ -157,25 +157,28 @@ namespace Csla8ModelTemplates.Models.Complex.Set
         #region Data Access
 
         [CreateChild]
-        private void Create()
+        private async Task CreateAsync()
         {
             // Set values from data transfer object.
             //LoadProperty(TeamCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }            
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamSetPlayerDao dao
             )
         {
             // Load values from persistent storage.
-            using (BypassPropertyChecks)
-                DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                using (BypassPropertyChecks)
+                    DataMapper.Map(dao, this);
+            });
         }
 
         [InsertChild]
-        private void Child_Insert(
+        private async Task Child_InsertAsync(
             [Inject] ITeamSetPlayerDal dal
             )
         {
@@ -183,16 +186,16 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             using (BypassPropertyChecks)
             {
                 var dao = Copy.PropertiesFrom(this).ToNew<TeamSetPlayerDao>();
-                dal.Insert(dao);
+                await dal.InsertAsync(dao);
 
                 // Set new data.
                 PlayerKey = dao.PlayerKey;
             }
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
         }
 
         [UpdateChild]
-        private void Update(
+        private async Task UpdateAsync(
             [Inject] ITeamSetPlayerDal dal
             )
         {
@@ -200,29 +203,29 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             using (BypassPropertyChecks)
             {
                 var dao = Copy.PropertiesFrom(this).ToNew<TeamSetPlayerDao>();
-                dal.Update(dao);
+                await dal.UpdateAsync(dao);
 
                 // Set new data.
             }
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
         }
 
         [DeleteSelfChild]
-        private void Child_DeleteSelf(
+        private async Task Child_DeleteSelfAsync(
             [Inject] ITeamSetPlayerDal dal
             )
         {
             // Delete values from persistent storage.
 
             //Items.Clear();
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
 
             TeamSetPlayerCriteria criteria = new TeamSetPlayerCriteria(PlayerKey)
             {
                 __teamCode = ((TeamSetItem)Parent.Parent).TeamCode,
                 __playerCode = PlayerCode
             };
-            dal.Delete(criteria);
+            await dal.DeleteAsync(criteria);
         }
 
         #endregion

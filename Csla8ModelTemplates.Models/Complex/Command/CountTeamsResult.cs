@@ -60,12 +60,15 @@ namespace Csla8ModelTemplates.Models.Complex.Command
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             CountTeamsResultDao dao
             )
         {
             // Load values from persistent storage.
-            DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                DataMapper.Map(dao, this);
+            });
         }
 
         #endregion

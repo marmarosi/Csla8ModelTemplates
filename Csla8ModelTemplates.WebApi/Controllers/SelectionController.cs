@@ -48,7 +48,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var choice = await TeamKeyChoice.Get(Factory, criteria);
+                var choice = await TeamKeyChoice.GetAsync(Factory, criteria);
                 return Ok(choice.ToDto<KeyNameOptionDto>());
             }
             catch (Exception ex)
@@ -74,8 +74,34 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var choice = await TeamIdChoice.Get(Factory, criteria);
+                var choice = await TeamIdChoice.GetAsync(Factory, criteria);
                 return Ok(choice.ToDto<IdNameOptionDto>());
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion
+
+        #region Choice with Guid
+
+        /// <summary>
+        /// Gets the Guid-name choice of the teams.
+        /// </summary>
+        /// <param name="criteria">The criteria of the team choice.</param>
+        /// <returns>The Guid-name choice of the teams.</returns>
+        [HttpGet("with-guid")]
+        [ProducesResponseType(typeof(List<GuidNameOptionDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetTeamChoiceWithGuid(
+            [FromQuery] TeamGuidChoiceCriteria criteria
+            )
+        {
+            try
+            {
+                var choice = await TeamGuidChoice.GetAsync(Factory, criteria);
+                return Ok(choice.ToDto<GuidNameOptionDto>());
             }
             catch (Exception ex)
             {
@@ -95,12 +121,12 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         [HttpGet("with-code")]
         [ProducesResponseType(typeof(List<CodeNameOptionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamChoiceWithCode(
-            [FromQuery] TeamCodeChoiceCriteria criteria
+            [FromQuery] TeamGuidChoiceCriteria criteria
             )
         {
             try
             {
-                var choice = await TeamCodeChoice.Get(Factory, criteria);
+                var choice = await TeamCodeChoice.GetAsync(Factory, criteria);
                 return Ok(choice.ToDto<CodeNameOptionDto>());
             }
             catch (Exception ex)

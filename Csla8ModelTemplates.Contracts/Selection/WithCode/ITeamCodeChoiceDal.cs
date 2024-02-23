@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Selection.WithCode
 {
@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Selection.WithCode
     /// </summary>
     public interface ITeamCodeChoiceDal : ICodeNameChoiceDal<TeamCodeChoiceCriteria>
     {
-        new List<CodeNameOptionDao> Fetch(TeamCodeChoiceCriteria criteria);
+        new Task<List<CodeNameOptionDao>> FetchAsync(TeamCodeChoiceCriteria criteria);
     }
 }

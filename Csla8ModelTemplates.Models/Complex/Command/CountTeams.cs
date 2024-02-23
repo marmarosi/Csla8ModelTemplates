@@ -57,7 +57,7 @@ namespace Csla8ModelTemplates.Models.Complex.Command
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria of the count teams by item count command.</param>
         /// <returns>The command instance.</returns>
-        public static async Task<CountTeams> Execute(
+        public static async Task<CountTeams> ExecuteAsync(
             IDataPortalFactory factory,
             CountTeamsCriteria criteria
             )
@@ -70,7 +70,7 @@ namespace Csla8ModelTemplates.Models.Complex.Command
         #region Data Access
 
         [Execute]
-        private void Execute(
+        private async Task ExecuteAsync(
             CountTeamsCriteria criteria,
             [Inject] ICountTeamsDal dal,
             [Inject] IChildDataPortal<CountTeamsResults> resultPortal
@@ -79,10 +79,10 @@ namespace Csla8ModelTemplates.Models.Complex.Command
             // Execute the command.
             TeamName = criteria.TeamName;
             //Validate();
-            List<CountTeamsResultDao> list = dal.Execute(criteria);
+            List<CountTeamsResultDao> list = await dal.ExecuteAsync(criteria);
 
             // Set new data.
-            Results = resultPortal.FetchChild(list);
+            Results = await resultPortal.FetchChildAsync(list);
         }
         #endregion
     }

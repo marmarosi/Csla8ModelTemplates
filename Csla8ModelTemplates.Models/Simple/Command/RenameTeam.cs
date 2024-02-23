@@ -79,7 +79,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
         /// <param name="factory">The data portal factory.</param>
         /// <param name="dto">The data transer object of the rename team command.</param>
         /// <returns>The command instance.</returns>
-        public static async Task<RenameTeam> Execute(
+        public static async Task<RenameTeam> ExecuteAsync(
             IDataPortalFactory factory,
             RenameTeamDto dto
             )
@@ -92,7 +92,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
         #region Data Access
 
         [Execute]
-        private void Execute(
+        private async Task ExecuteAsync(
             RenameTeamDto dto,
             [Inject] IRenameTeamDal dal
             )
@@ -105,7 +105,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
             using (var transaction = dal.BeginTransaction())
             {
                 RenameTeamDao dao = new RenameTeamDao(TeamKey ?? 0, TeamName);
-                dal.Execute(dao);
+                await dal.ExecuteAsync(dao);
             }
 
             // Set new data.

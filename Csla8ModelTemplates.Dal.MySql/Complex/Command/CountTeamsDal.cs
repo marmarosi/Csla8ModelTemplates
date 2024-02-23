@@ -33,18 +33,18 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Command
         /// Counts the teams grouped by the number of their players.
         /// </summary>
         /// <param name="criteria">The criteria of the command.</param>
-        public List<CountTeamsResultDao> Execute(
+        public async Task<List<CountTeamsResultDao>> ExecuteAsync(
             CountTeamsCriteria criteria
             )
         {
             string teamName = criteria.TeamName ?? "";
 
-            var counts = DbContext.Teams
+            var counts = await DbContext.Teams
                 .Include(e => e.Players)
                 .Where(e => teamName == "" || e.TeamName!.Contains(teamName))
                 .Select(e => new { e.TeamKey, Count = e.Players!.Count })
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             var list = counts
                 .GroupBy(

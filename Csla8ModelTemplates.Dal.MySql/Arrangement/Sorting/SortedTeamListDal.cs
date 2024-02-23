@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Arrangement.Sorting
         /// </summary>
         /// <param name="criteria">The criteria of the team list.</param>
         /// <returns>The requested team list.</returns>
-        public List<SortedTeamListItemDao> Fetch(
+        public async Task<List<SortedTeamListItemDao>> FetchAsync(
             SortedTeamListCriteria criteria
             )
         {
@@ -66,9 +66,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Arrangement.Sorting
             }
 
             // Return the result.
-            var list = query
+            var list = await query
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             return list;
         }

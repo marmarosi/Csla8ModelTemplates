@@ -76,12 +76,15 @@ namespace Csla8ModelTemplates.Models.Simple.List
         #region Data Access
 
         [FetchChild]
-        protected void Fetch(
+        protected async Task FetchAsync(
             SimpleTeamListItemDao dao
             )
         {
             // Set values from data access object.
-            DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                DataMapper.Map(dao, this);
+            });
         }
 
         #endregion

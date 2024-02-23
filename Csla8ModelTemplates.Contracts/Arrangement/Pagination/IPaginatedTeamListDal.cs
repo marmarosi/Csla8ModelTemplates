@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Pagination
     /// </summary>
     public interface IPaginatedTeamListDal
     {
-        IPaginatedList<PaginatedTeamListItemDao> Fetch(PaginatedTeamListCriteria criteria);
+        Task<IPaginatedList<PaginatedTeamListItemDao>> FetchAsync(PaginatedTeamListCriteria criteria);
     }
 }

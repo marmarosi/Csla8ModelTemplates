@@ -34,14 +34,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Tree.View
         /// </summary>
         /// <param name="criteria">The criteria of the folder tree.</param>
         /// <returns>The requested folder tree.</returns>
-        public List<FolderNodeDao> Fetch(
+        public async Task<List<FolderNodeDao>> FetchAsync(
             FolderTreeCriteria criteria
             )
         {
             var tree = new List<FolderNodeDao>();
 
             // Get all subfolders of the root foolder.
-            AllFolders = DbContext.Folders
+            AllFolders = await DbContext.Folders
                 .Where(e =>
                     e.RootKey == criteria.RootKey
                 )
@@ -53,7 +53,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Tree.View
                     FolderName = e.FolderName
                 })
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             // Populate the tree.
             PopulateLevel(1, null, tree);

@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Simple.Set
     /// </summary>
     public interface ISimpleTeamSetItemDal
     {
-        void Insert(SimpleTeamSetItemDao dao);
-        void Update(SimpleTeamSetItemDao dao);
-        void Delete(SimpleTeamSetItemCriteria criteria);
+        Task InsertAsync(SimpleTeamSetItemDao dao);
+        Task UpdateAsync(SimpleTeamSetItemDao dao);
+        Task DeleteAsync(SimpleTeamSetItemCriteria criteria);
     }
 }

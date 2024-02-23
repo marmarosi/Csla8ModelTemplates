@@ -71,7 +71,6 @@ namespace Csla8ModelTemplates.Dal.MySql
                     auditableEntity.Timestamp = DateTimeOffset.UtcNow;
                 }
             }
-            var cs = base.Database.GetConnectionString();
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 

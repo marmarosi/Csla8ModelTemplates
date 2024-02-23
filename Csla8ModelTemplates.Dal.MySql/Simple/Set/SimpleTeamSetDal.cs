@@ -32,12 +32,12 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
         /// </summary>
         /// <param name="criteria">The criteria of the team set.</param>
         /// <returns>The requested team set.</returns>
-        public List<SimpleTeamSetItemDao> Fetch(
+        public async Task<List<SimpleTeamSetItemDao>> FetchAsync(
             SimpleTeamSetCriteria criteria
             )
         {
             // Get the specified team set.
-            var list = DbContext.Teams
+            var list = await DbContext.Teams
                 .Where(e =>
                     criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 )
@@ -50,7 +50,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                 })
                 .OrderBy(o => o.TeamName)
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             return list;
         }

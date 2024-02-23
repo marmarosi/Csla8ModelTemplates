@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Arrangement.Full
         /// </summary>
         /// <param name="criteria">The criteria of the team list.</param>
         /// <returns>The requested page of the sorted team list.</returns>
-        public IPaginatedList<ArrangedTeamListItemDao> Fetch(
+        public async Task<IPaginatedList<ArrangedTeamListItemDao>> FetchAsync(
             ArrangedTeamListCriteria criteria
             )
         {
@@ -68,14 +68,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Arrangement.Full
             }
 
             // Get the requested page.
-            var list = sorted
+            var list = await sorted
                 .Skip(criteria.PageIndex * criteria.PageSize)
                 .Take(criteria.PageSize)
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             // Count the matching teams.
-            int totalCount = query.Count();
+            int totalCount = await query.CountAsync();
 
             // Return the result.
             return new PaginatedList<ArrangedTeamListItemDao>

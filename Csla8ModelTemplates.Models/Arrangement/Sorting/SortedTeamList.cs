@@ -34,7 +34,7 @@ namespace Csla8ModelTemplates.Models.Arrangement.Sorting
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria of the read-only team collection.</param>
         /// <returns>The requested read-only sorted team collection.</returns>
-        public static async Task<SortedTeamList> Get(
+        public static async Task<SortedTeamList> GetAsync(
             IDataPortalFactory factory,
             SortedTeamListCriteria criteria
             )
@@ -47,7 +47,7 @@ namespace Csla8ModelTemplates.Models.Arrangement.Sorting
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             SortedTeamListCriteria criteria,
             [Inject] ISortedTeamListDal dal,
             [Inject] IChildDataPortal<SortedTeamListItem> itemPortal
@@ -56,7 +56,7 @@ namespace Csla8ModelTemplates.Models.Arrangement.Sorting
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<SortedTeamListItemDao> list = dal.Fetch(criteria);
+                List<SortedTeamListItemDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
                     Add(itemPortal.FetchChild(item));
             }

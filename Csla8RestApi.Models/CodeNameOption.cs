@@ -10,7 +10,7 @@ namespace Csla8RestApi.Models
     [Serializable]
     public class CodeNameOption : ReadOnlyModel<CodeNameOption>
     {
-        #region Business Methods
+        #region Properties
 
         public static readonly PropertyInfo<string> CodeProperty = RegisterProperty<string>(nameof(Code));
         public string Code

@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Full
     /// </summary>
     public interface IArrangedTeamListDal
     {
-        IPaginatedList<ArrangedTeamListItemDao> Fetch(ArrangedTeamListCriteria criteria);
+        Task<IPaginatedList<ArrangedTeamListItemDao>> FetchAsync(ArrangedTeamListCriteria criteria);
     }
 }

@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     /// </summary>
     public interface ITeamSetDal : ITransactionalDal
     {
-        List<TeamSetItemDao> Fetch(TeamSetCriteria criteria);
+        Task<List<TeamSetItemDao>> FetchAsync(TeamSetCriteria criteria);
     }
 }

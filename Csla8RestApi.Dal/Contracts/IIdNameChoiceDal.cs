@@ -6,6 +6,6 @@ namespace Csla8RestApi.Dal.Contracts
     public interface IIdNameChoiceDal<T>
         where T : ChoiceCriteria
     {
-        List<IdNameOptionDao> Fetch(T criteria);
+        Task<List<IdNameOptionDao>> FetchAsync(T criteria);
     }
 }

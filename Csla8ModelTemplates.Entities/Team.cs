@@ -10,6 +10,8 @@ namespace Csla8ModelTemplates.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long? TeamKey { get; set; }
 
+        public Guid? TeamGuid { get; set; }
+
         [MaxLength(10)]
         public string? TeamCode { get; set; }
 

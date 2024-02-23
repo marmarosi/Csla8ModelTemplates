@@ -33,11 +33,11 @@ namespace Csla8ModelTemplates.Dal.MySql.Tree.Choice
         /// </summary>
         /// <param name="criteria">The criteria of the tree choice.</param>
         /// <returns>The data transfer object of the requested tree choice.</returns>
-        public List<IdNameOptionDao> Fetch(
+        public async Task<List<IdNameOptionDao>> FetchAsync(
             RootFolderChoiceCriteria criteria
             )
         {
-            var choice = DbContext.Folders
+            var choice = await DbContext.Folders
                 .Where(e => e.ParentKey == null)
                 .Select(e => new IdNameOptionDao
                 {
@@ -46,7 +46,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Tree.Choice
                 })
                 .OrderBy(o => o.Name)
                 .AsNoTracking()
-                .ToList();
+                .ToListAsync();
 
             return choice;
         }

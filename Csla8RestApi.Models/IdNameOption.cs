@@ -10,7 +10,7 @@ namespace Csla8RestApi.Models
     [Serializable]
     public class IdNameOption : ReadOnlyModel<IdNameOption>
     {
-        #region Business Methods
+        #region Properties
 
         private string? HashModel;
 

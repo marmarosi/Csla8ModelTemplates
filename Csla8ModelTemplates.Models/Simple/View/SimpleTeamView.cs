@@ -81,7 +81,7 @@ namespace Csla8ModelTemplates.Models.Simple.View
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
         /// <returns>The requested team view.</returns>
-        public static async Task<SimpleTeamView> Get(
+        public static async Task<SimpleTeamView> GetAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -95,13 +95,13 @@ namespace Csla8ModelTemplates.Models.Simple.View
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             SimpleTeamViewCriteria criteria,
             [Inject] ISimpleTeamViewDal dal
             )
         {
             // Set values from data access object.
-            SimpleTeamViewDao dao = dal.Fetch(criteria);
+            SimpleTeamViewDao dao = await dal.FetchAsync(criteria);
             DataMapper.Map(dao, this);
         }
 

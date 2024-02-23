@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla8ModelTemplates.Contracts.Complex.Edit;
 using Csla8RestApi.Models;
 
@@ -29,13 +29,13 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<TeamPlayerDao> list,
             [Inject] IChildDataPortal<TeamPlayer> itemPortal
             )
         {
             foreach (var item in list)
-                Add(itemPortal.FetchChild(item));
+                Add(await itemPortal.FetchChildAsync(item));
         }
 
         #endregion

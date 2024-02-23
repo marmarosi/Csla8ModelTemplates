@@ -122,18 +122,18 @@ namespace Csla8ModelTemplates.Models.Complex.Set
         #region Data Access
 
         [CreateChild]
-        private void Create(
+        private async Task CreateAsync(
             [Inject] IChildDataPortal<TeamSetPlayers> itemsPortal
             )
         {
             // Set values from data transfer object.
-            Players = itemsPortal.CreateChild();
+            Players = await itemsPortal.CreateChildAsync();
             //LoadProperty(TeamCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamSetItemDao dao,
             [Inject] IChildDataPortal<TeamSetPlayers> itemsPortal
             )
@@ -142,12 +142,12 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             using (BypassPropertyChecks)
             {
                 DataMapper.Map(dao, this, "Players");
-                Players = itemsPortal.FetchChild(dao.Players);
+                Players = await itemsPortal.FetchChildAsync(dao.Players);
             }
         }
 
         [InsertChild]
-        private void Insert(
+        private async Task InsertAsync(
             [Inject] ITeamSetItemDal dal
             )
         {
@@ -155,17 +155,17 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             using (BypassPropertyChecks)
             {
                 var dao = Copy.PropertiesFrom(this).Omit("Players").ToNew<TeamSetItemDao>();
-                dal.Insert(dao);
+                await dal.InsertAsync(dao);
 
                 // Set new data.
                 TeamKey = dao.TeamKey;
                 Timestamp = dao.Timestamp;
             }
-            FieldManager.UpdateChildren(this);
+            await FieldManager.UpdateChildrenAsync(this);
         }
 
         [UpdateChild]
-        private void Update(
+        private async Task UpdateAsync(
             [Inject] ITeamSetItemDal dal
             )
         {
@@ -175,17 +175,17 @@ namespace Csla8ModelTemplates.Models.Complex.Set
                 using (BypassPropertyChecks)
                 {
                     var dao = Copy.PropertiesFrom(this).Omit("Players").ToNew<TeamSetItemDao>();
-                    dal.Update(dao);
+                    await dal.UpdateAsync(dao);
 
                     // Set new data.
                     Timestamp = dao.Timestamp;
                 }
             }
-            FieldManager.UpdateChildren(this);
+            await FieldManager.UpdateChildrenAsync(this);
         }
 
         [DeleteSelfChild]
-        private void DeleteSelf(
+        private async Task DeleteSelfAsync(
             [Inject] ITeamSetItemDal dal
             )
         {
@@ -193,10 +193,10 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             if (TeamKey.HasValue)
             {
                 Players.Clear();
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
 
                 var criteria = new TeamSetItemCriteria(TeamKey);
-                dal.Delete(criteria);
+                await dal.DeleteAsync(criteria);
             }
         }
 

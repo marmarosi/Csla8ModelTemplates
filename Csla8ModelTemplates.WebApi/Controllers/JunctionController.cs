@@ -45,7 +45,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                GroupView group = await GroupView.Get(Factory, id);
+                GroupView group = await GroupView.GetAsync(Factory, id);
                 return Ok(group.ToDto<GroupViewDto>());
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                Group group = await Group.New(Factory);
+                Group group = await Group.NewAsync(Factory);
                 return Ok(group.ToDto());
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 return Created(Uri, await RetryOnDeadlock(async () =>
                 {
-                    Group group = await Group.Build(Factory, ChildFactory, dto);
+                    Group group = await Group.BuildAsync(Factory, ChildFactory, dto);
                     if (group.IsValid)
                     {
                         group = await group.SaveAsync();
@@ -127,7 +127,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                Group group = await Group.Get(Factory, id);
+                Group group = await Group.GetAsync(Factory, id);
                 return Ok(group.ToDto());
             }
             catch (Exception ex)
@@ -155,7 +155,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 return Ok(await RetryOnDeadlock(async () =>
                 {
-                    Group group = await Group.Build(Factory, ChildFactory, dto);
+                    Group group = await Group.BuildAsync(Factory, ChildFactory, dto);
                     if (group.IsSavable)
                     {
                         group = await group.SaveAsync();
@@ -187,7 +187,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             {
                 await RetryOnDeadlock(async () =>
                 {
-                    await Task.Run(() => Group.Delete(Factory, id));
+                    await Group.DeleteAsync(Factory, id);
                 });
                 return NoContent();
             }

@@ -5,6 +5,6 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Sorting
     /// </summary>
     public interface ISortedTeamListDal
     {
-        List<SortedTeamListItemDao> Fetch(SortedTeamListCriteria criteria);
+        Task<List<SortedTeamListItemDao>> FetchAsync(SortedTeamListCriteria criteria);
     }
 }

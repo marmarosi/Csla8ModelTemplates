@@ -7,6 +7,6 @@ namespace Csla8ModelTemplates.Contracts.Simple.Set
     /// </summary>
     public interface ISimpleTeamSetDal : ITransactionalDal
     {
-        List<SimpleTeamSetItemDao> Fetch(SimpleTeamSetCriteria criteria);
+        Task<List<SimpleTeamSetItemDao>> FetchAsync(SimpleTeamSetCriteria criteria);
     }
 }

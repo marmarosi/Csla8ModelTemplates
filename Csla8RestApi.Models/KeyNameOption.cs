@@ -10,7 +10,7 @@ namespace Csla8RestApi.Models
     [Serializable]
     public class KeyNameOption : ReadOnlyModel<KeyNameOption>
     {
-        #region Business Methods
+        #region Properties
 
         public static readonly PropertyInfo<long?> KeyProperty = RegisterProperty<long?>(nameof(Key));
         public long? Key

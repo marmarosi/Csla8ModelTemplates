@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla.Data;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Junction.View;
@@ -69,12 +69,15 @@ namespace Csla8ModelTemplates.Models.Junction.View
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             GroupViewPersonDao dao
             )
         {
             // Load values from persistent storage.
-            DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                DataMapper.Map(dao, this);
+            });
         }
 
         #endregion

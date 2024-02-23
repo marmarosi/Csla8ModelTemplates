@@ -5,6 +5,6 @@ namespace Csla8ModelTemplates.Contracts.Complex.View
     /// </summary>
     public interface ITeamViewDal
     {
-        TeamViewDao Fetch(TeamViewCriteria criteria);
+        Task<TeamViewDao> FetchAsync(TeamViewCriteria criteria);
     }
 }

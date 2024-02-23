@@ -157,25 +157,28 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         #region Data Access
 
         [CreateChild]
-        private void Create()
+        private async Task CreateAsync()
         {
             // Set values from data transfer object.
             //LoadProperty(PlayerCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamPlayerDao dao
             )
         {
             // Load values from persistent storage.
-            using (BypassPropertyChecks)
-                DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                using (BypassPropertyChecks)
+                    DataMapper.Map(dao, this);
+            });
         }
 
         [InsertChild]
-        private void Insert(
+        private async Task InsertAsync(
             Team parent,
             [Inject] ITeamPlayerDal dal
             )
@@ -185,16 +188,16 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             {
                 TeamKey = parent.TeamKey;
                 var dao = Copy.PropertiesFrom(this).ToNew<TeamPlayerDao>();
-                dal.Insert(dao);
+                await dal.InsertAsync(dao);
 
                 // Set new data.
                 PlayerKey = dao.PlayerKey;
             }
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
         }
 
         [UpdateChild]
-        private void Update(
+        private async Task UpdateAsync(
             Team parent,
             [Inject] ITeamPlayerDal dal
             )
@@ -203,15 +206,15 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             using (BypassPropertyChecks)
             {
                 var dao = Copy.PropertiesFrom(this).ToNew<TeamPlayerDao>();
-                dal.Update(dao);
+                await dal.UpdateAsync(dao);
 
                 // Set new data.
             }
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
         }
 
         [DeleteSelfChild]
-        private void Child_DeleteSelf(
+        private async Task Child_DeleteSelfAsync(
             Team parent,
             [Inject] ITeamPlayerDal dal
             )
@@ -219,10 +222,10 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             // Delete values from persistent storage.
 
             //Items.Clear();
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
 
             TeamPlayerCriteria criteria = new TeamPlayerCriteria(PlayerKey);
-            dal.Delete(criteria);
+            await dal.DeleteAsync(criteria);
         }
 
         #endregion

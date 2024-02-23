@@ -114,25 +114,28 @@ namespace Csla8ModelTemplates.Models.Simple.Set
         #region Data Access
 
         [CreateChild]
-        private void Create()
+        private async Task CreateAsync()
         {
             // Set values from data transfer object.
             //LoadProperty(TeamCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             SimpleTeamSetItemDao dao
             )
         {
             // Set values from data access object.
-            using (BypassPropertyChecks)
-                DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                using (BypassPropertyChecks)
+                    DataMapper.Map(dao, this);
+            });
         }
 
         [InsertChild]
-        private void Insert(
+        private async Task InsertAsync(
             [Inject] ISimpleTeamSetItemDal dal
             )
         {
@@ -140,7 +143,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
             using (BypassPropertyChecks)
             {
                 var dao = Copy.PropertiesFrom(this).ToNew<SimpleTeamSetItemDao>();
-                dal.Insert(dao);
+                await dal.InsertAsync(dao);
 
                 // Set new data.
                 TeamKey = dao.TeamKey;
@@ -149,7 +152,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
         }
 
         [UpdateChild]
-        private void Update(
+        private async Task UpdateAsync(
             [Inject] ISimpleTeamSetItemDal dal
             )
         {
@@ -157,7 +160,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
             using (BypassPropertyChecks)
             {
                 var dao = Copy.PropertiesFrom(this).ToNew<SimpleTeamSetItemDao>();
-                dal.Update(dao);
+                await dal.UpdateAsync(dao);
 
                 // Set new data.
                 Timestamp = dao.Timestamp;
@@ -165,7 +168,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
         }
 
         [DeleteSelfChild]
-        private void DeleteSelf(
+        private async Task DeleteSelfAsync(
             [Inject] ISimpleTeamSetItemDal dal
             )
         {
@@ -173,7 +176,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
             if (TeamKey.HasValue)
             {
                 var criteria = new SimpleTeamSetItemCriteria(TeamKey);
-                dal.Delete(criteria);
+                await dal.DeleteAsync(criteria);
             }
         }
 

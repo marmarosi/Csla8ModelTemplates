@@ -34,7 +34,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria of the read-only folder tree.</param>
         /// <returns>The requested read-only folder tree.</returns>
-        public static async Task<FolderTree> Get(
+        public static async Task<FolderTree> GetAsync(
             IDataPortalFactory factory,
             string rootId
             )
@@ -48,7 +48,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             FolderTreeCriteria criteria,
             [Inject] IFolderTreeDal dal,
             [Inject] IChildDataPortal<FolderNode> itemPortal
@@ -57,7 +57,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<FolderNodeDao> list = dal.Fetch(criteria);
+                List<FolderNodeDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
                     Add(itemPortal.FetchChild(item));
             }

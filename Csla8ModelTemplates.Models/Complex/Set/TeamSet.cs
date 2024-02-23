@@ -34,7 +34,7 @@ namespace Csla8ModelTemplates.Models.Complex.Set
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria of the team set.</param>
         /// <returns>The requested team set.</returns>
-        public static async Task<TeamSet> Get(
+        public static async Task<TeamSet> GetAsync(
             IDataPortalFactory factory,
             TeamSetCriteria criteria
             )
@@ -50,7 +50,7 @@ namespace Csla8ModelTemplates.Models.Complex.Set
         /// <param name="criteria">The criteria of the team set.</param>
         /// <param name="list">The data transer objects of the team set.</param>
         /// <returns>The team set built.</returns>
-        public static async Task<TeamSet> Build(
+        public static async Task<TeamSet> BuildAsync(
             IDataPortalFactory factory,
             IChildDataPortalFactory childFactory,
             TeamSetCriteria criteria,
@@ -66,15 +66,15 @@ namespace Csla8ModelTemplates.Models.Complex.Set
 
         #region Data Access
 
-        [Create]
-        [RunLocal]
-        private void Create()
-        {
-            // Load default values.
-        }
+        //[Create]
+        //[RunLocal]
+        //private async Task CreateAsync()
+        //{
+        //    // Load default values.
+        //}
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamSetCriteria criteria,
             [Inject] ITeamSetDal dal,
             [Inject] IChildDataPortal<TeamSetItem> itemPortal
@@ -83,21 +83,21 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<TeamSetItemDao> list = dal.Fetch(criteria);
+                List<TeamSetItemDao> list = await dal.FetchAsync(criteria);
                 foreach (TeamSetItemDao item in list)
-                    Add(itemPortal.FetchChild(item));
+                    Add(await itemPortal.FetchChildAsync(item));
             }
         }
 
         [Update]
-        protected void Update(
+        protected async Task UpdateAsync(
             [Inject] ITeamSetDal dal
             )
         {
             // Update values in persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                Child_Update();
+                await Child_UpdateAsync();
                 dal.Commit(transaction);
             }
         }

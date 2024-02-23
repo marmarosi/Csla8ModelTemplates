@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Tree.Choice;
 using Csla8RestApi.Models;
@@ -35,7 +35,7 @@ namespace Csla8ModelTemplates.Models.Tree.Choice
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <returns>The requested tree choice instance.</returns>
-        public static async Task<RootFolderChoice> Get(
+        public static async Task<RootFolderChoice> GetAsync(
             IDataPortalFactory factory
             )
         {
@@ -48,7 +48,7 @@ namespace Csla8ModelTemplates.Models.Tree.Choice
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             RootFolderChoiceCriteria criteria,
             [Inject] IRootFolderChoiceDal dal,
             [Inject] IChildDataPortal<IdNameOption> itemPortal
@@ -57,7 +57,7 @@ namespace Csla8ModelTemplates.Models.Tree.Choice
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<IdNameOptionDao> list = dal.Fetch(criteria);
+                List<IdNameOptionDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
                     Add(itemPortal.FetchChild(item, ID.Folder));
             }

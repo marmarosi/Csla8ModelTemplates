@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.Set
     /// </summary>
     public interface ITeamSetItemDal
     {
-        void Insert(TeamSetItemDao dao);
-        void Update(TeamSetItemDao dao);
-        void Delete(TeamSetItemCriteria criteria);
+        Task InsertAsync(TeamSetItemDao dao);
+        Task UpdateAsync(TeamSetItemDao dao);
+        Task DeleteAsync(TeamSetItemCriteria criteria);
     }
 }

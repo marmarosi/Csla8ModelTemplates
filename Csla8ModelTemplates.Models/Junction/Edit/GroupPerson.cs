@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla.Core;
 using Csla.Data;
 using Csla.Rules;
@@ -132,25 +132,31 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         #region Data Access
 
         [CreateChild]
-        private void Create()
+        private async Task CreateAsync()
         {
             // Set values from data transfer object.
-            //LoadProperty(PersonNameProperty, "");
-            //BusinessRules.CheckRules();
+            await Task.Run(async () =>
+            {
+                //LoadProperty(PersonNameProperty, "");
+                await BusinessRules.CheckRulesAsync();
+            });
         }
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             GroupPersonDao dao
             )
         {
             // Load values from persistent storage.
-            using (BypassPropertyChecks)
-                DataMapper.Map(dao, this, "GroupKey");
+            await Task.Run(() =>
+            {
+                using (BypassPropertyChecks)
+                    DataMapper.Map(dao, this, "GroupKey");
+            });
         }
 
         [InsertChild]
-        private void Insert(
+        private async Task InsertAsync(
             Group parent,
             [Inject] IGroupPersonDal dal
             )
@@ -160,26 +166,26 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             {
                 var dao = Copy.PropertiesFrom(this).ToNew<GroupPersonDao>();
                 dao.GroupKey = parent.GroupKey;
-                dal.Insert(dao);
+                await dal.InsertAsync(dao);
 
                 // Set new data.
                 PersonKey = dao.PersonKey;
             }
-            //FieldManager.UpdateChildren(this);
+            //await FieldManager.UpdateChildrenAsync(this);
         }
 
-        [UpdateChild]
-        private void Update(
-            Group parent,
-            [Inject] IGroupPersonDal dal
-            )
-        {
-            // Update values in persistent storage.
-            throw new NotImplementedException();
-        }
+        //[UpdateChild]
+        //private async Task UpdateAsync(
+        //    Group parent,
+        //    [Inject] IGroupPersonDal dal
+        //    )
+        //{
+        //    // Update values in persistent storage.
+        //    throw new NotImplementedException();
+        //}
 
         [DeleteSelfChild]
-        private void Child_DeleteSelf(
+        private async Task Child_DeleteSelfAsync(
             Group parent,
             [Inject] IGroupPersonDal dal
             )
@@ -191,7 +197,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
 
             GroupPersonDao dao = Copy.PropertiesFrom(this).Omit("PersonId").ToNew<GroupPersonDao>();
             dao.GroupKey = parent.GroupKey;
-            dal.Delete(dao);
+            await dal.DeleteAsync(dao);
         }
 
         #endregion

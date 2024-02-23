@@ -34,12 +34,12 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.View
         /// </summary>
         /// <param name="criteria">The criteria of the team.</param>
         /// <returns>The requested team view.</returns>
-        public TeamViewDao Fetch(
+        public async Task<TeamViewDao> FetchAsync(
             TeamViewCriteria criteria
             )
         {
             // Get the specified team.
-            var team = DbContext.Teams
+            var team = await DbContext.Teams
                 .Include(e => e.Players)
                 .Where(e =>
                     e.TeamKey == criteria.TeamKey
@@ -60,7 +60,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.View
                     .ToList()
                 })
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.Team_NotFound);
 
             return team;

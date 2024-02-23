@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla.Data;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Junction.View;
@@ -88,7 +88,7 @@ namespace Csla8ModelTemplates.Models.Junction.View
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
         /// <returns>The requested read-only group instance.</returns>
-        public static async Task<GroupView> Get(
+        public static async Task<GroupView> GetAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -102,16 +102,16 @@ namespace Csla8ModelTemplates.Models.Junction.View
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             GroupViewCriteria criteria,
             [Inject] IGroupViewDal dal,
             [Inject] IChildDataPortal<GroupViewPersons> itemsPortal
             )
         {
             // Load values from persistent storage.
-            GroupViewDao dao = dal.Fetch(criteria);
+            GroupViewDao dao = await dal.FetchAsync(criteria);
             DataMapper.Map(dao, this, "Persons");
-            Persons = itemsPortal.FetchChild(dao.Persons);
+            Persons = await itemsPortal.FetchChildAsync(dao.Persons);
         }
 
         #endregion

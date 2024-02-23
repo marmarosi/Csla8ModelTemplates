@@ -128,7 +128,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <returns>The new team.</returns>
-        public static async Task<Team> New(
+        public static async Task<Team> NewAsync(
             IDataPortalFactory factory
             )
         {
@@ -141,7 +141,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
-        public static async Task<Team> Get(
+        public static async Task<Team> GetAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -157,7 +157,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// <param name="childFactory">The child data portal factory.</param>
         /// <param name="dto"></param>
         /// <returns>The team built.</returns>
-        public static async Task<Team> Build(
+        public static async Task<Team> BuildAsync(
             IDataPortalFactory factory,
             IChildDataPortalFactory childFactory,
             TeamDto dto
@@ -165,8 +165,8 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         {
             long? teamKey = KeyHash.Decode(ID.Team, dto!.TeamId);
             Team team = teamKey.HasValue ?
-                await Get(factory, dto.TeamId!) :
-                await New(factory);
+                await GetAsync(factory, dto.TeamId!) :
+                await NewAsync(factory);
             team.SetValuesOnBuild(dto, childFactory);
             return team;
         }
@@ -176,7 +176,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <param name="id">The identifier of the team.</param>
-        public static async Task Delete(
+        public static async Task DeleteAsync(
             IDataPortalFactory factory,
             string id
             )
@@ -191,34 +191,34 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
 
         [Create]
         [RunLocal]
-        private void Create(
+        private async Task CreateAsync(
             [Inject] IChildDataPortal<TeamPlayers> itemsPortal
             )
         {
             // Load default values.
-            Players = itemsPortal.CreateChild();
+            Players = await itemsPortal.CreateChildAsync();
             //LoadProperty(TeamCodeProperty, "");
-            //BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamCriteria criteria,
             [Inject] ITeamDal dal,
             [Inject] IChildDataPortal<TeamPlayers> itemsPortal
             )
         {
             // Load values from persistent storage.
-            TeamDao dao = dal.Fetch(criteria);
+            TeamDao dao = await dal.FetchAsync(criteria);
             using (BypassPropertyChecks)
             {
                 DataMapper.Map(dao, this, "Players");
-                Players = itemsPortal.FetchChild(dao.Players);
+                Players = await itemsPortal.FetchChildAsync(dao.Players);
             }
         }
 
         [Insert]
-        protected void Insert(
+        protected async Task InsertAsync(
             [Inject] ITeamDal dal
             )
         {
@@ -228,19 +228,19 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
                 using (BypassPropertyChecks)
                 {
                     var dao = Copy.PropertiesFrom(this).Omit("Players").ToNew<TeamDao>();
-                    dal.Insert(dao);
+                    await dal.InsertAsync(dao);
 
                     // Set new data.
                     TeamKey = dao.TeamKey;
                     Timestamp = dao.Timestamp;
                 }
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
                 dal.Commit(transaction);
             }
         }
 
         [Update]
-        protected void Update(
+        protected async Task UpdateAsync(
             [Inject] ITeamDal dal
             )
         {
@@ -252,29 +252,29 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
                     using (BypassPropertyChecks)
                     {
                         var dao = Copy.PropertiesFrom(this).Omit("Players").ToNew<TeamDao>();
-                        dal.Update(dao);
+                        await dal.UpdateAsync(dao);
 
                         // Set new data.
                         Timestamp = dao.Timestamp;
                     }
                 }
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
                 dal.Commit(transaction);
             }
         }
 
         [DeleteSelf]
-        protected void DeleteSelf(
+        protected async Task DeleteSelfAsync(
             [Inject] ITeamDal dal,
             [Inject] IChildDataPortal<TeamPlayers> itemPortal
             )
         {
             using (BypassPropertyChecks)
-                Delete(new TeamCriteria(TeamKey), dal, itemPortal);
+                await DeleteAsync(new TeamCriteria(TeamKey), dal, itemPortal);
         }
 
         [Delete]
-        protected void Delete(
+        protected async Task DeleteAsync(
             TeamCriteria criteria,
             [Inject] ITeamDal dal,
             [Inject] IChildDataPortal<TeamPlayers> itemPortal
@@ -284,12 +284,12 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             using (var transaction = dal.BeginTransaction())
             {
                 if (!TeamKey.HasValue)
-                    Fetch(criteria, dal, itemPortal);
+                    await FetchAsync(criteria, dal, itemPortal);
 
                 Players.Clear();
-                FieldManager.UpdateChildren(this);
+                await FieldManager.UpdateChildrenAsync(this);
 
-                dal.Delete(criteria);
+                await dal.DeleteAsync(criteria);
                 dal.Commit(transaction);
             }
         }

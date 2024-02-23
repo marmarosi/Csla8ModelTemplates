@@ -34,32 +34,32 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
         /// Creates a new group-person using the specified data.
         /// </summary>
         /// <param name="dao">The data of the group-person.</param>
-        public void Insert(
+        public async Task InsertAsync(
             GroupPersonDao dao
             )
         {
             // Check unique group-person.
-            var groupPerson = DbContext.GroupPersons
+            var groupPerson = await DbContext.GroupPersons
                 .Where(e =>
                     e.GroupKey == dao.GroupKey &&
                     e.PersonKey == dao.PersonKey
                 )
                 .AsNoTracking()
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             if (groupPerson is not null)
                 throw new DataExistException(DalText.GroupPerson_Exists.With(dao.PersonName!));
 
             // Create the new group-person.
-            Person person = DbContext.Persons.Find(dao.PersonKey)
+            Person person = await DbContext.Persons.FindAsync(dao.PersonKey)
                 ?? throw new DataExistException(DalText.GroupPerson_NotFound.With(dao.PersonName!));
             groupPerson = new GroupPerson
             {
                 GroupKey = dao.GroupKey,
                 PersonKey = dao.PersonKey
             };
-            DbContext.GroupPersons.Add(groupPerson);
+            await DbContext.GroupPersons.AddAsync(groupPerson);
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new InsertFailedException(DalText.GroupPerson_InsertFailed.With(dao.PersonName!));
 
@@ -75,24 +75,24 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
         /// Deletes the specified group-person.
         /// </summary>
         /// <param name="criteria">The criteria of the group-person.</param>
-        public void Delete(
+        public async Task DeleteAsync(
             GroupPersonDao dao
             )
         {
             // Get the specified group-person.
-            GroupPerson groupPerson = DbContext.GroupPersons
+            GroupPerson groupPerson = await DbContext.GroupPersons
                 .Where(e =>
                     e.GroupKey == dao.GroupKey &&
                     e.PersonKey == dao.PersonKey
                     )
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.GroupPerson_NotFound.With(dao.PersonName!));
 
             // Delete the group-person.
             DbContext.GroupPersons.Remove(groupPerson);
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new DeleteFailedException(DalText.GroupPerson_DeleteFailed.With(dao.PersonName!));
         }

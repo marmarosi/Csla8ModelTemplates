@@ -83,14 +83,14 @@ namespace Csla8ModelTemplates.Models.Complex.List
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamListItemDao dao,
             [Inject] IChildDataPortal<TeamListPlayers> itemPortal
             )
         {
             // Load values from persistent storage.
             DataMapper.Map(dao, this, "Players");
-            Players = itemPortal.FetchChild(dao.Players);
+            Players = await itemPortal.FetchChildAsync(dao.Players);
         }
 
         #endregion

@@ -34,16 +34,16 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
         /// Creates a new team using the specified data.
         /// </summary>
         /// <param name="dao">The data of the team.</param>
-        public void Insert(
+        public async Task InsertAsync(
             SimpleTeamSetItemDao dao
             )
         {
             // Check unique team code.
-            var team = DbContext.Teams
+            var team = await DbContext.Teams
                 .Where(e =>
                     e.TeamCode == dao.TeamCode
                 )
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             if (team is not null)
                 throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
 
@@ -53,9 +53,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                 TeamCode = dao.TeamCode,
                 TeamName = dao.TeamName
             };
-            DbContext.Teams.Add(team);
+            await DbContext.Teams.AddAsync(team);
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new InsertFailedException(DalText.SimpleTeamSetItem_InsertFailed.With(team.TeamCode!));
 
@@ -72,16 +72,16 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
         /// Updates an existing team using the specified data.
         /// </summary>
         /// <param name="dao">The data of the team.</param>
-        public void Update(
+        public async Task UpdateAsync(
             SimpleTeamSetItemDao dao
             )
         {
             // Get the specified team.
-            var team = DbContext.Teams
+            var team = await DbContext.Teams
                 .Where(e =>
                     e.TeamKey == dao.TeamKey
                 )
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.SimpleTeamSetItem_NotFound.With(dao.TeamCode!));
             if (team.Timestamp != dao.Timestamp)
                 throw new ConcurrencyException(DalText.SimpleTeamSetItem_Concurrency.With(dao.TeamCode!));
@@ -89,12 +89,12 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
             // Check unique team code.
             if (team.TeamCode != dao.TeamCode)
             {
-                int exist = DbContext.Teams
+                int exist = await DbContext.Teams
                     .Where(e =>
                         e.TeamCode == dao.TeamCode &&
                         e.TeamKey != team.TeamKey
                     )
-                    .Count();
+                    .CountAsync();
                 if (exist > 0)
                     throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
             }
@@ -103,7 +103,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
             team.TeamCode = dao.TeamCode;
             team.TeamName = dao.TeamName;
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new UpdateFailedException(DalText.SimpleTeamSetItem_UpdateFailed.With(team.TeamCode!));
 
@@ -119,43 +119,43 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
         /// Deletes the specified team.
         /// </summary>
         /// <param name="criteria">The criteria of the team.</param>
-        public void Delete(
+        public async Task DeleteAsync(
             SimpleTeamSetItemCriteria criteria
             )
         {
             int count = 0;
 
             // Get the specified team.
-            var team = DbContext.Teams
+            var team = await DbContext.Teams
                 .Where(e =>
                     e.TeamKey == criteria.TeamKey
                  )
                 .AsNoTracking()
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.SimpleTeamSetItem_NotFoundKey);
 
             // Check references.
             //int dependents = 0;
 
-            //dependents = DbContext.Others.Count(e => e.TeamKey == criteria.TeamKey);
+            //dependents = await DbContext.Others.CountAsync(e => e.TeamKey == criteria.TeamKey);
             //if (dependents > 0)
             //    throw new DeleteFailedException(DalText.SimpleTeamSetItem_Delete_Others);
 
             // Delete references.
-            var players = DbContext.Players
+            var players = await DbContext.Players
                 .Where(e => e.TeamKey == criteria.TeamKey)
-                .ToList();
+                .ToListAsync();
             foreach (var player in players)
                 DbContext.Players.Remove(player);
 
-            count = DbContext.SaveChanges();
+            count = await DbContext.SaveChangesAsync();
             if (count != players.Count)
                 throw new DeleteFailedException(DalText.SimpleTeamSetItem_Delete_Players.With(team.TeamCode!));
 
             // Delete the team.
             DbContext.Teams.Remove(team);
 
-            count = DbContext.SaveChanges();
+            count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new DeleteFailedException(DalText.SimpleTeamSetItem_DeleteFailed.With(team.TeamCode!));
         }

@@ -2,6 +2,7 @@ using Csla8ModelTemplates.Contracts.Simple.Command;
 using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Csla8ModelTemplates.Dal.MySql.Simple.Command
 {
@@ -32,20 +33,20 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Command
         /// Sets the new name of the specified team.
         /// </summary>
         /// <param name="dao">The data of the command.</param>
-        public void Execute(
+        public async Task ExecuteAsync(
             RenameTeamDao dao
             )
         {
             // Get the specified team.
-            var team = DbContext.Teams
+            var team = await DbContext.Teams
                 .Where(e => e.TeamKey == dao.TeamKey)
-                .FirstOrDefault()
+                .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(DalText.RenameTeam_NotFound);
 
             // Update the team.
             team.TeamName = dao.TeamName;
 
-            int count = DbContext.SaveChanges();
+            int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new CommandFailedException(DalText.RenameTeam_RenameFailed);
         }

@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla8ModelTemplates.Contracts.Selection.WithKey;
 using Csla8RestApi.Models;
 using Csla8RestApi.Dal.Contracts;
@@ -35,7 +35,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithKey
         /// <param name="factory">The data portal factory.</param>
         /// <param name="criteria">The criteria team choice.</param>
         /// <returns>The requested team choice instance.</returns>
-        public static async Task<TeamKeyChoice> Get(
+        public static async Task<TeamKeyChoice> GetAsync(
             IDataPortalFactory factory,
             TeamKeyChoiceCriteria criteria
             )
@@ -48,7 +48,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithKey
         #region Data Access
 
         [Fetch]
-        private void Fetch(
+        private async Task FetchAsync(
             TeamKeyChoiceCriteria criteria,
             [Inject] ITeamKeyChoiceDal dal,
             [Inject] IChildDataPortal<KeyNameOption> itemPortal
@@ -57,7 +57,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithKey
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<KeyNameOptionDao> list = dal.Fetch(criteria);
+                List<KeyNameOptionDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
                     Add(itemPortal.FetchChild(item));
             }

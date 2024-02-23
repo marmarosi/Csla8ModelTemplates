@@ -48,7 +48,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                SortedTeamList list = await SortedTeamList.Get(Factory, criteria);
+                SortedTeamList list = await SortedTeamList.GetAsync(Factory, criteria);
                 return Ok(list.ToDto<SortedTeamListItemDto>());
             }
             catch (Exception ex)
@@ -74,7 +74,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var list = await PaginatedTeamList.Get(Factory, criteria);
+                var list = await PaginatedTeamList.GetAsync(Factory, criteria);
                 return Ok(list.ToDto<PaginatedList<PaginatedTeamListItemDto>>());
             }
             catch (Exception ex)
@@ -100,7 +100,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         {
             try
             {
-                var list = await ArrangedTeamList.Get(Factory, criteria);
+                var list = await ArrangedTeamList.GetAsync(Factory, criteria);
                 return Ok(list.ToDto<PaginatedList<ArrangedTeamListItemDto>>());
             }
             catch (Exception ex)
