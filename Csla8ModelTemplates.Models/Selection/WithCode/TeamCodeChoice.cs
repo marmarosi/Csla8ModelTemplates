@@ -37,7 +37,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithCode
         /// <returns>The requested team choice instance.</returns>
         public static async Task<TeamCodeChoice> GetAsync(
             IDataPortalFactory factory,
-            TeamGuidChoiceCriteria criteria
+            TeamCodeChoiceCriteria criteria
             )
         {
             return await factory.GetPortal<TeamCodeChoice>().FetchAsync(criteria);

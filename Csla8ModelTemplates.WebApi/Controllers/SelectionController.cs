@@ -121,7 +121,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         [HttpGet("with-code")]
         [ProducesResponseType(typeof(List<CodeNameOptionDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamChoiceWithCode(
-            [FromQuery] TeamGuidChoiceCriteria criteria
+            [FromQuery] TeamCodeChoiceCriteria criteria
             )
         {
             try
