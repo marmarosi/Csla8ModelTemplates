@@ -30,18 +30,11 @@ namespace Csla8ModelTemplates.Configuration
             // Configure database.
             if (configuration is null)
             {
-                //services.AddDbContext<MySqlContext>(options => options
-                //    .UseMySQL($"name=ConnectionStrings:{DAL.MySQL}")
-                //    );
                 configuration = ConfigurationCreator.Create();
-                services.AddDbContext<MySqlContext>(options => options
-                    .UseMySQL(configuration.GetConnectionString(DAL.MySQL)!)
-                    );
             }
-            else
-                services.AddDbContext<MySqlContext>(options =>
-                    options.UseMySQL(configuration.GetConnectionString(DAL.MySQL)!)
-                    );
+            services.AddDbContext<MySqlContext>(options =>
+                options.UseMySQL(configuration.GetConnectionString(DAL.MySQL)!)
+                );
 
             // Configure data access layer.
             foreach (var dalType in MySqlDalIndex.Items)

@@ -1,5 +1,4 @@
 using Csla.Configuration;
-using Csla8ModelTemplates.Contracts;
 using Csla8RestApi.Models.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

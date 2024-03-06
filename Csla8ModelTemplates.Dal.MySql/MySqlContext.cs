@@ -1,6 +1,7 @@
 using Csla8ModelTemplates.Entities;
 using Csla8RestApi.Dal;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Csla8ModelTemplates.Dal.MySql
 {
@@ -20,14 +21,14 @@ namespace Csla8ModelTemplates.Dal.MySql
         /// Creates a new MySQL context instance.
         /// </summary>
         /// <param name="options">The options to be used by DbContext.</param>
-        /// <param name="transactionOptions">The transaction options.</param>
+        /// <param name="configuration">Teh application configuration.</param>
         public MySqlContext(
             DbContextOptions<MySqlContext> options,
-            ITransactionOptions transactionOptions
+            IConfiguration configuration
             )
             : base(options)
         {
-            IsUnderTest = transactionOptions?.IsUnderTest ?? false;
+            IsUnderTest = configuration.GetValue<bool>("RollbackTransactions");
         }
 
         #endregion
@@ -37,24 +38,72 @@ namespace Csla8ModelTemplates.Dal.MySql
         /// <summary>
         /// Saves all changes made in this context to the database.
         /// </summary>
+        /// <returns>The number of state entries written to the database.</returns>
+        public override int SaveChanges()
+        {
+            SetTimestamps();
+            return base.SaveChanges();
+        }
+
+        /// <summary>
+        /// Saves all changes made in this context to the database.
+        /// </summary>
         /// <param name="acceptAllChangesOnSuccess">Indicates whether AcceptAllChanges() is called
-        /// after the changes have been sent successfully ti the database.</param>
+        ///     after the changes have been sent successfully ti the database.</param>
         /// <returns>The number of state entries written to the database.</returns>
         public override int SaveChanges(
             bool acceptAllChangesOnSuccess
             )
         {
+            SetTimestamps();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        /// <summary>
+        /// Saves all changes made in this context to the database.
+        /// </summary>
+        /// <param name="cancellationToken">A CancellationToken to observe
+        ///     while waiting for the task to complete.</param>
+        /// <returns>The number of state entries written to the database.</returns>
+        public override Task<int> SaveChangesAsync(
+            CancellationToken cancellationToken = default
+            )
+        {
+            SetTimestamps();
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Saves all changes made in this context to the database.
+        /// </summary>
+        /// <param name="acceptAllChangesOnSuccess">Indicates whether AcceptAllChanges() is called
+        ///     after the changes have been sent successfully ti the database.</param>
+        /// <param name="cancellationToken">A CancellationToken to observe
+        ///     while waiting for the task to complete.</param>
+        /// <returns>The number of state entries written to the database.</returns>
+        public override Task<int> SaveChangesAsync(
+            bool acceptAllChangesOnSuccess,
+            CancellationToken cancellationToken = default
+            )
+        {
+            SetTimestamps();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void SetTimestamps()
+        {
             var insertedEntries = ChangeTracker.Entries()
                 .Where(x => x.State == EntityState.Added)
                 .Select(x => x.Entity);
 
+            //System.Diagnostics.Debug.WriteLine($"Inserted: {insertedEntries.Count()}");
             foreach (var insertedEntry in insertedEntries)
             {
-                var auditableEntity = insertedEntry as Timestamped;
-                //If the inserted object is an Auditable. 
-                if (auditableEntity is not null)
+                var timestamped = insertedEntry as Timestamped;
+                // If the inserted object has timestamp.
+                if (timestamped is not null)
                 {
-                    auditableEntity.Timestamp = DateTimeOffset.UtcNow;
+                    timestamped.Timestamp = DateTimeOffset.UtcNow;
                 }
             }
 
@@ -62,16 +111,16 @@ namespace Csla8ModelTemplates.Dal.MySql
                 .Where(x => x.State == EntityState.Modified)
                 .Select(x => x.Entity);
 
+            //System.Diagnostics.Debug.WriteLine($"Inserted: {modifiedEntries.Count()}");
             foreach (var modifiedEntry in modifiedEntries)
             {
-                //If the inserted object is an Auditable. 
-                var auditableEntity = modifiedEntry as Timestamped;
-                if (auditableEntity is not null)
+                var timestamped = modifiedEntry as Timestamped;
+                // If the modified object has timestamp.
+                if (timestamped is not null)
                 {
-                    auditableEntity.Timestamp = DateTimeOffset.UtcNow;
+                    timestamped.Timestamp = DateTimeOffset.UtcNow;
                 }
             }
-            return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
         #endregion

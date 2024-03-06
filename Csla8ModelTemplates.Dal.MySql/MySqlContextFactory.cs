@@ -1,6 +1,5 @@
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Resources;
-using Csla8RestApi.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +25,6 @@ namespace Csla8ModelTemplates.Dal.MySql
             var connectionString = configuration.GetConnectionString(DAL.MySQL)!
                 .Replace("csla8modeltemplates.database", "localhost");
             var assemblyName = GetType().Assembly.GetName().Name;
-            var isUnderTest = configuration.GetValue<bool>("RollbackTransactions");
 
             return new MySqlContext(
                 new DbContextOptionsBuilder<MySqlContext>()
@@ -35,7 +33,7 @@ namespace Csla8ModelTemplates.Dal.MySql
                         optionsBuilder => optionsBuilder.MigrationsAssembly(assemblyName)
                         )
                     .Options,
-                new TransactionOptions { IsUnderTest = isUnderTest }
+                configuration
                 );
         }
     }
