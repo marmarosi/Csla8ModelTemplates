@@ -1,7 +1,9 @@
 using Csla8ModelTemplates.Contracts.Selection.WithCode;
+using Csla8ModelTemplates.Contracts.Selection.WithGuid;
 using Csla8ModelTemplates.Contracts.Selection.WithId;
 using Csla8ModelTemplates.Contracts.Selection.WithKey;
 using Csla8ModelTemplates.Models.Selection.WithCode;
+using Csla8ModelTemplates.Models.Selection.WithGuid;
 using Csla8ModelTemplates.Models.Selection.WithId;
 using Csla8ModelTemplates.Models.Selection.WithKey;
 using Csla8RestApi.Dal.Contracts;

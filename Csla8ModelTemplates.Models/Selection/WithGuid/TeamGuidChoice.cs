@@ -1,9 +1,9 @@
 using Csla;
-using Csla8ModelTemplates.Contracts.Selection.WithCode;
+using Csla8ModelTemplates.Contracts.Selection.WithGuid;
 using Csla8RestApi.Models;
 using Csla8RestApi.Dal.Contracts;
 
-namespace Csla8ModelTemplates.Models.Selection.WithCode
+namespace Csla8ModelTemplates.Models.Selection.WithGuid
 {
     /// <summary>
     /// Represents a read-only team choice collection.

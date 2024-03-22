@@ -1,9 +1,9 @@
-using Csla8ModelTemplates.Contracts.Selection.WithCode;
+using Csla8ModelTemplates.Contracts.Selection.WithGuid;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Csla8ModelTemplates.Dal.MySql.Selection.WithCode
+namespace Csla8ModelTemplates.Dal.MySql.Selection.WithGuid
 {
     /// <summary>
     /// Implements the data access functions of the read-only team choice collection.

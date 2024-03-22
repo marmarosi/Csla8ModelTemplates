@@ -10,7 +10,7 @@ Category | Models
 ---|---
 [Simple Models](#simple-models) | [Simple List](#simple-list), [Simple View](#simple-view), [Simple Edit](#simple-edit), [Simple Set](#simple-set), [Simple Command](#simple-command)
 [Arrangement](#arrangement) | [Sorted List](#sorted-list), [Paginated List](#paginated-list), [Arranged List](#arranged-list)
-[Selection](#selection) | [Selection With Key](#selection-with-key), [Selection With ID](#selection-with-id), [Selection With Code](#selection-with-code)
+[Selection](#selection) | [Selection With Key](#selection-with-key), [Selection With ID](#selection-with-id), [Selection With GUID](#selection-with-guid), [Selection With Code](#selection-with-code)
 [Complex Models](#complex-models) | [Complex List](#complex-list), [Complex View](#complex-view), [Complex Edit](#complex-edit), [Complex Set](#complex-set), [Complex Command](#complex-command)
 [Tree Model](#tree-model) | [Tree](#tree)
 [Junction Models](#junction-models) | [Junction View](#junction-view), [Junction](#junction)
@@ -45,7 +45,7 @@ SimpleTeamView | read-only root object
 
 Endpoint:
 
-- [ ] GET ​/api​/simple​/:id/view --- *Gets the specified team details to display.**
+- [ ] GET ​/api​/simple​/:id/view --- *Gets the specified team details to display.*
 
 ### Simple Edit
 
@@ -105,7 +105,7 @@ SortedTeamListItem | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/pagination​/sorted --- *Gets the specified teams sorted.**
+- [ ] GET ​/api​/pagination​/sorted --- *Gets the specified teams sorted.*
 
 ### Paginated List
 
@@ -122,7 +122,7 @@ PaginatedTeamListItem | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/pagination​/paginated --- *Gets the specified page of teams.**
+- [ ] GET ​/api​/pagination​/paginated --- *Gets the specified page of teams.*
 
 ### Arranged List
 
@@ -139,7 +139,7 @@ ArrangedTeamListItem | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/pagination​/arranged --- *Gets the specified page of sorted teams.**
+- [ ] GET ​/api​/pagination​/arranged --- *Gets the specified page of sorted teams.*
 
 ## Selection
 
@@ -159,7 +159,7 @@ KeyNameOption | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/selection​/with-key --- *Gets the key-name choice of the teams.**
+- [ ] GET ​/api​/selection​/with-key --- *Gets the key-name choice of the teams.*
 
 ### Selection With ID
 
@@ -173,7 +173,21 @@ IdNameOption | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/selection​/with-id --- *Gets the id-name choice of the teams.**
+- [ ] GET ​/api​/selection​/with-id --- *Gets the id-name choice of the teams.*
+
+### Selection With GUID
+
+The template implements the selection list with a value property name Guid
+whose data type is Guid.
+
+Component | Description
+--------- | -----------
+TeamGuidChoice | read-only root collection
+GuidNameOption | read-only child object
+
+Endpoint:
+
+- [ ] GET ​/api​/selection​/with-guid --- *Gets the guid-name choice of the teams.*
 
 ### Selection With Code
 
@@ -187,7 +201,7 @@ CodeNameOption | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/selection​/with-code --- *Gets the code-name choice of the teams.**
+- [ ] GET ​/api​/selection​/with-code --- *Gets the code-name choice of the teams.*
 
 ## Complex Models
 
@@ -318,7 +332,7 @@ GroupViewPerson | read-only child object
 
 Endpoint:
 
-- [ ] GET ​/api​/junction​/:id/view --- *Gets the specified group details to display.**
+- [ ] GET ​/api​/junction​/:id/view --- *Gets the specified group details to display.*
 
 ### Junction
 
