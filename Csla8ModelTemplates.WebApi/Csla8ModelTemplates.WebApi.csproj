@@ -20,9 +20,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Csla" Version="8.0.0-R24021201" />
-    <PackageReference Include="Csla.AspNetCore" Version="8.0.0-R24021201" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+    <PackageReference Include="Csla" Version="8.0.0-R24031302" />
+    <PackageReference Include="Csla.AspNetCore" Version="8.0.0-R24031302" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
