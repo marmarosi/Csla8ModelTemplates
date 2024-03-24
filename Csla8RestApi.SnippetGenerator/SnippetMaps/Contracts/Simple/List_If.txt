@@ -1,0 +1,8 @@
+Source:      Simple\List\ISimpleTeamListDal.cs
+Target:      Simple_List\C_RI_Data.snippet
+Title:       Contract | Read-only list DAL interface
+Description: Defines the DAL interface of a read-only root collection.
+Shortcut:    c8slrci
+
+/// team:    root_name
+SimpleTeam:  ROOT_MODEL

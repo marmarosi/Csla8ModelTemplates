@@ -1,0 +1,11 @@
+{
+  "Author": "Mármarosi József",
+  "Declarations": ".\\SnippetMaps\\declarations.json",
+  "SnippetResources": [
+    {
+      "MapBasePath": ".\\SnippetMaps\\Contracts",
+      "SourceBasePath": "..\\Csla8ModelTemplates.Contracts",
+      "TargetBasePath": "..\\Csla8RestApi.Snippets\\CSLA 8 REST API"
+    }
+  ]
+}
