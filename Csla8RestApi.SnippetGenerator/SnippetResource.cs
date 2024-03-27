@@ -4,6 +4,5 @@ namespace Csla8RestApi.SnippetGenerator
     {
         public string MapBasePath { get; set; }
         public string SourceBasePath { get; set; }
-        public string TargetBasePath { get; set; }
     }
 }

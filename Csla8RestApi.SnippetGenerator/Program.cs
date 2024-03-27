@@ -8,19 +8,21 @@ var builder = new ConfigurationBuilder()
 
 IConfiguration config = builder.Build();
 
-var author = GetAbsolutePath(config.GetValue<string>("Author"));
-
-var declarationPath = GetAbsolutePath(config.GetValue<string>("Declarations"));
-using var declarationStream = File.OpenRead(declarationPath);
+var data = new BaseData
+{
+    Author = GetAbsolutePath(config.GetValue<string>("Author")),
+    DeclarationsPath = GetAbsolutePath(config.GetValue<string>("Declarations")),
+    TargetBasePath = GetAbsolutePath(config.GetValue<string>("TargetBasePath")),
+    TestBasePath = GetAbsolutePath(config.GetValue<string>("TestBasePath"))
+};
+using var declarationStream = File.OpenRead(data.DeclarationsPath);
 var declarations = JsonSerializer.Deserialize<List<Declaration>>(declarationStream);
 
 var resources = config.GetSection("SnippetResources").Get<List<SnippetResource>>();
-
 foreach (var resource in resources)
 {
     var mapPath = GetAbsolutePath(resource.MapBasePath);
     resource.SourceBasePath = GetAbsolutePath(resource.SourceBasePath);
-    resource.TargetBasePath = GetAbsolutePath(resource.TargetBasePath);
     ProcessResource(mapPath, resource, declarations);
 }
 
@@ -32,7 +34,7 @@ void ProcessResource(
 {
     var maps = Directory.GetFiles(mapPath, "*.txt");
     foreach (var map in maps)
-        Snippet.Generate(map, author, resource, declarations);
+        Snippet.Generate(data, map, resource, declarations);
 
     var folders = Directory.GetDirectories(mapPath);
     foreach (var folder in folders)
@@ -40,10 +42,12 @@ void ProcessResource(
 }
 
 string GetAbsolutePath(
-    string path
+    string? path
     )
 {
-    if (path.StartsWith("."))
+    if (string.IsNullOrWhiteSpace(path))
+        path = Directory.GetCurrentDirectory();
+    if (path.StartsWith('.'))
         path = Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\..\\", path);
     return path;
 }

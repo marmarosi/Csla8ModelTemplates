@@ -1,0 +1,7 @@
+{
+  "SnippetBasePath": "..\\Csla8RestApi.Snippets\\CSLA 8 REST API",
+  "ContractBasePath": "..\\Csla8RestApi.Tests.Contracts",
+  "DalBasePath": "..\\Csla8RestApi.Tests.Dal.MySql",
+  "ModelBasePath": "..\\Csla8RestApi.Tests.Models",
+  "ControllerBasePath": "..\\Csla8RestApi.Tests.WebApi"
+}

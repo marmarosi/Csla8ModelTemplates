@@ -10,12 +10,12 @@
         <Snippet>
             <Code Language="CSharp">
                 <![CDATA[/// <summary>
-    /// Defines the data access functions of the read-only team collection.
+    /// Defines the data access functions of the read-only $root_name$ collection.
     /// </summary>
-    public interface ISimpleTeamListDal
+    public interface I$ROOT_MODEL$ListDal
     {
-        Task<List<SimpleTeamListItemDao>> FetchAsync(SimpleTeamListCriteria criteria);
-    }]]>
+        Task<List<$ROOT_MODEL$ListItemDao>> FetchAsync($ROOT_MODEL$ListCriteria criteria);
+    }$end$]]>
             </Code>
             <Declarations>
                 <Literal>
