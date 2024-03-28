@@ -16,20 +16,22 @@ var data = new BaseData
     ControllerBasePath = GetAbsolutePath(config.GetValue<string>("ControllerBasePath"))
 };
 var mapFolder = GetAbsolutePath(GetAbsolutePath(".\\TestMaps"));
-ProcessMaps(mapFolder, data);
+var wrapperRoot = GetAbsolutePath(GetAbsolutePath(".\\Wrappers"));
+ProcessMaps(mapFolder, wrapperRoot, data);
 
 void ProcessMaps(
     string mapFolder,
+    string wrapperRoot,
     BaseData data
     )
 {
     var mapPaths = Directory.GetFiles(mapFolder, "*.txt");
     foreach (var mapPath in mapPaths)
-        Source.Generate(mapPath, data);
+        Source.Generate(mapPath, wrapperRoot, data);
 
     var folders = Directory.GetDirectories(mapFolder);
     foreach (var folder in folders)
-        ProcessMaps(folder, data);
+        ProcessMaps(folder, wrapperRoot, data);
 
 }
 

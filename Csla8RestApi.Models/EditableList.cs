@@ -108,8 +108,8 @@ namespace Csla8RestApi.Models
             for (int i = Items.Count - 1; i > -1; i--)
             {
                 C item = Items[i];
-                string idValue = GeIdtValue(item, idName);
-                bool match(Dto o) => GeIdtValue(o, idName) == idValue;
+                string idValue = GetIdValue(item, idName);
+                bool match(Dto o) => GetIdValue(o, idName) == idValue;
                 Dto dto = list.Find(match)!;
 
                 if (dto == null)
@@ -132,7 +132,7 @@ namespace Csla8RestApi.Models
             }
         }
 
-        private string GeIdtValue(
+        private string GetIdValue(
             object something,
             string propertyName
             )

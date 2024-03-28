@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -7,6 +8,7 @@ namespace Csla8RestApi.Tests.SourceGenerator
     {
         public static void Generate(
             string mapPath,
+            string wrapperRoot,
             BaseData data
             )
         {
@@ -21,8 +23,9 @@ namespace Csla8RestApi.Tests.SourceGenerator
 
             foreach(var model in map.Models)
                 source = source.Replace($"${model.Placeholder}$", model.Name);
+            source = source.Replace("$end$", "");
 
-            var wrapper = GetWrapper(map.SourcePath);
+            var wrapper = GetWrapper(wrapperRoot, map.ShortSource);
             var content = wrapper.Replace("$snippet$", source);
             SaveFile(map.SourcePath, content);
         }
@@ -120,13 +123,16 @@ namespace Csla8RestApi.Tests.SourceGenerator
         }
 
         private static string GetWrapper(
-            string filePath
+            string wrapperRoot,
+            string shortSource
             )
         {
-            CheckFolder(Path.GetDirectoryName(filePath));
-            var wrapperPath = Path.Combine(
-                Path.GetDirectoryName(filePath),
-                Path.GetFileNameWithoutExtension(filePath) + ".txt"
+            var wrapperPath = Path.Combine(wrapperRoot, shortSource);
+            CheckFolder(Path.GetDirectoryName(wrapperPath));
+
+            wrapperPath = Path.Combine(
+                Path.GetDirectoryName(wrapperPath),
+                Path.GetFileNameWithoutExtension(wrapperPath) + ".txt"
                 );
             return File.ReadAllText(wrapperPath);
         }

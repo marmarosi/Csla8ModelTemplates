@@ -6,5 +6,5 @@ namespace Csla8ModelTemplates.Contracts.Simple.List
     public interface IOrderListDal
     {
         Task<List<OrderListItemDao>> FetchAsync(OrderListCriteria criteria);
-    }$end$
+    }
 }
