@@ -48,6 +48,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CSLA 8 REST API\Simple_List\C_RC_Crit.snippet" />
+    <None Include="CSLA 8 REST API\Simple_List\C_RC_Dal.snippet" />
     <None Include="CSLA 8 REST API\Simple_List\C_RI_Data.snippet" />
     <None Include="README.md" />
     <None Include="source.extension.vsixmanifest">

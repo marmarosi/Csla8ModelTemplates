@@ -1,4 +1,5 @@
 using Csla8RestApi.SnippetGenerator;
+using Csla8RestApi.SnippetGenerator.Models;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 

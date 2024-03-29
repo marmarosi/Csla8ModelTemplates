@@ -1,3 +1,4 @@
+using Csla8RestApi.SnippetGenerator.Models;
 using System.Text;
 
 namespace Csla8RestApi.SnippetGenerator
@@ -12,8 +13,8 @@ namespace Csla8RestApi.SnippetGenerator
             )
         {
             // Get templates.
-            var snippetTemplate = File.ReadAllText("Snippet.xml");
-            var literalTemplate = File.ReadAllText("Literal.xml");
+            var snippetTemplate = File.ReadAllText("Templates\\Snippet.xml");
+            var literalTemplate = File.ReadAllText("Templates\\Literal.xml");
 
             // Get mapping data to convert source to snippet.
             var map = GetMap(mapPath, data.TargetBasePath, resource, declarations);
@@ -62,8 +63,14 @@ namespace Csla8RestApi.SnippetGenerator
             sb.AppendLine(GetFixLength("Project:") + map.Project);
             sb.AppendLine(GetFixLength("FileName:") + map.FileName);
             sb.AppendLine();
+
+            var phList = new List<string>();
             foreach (var swap in map.Swaps)
-                sb.AppendLine(GetFixLength(swap.To + ":") + swap.TestModel);
+                if (!phList.Contains(swap.To))
+                {
+                    sb.AppendLine(GetFixLength(swap.To + ":") + swap.TestModel);
+                    phList.Add(swap.To);
+                }
 
             var testMap = sb.ToString();
             var testMapPath = Path.Combine(

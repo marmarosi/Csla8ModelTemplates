@@ -1,0 +1,4 @@
+namespace Csla8ModelTemplates.Contracts.Simple.List
+{
+    $snippet$
+}

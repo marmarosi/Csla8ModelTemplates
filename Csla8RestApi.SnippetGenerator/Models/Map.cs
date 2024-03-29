@@ -1,4 +1,4 @@
-namespace Csla8RestApi.SnippetGenerator
+namespace Csla8RestApi.SnippetGenerator.Models
 {
     internal class Map
     {

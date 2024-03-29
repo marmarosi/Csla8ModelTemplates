@@ -1,4 +1,5 @@
 using Csla8RestApi.Tests.SourceGenerator;
+using Csla8RestApi.Tests.SourceGenerator.Models;
 using Microsoft.Extensions.Configuration;
 
 var builder = new ConfigurationBuilder()

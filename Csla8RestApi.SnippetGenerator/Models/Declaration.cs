@@ -1,4 +1,4 @@
-namespace Csla8RestApi.Tests.SourceGenerator
+namespace Csla8RestApi.SnippetGenerator.Models
 {
     public class Declaration
     {

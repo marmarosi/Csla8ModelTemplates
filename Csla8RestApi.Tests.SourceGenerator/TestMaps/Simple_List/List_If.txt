@@ -1,4 +1,4 @@
-Snippet:        Simple_List\C_RI_Data.snippet
+Snippet:        Simple_List\C_RC_Dal.snippet
 Project:        Contract
 FileName:       I===ListDal
 

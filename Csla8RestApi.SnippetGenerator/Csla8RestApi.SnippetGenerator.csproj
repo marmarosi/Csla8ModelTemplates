@@ -18,16 +18,20 @@
   <ItemGroup>
     <None Remove="Literal.xml" />
     <None Remove="Snippet.xml" />
+    <None Remove="SnippetMaps\Contracts\Simple\List_crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple\List_data.txt" />
     <None Remove="SnippetMaps\Contracts\Simple\List_If.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Literal.xml">
+    <Content Include="Templates\Literal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Snippet.xml">
+    <Content Include="Templates\Snippet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="SnippetMaps\Contracts\Simple\List_crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple\List_data.txt" />
     <Content Include="SnippetMaps\Contracts\Simple\List_If.txt" />
   </ItemGroup>
 
