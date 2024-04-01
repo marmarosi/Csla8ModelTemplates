@@ -28,7 +28,7 @@ void ProcessMaps(
 {
     var mapPaths = Directory.GetFiles(mapFolder, "*.txt");
     foreach (var mapPath in mapPaths)
-        Source.Generate(mapPath, wrapperRoot, data);
+        Test.Generate(mapPath, wrapperRoot, data);
 
     var folders = Directory.GetDirectories(mapFolder);
     foreach (var folder in folders)

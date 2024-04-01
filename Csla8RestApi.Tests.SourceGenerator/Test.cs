@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Csla8RestApi.Tests.SourceGenerator
 {
-    internal static class Source
+    internal static class Test
     {
         public static void Generate(
             string mapPath,
@@ -12,32 +12,32 @@ namespace Csla8RestApi.Tests.SourceGenerator
             BaseData data
             )
         {
-            var map = GetMap(mapPath, data);
-            Console.WriteLine(map.ShortSource);
+            var testMap = GetMap(mapPath, data);
+            Console.WriteLine(testMap.ShortTest);
 
-            var xml = XDocument.Load(map.SnippetPath);
+            var xml = XDocument.Load(testMap.SnippetPath);
             var snippet = (XCData)xml.Root.DescendantNodes()
                 .Where(x => x.NodeType == XmlNodeType.CDATA)
                 .First();
             var source = snippet.Value;
 
-            foreach(var model in map.Models)
-                source = source.Replace($"${model.Placeholder}$", model.Name);
+            foreach(var textSwap in testMap.TextSwaps)
+                source = source.Replace($"${textSwap.Placeholder}$", textSwap.Name);
             source = source.Replace("$end$", "");
 
-            var wrapper = GetWrapper(wrapperRoot, map.ShortSource);
+            var wrapper = GetWrapper(wrapperRoot, testMap.ShortWrapper);
             var content = wrapper.Replace("$snippet$", source);
-            SaveFile(map.SourcePath, content);
+            SaveFile(testMap.TestPath, content);
         }
 
-        private static Map GetMap(
+        private static TestMap GetMap(
             string mapPath,
             BaseData data
             )
         {
-            var map = new Map();
+            var testMap = new TestMap();
             var project = "";
-            var sourceFolder = "";
+            var testFolder = "";
             var fileName = "";
             var lines = File.ReadLines(mapPath);
             foreach (var line in lines)
@@ -57,8 +57,9 @@ namespace Csla8RestApi.Tests.SourceGenerator
                 {
                     case "Snippet":
                         var values = value.Split('\\');
-                        sourceFolder = values[0].Replace('_', '\\');
-                        map.SnippetPath = Path.Combine(data.SnippetBasePath, value);
+                        testFolder = values[0].Replace('_', '\\');
+                        testMap.SnippetPath = Path.Combine(data.SnippetBasePath, value);
+                        testMap.ShortWrapper = value.Replace(".snippet", ".txt");
                         break;
                     case "Project":
                         project = value;
@@ -68,21 +69,21 @@ namespace Csla8RestApi.Tests.SourceGenerator
                         switch (project)
                         {
                             case "Contract":
-                                map.SourcePath = data.ContractBasePath;
+                                testMap.TestPath = data.ContractBasePath;
                                 break;
                             case "DAL":
-                                map.SourcePath = data.DalBasePath;
+                                testMap.TestPath = data.DalBasePath;
                                 break;
                             case "Model":
-                                map.SourcePath = data.ModelBasePath;
+                                testMap.TestPath = data.ModelBasePath;
                                 break;
                             case "Controller":
-                                map.SourcePath = data.ControllerBasePath;
+                                testMap.TestPath = data.ControllerBasePath;
                                 break;
                         }
                         break;
                     default:
-                        map.Models.Add(new Model
+                        testMap.TextSwaps.Add(new TextSwap
                         {
                             Placeholder = key,
                             Name = value
@@ -90,20 +91,20 @@ namespace Csla8RestApi.Tests.SourceGenerator
                         break;
                 }
             }
-            var model = map.Models.Find(o => o.Placeholder == "ROOT_MODEL");
+            var model = testMap.TextSwaps.Find(o => o.Placeholder == "ROOT_MODEL");
             if (model != null)
                 fileName = fileName.Replace("===", model.Name);
-            model = map.Models.Find(o => o.Placeholder == "CHILD_MODEL");
+            model = testMap.TextSwaps.Find(o => o.Placeholder == "CHILD_MODEL");
             if (model != null)
                 fileName = fileName.Replace("---", model.Name);
-            model = map.Models.Find(o => o.Placeholder == "COMMAND_MODEL");
+            model = testMap.TextSwaps.Find(o => o.Placeholder == "COMMAND_MODEL");
             if (model != null)
                 fileName = fileName.Replace("+++", model.Name);
             fileName += ".cs";
 
-            map.ShortSource = Path.Combine(sourceFolder, fileName);
-            map.SourcePath = Path.Combine(map.SourcePath, map.ShortSource);
-            return map;
+            testMap.ShortTest = Path.Combine(testFolder, fileName);
+            testMap.TestPath = Path.Combine(testMap.TestPath, testMap.ShortTest);
+            return testMap;
         }
 
         private static SnippetType GetSnippetType(
@@ -124,10 +125,10 @@ namespace Csla8RestApi.Tests.SourceGenerator
 
         private static string GetWrapper(
             string wrapperRoot,
-            string shortSource
+            string shortWrapper
             )
         {
-            var wrapperPath = Path.Combine(wrapperRoot, shortSource);
+            var wrapperPath = Path.Combine(wrapperRoot, shortWrapper);
             CheckFolder(Path.GetDirectoryName(wrapperPath));
 
             wrapperPath = Path.Combine(
