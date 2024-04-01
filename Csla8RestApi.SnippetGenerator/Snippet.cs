@@ -6,66 +6,60 @@ namespace Csla8RestApi.SnippetGenerator
     internal static class Snippet
     {
         public static void Generate(
-            BaseData data,
-            string mapPath,
-            SnippetResource resource,
-            List<Declaration> declarations
+            string snippetMapPath,
+            BaseData data
             )
         {
-            // Get templates.
-            var snippetTemplate = File.ReadAllText("Templates\\Snippet.xml");
-            var literalTemplate = File.ReadAllText("Templates\\Literal.xml");
-
             // Get mapping data to convert source to snippet.
-            var map = GetMap(mapPath, data.TargetBasePath, resource, declarations);
-            Console.WriteLine(map.ShortTarget);
+            var snippetMap = GetMap(snippetMapPath, data);
+            Console.WriteLine(snippetMap.ShortTarget);
 
             // Compose literals.
             var sb = new StringBuilder();
-            foreach (var swap in map.Swaps)
-                sb.Append(literalTemplate
-                    .Replace("$id$", swap.To)
-                    .Replace("$tooltip$", swap.ToolTip)
-                    .Replace("$default$", swap.DefaultValue)
+            foreach (var textSwap in snippetMap.TextSwaps)
+                sb.Append(data.LiteralTemplate
+                    .Replace("$id$", textSwap.To)
+                    .Replace("$tooltip$", textSwap.ToolTip)
+                    .Replace("$default$", textSwap.DefaultValue)
                     );
             var literals = sb.ToString();
 
             // Read source.
-            var sourceLines = GetSource(map.Source);
-            foreach (var swap in map.Swaps)
+            var sourceLines = GetSource(snippetMap.SourcePath);
+            foreach (var textSwap in snippetMap.TextSwaps)
                 for (int i = 0; i < sourceLines.Count; i++)
                 {
                     var line = sourceLines[i];
                     var isComment = line.TrimStart().StartsWith("///");
-                    if (swap.InComment && isComment ||
-                        !swap.InComment && !isComment
+                    if (textSwap.InComment && isComment ||
+                        !textSwap.InComment && !isComment
                         )
                     {
-                        sourceLines[i] = line.Replace(swap.From, $"${ swap.To }$");
+                        sourceLines[i] = line.Replace(textSwap.From, $"${ textSwap.To }$");
                     }
                 }
             var source = string.Join("\r\n", sourceLines);
 
             // Compose and save snippet.
-            var snippet = snippetTemplate
-                .Replace("$title$", map.Title)
+            var snippet = data.SnippetTemplate
+                .Replace("$title$", snippetMap.Title)
                 .Replace("$author$", data.Author)
-                .Replace("$description$", map.Description)
-                .Replace("$shortcut$", map.Shortcut)
+                .Replace("$description$", snippetMap.Description)
+                .Replace("$shortcut$", snippetMap.Shortcut)
                 .Replace("$data$", $"{ source.Trim() }$end$")
                 .Replace("$literals$", literals.TrimEnd())
                 ;
-            SaveFile(map.Target, snippet);
+            SaveFile(snippetMap.TargetPath, snippet);
 
             // Compose and save source map of tests.
             sb = new StringBuilder();
-            sb.AppendLine(GetFixLength("Snippet:") + map.ShortTarget);
-            sb.AppendLine(GetFixLength("Project:") + map.Project);
-            sb.AppendLine(GetFixLength("FileName:") + map.FileName);
+            sb.AppendLine(GetFixLength("Snippet:") + snippetMap.ShortTarget);
+            sb.AppendLine(GetFixLength("Project:") + snippetMap.Project);
+            sb.AppendLine(GetFixLength("FileName:") + snippetMap.FileName);
             sb.AppendLine();
 
             var phList = new List<string>();
-            foreach (var swap in map.Swaps)
+            foreach (var swap in snippetMap.TextSwaps)
                 if (!phList.Contains(swap.To))
                 {
                     sb.AppendLine(GetFixLength(swap.To + ":") + swap.TestModel);
@@ -74,21 +68,19 @@ namespace Csla8RestApi.SnippetGenerator
 
             var testMap = sb.ToString();
             var testMapPath = Path.Combine(
-                data.TestBasePath, map.TargetFolder, Path.GetFileName(mapPath)
+                data.TestBasePath, snippetMap.TargetFolder, Path.GetFileName(snippetMapPath)
                 );
             SaveFile(testMapPath, testMap);
         }
 
-        private static Map GetMap(
-            string mapPath,
-            string targetBasePath,
-            SnippetResource resource,
-            List<Declaration> declarations
+        private static SnippetMap GetMap(
+            string snippetMapPath,
+            BaseData data
             )
         {
-            var map = new Map();
+            var map = new SnippetMap();
             var targetFolder = "";
-            var lines = File.ReadLines(mapPath);
+            var lines = File.ReadLines(snippetMapPath);
             foreach (var line in lines)
             {
                 var ln = line.Trim();
@@ -105,13 +97,14 @@ namespace Csla8RestApi.SnippetGenerator
                 switch (key)
                 {
                     case "Source":
+                        map.SourcePath = value;
                         targetFolder = GetTargetFolder(value);
-                        map.Source = Path.Combine(resource.SourceBasePath, value);
                         break;
                     case "Target":
+                        map.SourcePath = GetSourcePath(map.SourcePath, value, data.TemplateSources);
                         map.TargetFolder = targetFolder;
                         map.ShortTarget = Path.Combine(targetFolder, value);
-                        map.Target = Path.Combine(targetBasePath, targetFolder, value);
+                        map.TargetPath = Path.Combine(data.TargetBasePath, targetFolder, value);
                         break;
                     case "Title":
                         map.Title = value;
@@ -128,29 +121,7 @@ namespace Csla8RestApi.SnippetGenerator
                         map.FileName = tests[1].Trim();
                         break;
                     default:
-                        var parts = value.Split('|');
-                        var id = parts[0].Trim();
-                        var testModel = parts[1].Trim();
-
-                        var declaration = declarations.FirstOrDefault(o => o.ID == id);
-                        var swap = new Swap
-                        {
-                            To = id,
-                            ToolTip = declaration.ToolTip,
-                            DefaultValue = declaration.DefaultValue,
-                            TestModel = testModel
-                        };
-                        if (key.StartsWith("///"))
-                        {
-                            swap.From = key.Substring(3).Trim();
-                            swap.InComment = true;
-                        }
-                        else
-                        {
-                            swap.From = key;
-                            swap.InComment = false;
-                        }
-                        map.Swaps.Add(swap);
+                        map.TextSwaps.Add(GetSwap(key, value, data.Declarations));
                         break;
                 }
             }
@@ -163,6 +134,65 @@ namespace Csla8RestApi.SnippetGenerator
         {
             var last = sourcePath.LastIndexOf('\\');
             return sourcePath[..last].Replace('\\', '_');
+        }
+
+        private static string GetSourcePath(
+            string source,
+            string target,
+            List<TemplateSource> templateSources
+            )
+        {
+            var templateType = "";
+            var sourceBasePath = "";
+            var start = target.Substring(0, 2);
+            switch (start)
+            {
+                case "C_":
+                    templateType = "Contract";
+                    break;
+                case "D_":
+                    templateType = "Dal";
+                    break;
+                case "M_":
+                    templateType = "WebApi";
+                    break;
+                default:
+                    templateType = "WebApi";
+                    break;
+            }
+            sourceBasePath = templateSources.Find(o => o.TemplateType == templateType)!.SourceBasePath;
+            return Path.Combine(sourceBasePath, source);
+        }
+
+        private static TextSwap GetSwap(
+            string key,
+            string value,
+            List<Declaration> declarations
+            )
+        {
+            var parts = value.Split('|');
+            var id = parts[0].Trim();
+            var testModel = parts[1].Trim();
+
+            var declaration = declarations.Find(o => o.ID == id)!;
+            var swap = new TextSwap
+            {
+                To = id,
+                ToolTip = declaration.ToolTip,
+                DefaultValue = declaration.DefaultValue,
+                TestModel = testModel
+            };
+            if (key.StartsWith("///"))
+            {
+                swap.From = key.Substring(3).Trim();
+                swap.InComment = true;
+            }
+            else
+            {
+                swap.From = key;
+                swap.InComment = false;
+            }
+            return swap;
         }
 
         private static List<string> GetSource(

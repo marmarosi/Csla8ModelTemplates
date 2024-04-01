@@ -1,20 +1,22 @@
 {
   "Author": "Mármarosi József",
-  "Declarations": ".\\SnippetMaps\\declarations.json",
   "TargetBasePath": "..\\Csla8RestApi.Snippets\\CSLA 8 REST API",
   "TestBasePath": "..\\Csla8RestApi.Tests.SourceGenerator\\TestMaps",
-  "SnippetResources": [
+  "TemplateSources": [
     {
-      "MapBasePath": ".\\SnippetMaps\\Contracts",
+      "TemplateType": "Contract",
       "SourceBasePath": "..\\Csla8ModelTemplates.Contracts"
-    }, {
-      "MapBasePath": ".\\SnippetMaps\\Dal",
+    },
+    {
+      "TemplateType": "Dal",
       "SourceBasePath": "..\\Csla8ModelTemplates.Dal.MySql"
-    }, {
-      "MapBasePath": ".\\SnippetMaps\\Models",
+    },
+    {
+      "TemplateType": "Model",
       "SourceBasePath": "..\\Csla8ModelTemplates.Models"
-    }, {
-      "MapBasePath": ".\\SnippetMaps\\WebApi",
+    },
+    {
+      "TemplateType": "WebApi",
       "SourceBasePath": "..\\Csla8ModelTemplates.WebApi"
     }
   ]

@@ -9,37 +9,43 @@ var builder = new ConfigurationBuilder()
 
 IConfiguration config = builder.Build();
 
+// Get base configuration.
 var data = new BaseData
 {
     Author = GetAbsolutePath(config.GetValue<string>("Author")),
-    DeclarationsPath = GetAbsolutePath(config.GetValue<string>("Declarations")),
     TargetBasePath = GetAbsolutePath(config.GetValue<string>("TargetBasePath")),
     TestBasePath = GetAbsolutePath(config.GetValue<string>("TestBasePath"))
 };
-using var declarationStream = File.OpenRead(data.DeclarationsPath);
-var declarations = JsonSerializer.Deserialize<List<Declaration>>(declarationStream);
+var snippetMapPath = GetAbsolutePath(".\\SnippetMaps");
 
-var resources = config.GetSection("SnippetResources").Get<List<SnippetResource>>();
-foreach (var resource in resources)
-{
-    var mapPath = GetAbsolutePath(resource.MapBasePath);
-    resource.SourceBasePath = GetAbsolutePath(resource.SourceBasePath);
-    ProcessResource(mapPath, resource, declarations);
-}
+// Get snippet declarations.
+using var declarationStream = File.OpenRead(GetAbsolutePath(".\\SnippetMaps\\declarations.json"));
+data.Declarations = JsonSerializer.Deserialize<List<Declaration>>(declarationStream)!;
+
+// Get the project path of template sources.
+data.TemplateSources = config.GetSection("TemplateSources").Get<List<TemplateSource>>()!;
+foreach (var templateSource in data.TemplateSources)
+    templateSource.SourceBasePath = GetAbsolutePath(templateSource.SourceBasePath);
+
+// Get templates.
+data.SnippetTemplate = File.ReadAllText("Templates\\Snippet.xml");
+data.LiteralTemplate = File.ReadAllText("Templates\\Literal.xml");
+
+// Generate snippets.
+ProcessResource(snippetMapPath, data);
 
 void ProcessResource(
-    string mapPath,
-    SnippetResource resource,
-    List<Declaration> declarations
+    string snippetMapPath,
+    BaseData data
     )
 {
-    var maps = Directory.GetFiles(mapPath, "*.txt");
-    foreach (var map in maps)
-        Snippet.Generate(data, map, resource, declarations);
+    var snippetMaps = Directory.GetFiles(snippetMapPath, "*.txt");
+    foreach (var snippetMap in snippetMaps)
+        Snippet.Generate(snippetMap, data);
 
-    var folders = Directory.GetDirectories(mapPath);
+    var folders = Directory.GetDirectories(snippetMapPath);
     foreach (var folder in folders)
-        ProcessResource(folder, resource, declarations);
+        ProcessResource(folder, data);
 }
 
 string GetAbsolutePath(

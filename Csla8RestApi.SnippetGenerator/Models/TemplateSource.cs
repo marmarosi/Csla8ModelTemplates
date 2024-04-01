@@ -1,8 +1,8 @@
 namespace Csla8RestApi.SnippetGenerator.Models
 {
-    public class SnippetResource
+    public class TemplateSource
     {
-        public string MapBasePath { get; set; }
+        public string TemplateType { get; set; }
         public string SourceBasePath { get; set; }
     }
 }
