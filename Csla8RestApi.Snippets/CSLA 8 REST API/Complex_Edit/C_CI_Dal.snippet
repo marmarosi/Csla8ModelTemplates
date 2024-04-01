@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Contract | Editable child list item DAL interface</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the DAL interface of an editable child model.</Description>
+            <Shortcut>c8cecii</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the data access functions of the editable $child_name$ object.
+    /// </summary>
+    public interface I$ROOT_MODEL$$CHILD_MODEL$Dal
+    {
+        Task InsertAsync($ROOT_MODEL$$CHILD_MODEL$Dao dao);
+        Task UpdateAsync($ROOT_MODEL$$CHILD_MODEL$Dao dao);
+        Task DeleteAsync($ROOT_MODEL$$CHILD_MODEL$Criteria criteria);
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

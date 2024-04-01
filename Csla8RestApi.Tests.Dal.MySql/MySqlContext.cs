@@ -127,8 +127,8 @@ namespace Csla8RestApi.Tests.Dal.MySql
 
         #region Query results
 
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderLine> OrderLines { get; set; }
+        public DbSet<Product> Orders { get; set; }
+        public DbSet<Part> OrderLines { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
@@ -146,16 +146,16 @@ namespace Csla8RestApi.Tests.Dal.MySql
         {
             #region Order
 
-            modelBuilder.Entity<Order>()
-                .HasIndex(e => e.OrderCode)
+            modelBuilder.Entity<Product>()
+                .HasIndex(e => e.ProductCode)
                 .IsUnique();
 
             #endregion
 
             #region OrderLine
 
-            modelBuilder.Entity<OrderLine>()
-                .HasIndex(e => new { e.OrderKey, e.OrderLineCode })
+            modelBuilder.Entity<Part>()
+                .HasIndex(e => new { e.PeoductKey, e.PartKey })
                 .IsUnique();
 
             #endregion

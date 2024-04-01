@@ -42,7 +42,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Command
             var counts = await DbContext.Teams
                 .Include(e => e.Players)
                 .Where(e => teamName == "" || e.TeamName!.Contains(teamName))
-                .Select(e => new { e.TeamKey, Count = e.Players!.Count })
+                .Select(e => new { e.TeamKey, e.Players!.Count })
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -51,10 +51,10 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Command
                     e => e.Count,
                     (key, grp) => new CountTeamsResultDao
                     {
-                        ItemCount = key,
-                        CountOfTeams = grp.Count()
+                        PlayerCount = key,
+                        TeamCountByPlayerCount = grp.Count()
                     })
-                .OrderByDescending(o => o.ItemCount)
+                .OrderByDescending(o => o.PlayerCount)
                 .ToList();
 
             if (list.Count == 0)

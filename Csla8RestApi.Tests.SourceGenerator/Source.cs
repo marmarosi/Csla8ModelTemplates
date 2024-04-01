@@ -142,7 +142,7 @@ namespace Csla8RestApi.Tests.SourceGenerator
             string content
             )
         {
-            //CheckFolder(Path.GetDirectoryName(filePath));
+            CheckFolder(Path.GetDirectoryName(filePath));
             File.WriteAllText(filePath, content);
         }
 

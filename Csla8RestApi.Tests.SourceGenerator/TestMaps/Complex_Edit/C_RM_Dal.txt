@@ -1,0 +1,6 @@
+Snippet:        Complex_Edit\C_RM_Dal.snippet
+Project:        Contract
+FileName:       I===Dal
+
+root_name:      product
+ROOT_MODEL:     Product

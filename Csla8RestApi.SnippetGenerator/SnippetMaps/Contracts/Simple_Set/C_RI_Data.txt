@@ -1,0 +1,10 @@
+Source:         Simple\Set\SimpleTeamSetItemData.cs
+Target:         C_RI_Data.snippet
+Title:          Contract | Editable list item data objects
+Description:    Defines the data objects of an editable child model.
+Shortcut:       c8ssrio
+Test:           Contract | ===SetItemData
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

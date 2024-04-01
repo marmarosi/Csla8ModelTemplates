@@ -1,6 +1,0 @@
-Snippet:        Simple_List\C_RC_Dal.snippet
-Project:        Contract
-FileName:       I===ListDal
-
-root_name:      order
-ROOT_MODEL:     Order

@@ -1,0 +1,6 @@
+Snippet:        Selection_WithCode\C_RC_Dal.snippet
+Project:        Contract
+FileName:       I===ChoiceDal
+
+root_name:      product
+ROOT_MODEL:     Product

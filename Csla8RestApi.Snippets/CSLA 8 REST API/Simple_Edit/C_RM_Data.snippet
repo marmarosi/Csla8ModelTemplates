@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Contract | Editable model data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of an editable root model.</Description>
+            <Shortcut>c8sermo</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the editable $root_name$ data.
+    /// </summary>
+    public class $ROOT_MODEL$Data
+    {
+        public string? $ROOT_MODEL$Code { get; set; }
+        public string? $ROOT_MODEL$Name { get; set; }
+        public DateTimeOffset? Timestamp { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data access object of the editable $root_name$ object.
+    /// </summary>
+    public class $ROOT_MODEL$Dao : $ROOT_MODEL$Data
+    {
+        public long? $ROOT_MODEL$Key { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data transfer object of the editable $root_name$ object.
+    /// </summary>
+    public class $ROOT_MODEL$Dto : $ROOT_MODEL$Data
+    {
+        public string? $ROOT_MODEL$Id { get; set; }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

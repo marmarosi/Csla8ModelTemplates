@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
+  </ItemGroup>
+
 </Project>

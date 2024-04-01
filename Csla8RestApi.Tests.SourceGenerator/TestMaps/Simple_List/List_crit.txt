@@ -1,6 +1,0 @@
-Snippet:        Simple_List\C_RC_Crit.snippet
-Project:        Contract
-FileName:       ===ListCriteria
-
-root_name:      order
-ROOT_MODEL:     Order

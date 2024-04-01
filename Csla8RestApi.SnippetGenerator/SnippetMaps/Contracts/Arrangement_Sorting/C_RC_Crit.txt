@@ -1,0 +1,10 @@
+Source:         Arrangement\Sorting\SortedTeamListCriteria.cs
+Target:         C_RC_Crit.snippet
+Title:          Contract | Read-only sorted list criteria
+Description:    Defines the criteria of a read-only root collection.
+Shortcut:       c8asrcc
+Test:           Contract | ===ListCriteria
+
+/// team:       root_name  | product
+SortedTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

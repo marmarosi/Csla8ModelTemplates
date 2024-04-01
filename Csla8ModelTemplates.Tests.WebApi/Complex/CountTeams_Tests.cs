@@ -27,20 +27,20 @@ namespace Csla8ModelTemplates.Tests.WebApi.Complex
             Assert.Equal(4, list.Count);
 
             var item1 = list[0];
-            Assert.Equal(4, item1.ItemCount);
-            Assert.True(item1.CountOfTeams > 0);
+            Assert.Equal(4, item1.PlayerCount);
+            Assert.True(item1.TeamCountByPlayerCount > 0);
 
             var item2 = list[1];
-            Assert.Equal(3, item2.ItemCount);
-            Assert.True(item2.CountOfTeams > 0);
+            Assert.Equal(3, item2.PlayerCount);
+            Assert.True(item2.TeamCountByPlayerCount > 0);
 
             var item3 = list[2];
-            Assert.Equal(2, item3.ItemCount);
-            Assert.True(item3.CountOfTeams > 0);
+            Assert.Equal(2, item3.PlayerCount);
+            Assert.True(item3.TeamCountByPlayerCount > 0);
 
             var item4 = list[3];
-            Assert.Equal(1, item4.ItemCount);
-            Assert.True(item4.CountOfTeams > 0);
+            Assert.Equal(1, item4.PlayerCount);
+            Assert.True(item4.TeamCountByPlayerCount > 0);
         }
     }
 }

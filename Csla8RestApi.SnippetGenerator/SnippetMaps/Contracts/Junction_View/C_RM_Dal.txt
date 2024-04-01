@@ -1,0 +1,9 @@
+Source:         Junction\View\IGroupViewDal.cs
+Target:         C_RM_Dal.snippet
+Title:          Contract | Read-only root model DAL interface
+Description:    Defines the DAL interface of a read-only root model.
+Shortcut:       c8jvrmi
+Test:           Contract | I===ViewDal
+
+/// group:      root_name  | user
+Group:          ROOT_MODEL | User

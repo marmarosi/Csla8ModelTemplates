@@ -1,0 +1,10 @@
+Source:         Simple\List\SimpleTeamListItemData.cs
+Target:         C_RI_Data.snippet
+Title:          Contract | Read-only list item data objects
+Description:    Defines the data objects of a read-only child model.
+Shortcut:       c8slrio
+Test:           Contract | ===ListItemData
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

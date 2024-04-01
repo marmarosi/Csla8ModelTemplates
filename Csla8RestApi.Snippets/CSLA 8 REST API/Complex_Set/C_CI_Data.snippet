@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Contract | Editable child list item data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of an editable child model.</Description>
+            <Shortcut>c8cscio</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the editable team set $child_name$ data.
+    /// </summary>
+    public class $ROOT_MODEL$Set$CHILD_MODEL$Data
+    {
+        public string? $CHILD_MODEL$Code { get; set; }
+        public string? $CHILD_MODEL$Name { get; set; }
+        [JsonIgnore]
+#pragma warning disable S1104
+        public string? __$root_variable$Code; // for error messages
+#pragma warning restore S1104
+    }
+
+    /// <summary>
+    /// Defines the data access object of the editable team set $child_name$ object.
+    /// </summary>
+    public class $ROOT_MODEL$Set$CHILD_MODEL$Dao : $ROOT_MODEL$Set$CHILD_MODEL$Data
+    {
+        public long? $CHILD_MODEL$Key { get; set; }
+        public long? $ROOT_MODEL$Key { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data transfer object of the editable team set $child_name$ object.
+    /// </summary>
+    public class $ROOT_MODEL$Set$CHILD_MODEL$Dto : $ROOT_MODEL$Set$CHILD_MODEL$Data
+    {
+        public string? $CHILD_MODEL$Id { get; set; }
+        public string? $ROOT_MODEL$Id { get; set; }
+
+        public $ROOT_MODEL$Set$CHILD_MODEL$Dao ToDao()
+        {
+            return new $ROOT_MODEL$Set$CHILD_MODEL$Dao
+            {
+                $CHILD_MODEL$Key = KeyHash.Decode(ID.$CHILD_MODEL$, $CHILD_MODEL$Id),
+                $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, $ROOT_MODEL$Id),
+                $CHILD_MODEL$Code = $CHILD_MODEL$Code,
+                $CHILD_MODEL$Name = $CHILD_MODEL$Name,
+                __$root_variable$Code = __$root_variable$Code
+            };
+        }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

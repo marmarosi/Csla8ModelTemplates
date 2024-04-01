@@ -1,0 +1,7 @@
+Snippet:        Complex_List\C_CI_Data.snippet
+Project:        Contract
+FileName:       ===List---Data
+
+child_name:     part
+CHILD_MODEL:    Part
+ROOT_MODEL:     Product

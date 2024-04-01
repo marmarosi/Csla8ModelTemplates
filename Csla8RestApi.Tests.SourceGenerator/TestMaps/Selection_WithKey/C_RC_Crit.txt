@@ -1,0 +1,6 @@
+Snippet:        Selection_WithKey\C_RC_Crit.snippet
+Project:        Contract
+FileName:       ===ChoiceCriteria
+
+root_name:      product
+ROOT_MODEL:     Product

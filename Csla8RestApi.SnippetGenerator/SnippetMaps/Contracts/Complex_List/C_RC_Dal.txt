@@ -1,0 +1,9 @@
+Source:         Complex\List\ITeamListDal.cs
+Target:         C_RC_Dal.snippet
+Title:          Contract | Read-only root list DAL interface
+Description:    Defines the DAL interface of a read-only root collection.
+Shortcut:       c8clrci
+Test:           Contract | I===ListDal
+
+/// team:       root_name  | product
+Team:           ROOT_MODEL | Product

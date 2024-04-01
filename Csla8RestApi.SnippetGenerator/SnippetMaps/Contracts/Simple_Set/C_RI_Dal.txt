@@ -1,0 +1,9 @@
+Source:         Simple\Set\ISimpleTeamSetItemDal.cs
+Target:         C_RI_Dal.snippet
+Title:          Contract | Editable list item DAL interface
+Description:    Defines the DAL interface of an editable child model.
+Shortcut:       c8ssrii
+Test:           Contract | I===SetItemDal
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product

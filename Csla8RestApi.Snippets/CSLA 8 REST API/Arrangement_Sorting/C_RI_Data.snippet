@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Contract | Read-only sorted list item data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of a read-only child model.</Description>
+            <Shortcut>c8ascmo</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the read-only sorted $root_name$ list item data.
+    /// </summary>
+    public class $ROOT_MODEL$ListItemData
+    {
+        public string? $ROOT_MODEL$Code { get; set; }
+        public string? $ROOT_MODEL$Name { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data access object of the read-only sorted $root_name$ list item object.
+    /// </summary>
+    public class $ROOT_MODEL$ListItemDao : $ROOT_MODEL$ListItemData
+    {
+        public long? $ROOT_MODEL$Key { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data transfer object of the read-only sorted $root_name$ list item object.
+    /// </summary>
+    public class $ROOT_MODEL$ListItemDto : $ROOT_MODEL$ListItemData
+    {
+        public string? $ROOT_MODEL$Id { get; set; }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

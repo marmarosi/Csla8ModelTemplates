@@ -1,0 +1,10 @@
+Source:         Complex\View\TeamViewCriteria.cs
+Target:         C_RM_Crit.snippet
+Title:          Contract | Read-only root model criteria
+Description:    Defines the criteria of a read-only root model.
+Shortcut:       c8cvrmc
+Test:           Contract | ===ViewCriteria
+
+/// team:       root_name     | product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

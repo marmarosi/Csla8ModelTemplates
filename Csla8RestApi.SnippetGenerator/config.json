@@ -7,6 +7,15 @@
     {
       "MapBasePath": ".\\SnippetMaps\\Contracts",
       "SourceBasePath": "..\\Csla8ModelTemplates.Contracts"
+    }, {
+      "MapBasePath": ".\\SnippetMaps\\Dal",
+      "SourceBasePath": "..\\Csla8ModelTemplates.Dal.MySql"
+    }, {
+      "MapBasePath": ".\\SnippetMaps\\Models",
+      "SourceBasePath": "..\\Csla8ModelTemplates.Models"
+    }, {
+      "MapBasePath": ".\\SnippetMaps\\WebApi",
+      "SourceBasePath": "..\\Csla8ModelTemplates.WebApi"
     }
   ]
 }

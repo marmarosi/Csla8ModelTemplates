@@ -1,0 +1,6 @@
+Snippet:        Arrangement_Sorting\C_RC_Sort.snippet
+Project:        Contract
+FileName:       ===ListSortBy
+
+root_name:      product
+ROOT_MODEL:     Product

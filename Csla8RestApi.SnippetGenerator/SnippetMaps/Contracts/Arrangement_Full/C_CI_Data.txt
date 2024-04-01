@@ -1,0 +1,10 @@
+Source:         Arrangement\Full\ArrangedTeamListItemData.cs
+Target:         C_CI_Data.snippet
+Title:          Contract | Read-only sorted-paginated list item data objects
+Description:    Defines the data objects of a read-only child model.
+Shortcut:       c8afcio
+Test:           Contract | ===ListItemData
+
+/// team:       root_name  | product
+ArrangedTeam:   ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

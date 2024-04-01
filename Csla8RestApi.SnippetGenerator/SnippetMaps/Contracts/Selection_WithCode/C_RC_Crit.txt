@@ -1,0 +1,10 @@
+Source:         Selection\WithCode\TeamCodeChoiceCriteria.cs
+Target:         C_RC_Crit.snippet
+Title:          Contract | Read-only code choice criteria
+Description:    Defines the criteria of a read-only root collection.
+Shortcut:       c8lcrcc
+Test:           Contract | ===ChoiceCriteria
+
+/// team:       root_name  | product
+TeamCode:       ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

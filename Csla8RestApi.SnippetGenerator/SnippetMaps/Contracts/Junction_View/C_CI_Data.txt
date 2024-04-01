@@ -1,0 +1,11 @@
+Source:         Junction\View\GroupViewPersonData.cs
+Target:         C_CI_Data.snippet
+Title:          Contract | Read-only child list item data objects
+Description:    Defines the data objects of a read-only child model.
+Shortcut:       c8jvcio
+Test:           Contract | ===View---Data
+
+/// group:      root_name   | user
+/// person:     child_name  | role
+Group:          ROOT_MODEL  | User
+Person:         CHILD_MODEL | Role

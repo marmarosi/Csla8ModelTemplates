@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Contract | Editable child list item criteria</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the criteria of an editable child model.</Description>
+            <Shortcut>c8cscic</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents the criteria of the editable $child_name$ object.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$Set$CHILD_MODEL$Criteria
+    {
+        public long? $CHILD_MODEL$Key { get; set; }
+        [JsonIgnore]
+        public string? __$root_variable$Code { get; set; } // for error messages
+        [JsonIgnore]
+        public string? __$child_variable$Code { get; set; } // for error messages
+
+        public $ROOT_MODEL$Set$CHILD_MODEL$Criteria()
+        { }
+
+        public $ROOT_MODEL$Set$CHILD_MODEL$Criteria(
+            long? $child_variable$Key
+            )
+        {
+            $CHILD_MODEL$Key = $child_variable$Key;
+        }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>child_variable</ID>
+                    <ToolTip>The variable name of a child model instance.</ToolTip>
+                    <Default>child_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

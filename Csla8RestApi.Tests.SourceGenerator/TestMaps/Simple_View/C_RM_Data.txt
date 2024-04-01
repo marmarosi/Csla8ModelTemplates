@@ -1,0 +1,6 @@
+Snippet:        Simple_View\C_RM_Data.snippet
+Project:        Contract
+FileName:       ===ViewData
+
+root_name:      product
+ROOT_MODEL:     Product

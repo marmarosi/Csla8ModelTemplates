@@ -1,0 +1,11 @@
+Source:         Complex\Set\TeamSetPlayerData.cs
+Target:         C_CI_Data.snippet
+Title:          Contract | Editable child list item data objects
+Description:    Defines the data objects of an editable child model.
+Shortcut:       c8cscio
+Test:           Contract | ===Set---Data
+
+/// player:     child_name     | part
+Player:         CHILD_MODEL    | Part
+Team:           ROOT_MODEL     | Product
+team:           root_variable  | product

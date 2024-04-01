@@ -1,0 +1,6 @@
+using Csla8RestApi.Dal.Contracts;
+
+namespace Csla8RestApi.Tests.Contracts.Complex.Set
+{
+    $snippet$
+}

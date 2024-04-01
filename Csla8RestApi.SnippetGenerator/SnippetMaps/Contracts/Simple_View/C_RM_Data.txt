@@ -1,0 +1,10 @@
+Source:         Simple\View\SimpleTeamViewData.cs
+Target:         C_RM_Data.snippet
+Title:          Contract | Read-only model data objects
+Description:    Defines the data objects of a read-only root model.
+Shortcut:       c8slrio
+Test:           Contract | ===ViewData
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

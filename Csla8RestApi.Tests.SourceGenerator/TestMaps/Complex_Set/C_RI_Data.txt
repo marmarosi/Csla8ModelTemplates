@@ -1,0 +1,8 @@
+Snippet:        Complex_Set\C_RI_Data.snippet
+Project:        Contract
+FileName:       ===SetItemData
+
+root_name:      product
+ROOT_MODEL:     Product
+CHILD_MODEL:    Part
+child_variable: part

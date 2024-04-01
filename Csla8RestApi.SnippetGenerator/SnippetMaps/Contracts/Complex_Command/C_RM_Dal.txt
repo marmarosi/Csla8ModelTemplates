@@ -1,0 +1,9 @@
+Source:         Complex\Command\ICountTeamsDal.cs
+Target:         C_RM_Dal.snippet
+Title:          Contract | Command model DAL interface
+Description:    Defines the DAL interface of a command model.
+Shortcut:       c8ccrmi
+Test:           Contract | I+++Dal
+
+/// count teams by player count: command_name  | count products by part count
+CountTeams:     COMMAND_MODEL | CountProducts

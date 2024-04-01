@@ -1,0 +1,6 @@
+Snippet:        Tree_View\C_RC_Dal.snippet
+Project:        Contract
+FileName:       I===TreeDal
+
+root_name:      message
+ROOT_MODEL:     Message

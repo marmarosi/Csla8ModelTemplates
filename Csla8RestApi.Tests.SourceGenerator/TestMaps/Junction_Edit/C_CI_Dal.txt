@@ -1,0 +1,8 @@
+Snippet:        Junction_Edit\C_CI_Dal.snippet
+Project:        Contract
+FileName:       I===---Dal
+
+root_name:      user
+child_name:     role
+ROOT_MODEL:     User
+CHILD_MODEL:    Role

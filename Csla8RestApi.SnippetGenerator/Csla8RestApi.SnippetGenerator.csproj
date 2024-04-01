@@ -18,21 +18,159 @@
   <ItemGroup>
     <None Remove="Literal.xml" />
     <None Remove="Snippet.xml" />
-    <None Remove="SnippetMaps\Contracts\Simple\List_crit.txt" />
-    <None Remove="SnippetMaps\Contracts\Simple\List_data.txt" />
-    <None Remove="SnippetMaps\Contracts\Simple\List_If.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Full\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Full\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Full\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Full\C_RM_Sort.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Pagination\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Pagination\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Pagination\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Sorting\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Sorting\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Sorting\C_RC_Sort.txt" />
+    <None Remove="SnippetMaps\Contracts\Arrangement_Sorting\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Command\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Command\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Command\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Edit\C_CI_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Edit\C_CI_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Edit\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Edit\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Edit\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Edit\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_List\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_List\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_List\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_List\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_CI_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_CI_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_RI_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_RI_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_Set\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_View\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_View\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_View\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Complex_View\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_Edit\C_CI_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_Edit\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_Edit\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_Edit\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_Edit\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_View\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_View\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_View\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Junction_View\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithCode\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithCode\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithGuid\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithGuid\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithId\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithId\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithKey\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Selection_WithKey\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Command\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Command\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Edit\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Edit\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Edit\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_List\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_List\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_List\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Set\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Set\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Set\C_RI_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Set\C_RI_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_Set\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_View\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_View\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Contracts\Simple_View\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Tree_View\C_CM_Data.txt" />
+    <None Remove="SnippetMaps\Contracts\Tree_View\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Contracts\Tree_View\C_RC_Dal.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="SnippetMaps\Contracts\Arrangement_Full\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Full\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Full\C_RM_Sort.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Full\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Pagination\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Pagination\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Pagination\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Sorting\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Sorting\C_RC_Sort.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Sorting\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Arrangement_Sorting\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Command\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Command\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Command\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Edit\C_CI_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Edit\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Edit\C_CI_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Edit\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Edit\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Edit\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_List\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_List\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_List\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_List\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_CI_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_RI_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_CI_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_RI_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_Set\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_View\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_View\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_View\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Complex_View\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_Edit\C_CI_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_Edit\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_Edit\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_Edit\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_Edit\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_View\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_View\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_View\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Junction_View\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithCode\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithCode\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithGuid\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithGuid\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithId\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithId\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithKey\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Selection_WithKey\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Command\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Command\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Edit\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Edit\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Edit\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Set\C_RI_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Set\C_RI_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Set\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Set\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_Set\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_View\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_View\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_View\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Tree_View\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Tree_View\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Contracts\Tree_View\C_CM_Data.txt" />
     <Content Include="Templates\Literal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Snippet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SnippetMaps\Contracts\Simple\List_crit.txt" />
-    <Content Include="SnippetMaps\Contracts\Simple\List_data.txt" />
-    <Content Include="SnippetMaps\Contracts\Simple\List_If.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_List\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_List\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Contracts\Simple_List\C_RC_Dal.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +183,12 @@
     <None Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SnippetMaps\Dal\" />
+    <Folder Include="SnippetMaps\Models\" />
+    <Folder Include="SnippetMaps\WebApi\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Contract | Read-only model criteria</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the criteria of a read-only root model.</Description>
+            <Shortcut>c8svrmc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents the criteria of the read-only $root_name$ model.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$ViewParams
+    {
+        public string? $ROOT_MODEL$Id { get; set; }
+
+        public $ROOT_MODEL$ViewParams(
+            string $root_variable$Id
+            )
+        {
+            $ROOT_MODEL$Id = $root_variable$Id;
+        }
+
+        public $ROOT_MODEL$ViewCriteria Decode()
+        {
+            return new $ROOT_MODEL$ViewCriteria
+            {
+                $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, $ROOT_MODEL$Id)
+            };
+        }
+    }
+
+    /// <summary>
+    /// Represents the criteria of the read-only $root_name$ object.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$ViewCriteria
+    {
+        public long? $ROOT_MODEL$Key { get; set; }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

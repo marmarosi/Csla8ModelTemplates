@@ -1,0 +1,10 @@
+Source:         Complex\Edit\TeamCriteria.cs
+Target:         C_RM_Crit.snippet
+Title:          Contract | Editable root model criteria
+Description:    Defines the criteria of an editable root model.
+Shortcut:       c8cermc
+Test:           Contract | ===Criteria
+
+/// team:       root_name     | product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

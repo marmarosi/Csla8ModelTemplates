@@ -1,0 +1,6 @@
+Snippet:        Arrangement_Pagination\C_CI_Data.snippet
+Project:        Contract
+FileName:       ===ListItemData
+
+root_name:      product
+ROOT_MODEL:     Product

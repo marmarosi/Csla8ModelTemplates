@@ -1,0 +1,7 @@
+using Csla8RestApi.Dal.Contracts;
+using System.Text.Json.Serialization;
+
+namespace Csla8RestApi.Tests.Contracts.Complex.Set
+{
+    $snippet$
+}

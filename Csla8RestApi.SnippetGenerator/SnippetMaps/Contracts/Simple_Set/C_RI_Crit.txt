@@ -1,0 +1,11 @@
+Source:         Simple\Set\SimpleTeamSetItemCriteria.cs
+Target:         C_RI_Crit.snippet
+Title:          Contract | Editable list item criteria
+Description:    Defines the criteria of an editable child model.
+Shortcut:       c8ssric
+Test:           Contract | ===SetItemCriteria
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

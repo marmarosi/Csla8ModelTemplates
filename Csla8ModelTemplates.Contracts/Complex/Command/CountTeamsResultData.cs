@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Complex.Command
     /// </summary>
     public class CountTeamsResultData
     {
-        public int ItemCount { get; set; }
-        public int CountOfTeams { get; set; }
+        public int PlayerCount { get; set; }
+        public int TeamCountByPlayerCount { get; set; }
     }
 
     /// <summary>

@@ -1,0 +1,7 @@
+Snippet:        Complex_Set\C_CI_Dal.snippet
+Project:        Contract
+FileName:       I===Set---Dal
+
+child_name:     part
+CHILD_MODEL:    Part
+ROOT_MODEL:     Product

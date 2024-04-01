@@ -1,0 +1,10 @@
+Source:         Junction\View\GroupViewData.cs
+Target:         C_RM_Data.snippet
+Title:          Contract | Read-only root model data objects
+Description:    Defines the data objects of a read-only root model.
+Shortcut:       c8jvrmo
+Test:           Contract | ===ViewData
+
+/// group:      root_name   | user
+Group:          ROOT_MODEL  | User
+Person:         CHILD_MODEL | Role

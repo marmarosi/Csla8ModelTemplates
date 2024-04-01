@@ -1,0 +1,10 @@
+Source:         Selection\WithKey\TeamKeyChoiceCriteria.cs
+Target:         C_RC_Crit.snippet
+Title:          Contract | Read-only key choice criteria
+Description:    Defines the criteria of a read-only root collection.
+Shortcut:       c8lkrcc
+Test:           Contract | ===ChoiceCriteria
+
+/// team:       root_name  | product
+TeamKey:        ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

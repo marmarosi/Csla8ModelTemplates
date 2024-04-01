@@ -1,6 +1,0 @@
-Snippet:        Simple_List\C_RI_Data.snippet
-Project:        Contract
-FileName:       ===ListItemData
-
-root_name:      order
-ROOT_MODEL:     Order
