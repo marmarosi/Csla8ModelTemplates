@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Csla8ModelTemplates.WebApi\Csla8ModelTemplates.WebApi.csproj" />
-    <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
+    <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

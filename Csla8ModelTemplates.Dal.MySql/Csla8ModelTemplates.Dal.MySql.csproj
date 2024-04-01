@@ -23,7 +23,7 @@
     <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Entities\Csla8ModelTemplates.Entities.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Resources\Csla8ModelTemplates.Resources.csproj" />
-    <ProjectReference Include="..\Csla8RestApi.Dal\Csla8RestApi.Dal.csproj" />
+    <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
