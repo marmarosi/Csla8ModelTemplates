@@ -5,7 +5,7 @@ using System.Text.Json;
 
 var builder = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("config.json", optional: false);
+    .AddJsonFile("Config.json", optional: false);
 
 IConfiguration config = builder.Build();
 
@@ -19,7 +19,7 @@ var data = new BaseData
 var snippetMapPath = GetAbsolutePath(".\\SnippetMaps");
 
 // Get snippet declarations.
-using var declarationStream = File.OpenRead(GetAbsolutePath(".\\SnippetMaps\\declarations.json"));
+using var declarationStream = File.OpenRead(GetAbsolutePath(".\\SnippetMaps\\Declarations.json"));
 data.Declarations = JsonSerializer.Deserialize<List<Declaration>>(declarationStream)!;
 
 // Get the project path of template sources.

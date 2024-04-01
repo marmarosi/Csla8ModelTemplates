@@ -1,8 +1,8 @@
-using Csla8RestApi.Tests.SourceGenerator.Models;
+using Csla8RestApi.Tests.TestGenerator.Models;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Csla8RestApi.Tests.SourceGenerator
+namespace Csla8RestApi.Tests.TestGenerator
 {
     internal static class Test
     {

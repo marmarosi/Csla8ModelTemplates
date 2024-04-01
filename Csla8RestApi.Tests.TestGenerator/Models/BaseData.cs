@@ -1,4 +1,4 @@
-namespace Csla8RestApi.Tests.SourceGenerator.Models
+namespace Csla8RestApi.Tests.TestGenerator.Models
 {
     internal class BaseData
     {

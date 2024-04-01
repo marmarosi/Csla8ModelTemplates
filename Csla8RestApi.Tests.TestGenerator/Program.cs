@@ -1,20 +1,20 @@
-using Csla8RestApi.Tests.SourceGenerator;
-using Csla8RestApi.Tests.SourceGenerator.Models;
+using Csla8RestApi.Tests.TestGenerator;
+using Csla8RestApi.Tests.TestGenerator.Models;
 using Microsoft.Extensions.Configuration;
 
 var builder = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("config.json", optional: false);
+    .AddJsonFile("Config.json", optional: false);
 
 IConfiguration config = builder.Build();
 
 var data = new BaseData
 {
-    SnippetBasePath = GetAbsolutePath(config.GetValue<string>("SnippetBasePath")),
-    ContractBasePath = GetAbsolutePath(config.GetValue<string>("ContractBasePath")),
-    DalBasePath = GetAbsolutePath(config.GetValue<string>("DalBasePath")),
-    ModelBasePath = GetAbsolutePath(config.GetValue<string>("ModelBasePath")),
-    ControllerBasePath = GetAbsolutePath(config.GetValue<string>("ControllerBasePath"))
+    SnippetBasePath = GetAbsolutePath(config.GetValue<string>("SnippetBasePath")!),
+    ContractBasePath = GetAbsolutePath(config.GetValue<string>("ContractBasePath")!),
+    DalBasePath = GetAbsolutePath(config.GetValue<string>("DalBasePath")!),
+    ModelBasePath = GetAbsolutePath(config.GetValue<string>("ModelBasePath")!),
+    ControllerBasePath = GetAbsolutePath(config.GetValue<string>("ControllerBasePath")!)
 };
 var mapFolder = GetAbsolutePath(GetAbsolutePath(".\\TestMaps"));
 var wrapperRoot = GetAbsolutePath(GetAbsolutePath(".\\Wrappers"));
