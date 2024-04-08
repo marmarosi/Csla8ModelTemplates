@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Arrangement.Sorting
     /// <summary>
     /// Defines the read-only sorted product list item data.
     /// </summary>
-    public class ProductListItemData
+    public abstract class ProductListItemData
     {
         public string? ProductCode { get; set; }
         public string? ProductName { get; set; }

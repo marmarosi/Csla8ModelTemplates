@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.List
     /// <summary>
     /// Defines the read-only part list item data.
     /// </summary>
-    public class ProductListPartData
+    public abstract class ProductListPartData
     {
         public string? PartCode { get; set; }
         public string? PartName { get; set; }

@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Simple.Edit
     /// <summary>
     /// Defines the editable product data.
     /// </summary>
-    public class ProductData
+    public abstract class ProductData
     {
         public string? ProductCode { get; set; }
         public string? ProductName { get; set; }

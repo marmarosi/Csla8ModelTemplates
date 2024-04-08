@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.Command
     /// <summary>
     /// Defines the count products list item data.
     /// </summary>
-    public class CountProductsResultData
+    public abstract class CountProductsResultData
     {
         public int PartCount { get; set; }
         public int ProductCountByPartCount { get; set; }

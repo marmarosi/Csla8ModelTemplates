@@ -6,7 +6,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.Set
     /// <summary>
     /// Defines the editable team set part data.
     /// </summary>
-    public class ProductSetPartData
+    public abstract class ProductSetPartData
     {
         public string? PartCode { get; set; }
         public string? PartName { get; set; }

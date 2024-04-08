@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Junction.Edit
     /// <summary>
     /// Defines the editable user data.
     /// </summary>
-    public class UserData
+    public abstract class UserData
     {
         public string? UserCode { get; set; }
         public string? UserName { get; set; }

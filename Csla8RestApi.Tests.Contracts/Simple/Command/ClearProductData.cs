@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Simple.Command
     /// <summary>
     /// Defines the data access object of the clear product command.
     /// </summary>
-    public class ClearProductData
+    public abstract class ClearProductData
     {
         public string? ProductName { get; set; }
     }

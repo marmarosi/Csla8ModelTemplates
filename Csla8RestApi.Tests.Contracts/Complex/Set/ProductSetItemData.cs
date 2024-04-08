@@ -5,7 +5,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.Set
     /// <summary>
     /// Defines the editable product set item data.
     /// </summary>
-    public class ProductSetItemData
+    public abstract class ProductSetItemData
     {
         public string? ProductCode { get; set; }
         public string? ProductName { get; set; }

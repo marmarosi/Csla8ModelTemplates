@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Junction.View
     /// <summary>
     /// Defines the read-only user data.
     /// </summary>
-    public class UserViewData
+    public abstract class UserViewData
     {
         public string? UserCode { get; set; }
         public string? UserName { get; set; }

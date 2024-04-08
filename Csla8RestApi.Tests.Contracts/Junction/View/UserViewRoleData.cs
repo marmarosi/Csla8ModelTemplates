@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Junction.View
     /// <summary>
     /// Defines the read-only user-role data.
     /// </summary>
-    public class UserViewRoleData
+    public abstract class UserViewRoleData
     {
         public string? RoleName { get; set; }
     }

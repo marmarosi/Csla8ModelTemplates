@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.View
     /// <summary>
     /// Defines the read-only product data.
     /// </summary>
-    public class ProductViewData
+    public abstract class ProductViewData
     {
         public string? ProductCode { get; set; }
         public string? ProductName { get; set; }

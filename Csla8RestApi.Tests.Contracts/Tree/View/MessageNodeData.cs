@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Tree.View
     /// <summary>
     /// Defines the read-only message node data.
     /// </summary>
-    public class MessageNodeData
+    public abstract class MessageNodeData
     {
         public int? MessageOrder { get; set; }
         public string? MessageName { get; set; }

@@ -5,7 +5,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.Edit
     /// <summary>
     /// Defines the editable part data.
     /// </summary>
-    public class ProductPartData
+    public abstract class ProductPartData
     {
         public string? PartCode { get; set; }
         public string? PartName { get; set; }

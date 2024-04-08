@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Junction.Edit
     /// <summary>
     /// Defines the editable user-role data.
     /// </summary>
-    public class UserRoleData
+    public abstract class UserRoleData
     {
         public string? RoleName { get; set; }
     }

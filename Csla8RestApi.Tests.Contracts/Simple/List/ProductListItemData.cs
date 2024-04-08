@@ -3,7 +3,7 @@ namespace Csla8RestApi.Tests.Contracts.Simple.List
     /// <summary>
     /// Defines the read-only product list item data.
     /// </summary>
-    public class ProductListItemData
+    public abstract class ProductListItemData
     {
         public string? ProductCode { get; set; }
         public string? ProductName { get; set; }

@@ -54,7 +54,7 @@
                 })
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.$ROOT_MODEL$_NotFound);
+                ?? throw new DataNotFoundException(SimpleText.$ROOT_MODEL$_NotFound);
 
             return $root_variable$;
         }
