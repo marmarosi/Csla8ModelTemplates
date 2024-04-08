@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Tree.View
     /// <summary>
     /// Defines the read-only folder node data.
     /// </summary>
-    public class FolderNodeData
+    public abstract class FolderNodeData
     {
         public int? FolderOrder { get; set; }
         public string? FolderName { get; set; }

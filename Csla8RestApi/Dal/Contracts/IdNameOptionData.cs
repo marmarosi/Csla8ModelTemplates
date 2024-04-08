@@ -3,7 +3,7 @@ namespace Csla8RestApi.Dal.Contracts
     /// <summary>
     /// Defines the read-only ID-name option data.
     /// </summary>
-    public class IdNameOptionData
+    public abstract class IdNameOptionData
     {
         public string? Name { get; set; }
     }

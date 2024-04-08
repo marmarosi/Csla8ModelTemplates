@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Full
     /// <summary>
     /// Defines the read-only paginated sorted team list item data.
     /// </summary>
-    public class ArrangedTeamListItemData
+    public abstract class ArrangedTeamListItemData
     {
         public string? TeamCode { get; set; }
         public string? TeamName { get; set; }

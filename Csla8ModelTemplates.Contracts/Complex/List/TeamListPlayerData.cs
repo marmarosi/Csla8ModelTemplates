@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     /// <summary>
     /// Defines the read-only player list item data.
     /// </summary>
-    public class TeamListPlayerData
+    public abstract class TeamListPlayerData
     {
         public string? PlayerCode { get; set; }
         public string? PlayerName { get; set; }

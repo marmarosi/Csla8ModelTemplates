@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.View
     /// <summary>
     /// Defines the read-only player data.
     /// </summary>
-    public class TeamViewPlayerData
+    public abstract class TeamViewPlayerData
     {
         public string? PlayerCode { get; set; }
         public string? PlayerName { get; set; }

@@ -3,7 +3,7 @@ namespace Csla8RestApi.Dal.Contracts
     /// <summary>
     /// Defines the read-only key-name option data.
     /// </summary>
-    public class KeyNameOptionData
+    public abstract class KeyNameOptionData
     {
         public long? Key { get; set; }
         public string? Name { get; set; }

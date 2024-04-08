@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.Set
     /// <summary>
     /// Defines the editable team set item data.
     /// </summary>
-    public class SimpleTeamSetItemData
+    public abstract class SimpleTeamSetItemData
     {
         public string? TeamCode { get; set; }
         public string? TeamName { get; set; }

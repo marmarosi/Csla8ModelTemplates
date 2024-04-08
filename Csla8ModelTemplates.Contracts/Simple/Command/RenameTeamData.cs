@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.Command
     /// <summary>
     /// Defines the data access object of the rename team command.
     /// </summary>
-    public class RenameTeamData
+    public abstract class RenameTeamData
     {
         public string? TeamName { get; set; }
     }

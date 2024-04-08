@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Arrangement.Pagination
     /// <summary>
     /// Defines the read-only paginated team list item data.
     /// </summary>
-    public class PaginatedTeamListItemData
+    public abstract class PaginatedTeamListItemData
     {
         public string? TeamCode { get; set; }
         public string? TeamName { get; set; }

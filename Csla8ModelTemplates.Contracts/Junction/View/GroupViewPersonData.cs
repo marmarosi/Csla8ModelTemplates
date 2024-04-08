@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Junction.View
     /// <summary>
     /// Defines the read-only group-person data.
     /// </summary>
-    public class GroupViewPersonData
+    public abstract class GroupViewPersonData
     {
         public string? PersonName { get; set; }
     }

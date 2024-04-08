@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Junction.View
     /// <summary>
     /// Defines the read-only group data.
     /// </summary>
-    public class GroupViewData
+    public abstract class GroupViewData
     {
         public string? GroupCode { get; set; }
         public string? GroupName { get; set; }

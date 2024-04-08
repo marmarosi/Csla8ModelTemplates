@@ -5,7 +5,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Edit
     /// <summary>
     /// Defines the editable player data.
     /// </summary>
-    public class TeamPlayerData
+    public abstract class TeamPlayerData
     {
         public string? PlayerCode { get; set; }
         public string? PlayerName { get; set; }

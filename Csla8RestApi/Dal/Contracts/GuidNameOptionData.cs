@@ -3,7 +3,7 @@ namespace Csla8RestApi.Dal.Contracts
     /// <summary>
     /// Defines the read-only Guid-name option data.
     /// </summary>
-    public class GuidNameOptionData
+    public abstract class GuidNameOptionData
     {
         public Guid? Guid { get; set; }
         public string? Name { get; set; }

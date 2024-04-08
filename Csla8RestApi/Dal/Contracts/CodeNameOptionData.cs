@@ -3,7 +3,7 @@ namespace Csla8RestApi.Dal.Contracts
     /// <summary>
     /// Defines the read-only code-name option data.
     /// </summary>
-    public class CodeNameOptionData
+    public abstract class CodeNameOptionData
     {
         public string? Code { get; set; }
         public string? Name { get; set; }

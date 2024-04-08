@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.View
     /// <summary>
     /// Defines the read-only team data.
     /// </summary>
-    public class SimpleTeamViewData
+    public abstract class SimpleTeamViewData
     {
         public string? TeamCode { get; set; }
         public string? TeamName { get; set; }

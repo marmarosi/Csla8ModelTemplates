@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Edit
     /// <summary>
     /// Defines the editable team data.
     /// </summary>
-    public class TeamData
+    public abstract class TeamData
     {
         public string? TeamCode { get; set; }
         public string? TeamName { get; set; }

@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Junction.Edit
     /// <summary>
     /// Defines the editable group-person data.
     /// </summary>
-    public class GroupPersonData
+    public abstract class GroupPersonData
     {
         public string? PersonName { get; set; }
     }

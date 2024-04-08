@@ -3,7 +3,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.Command
     /// <summary>
     /// Defines the count teams list item data.
     /// </summary>
-    public class CountTeamsResultData
+    public abstract class CountTeamsResultData
     {
         public int PlayerCount { get; set; }
         public int TeamCountByPlayerCount { get; set; }
