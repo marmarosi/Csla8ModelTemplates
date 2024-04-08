@@ -117,30 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppPrincipal_NoRoles" xml:space="preserve">
-    <value>The application does not use roles.</value>
+  <data name="CountTeams_CountFailed" xml:space="preserve">
+    <value>Counting teams has failed.</value>
   </data>
-  <data name="DalFactory_DalManager_NoConnStr" xml:space="preserve">
-    <value>The connection string of '{0}' database is missing.</value>
+  <data name="Player_DeleteFailed" xml:space="preserve">
+    <value>Deleting the player with code {0} has failed.</value>
   </data>
-  <data name="DalFactory_DalManager_NoDalMngr" xml:space="preserve">
-    <value>The DAL manager type of '{0}' database is missing.</value>
+  <data name="Player_InsertFailed" xml:space="preserve">
+    <value>Creating the new player with code {0} has failed.</value>
   </data>
-  <data name="DalFactory_DalManager_NoDatabases" xml:space="preserve">
-    <value>The database list is empty.</value>
+  <data name="Player_NotFound" xml:space="preserve">
+    <value>The requested player has not been found.</value>
   </data>
-  <data name="DalFactory_DalManager_NotFound" xml:space="preserve">
-    <value>'{0}' type has not been found.</value>
+  <data name="Player_PlayerCodeExists" xml:space="preserve">
+    <value>Player with code {0} already exists.</value>
   </data>
-  <data name="DalFactory_DalManager_WrongKey" xml:space="preserve">
-    <value>'{0}' is invalid.DalManager type.</value>
+  <data name="Player_UpdateFailed" xml:space="preserve">
+    <value>Updating the player with code {0} has failed.</value>
   </data>
-  <data name="PasswordJumbler_InvalidCompatibilityMode" xml:space="preserve">
-    <value>The provided PasswordHasherCompatibilityMode is invalid.</value>
-    <comment>Error when the password hasher doesn't understand the format it's being asked to produce.</comment>
+  <data name="TeamSetItem_Concurrency" xml:space="preserve">
+    <value>The team with code {0} has been changed in the meantime.</value>
   </data>
-  <data name="PasswordJumbler_InvalidIterationCount" xml:space="preserve">
-    <value>The iteration count must be a positive integer.</value>
-    <comment>Error when the iteration count is &amp;lt; 1.</comment>
+  <data name="TeamSetItem_DeleteFailed" xml:space="preserve">
+    <value>Deleting the team with code {0} has failed.</value>
+  </data>
+  <data name="TeamSetItem_InsertFailed" xml:space="preserve">
+    <value>Creating the new team with code {0} has failed.</value>
+  </data>
+  <data name="TeamSetItem_NotFound" xml:space="preserve">
+    <value>The team with code {0} has not been found.</value>
+  </data>
+  <data name="TeamSetItem_TeamCodeExists" xml:space="preserve">
+    <value>Team with code {0} already exists.</value>
+  </data>
+  <data name="TeamSetItem_UpdateFailed" xml:space="preserve">
+    <value>Updating the team with code {0} has failed.</value>
+  </data>
+  <data name="TeamSetPlayer_DeleteFailed" xml:space="preserve">
+    <value>Deleting the player with code [ {0} ] {1} has failed.</value>
+  </data>
+  <data name="TeamSetPlayer_InsertFailed" xml:space="preserve">
+    <value>Creating the new player with code [ {0} ] {1} has failed.</value>
+  </data>
+  <data name="TeamSetPlayer_NotFound" xml:space="preserve">
+    <value>The requested player with code [ {0} ] {1} has not been found.</value>
+  </data>
+  <data name="TeamSetPlayer_PlayerCodeExists" xml:space="preserve">
+    <value>Player with code [ {0} ] {1} already exists.</value>
+  </data>
+  <data name="TeamSetPlayer_UpdateFailed" xml:space="preserve">
+    <value>Updating the player with code [ {0} ] {1} has failed.</value>
+  </data>
+  <data name="Team_Concurrency" xml:space="preserve">
+    <value>The team has been changed in the meantime.</value>
+  </data>
+  <data name="Team_DeleteFailed" xml:space="preserve">
+    <value>Deleting the team has failed.</value>
+  </data>
+  <data name="Team_Delete_Others" xml:space="preserve">
+    <value>Cannot delete the team because others belong to it.</value>
+  </data>
+  <data name="Team_InsertFailed" xml:space="preserve">
+    <value>Creating the new team has failed.</value>
+  </data>
+  <data name="Team_NotFound" xml:space="preserve">
+    <value>The requested team has not been found.</value>
+  </data>
+  <data name="Team_TeamCodeExists" xml:space="preserve">
+    <value>Team with code {0} already exists.</value>
+  </data>
+  <data name="Team_UpdateFailed" xml:space="preserve">
+    <value>Updating the team has failed.</value>
   </data>
 </root>

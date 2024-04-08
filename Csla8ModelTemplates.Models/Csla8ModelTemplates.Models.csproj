@@ -20,8 +20,40 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
-    <ProjectReference Include="..\Csla8ModelTemplates.Resources\Csla8ModelTemplates.Resources.csproj" />
     <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Complex\ComplexText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ComplexText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Junction\JunctionText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>JunctionText.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Simple\SimpleText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SimpleText.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Complex\ComplexText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComplexText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Junction\JunctionText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>JunctionText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Simple\SimpleText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SimpleText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

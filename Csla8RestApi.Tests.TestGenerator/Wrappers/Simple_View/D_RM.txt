@@ -1,0 +1,10 @@
+using Csla8RestApi.Tests.Contracts.Simple.View;
+using Csla8RestApi.Tests.Resources;
+using Csla8RestApi.Dal;
+using Csla8RestApi.Dal.Exceptions;
+using Microsoft.EntityFrameworkCore;
+
+namespace Csla8RestApi.Tests.Dal.MySql.Simple.View
+{
+    $snippet$
+}

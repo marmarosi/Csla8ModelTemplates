@@ -117,6 +117,7 @@
     <None Include="CSLA 8 REST API\Simple_View\C_RM_Crit.snippet" />
     <None Include="CSLA 8 REST API\Simple_View\C_RM_Dal.snippet" />
     <None Include="CSLA 8 REST API\Simple_View\C_RM_Data.snippet" />
+    <None Include="CSLA 8 REST API\Simple_View\D_RM.snippet" />
     <None Include="CSLA 8 REST API\Tree_View\C_CM_Data.snippet" />
     <None Include="CSLA 8 REST API\Tree_View\C_RC_Crit.snippet" />
     <None Include="CSLA 8 REST API\Tree_View\C_RC_Dal.snippet" />

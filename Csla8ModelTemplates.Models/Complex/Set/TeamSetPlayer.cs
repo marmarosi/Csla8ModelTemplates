@@ -4,11 +4,10 @@ using Csla.Data;
 using Csla.Rules;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Complex.Set;
+using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models;
 using Csla8RestApi.Models.Utilities;
 using Csla8RestApi.Models.Validations;
-using Csla8RestApi.Dal.Contracts;
-using Csla8ModelTemplates.Resources;
 
 namespace Csla8ModelTemplates.Models.Complex.Set
 {
@@ -16,7 +15,7 @@ namespace Csla8ModelTemplates.Models.Complex.Set
     /// Represents an editable player object.
     /// </summary>
     [Serializable]
-    [ValidationResourceType(typeof(ValidationText), ObjectName = "Player")]
+    [ValidationResourceType(typeof(ComplexText), ObjectName = "Player")]
     public class TeamSetPlayer : EditableModel<TeamSetPlayer, TeamSetPlayerDto>
     {
         #region Properties
@@ -130,7 +129,7 @@ namespace Csla8ModelTemplates.Models.Complex.Set
                 TeamSetItem team = (TeamSetItem)target.Parent.Parent;
                 var count = team.Players.Count(player => player.PlayerCode == target.PlayerCode);
                 if (count > 1)
-                    context.AddErrorResult(ValidationText.Player_PlayerCode_NotUnique);
+                    context.AddErrorResult(ComplexText.Player_PlayerCode_NotUnique);
             }
         }
 

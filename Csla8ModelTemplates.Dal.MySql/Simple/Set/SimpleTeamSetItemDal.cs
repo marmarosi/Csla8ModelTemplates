@@ -1,6 +1,5 @@
 using Csla8ModelTemplates.Contracts.Simple.Set;
 using Csla8ModelTemplates.Entities;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -45,7 +44,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                 )
                 .FirstOrDefaultAsync();
             if (team is not null)
-                throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
+                throw new DataExistException(SimpleText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
 
             // Create the new team.
             team = new Team
@@ -57,7 +56,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new InsertFailedException(DalText.SimpleTeamSetItem_InsertFailed.With(team.TeamCode!));
+                throw new InsertFailedException(SimpleText.SimpleTeamSetItem_InsertFailed.With(team.TeamCode!));
 
             // Return new data.
             dao.TeamKey = team.TeamKey;
@@ -82,9 +81,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                     e.TeamKey == dao.TeamKey
                 )
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.SimpleTeamSetItem_NotFound.With(dao.TeamCode!));
+                ?? throw new DataNotFoundException(SimpleText.SimpleTeamSetItem_NotFound.With(dao.TeamCode!));
             if (team.Timestamp != dao.Timestamp)
-                throw new ConcurrencyException(DalText.SimpleTeamSetItem_Concurrency.With(dao.TeamCode!));
+                throw new ConcurrencyException(SimpleText.SimpleTeamSetItem_Concurrency.With(dao.TeamCode!));
 
             // Check unique team code.
             if (team.TeamCode != dao.TeamCode)
@@ -96,7 +95,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                     )
                     .CountAsync();
                 if (exist > 0)
-                    throw new DataExistException(DalText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
+                    throw new DataExistException(SimpleText.SimpleTeamSetItem_TeamCodeExists.With(dao.TeamCode!));
             }
 
             // Update the team.
@@ -105,7 +104,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new UpdateFailedException(DalText.SimpleTeamSetItem_UpdateFailed.With(team.TeamCode!));
+                throw new UpdateFailedException(SimpleText.SimpleTeamSetItem_UpdateFailed.With(team.TeamCode!));
 
             // Return new data.
             dao.Timestamp = team.Timestamp;
@@ -132,14 +131,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
                  )
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.SimpleTeamSetItem_NotFoundKey);
+                ?? throw new DataNotFoundException(SimpleText.SimpleTeamSetItem_NotFoundKey);
 
             // Check references.
             //int dependents = 0;
 
             //dependents = await DbContext.Others.CountAsync(e => e.TeamKey == criteria.TeamKey);
             //if (dependents > 0)
-            //    throw new DeleteFailedException(DalText.SimpleTeamSetItem_Delete_Others);
+            //    throw new DeleteFailedException(SimpleText.SimpleTeamSetItem_Delete_Others);
 
             // Delete references.
             var players = await DbContext.Players
@@ -150,14 +149,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Set
 
             count = await DbContext.SaveChangesAsync();
             if (count != players.Count)
-                throw new DeleteFailedException(DalText.SimpleTeamSetItem_Delete_Players.With(team.TeamCode!));
+                throw new DeleteFailedException(SimpleText.SimpleTeamSetItem_Delete_Players.With(team.TeamCode!));
 
             // Delete the team.
             DbContext.Teams.Remove(team);
 
             count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new DeleteFailedException(DalText.SimpleTeamSetItem_DeleteFailed.With(team.TeamCode!));
+                throw new DeleteFailedException(SimpleText.SimpleTeamSetItem_DeleteFailed.With(team.TeamCode!));
         }
 
         #endregion Delete

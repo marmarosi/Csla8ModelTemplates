@@ -1,7 +1,7 @@
 using Csla8ModelTemplates.Configuration;
-using Csla8RestApi.Models.Utilities;
+using Csla8ModelTemplates.Dal;
 using Csla8RestApi.Dal;
-using Csla8ModelTemplates.Resources;
+using Csla8RestApi.Models.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,6 +1,5 @@
 using Csla8ModelTemplates.Contracts.Junction.Edit;
 using Csla8ModelTemplates.Entities;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +58,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                 })
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Group_NotFound);
+                ?? throw new DataNotFoundException(JunctionText.Group_NotFound);
 
             return group;
         }
@@ -83,7 +82,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                 )
                 .FirstOrDefaultAsync();
             if (group is not null)
-                throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode!));
+                throw new DataExistException(JunctionText.Group_GroupCodeExists.With(dao.GroupCode!));
 
             // Create the new group.
             group = new Group
@@ -95,7 +94,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new InsertFailedException(DalText.Group_InsertFailed);
+                throw new InsertFailedException(JunctionText.Group_InsertFailed);
 
             // Return new data.
             dao.GroupKey = group.GroupKey;
@@ -120,9 +119,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     e.GroupKey == dao.GroupKey
                 )
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Group_NotFound);
+                ?? throw new DataNotFoundException(JunctionText.Group_NotFound);
             if (group.Timestamp != dao.Timestamp)
-                throw new ConcurrencyException(DalText.Group_Concurrency);
+                throw new ConcurrencyException(JunctionText.Group_Concurrency);
 
             // Check unique group code.
             if (group.GroupCode != dao.GroupCode)
@@ -131,7 +130,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     .Where(e => e.GroupCode == dao.GroupCode && e.GroupKey != group.GroupKey)
                     .CountAsync();
                 if (exist > 0)
-                    throw new DataExistException(DalText.Group_GroupCodeExists.With(dao.GroupCode!));
+                    throw new DataExistException(JunctionText.Group_GroupCodeExists.With(dao.GroupCode!));
             }
 
             // Update the group.
@@ -141,7 +140,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new UpdateFailedException(DalText.Group_UpdateFailed);
+                throw new UpdateFailedException(JunctionText.Group_UpdateFailed);
 
             // Return new data.
             dao.Timestamp = group.Timestamp;
@@ -166,21 +165,21 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                  )
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Group_NotFound);
+                ?? throw new DataNotFoundException(JunctionText.Group_NotFound);
 
             // Check or delete references
             //int dependents = 0;
 
             //dependents = await DbContext.Others.CountAsync(e => e.GroupKey == criteria.GroupKey);
             //if (dependents > 0)
-            //    throw new DeleteFailedException(DalText.Group_Delete_Others);
+            //    throw new DeleteFailedException(JunctionText.Group_Delete_Others);
 
             // Delete the group.
             DbContext.Groups.Remove(group);
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new DeleteFailedException(DalText.Group_DeleteFailed);
+                throw new DeleteFailedException(JunctionText.Group_DeleteFailed);
         }
 
         #endregion Delete

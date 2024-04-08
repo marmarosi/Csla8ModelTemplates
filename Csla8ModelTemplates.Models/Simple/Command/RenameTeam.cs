@@ -1,9 +1,8 @@
 using Csla;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Simple.Command;
-using Csla8RestApi.Models;
 using Csla8RestApi.Dal.Contracts;
-using Csla8ModelTemplates.Resources;
+using Csla8RestApi.Models;
 
 namespace Csla8ModelTemplates.Models.Simple.Command
 {
@@ -53,7 +52,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
                 throw new BrokenRulesException(
                     nameof(RenameTeam),
                     nameof(TeamName),
-                    ValidationText.RenameTeam_TeamName_Required
+                    SimpleText.RenameTeam_TeamName_Required
                     );
         }
 

@@ -2,11 +2,10 @@ using Csla;
 using Csla.Data;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Simple.Edit;
+using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models;
 using Csla8RestApi.Models.Utilities;
 using Csla8RestApi.Models.Validations;
-using Csla8RestApi.Dal.Contracts;
-using Csla8ModelTemplates.Resources;
 
 namespace Csla8ModelTemplates.Models.Simple.Edit
 {
@@ -14,7 +13,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
     /// Represents an editable team object.
     /// </summary>
     [Serializable]
-    [ValidationResourceType(typeof(ValidationText), ObjectName = "SimpleTeam")]
+    [ValidationResourceType(typeof(SimpleText), ObjectName = "SimpleTeam")]
     public class SimpleTeam : EditableModel<SimpleTeam, SimpleTeamDto>
     {
         #region Properties

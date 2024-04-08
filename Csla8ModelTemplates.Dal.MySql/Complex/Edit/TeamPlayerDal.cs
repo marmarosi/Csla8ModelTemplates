@@ -1,7 +1,6 @@
 using Csla8ModelTemplates.Contracts.Complex.Edit;
 using Csla8RestApi.Dal.Exceptions;
 using Csla8ModelTemplates.Entities;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,7 +45,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                 )
                 .FirstOrDefaultAsync();
             if (player is not null)
-                throw new DataExistException(DalText.Player_PlayerCodeExists.With(dao.PlayerCode!));
+                throw new DataExistException(ComplexText.Player_PlayerCodeExists.With(dao.PlayerCode!));
 
             // Create the new player.
             player = new Player
@@ -59,7 +58,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new InsertFailedException(DalText.Player_InsertFailed.With(player.PlayerCode!));
+                throw new InsertFailedException(ComplexText.Player_InsertFailed.With(player.PlayerCode!));
 
             // Return new data.
             dao.PlayerKey = player.PlayerKey;
@@ -83,7 +82,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     e.PlayerKey == dao.PlayerKey
                 )
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Player_NotFound);
+                ?? throw new DataNotFoundException(ComplexText.Player_NotFound);
 
             // Check unique player code.
             if (player.PlayerCode != dao.PlayerCode)
@@ -96,7 +95,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     )
                     .CountAsync();
                 if (exist > 0)
-                    throw new DataExistException(DalText.Player_PlayerCodeExists.With(dao.PlayerCode!));
+                    throw new DataExistException(ComplexText.Player_PlayerCodeExists.With(dao.PlayerCode!));
             }
 
             // Update the player.
@@ -105,7 +104,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new UpdateFailedException(DalText.Player_UpdateFailed.With(player.PlayerCode!));
+                throw new UpdateFailedException(ComplexText.Player_UpdateFailed.With(player.PlayerCode!));
 
             // Return new data.
         }
@@ -131,14 +130,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                  )
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Player_NotFound);
+                ?? throw new DataNotFoundException(ComplexText.Player_NotFound);
 
             // Delete the player.
             DbContext.Players.Remove(player);
 
             count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new DeleteFailedException(DalText.Player_DeleteFailed.With(player.PlayerCode!));
+                throw new DeleteFailedException(ComplexText.Player_DeleteFailed.With(player.PlayerCode!));
         }
 
         #endregion Delete

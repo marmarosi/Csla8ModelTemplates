@@ -1,5 +1,4 @@
 using Csla8ModelTemplates.Contracts.Junction.View;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +58,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.View
                 })
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Group_NotFound);
+                ?? throw new DataNotFoundException(JunctionText.Group_NotFound);
 
             return group;
         }

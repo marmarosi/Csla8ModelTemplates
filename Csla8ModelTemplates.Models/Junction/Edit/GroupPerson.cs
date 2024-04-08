@@ -4,11 +4,10 @@ using Csla.Data;
 using Csla.Rules;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Junction.Edit;
+using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models;
 using Csla8RestApi.Models.Utilities;
 using Csla8RestApi.Models.Validations;
-using Csla8RestApi.Dal.Contracts;
-using Csla8ModelTemplates.Resources;
 
 namespace Csla8ModelTemplates.Models.Junction.Edit
 {
@@ -16,7 +15,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
     /// Represents an editable group-person object.
     /// </summary>
     [Serializable]
-    [ValidationResourceType(typeof(ValidationText), ObjectName = "GroupPerson")]
+    [ValidationResourceType(typeof(JunctionText), ObjectName = "GroupPerson")]
     public class GroupPerson : EditableModel<GroupPerson, GroupPersonDto>
     {
         #region Properties
@@ -105,7 +104,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
                 Group group = (Group)target.Parent.Parent;
                 var count = group.Persons.Count(gp => gp.PersonId == target.PersonId);
                 if (count > 1)
-                    context.AddErrorResult(ValidationText.GroupPerson_PersonId_NotUnique);
+                    context.AddErrorResult(JunctionText.GroupPerson_PersonId_NotUnique);
             }
         }
 

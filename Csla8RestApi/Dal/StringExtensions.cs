@@ -1,8 +1,7 @@
-using System;
 using System.Diagnostics;
 using System.Globalization;
 
-namespace Csla8ModelTemplates.Resources
+namespace Csla8RestApi.Dal
 {
     /// <summary>
     /// This class provides helper methods for strings.

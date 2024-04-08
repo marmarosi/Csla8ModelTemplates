@@ -1,5 +1,4 @@
 using Csla8ModelTemplates.Contracts;
-using Csla8ModelTemplates.Resources;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

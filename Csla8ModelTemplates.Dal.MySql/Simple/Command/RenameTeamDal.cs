@@ -1,5 +1,4 @@
 using Csla8ModelTemplates.Contracts.Simple.Command;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -41,14 +40,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Command
             var team = await DbContext.Teams
                 .Where(e => e.TeamKey == dao.TeamKey)
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.RenameTeam_NotFound);
+                ?? throw new DataNotFoundException(SimpleText.SimpleTeam_NotFound);
 
             // Update the team.
             team.TeamName = dao.TeamName;
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new CommandFailedException(DalText.RenameTeam_RenameFailed);
+                throw new CommandFailedException(SimpleText.SimpleTeam_RenameFailed);
         }
 
         #endregion

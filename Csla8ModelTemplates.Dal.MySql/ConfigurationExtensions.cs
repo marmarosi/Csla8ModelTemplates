@@ -1,6 +1,6 @@
 using Csla8ModelTemplates.Contracts;
+using Csla8ModelTemplates.Dal;
 using Csla8ModelTemplates.Dal.MySql;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;

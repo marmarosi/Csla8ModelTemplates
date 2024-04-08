@@ -1,5 +1,4 @@
 using Csla8ModelTemplates.Contracts.Complex.Command;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -58,7 +57,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Command
                 .ToList();
 
             if (list.Count == 0)
-                throw new CommandFailedException(DalText.CountTeams_CountFailed);
+                throw new CommandFailedException(ComplexText.CountTeams_CountFailed);
 
             return list;
         }

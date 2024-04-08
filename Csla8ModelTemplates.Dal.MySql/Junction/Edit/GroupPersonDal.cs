@@ -1,6 +1,5 @@
 using Csla8ModelTemplates.Contracts.Junction.Edit;
 using Csla8ModelTemplates.Entities;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -47,11 +46,11 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                 .AsNoTracking()
                 .FirstOrDefaultAsync();
             if (groupPerson is not null)
-                throw new DataExistException(DalText.GroupPerson_Exists.With(dao.PersonName!));
+                throw new DataExistException(JunctionText.GroupPerson_Exists.With(dao.PersonName!));
 
             // Create the new group-person.
             Person person = await DbContext.Persons.FindAsync(dao.PersonKey)
-                ?? throw new DataExistException(DalText.GroupPerson_NotFound.With(dao.PersonName!));
+                ?? throw new DataExistException(JunctionText.GroupPerson_NotFound.With(dao.PersonName!));
             groupPerson = new GroupPerson
             {
                 GroupKey = dao.GroupKey,
@@ -61,7 +60,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new InsertFailedException(DalText.GroupPerson_InsertFailed.With(dao.PersonName!));
+                throw new InsertFailedException(JunctionText.GroupPerson_InsertFailed.With(dao.PersonName!));
 
             // Return new data.
             dao.PersonName = person.PersonName;
@@ -87,14 +86,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Junction.Edit
                     )
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.GroupPerson_NotFound.With(dao.PersonName!));
+                ?? throw new DataNotFoundException(JunctionText.GroupPerson_NotFound.With(dao.PersonName!));
 
             // Delete the group-person.
             DbContext.GroupPersons.Remove(groupPerson);
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new DeleteFailedException(DalText.GroupPerson_DeleteFailed.With(dao.PersonName!));
+                throw new DeleteFailedException(JunctionText.GroupPerson_DeleteFailed.With(dao.PersonName!));
         }
 
         #endregion Delete

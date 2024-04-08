@@ -1,0 +1,11 @@
+Source:         Simple\View\SimpleTeamViewDal.cs
+Target:         D_RM.snippet
+Title:          DAL | Read-only model
+Description:    Implements the data access of the read-only root model.
+Shortcut:       c8svrmd
+Test:           DAL | ===ViewDal
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

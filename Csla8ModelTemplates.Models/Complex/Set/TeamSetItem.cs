@@ -2,11 +2,10 @@ using Csla;
 using Csla.Data;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Complex.Set;
+using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models;
 using Csla8RestApi.Models.Utilities;
 using Csla8RestApi.Models.Validations;
-using Csla8RestApi.Dal.Contracts;
-using Csla8ModelTemplates.Resources;
 
 namespace Csla8ModelTemplates.Models.Complex.Set
 {
@@ -14,7 +13,7 @@ namespace Csla8ModelTemplates.Models.Complex.Set
     /// Represents an editable team object.
     /// </summary>
     [Serializable]
-    [ValidationResourceType(typeof(ValidationText), ObjectName = "TeamSetItem")]
+    [ValidationResourceType(typeof(ComplexText), ObjectName = "TeamSetItem")]
     public class TeamSetItem : EditableModel<TeamSetItem, TeamSetItemDto>
     {
         #region Properties

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Csla8ModelTemplates.Resources {
+namespace Csla8ModelTemplates.Models.Complex {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Csla8ModelTemplates.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ValidationText {
+    internal class ComplexText {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ValidationText() {
+        internal ComplexText() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Csla8ModelTemplates.Resources.ValidationText", typeof(ValidationText).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Csla8ModelTemplates.Models.Complex.ComplexText", typeof(ComplexText).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Csla8ModelTemplates.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,9 @@ namespace Csla8ModelTemplates.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The person key is not unique..
-        /// </summary>
-        public static string GroupPerson_PersonId_NotUnique {
-            get {
-                return ResourceManager.GetString("GroupPerson_PersonId_NotUnique", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The player code cannot exceed {1} characters..
         /// </summary>
-        public static string Player_PlayerCode_MaxLength {
+        internal static string Player_PlayerCode_MaxLength {
             get {
                 return ResourceManager.GetString("Player_PlayerCode_MaxLength", resourceCulture);
             }
@@ -81,7 +72,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The player code is not unique..
         /// </summary>
-        public static string Player_PlayerCode_NotUnique {
+        internal static string Player_PlayerCode_NotUnique {
             get {
                 return ResourceManager.GetString("Player_PlayerCode_NotUnique", resourceCulture);
             }
@@ -90,7 +81,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The player code is required..
         /// </summary>
-        public static string Player_PlayerCode_Required {
+        internal static string Player_PlayerCode_Required {
             get {
                 return ResourceManager.GetString("Player_PlayerCode_Required", resourceCulture);
             }
@@ -99,7 +90,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The player name cannot exceed {1} characters..
         /// </summary>
-        public static string Player_PlayerName_MaxLength {
+        internal static string Player_PlayerName_MaxLength {
             get {
                 return ResourceManager.GetString("Player_PlayerName_MaxLength", resourceCulture);
             }
@@ -108,97 +99,16 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The player name is required..
         /// </summary>
-        public static string Player_PlayerName_Required {
+        internal static string Player_PlayerName_Required {
             get {
                 return ResourceManager.GetString("Player_PlayerName_Required", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new team name is required..
-        /// </summary>
-        public static string RenameTeam_TeamName_Required {
-            get {
-                return ResourceManager.GetString("RenameTeam_TeamName_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The team code cannot exceed {1} characters..
         /// </summary>
-        public static string SimpleTeam_TeamCode_MaxLength {
-            get {
-                return ResourceManager.GetString("SimpleTeam_TeamCode_MaxLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team code is required..
-        /// </summary>
-        public static string SimpleTeam_TeamCode_Required {
-            get {
-                return ResourceManager.GetString("SimpleTeam_TeamCode_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team name cannot exceed {1} characters..
-        /// </summary>
-        public static string SimpleTeam_TeamName_MaxLength {
-            get {
-                return ResourceManager.GetString("SimpleTeam_TeamName_MaxLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team name is required..
-        /// </summary>
-        public static string SimpleTeam_TeamName_Required {
-            get {
-                return ResourceManager.GetString("SimpleTeam_TeamName_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team code cannot exceed {1} characters..
-        /// </summary>
-        public static string SimpleTeamSetItem_TeamCode_MaxLength {
-            get {
-                return ResourceManager.GetString("SimpleTeamSetItem_TeamCode_MaxLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team code is required..
-        /// </summary>
-        public static string SimpleTeamSetItem_TeamCode_Required {
-            get {
-                return ResourceManager.GetString("SimpleTeamSetItem_TeamCode_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team name cannot exceed {1} characters..
-        /// </summary>
-        public static string SimpleTeamSetItem_TeamName_MaxLength {
-            get {
-                return ResourceManager.GetString("SimpleTeamSetItem_TeamName_MaxLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team name is required..
-        /// </summary>
-        public static string SimpleTeamSetItem_TeamName_Required {
-            get {
-                return ResourceManager.GetString("SimpleTeamSetItem_TeamName_Required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The team code cannot exceed {1} characters..
-        /// </summary>
-        public static string Team_TeamCode_MaxLength {
+        internal static string Team_TeamCode_MaxLength {
             get {
                 return ResourceManager.GetString("Team_TeamCode_MaxLength", resourceCulture);
             }
@@ -207,7 +117,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team code is required..
         /// </summary>
-        public static string Team_TeamCode_Required {
+        internal static string Team_TeamCode_Required {
             get {
                 return ResourceManager.GetString("Team_TeamCode_Required", resourceCulture);
             }
@@ -216,7 +126,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team name cannot exceed {1} characters..
         /// </summary>
-        public static string Team_TeamName_MaxLength {
+        internal static string Team_TeamName_MaxLength {
             get {
                 return ResourceManager.GetString("Team_TeamName_MaxLength", resourceCulture);
             }
@@ -225,7 +135,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team name is required..
         /// </summary>
-        public static string Team_TeamName_Required {
+        internal static string Team_TeamName_Required {
             get {
                 return ResourceManager.GetString("Team_TeamName_Required", resourceCulture);
             }
@@ -234,7 +144,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team code cannot exceed {1} characters..
         /// </summary>
-        public static string TeamSetItem_TeamCode_MaxLength {
+        internal static string TeamSetItem_TeamCode_MaxLength {
             get {
                 return ResourceManager.GetString("TeamSetItem_TeamCode_MaxLength", resourceCulture);
             }
@@ -243,7 +153,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team code is required..
         /// </summary>
-        public static string TeamSetItem_TeamCode_Required {
+        internal static string TeamSetItem_TeamCode_Required {
             get {
                 return ResourceManager.GetString("TeamSetItem_TeamCode_Required", resourceCulture);
             }
@@ -252,7 +162,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team name cannot exceed {1} characters..
         /// </summary>
-        public static string TeamSetItem_TeamName_MaxLength {
+        internal static string TeamSetItem_TeamName_MaxLength {
             get {
                 return ResourceManager.GetString("TeamSetItem_TeamName_MaxLength", resourceCulture);
             }
@@ -261,7 +171,7 @@ namespace Csla8ModelTemplates.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The team name is required..
         /// </summary>
-        public static string TeamSetItem_TeamName_Required {
+        internal static string TeamSetItem_TeamName_Required {
             get {
                 return ResourceManager.GetString("TeamSetItem_TeamName_Required", resourceCulture);
             }

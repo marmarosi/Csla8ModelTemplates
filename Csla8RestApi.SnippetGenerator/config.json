@@ -1,7 +1,7 @@
 {
   "Author": "Mármarosi József",
   "TargetBasePath": "..\\Csla8RestApi.Snippets\\CSLA 8 REST API",
-  "TestBasePath": "..\\Csla8RestApi.Tests.SourceGenerator\\TestMaps",
+  "TestBasePath": "..\\Csla8RestApi.Tests.TestGenerator\\TestMaps",
   "TemplateSources": [
     {
       "TemplateType": "Contract",

@@ -1,5 +1,4 @@
 using Csla8ModelTemplates.Contracts.Simple.View;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +50,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.View
                 })
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.SimpleTeam_NotFound);
+                ?? throw new DataNotFoundException(SimpleText.SimpleTeam_NotFound);
 
             return team;
         }

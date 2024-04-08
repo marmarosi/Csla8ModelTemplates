@@ -1,4 +1,4 @@
-namespace Csla8ModelTemplates.Resources
+namespace Csla8ModelTemplates.Dal
 {
 #pragma warning disable S101
     /// <summary>

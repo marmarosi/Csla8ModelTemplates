@@ -127,8 +127,8 @@ namespace Csla8RestApi.Tests.Dal.MySql
 
         #region Query results
 
-        public DbSet<Product> Orders { get; set; }
-        public DbSet<Part> OrderLines { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Part> Parts { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }

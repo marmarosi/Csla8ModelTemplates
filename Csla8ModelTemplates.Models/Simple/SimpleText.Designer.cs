@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Csla8ModelTemplates.Resources {
+namespace Csla8ModelTemplates.Models.Simple {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Csla8ModelTemplates.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CommonText {
+    internal class SimpleText {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CommonText() {
+        internal SimpleText() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Csla8ModelTemplates.Resources.CommonText", typeof(CommonText).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Csla8ModelTemplates.Models.Simple.SimpleText", typeof(SimpleText).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Csla8ModelTemplates.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,74 +61,83 @@ namespace Csla8ModelTemplates.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The application does not use roles..
+        ///   Looks up a localized string similar to The new team name is required..
         /// </summary>
-        public static string AppPrincipal_NoRoles {
+        internal static string RenameTeam_TeamName_Required {
             get {
-                return ResourceManager.GetString("AppPrincipal_NoRoles", resourceCulture);
+                return ResourceManager.GetString("RenameTeam_TeamName_Required", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The connection string of &apos;{0}&apos; database is missing..
+        ///   Looks up a localized string similar to The team code cannot exceed {1} characters..
         /// </summary>
-        public static string DalFactory_DalManager_NoConnStr {
+        internal static string SimpleTeam_TeamCode_MaxLength {
             get {
-                return ResourceManager.GetString("DalFactory_DalManager_NoConnStr", resourceCulture);
+                return ResourceManager.GetString("SimpleTeam_TeamCode_MaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The DAL manager type of &apos;{0}&apos; database is missing..
+        ///   Looks up a localized string similar to The team code is required..
         /// </summary>
-        public static string DalFactory_DalManager_NoDalMngr {
+        internal static string SimpleTeam_TeamCode_Required {
             get {
-                return ResourceManager.GetString("DalFactory_DalManager_NoDalMngr", resourceCulture);
+                return ResourceManager.GetString("SimpleTeam_TeamCode_Required", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The database list is empty..
+        ///   Looks up a localized string similar to The team name cannot exceed {1} characters..
         /// </summary>
-        public static string DalFactory_DalManager_NoDatabases {
+        internal static string SimpleTeam_TeamName_MaxLength {
             get {
-                return ResourceManager.GetString("DalFactory_DalManager_NoDatabases", resourceCulture);
+                return ResourceManager.GetString("SimpleTeam_TeamName_MaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; type has not been found..
+        ///   Looks up a localized string similar to The team name is required..
         /// </summary>
-        public static string DalFactory_DalManager_NotFound {
+        internal static string SimpleTeam_TeamName_Required {
             get {
-                return ResourceManager.GetString("DalFactory_DalManager_NotFound", resourceCulture);
+                return ResourceManager.GetString("SimpleTeam_TeamName_Required", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; is invalid.DalManager type..
+        ///   Looks up a localized string similar to The team code cannot exceed {1} characters..
         /// </summary>
-        public static string DalFactory_DalManager_WrongKey {
+        internal static string SimpleTeamSetItem_TeamCode_MaxLength {
             get {
-                return ResourceManager.GetString("DalFactory_DalManager_WrongKey", resourceCulture);
+                return ResourceManager.GetString("SimpleTeamSetItem_TeamCode_MaxLength", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided PasswordHasherCompatibilityMode is invalid..
+        ///   Looks up a localized string similar to The team code is required..
         /// </summary>
-        public static string PasswordJumbler_InvalidCompatibilityMode {
+        internal static string SimpleTeamSetItem_TeamCode_Required {
             get {
-                return ResourceManager.GetString("PasswordJumbler_InvalidCompatibilityMode", resourceCulture);
+                return ResourceManager.GetString("SimpleTeamSetItem_TeamCode_Required", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The iteration count must be a positive integer..
+        ///   Looks up a localized string similar to The team name cannot exceed {1} characters..
         /// </summary>
-        public static string PasswordJumbler_InvalidIterationCount {
+        internal static string SimpleTeamSetItem_TeamName_MaxLength {
             get {
-                return ResourceManager.GetString("PasswordJumbler_InvalidIterationCount", resourceCulture);
+                return ResourceManager.GetString("SimpleTeamSetItem_TeamName_MaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The team name is required..
+        /// </summary>
+        internal static string SimpleTeamSetItem_TeamName_Required {
+            get {
+                return ResourceManager.GetString("SimpleTeamSetItem_TeamName_Required", resourceCulture);
             }
         }
     }

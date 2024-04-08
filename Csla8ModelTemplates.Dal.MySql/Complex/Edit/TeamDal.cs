@@ -1,6 +1,5 @@
 using Csla8ModelTemplates.Contracts.Complex.Edit;
 using Csla8ModelTemplates.Entities;
-using Csla8ModelTemplates.Resources;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -64,7 +63,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                 })
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Team_NotFound);
+                ?? throw new DataNotFoundException(ComplexText.Team_NotFound);
 
             return team;
         }
@@ -88,7 +87,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                 )
                 .FirstOrDefaultAsync();
             if (team is not null)
-                throw new DataExistException(DalText.Team_TeamCodeExists.With(dao.TeamCode!));
+                throw new DataExistException(ComplexText.Team_TeamCodeExists.With(dao.TeamCode!));
 
             // Create the new team.
             team = new Team
@@ -100,7 +99,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new InsertFailedException(DalText.Team_InsertFailed);
+                throw new InsertFailedException(ComplexText.Team_InsertFailed);
 
             // Return new data.
             dao.TeamKey = team.TeamKey;
@@ -125,10 +124,10 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     e.TeamKey == dao.TeamKey
                 )
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Team_NotFound);
+                ?? throw new DataNotFoundException(ComplexText.Team_NotFound);
 
             if (team.Timestamp != dao.Timestamp)
-                throw new ConcurrencyException(DalText.Team_Concurrency);
+                throw new ConcurrencyException(ComplexText.Team_Concurrency);
 
             // Check unique team code.
             if (team.TeamCode != dao.TeamCode)
@@ -137,7 +136,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                     .Where(e => e.TeamCode == dao.TeamCode && e.TeamKey != team.TeamKey)
                     .CountAsync();
                 if (exist > 0)
-                    throw new DataExistException(DalText.Team_TeamCodeExists.With(dao.TeamCode!));
+                    throw new DataExistException(ComplexText.Team_TeamCodeExists.With(dao.TeamCode!));
             }
 
             // Update the team.
@@ -147,7 +146,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new UpdateFailedException(DalText.Team_UpdateFailed);
+                throw new UpdateFailedException(ComplexText.Team_UpdateFailed);
 
             // Return new data.
             dao.Timestamp = team.Timestamp;
@@ -174,14 +173,14 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
                  )
                 .AsNoTracking()
                 .FirstOrDefaultAsync()
-                ?? throw new DataNotFoundException(DalText.Team_NotFound);
+                ?? throw new DataNotFoundException(ComplexText.Team_NotFound);
 
             // Check references.
             //int dependents = 0;
 
             //dependents = await DbContext.Others.CountAsync(e => e.TeamKey == criteria.TeamKey);
             //if (dependents > 0)
-            //    throw new DeleteFailedException(DalText.Team_Delete_Others);
+            //    throw new DeleteFailedException(ComplexText.Team_Delete_Others);
 
             // Delete references.
 
@@ -190,7 +189,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Edit
 
             count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new DeleteFailedException(DalText.Team_DeleteFailed);
+                throw new DeleteFailedException(ComplexText.Team_DeleteFailed);
         }
 
         #endregion Delete
