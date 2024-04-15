@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Csla8RestApi.Tests.Contracts\Csla8RestApi.Tests.Contracts.csproj" />
+    <ProjectReference Include="..\Csla8RestApi.Tests.Dal\Csla8RestApi.Tests.Dal.csproj" />
     <ProjectReference Include="..\Csla8RestApi.Tests.Entities\Csla8RestApi.Tests.Entities.csproj" />
     <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
   </ItemGroup>
