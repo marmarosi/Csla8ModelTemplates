@@ -1,0 +1,7 @@
+Snippet:        Simple_List\D_RC.snippet
+Project:        DAL
+FileName:       ===ListDal
+
+root_name:      product
+ROOT_MODEL:     Product
+DB_CONTEXT:     RdbmsContext

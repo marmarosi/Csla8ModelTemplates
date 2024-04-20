@@ -29,7 +29,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Command
         #region Execute
 
         /// <summary>
-        /// Sets the new name of the specified team.
+        /// Executes the rename team command.
         /// </summary>
         /// <param name="dao">The data of the command.</param>
         public async Task ExecuteAsync(
@@ -47,7 +47,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Simple.Command
 
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
-                throw new CommandFailedException(SimpleText.SimpleTeam_RenameFailed);
+                throw new CommandFailedException(SimpleText.RenameTeam_Failed);
         }
 
         #endregion

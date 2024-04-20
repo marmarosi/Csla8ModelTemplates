@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Csla8RestApi.Tests.Contracts\Csla8RestApi.Tests.Contracts.csproj" />
+    <ProjectReference Include="..\Csla8RestApi.Tests.Dal\Csla8RestApi.Tests.Dal.csproj" />
+    <ProjectReference Include="..\Csla8RestApi.Tests.Entities\Csla8RestApi.Tests.Entities.csproj" />
+    <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Simple\Command\" />
+    <Folder Include="Simple\Edit\" />
+  </ItemGroup>
+
+</Project>

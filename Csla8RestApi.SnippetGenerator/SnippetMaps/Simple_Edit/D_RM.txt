@@ -1,0 +1,14 @@
+Source:         Simple\Edit\SimpleTeamDal.cs
+Target:         D_RM.snippet
+Title:          DAL | Editable model
+Description:    Implements the data access of the editable root model.
+Shortcut:       c8sermd
+Test:           DAL | ===Dal
+
+/// team:       root_name      | product
+SimpleTeam:     ROOT_MODEL     | Product
+Team:           ROOT_MODEL     | Product
+team:           root_variable  | product
+Player:         CHILD_MODEL    | Part
+player:         child_variable | part
+MySqlContext:   DB_CONTEXT     | RdbmsContext

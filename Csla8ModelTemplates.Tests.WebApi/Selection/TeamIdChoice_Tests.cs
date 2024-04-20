@@ -17,7 +17,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
 
             // ********** Act
             var actionResult = await sut.GetTeamChoiceWithId(
-                new TeamIdChoiceCriteria { TeamName = "0" }
+                new TeamWithIdChoiceCriteria { TeamName = "0" }
                 );
 
             // ********** Assert

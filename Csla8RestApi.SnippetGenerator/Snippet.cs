@@ -16,12 +16,17 @@ namespace Csla8RestApi.SnippetGenerator
 
             // Compose literals.
             var sb = new StringBuilder();
+            var literlaIds = new List<string>();
             foreach (var textSwap in snippetMap.TextSwaps)
-                sb.Append(data.LiteralTemplate
-                    .Replace("$id$", textSwap.To)
-                    .Replace("$tooltip$", textSwap.ToolTip)
-                    .Replace("$default$", textSwap.DefaultValue)
-                    );
+                if (!literlaIds.Contains(textSwap.To))
+                {
+                    sb.Append(data.LiteralTemplate
+                        .Replace("$id$", textSwap.To)
+                        .Replace("$tooltip$", textSwap.ToolTip)
+                        .Replace("$default$", textSwap.DefaultValue)
+                        );
+                    literlaIds.Add(textSwap.To);
+                }
             var literals = sb.ToString();
 
             // Read source.

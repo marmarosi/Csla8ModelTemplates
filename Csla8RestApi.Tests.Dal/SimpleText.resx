@@ -177,8 +177,8 @@
   <data name="Product_NotFound" xml:space="preserve">
     <value>The requested product has not been found.</value>
   </data>
-  <data name="Product_RenameFailed" xml:space="preserve">
-    <value>Renaming the product has failed.</value>
+  <data name="ClearProduct_Failed" xml:space="preserve">
+    <value>Clearing the product has failed.</value>
   </data>
   <data name="Product_ProductCodeExists" xml:space="preserve">
     <value>Product with code {0} already exists.</value>

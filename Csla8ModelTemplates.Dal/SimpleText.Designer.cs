@@ -61,6 +61,15 @@ namespace Csla8ModelTemplates.Dal {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Renaming the team has failed..
+        /// </summary>
+        public static string RenameTeam_Failed {
+            get {
+                return ResourceManager.GetString("RenameTeam_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The team has been changed in the meantime..
         /// </summary>
         public static string SimpleTeam_Concurrency {
@@ -111,15 +120,6 @@ namespace Csla8ModelTemplates.Dal {
         public static string SimpleTeam_NotFound {
             get {
                 return ResourceManager.GetString("SimpleTeam_NotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Renaming the team has failed..
-        /// </summary>
-        public static string SimpleTeam_RenameFailed {
-            get {
-                return ResourceManager.GetString("SimpleTeam_RenameFailed", resourceCulture);
             }
         }
         

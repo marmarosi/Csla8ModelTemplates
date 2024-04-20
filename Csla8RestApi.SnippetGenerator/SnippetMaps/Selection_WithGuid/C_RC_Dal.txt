@@ -1,4 +1,4 @@
-Source:         Selection\WithGuid\ITeamGuidChoiceDal.cs
+Source:         Selection\WithGuid\ITeamWithGuidChoiceDal.cs
 Target:         C_RC_Dal.snippet
 Title:          Contract | Read-only Guid choice DAL interface
 Description:    Defines the DAL interface of a read-only root collection.
@@ -6,4 +6,4 @@ Shortcut:       c8lgrci
 Test:           Contract | I===ChoiceDal
 
 /// team:       root_name  | product
-TeamGuid:       ROOT_MODEL | Product
+TeamWithGuid:   ROOT_MODEL | Product

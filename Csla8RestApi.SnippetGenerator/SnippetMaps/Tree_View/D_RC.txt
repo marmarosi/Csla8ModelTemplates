@@ -1,0 +1,10 @@
+Source:         Tree\View\FolderTreeDal.cs
+Target:         D_RC.snippet
+Title:          DAL | Read-only tree
+Description:    Implements the data access of the read-only root collection.
+Shortcut:       c8tvrcd
+Test:           DAL | ===TreeDal
+
+/// folder:     root_name     | message
+Folder:         ROOT_MODEL    | Message
+MySqlContext:   DB_CONTEXT    | RdbmsContext

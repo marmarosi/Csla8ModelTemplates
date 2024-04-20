@@ -10,7 +10,7 @@ namespace Csla8RestApi.Tests.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long? PartKey { get; set; }
 
-        public long? PeoductKey { get; set; }
+        public long? ProductKey { get; set; }
 
         [MaxLength(10)]
         public string? PartCode { get; set; }

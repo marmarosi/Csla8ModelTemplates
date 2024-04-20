@@ -13,7 +13,7 @@
     /// Implements the data access functions of the read-only $root_name$ model.
     /// </summary>
     [DalImplementation]
-    public partial class $ROOT_MODEL$ViewDal : DalBase<MySqlContext>, I$ROOT_MODEL$ViewDal
+    public partial class $ROOT_MODEL$ViewDal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$ViewDal
     {
         #region Constructor
 
@@ -22,7 +22,7 @@
         /// </summary>
         /// <param name="context">The database context.</param>
         public $ROOT_MODEL$ViewDal(
-            MySqlContext dbContext
+            $DB_CONTEXT$ dbContext
             )
         {
             DbContext = dbContext;
@@ -74,14 +74,14 @@
                     <Default>ROOT_MODEL</Default>
                 </Literal>
                 <Literal>
-                    <ID>ROOT_MODEL</ID>
-                    <ToolTip>The name of the root model.</ToolTip>
-                    <Default>ROOT_MODEL</Default>
-                </Literal>
-                <Literal>
                     <ID>root_variable</ID>
                     <ToolTip>The variable name of a root model instance.</ToolTip>
                     <Default></Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
                 </Literal>
             </Declarations>
         </Snippet>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>DAL | Read-only tree</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the read-only root collection.</Description>
+            <Shortcut>c8tvrcd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the read-only $root_name$ tree.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$TreeDal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$TreeDal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$TreeDal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Fetch
+
+        private List<$ROOT_MODEL$NodeDao>? All$ROOT_MODEL$s { get; set; }
+
+        /// <summary>
+        /// Gets the specified $root_name$ tree.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ tree.</param>
+        /// <returns>The requested $root_name$ tree.</returns>
+        public async Task<List<$ROOT_MODEL$NodeDao>> FetchAsync(
+            $ROOT_MODEL$TreeCriteria criteria
+            )
+        {
+            var tree = new List<$ROOT_MODEL$NodeDao>();
+
+            // Get all subfolders of the root foolder.
+            All$ROOT_MODEL$s = await DbContext.$ROOT_MODEL$s
+                .Where(e =>
+                    e.RootKey == criteria.RootKey
+                )
+                .Select(e => new $ROOT_MODEL$NodeDao
+                {
+                    $ROOT_MODEL$Key = e.$ROOT_MODEL$Key,
+                    ParentKey = e.ParentKey,
+                    $ROOT_MODEL$Order = e.$ROOT_MODEL$Order,
+                    $ROOT_MODEL$Name = e.$ROOT_MODEL$Name
+                })
+                .AsNoTracking()
+                .ToListAsync();
+
+            // Populate the tree.
+            PopulateLevel(1, null, tree);
+
+            // Return the result.
+            return tree;
+        }
+
+        private void PopulateLevel(
+            int level,
+            long? parentKey,
+            List<$ROOT_MODEL$NodeDao> parentChildren
+            )
+        {
+            // Get the folders of the level.
+            var folders = All$ROOT_MODEL$s!
+                .Where(o => o.ParentKey == parentKey)
+                .OrderBy(o => o.$ROOT_MODEL$Order)
+                .ToList();
+
+            foreach ($ROOT_MODEL$NodeDao folder in folders)
+            {
+                // Create folder node.
+                $ROOT_MODEL$NodeDao folderNode = new $ROOT_MODEL$NodeDao
+                {
+                    $ROOT_MODEL$Key = folder.$ROOT_MODEL$Key,
+                    ParentKey = folder.ParentKey,
+                    $ROOT_MODEL$Order = folder.$ROOT_MODEL$Order,
+                    $ROOT_MODEL$Name = folder.$ROOT_MODEL$Name,
+                    Level = level,
+                    Children = new List<$ROOT_MODEL$NodeDao>()
+                };
+
+                // Add folder to the parent's children.
+                parentChildren.Add(folderNode);
+
+                // Get the subfolders of this folder.
+                PopulateLevel(
+                    level + 1,
+                    folder.$ROOT_MODEL$Key,
+                    folderNode.Children
+                    );
+            }
+        }
+
+        #endregion GetList
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

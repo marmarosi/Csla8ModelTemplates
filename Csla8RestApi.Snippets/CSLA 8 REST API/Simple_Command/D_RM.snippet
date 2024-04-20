@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>DAL | Command model</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the command model.</Description>
+            <Shortcut>c8scrmd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the $command_name$ command.
+    /// </summary>
+    [DalImplementation]
+    public class $COMMAND_MODEL$Dal : DalBase<$DB_CONTEXT$>, I$COMMAND_MODEL$Dal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $COMMAND_MODEL$Dal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Execute
+
+        /// <summary>
+        /// Executes the $command_name$ command.
+        /// </summary>
+        /// <param name="dao">The data of the command.</param>
+        public async Task ExecuteAsync(
+            $COMMAND_MODEL$Dao dao
+            )
+        {
+            // Get the specified $root_variable$.
+            var $root_variable$ = await DbContext.$ROOT_MODEL$s
+                .Where(e => e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key)
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(SimpleText.$ROOT_MODEL$_NotFound);
+
+            // Update the $root_variable$.
+            $root_variable$.$ROOT_MODEL$Name = dao.$ROOT_MODEL$Name;
+
+            int count = await DbContext.SaveChangesAsync();
+            if (count == 0)
+                throw new CommandFailedException(SimpleText.$COMMAND_MODEL$_Failed);
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,4 +1,4 @@
-Source:         Selection\WithCode\ITeamCodeChoiceDal.cs
+Source:         Selection\WithCode\ITeamWithCodeChoiceDal.cs
 Target:         C_RC_Dal.snippet
 Title:          Contract | Read-only code choice DAL interface
 Description:    Defines the DAL interface of a read-only root collection.
@@ -6,4 +6,4 @@ Shortcut:       c8lcrci
 Test:           Contract | I===ChoiceDal
 
 /// team:       root_name  | product
-TeamCode:       ROOT_MODEL | Product
+TeamWithCode:   ROOT_MODEL | Product

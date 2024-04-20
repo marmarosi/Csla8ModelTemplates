@@ -1,0 +1,9 @@
+Snippet:        Simple_Command\D_RM.snippet
+Project:        DAL
+FileName:       +++Dal
+
+command_name:   clear product
+COMMAND_MODEL:  ClearProduct
+ROOT_MODEL:     Product
+root_variable:  product
+DB_CONTEXT:     RdbmsContext

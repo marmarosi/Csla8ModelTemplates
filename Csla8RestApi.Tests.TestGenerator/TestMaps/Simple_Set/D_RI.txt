@@ -1,0 +1,10 @@
+Snippet:        Simple_Set\D_RI.snippet
+Project:        DAL
+FileName:       ===SetItemDal
+
+root_name:      product
+ROOT_MODEL:     Product
+root_variable:  product
+CHILD_MODEL:    Part
+child_variable: part
+DB_CONTEXT:     RdbmsContext

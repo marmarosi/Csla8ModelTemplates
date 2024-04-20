@@ -9,3 +9,4 @@ Test:           DAL | ===ViewDal
 SimpleTeam:     ROOT_MODEL    | Product
 Team:           ROOT_MODEL    | Product
 team:           root_variable | product
+MySqlContext:   DB_CONTEXT    | RdbmsContext

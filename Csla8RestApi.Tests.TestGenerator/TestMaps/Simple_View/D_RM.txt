@@ -5,3 +5,4 @@ FileName:       ===ViewDal
 root_name:      product
 ROOT_MODEL:     Product
 root_variable:  product
+DB_CONTEXT:     RdbmsContext

@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Csla8RestApi.Tests.Dal.MySql\Csla8RestApi.Tests.Dal.MySql.csproj" />
     <ProjectReference Include="..\Csla8RestApi.Tests.Models\Csla8RestApi.Tests.Models.csproj" />
   </ItemGroup>
 
