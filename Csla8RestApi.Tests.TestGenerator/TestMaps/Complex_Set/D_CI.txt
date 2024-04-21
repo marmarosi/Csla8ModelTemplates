@@ -1,0 +1,10 @@
+Snippet:        Complex_Set\D_CI.snippet
+Project:        DAL
+FileName:       ===Set---Dal
+
+child_name:     part
+ROOT_MODEL:     Product
+root_variable:  product
+CHILD_MODEL:    Part
+child_variable: part
+DB_CONTEXT:     RdbmsContext

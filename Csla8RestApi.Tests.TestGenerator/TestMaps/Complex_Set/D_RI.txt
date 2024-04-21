@@ -1,0 +1,8 @@
+Snippet:        Complex_Set\D_RI.snippet
+Project:        DAL
+FileName:       ===SetItemDal
+
+root_name:      product
+ROOT_MODEL:     Product
+root_variable:  product
+DB_CONTEXT:     RdbmsContext

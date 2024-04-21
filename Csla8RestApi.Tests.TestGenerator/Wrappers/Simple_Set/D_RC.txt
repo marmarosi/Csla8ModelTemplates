@@ -1,5 +1,5 @@
-using Csla8RestApi.Tests.Contracts.Simple.Set;
 using Csla8RestApi.Dal;
+using Csla8RestApi.Tests.Contracts.Simple.Set;
 using Microsoft.EntityFrameworkCore;
 
 namespace Csla8RestApi.Tests.Dal.Rdbms.Simple.Set

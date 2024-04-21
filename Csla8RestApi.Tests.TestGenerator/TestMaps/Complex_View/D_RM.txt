@@ -1,0 +1,9 @@
+Snippet:        Complex_View\D_RM.snippet
+Project:        DAL
+FileName:       ===ViewDal
+
+root_name:      product
+ROOT_MODEL:     Product
+root_variable:  product
+CHILD_MODEL:    Part
+DB_CONTEXT:     RdbmsContext

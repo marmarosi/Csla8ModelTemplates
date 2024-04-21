@@ -1,9 +1,9 @@
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
-using Csla8RestApi.Tests.Contracts.Simple.Command;
+using Csla8RestApi.Tests.Contracts.Complex.Command;
 using Microsoft.EntityFrameworkCore;
 
-namespace Csla8RestApi.Tests.Dal.Rdbms.Simple.Command
+namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.Command
 {
     $snippet$
 }

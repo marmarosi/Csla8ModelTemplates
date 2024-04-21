@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Csla8ModelTemplates.Dal.MySql.Arrangement.Sorting
 {
     /// <summary>
-    /// Implements the data access functions of the read-only paginated team collection.
+    /// Implements the data access functions of the read-only sorted team collection.
     /// </summary>
     [DalImplementation]
     public class SortedTeamListDal : DalBase<MySqlContext>, ISortedTeamListDal

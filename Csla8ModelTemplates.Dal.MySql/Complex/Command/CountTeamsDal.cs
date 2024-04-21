@@ -29,7 +29,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Command
         #region Execute
 
         /// <summary>
-        /// Counts the teams grouped by the number of their players.
+        /// Executes the count teams by player count command.
         /// </summary>
         /// <param name="criteria">The criteria of the command.</param>
         public async Task<List<CountTeamsResultDao>> ExecuteAsync(

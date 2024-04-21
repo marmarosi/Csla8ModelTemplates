@@ -1,0 +1,9 @@
+Snippet:        Junction_View\D_RM.snippet
+Project:        DAL
+FileName:       ===ViewDal
+
+root_name:      user
+ROOT_MODEL:     User
+root_variable:  user
+CHILD_MODEL:    Role
+DB_CONTEXT:     RdbmsContext

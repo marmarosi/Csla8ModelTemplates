@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>DAL | Read-only model</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the read-only root model.</Description>
+            <Shortcut>c8cvrmd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the read-only $root_name$ object.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$ViewDal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$ViewDal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$ViewDal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Fetch
+
+        /// <summary>
+        /// Gets the specified $root_name$ view.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$.</param>
+        /// <returns>The requested $root_name$ view.</returns>
+        public async Task<$ROOT_MODEL$ViewDao> FetchAsync(
+            $ROOT_MODEL$ViewCriteria criteria
+            )
+        {
+            // Get the specified $root_variable$.
+            var $root_variable$ = await DbContext.$ROOT_MODEL$s
+                .Include(e => e.$CHILD_MODEL$s)
+                .Where(e =>
+                    e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key
+                 )
+                .Select(e => new $ROOT_MODEL$ViewDao
+                {
+                    $ROOT_MODEL$Key = e.$ROOT_MODEL$Key,
+                    $ROOT_MODEL$Code = e.$ROOT_MODEL$Code,
+                    $ROOT_MODEL$Name = e.$ROOT_MODEL$Name,
+                    $CHILD_MODEL$s = e.$CHILD_MODEL$s!
+                        .Select(p => new $ROOT_MODEL$View$CHILD_MODEL$Dao
+                        {
+                            $CHILD_MODEL$Key = p.$CHILD_MODEL$Key,
+                            $CHILD_MODEL$Code = p.$CHILD_MODEL$Code,
+                            $CHILD_MODEL$Name = p.$CHILD_MODEL$Name
+                        })
+                    .OrderBy(p => p.$CHILD_MODEL$Name)
+                    .ToList()
+                })
+                .AsNoTracking()
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.$ROOT_MODEL$_NotFound);
+
+            return $root_variable$;
+        }
+
+        #endregion Fetch
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

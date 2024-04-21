@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>DAL | Command model</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the command model.</Description>
+            <Shortcut>c8ccrmd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the $command_name$ command.
+    /// </summary>
+    [DalImplementation]
+    public class $COMMAND_MODEL$Dal : DalBase<$DB_CONTEXT$>, I$COMMAND_MODEL$Dal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $COMMAND_MODEL$Dal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Execute
+
+        /// <summary>
+        /// Executes the $command_name$ command.
+        /// </summary>
+        /// <param name="criteria">The criteria of the command.</param>
+        public async Task<List<$COMMAND_MODEL$ResultDao>> ExecuteAsync(
+            $COMMAND_MODEL$Criteria criteria
+            )
+        {
+            string $root_variable$Name = criteria.$ROOT_MODEL$Name ?? "";
+
+            var counts = await DbContext.$ROOT_MODEL$s
+                .Include(e => e.$CHILD_MODEL$s)
+                .Where(e => $root_variable$Name == "" || e.$ROOT_MODEL$Name!.Contains($root_variable$Name))
+                .Select(e => new { e.$ROOT_MODEL$Key, e.$CHILD_MODEL$s!.Count })
+                .AsNoTracking()
+                .ToListAsync();
+
+            var list = counts
+                .GroupBy(
+                    e => e.Count,
+                    (key, grp) => new $COMMAND_MODEL$ResultDao
+                    {
+                        $CHILD_MODEL$Count = key,
+                        $ROOT_MODEL$CountBy$CHILD_MODEL$Count = grp.Count()
+                    })
+                .OrderByDescending(o => o.$CHILD_MODEL$Count)
+                .ToList();
+
+            if (list.Count == 0)
+                throw new CommandFailedException(ComplexText.$COMMAND_MODEL$_CountFailed);
+
+            return list;
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
