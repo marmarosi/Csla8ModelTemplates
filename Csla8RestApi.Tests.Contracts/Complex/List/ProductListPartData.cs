@@ -10,7 +10,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.List
     }
 
     /// <summary>
-    /// Defines the data access object of the read-only part info object.
+    /// Defines the data access object of the read-only part object.
     /// </summary>
     public class ProductListPartDao : ProductListPartData
     {
@@ -18,7 +18,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.List
     }
 
     /// <summary>
-    /// Defines the data transfer object of the read-only part info object.
+    /// Defines the data transfer object of the read-only part object.
     /// </summary>
     public class ProductListPartDto : ProductListPartData
     {

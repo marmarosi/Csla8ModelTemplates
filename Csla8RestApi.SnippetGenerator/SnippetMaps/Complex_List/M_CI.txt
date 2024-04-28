@@ -4,6 +4,6 @@ Description:    Implements a read-only child model.
 Shortcut:       c8clci
 Test:           Model | ===List---
 
-/// player info:    child_name    | part
-Team:               ROOT_MODEL    | Product
-Player:             CHILD_MODEL   | Part
+/// player:     child_name    | part
+Team:           ROOT_MODEL    | Product
+Player:         CHILD_MODEL   | Part

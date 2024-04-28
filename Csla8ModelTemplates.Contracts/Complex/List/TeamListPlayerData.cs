@@ -10,7 +10,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     }
 
     /// <summary>
-    /// Defines the data access object of the read-only player info object.
+    /// Defines the data access object of the read-only player object.
     /// </summary>
     public class TeamListPlayerDao : TeamListPlayerData
     {
@@ -18,7 +18,7 @@ namespace Csla8ModelTemplates.Contracts.Complex.List
     }
 
     /// <summary>
-    /// Defines the data transfer object of the read-only player info object.
+    /// Defines the data transfer object of the read-only player object.
     /// </summary>
     public class TeamListPlayerDto : TeamListPlayerData
     {

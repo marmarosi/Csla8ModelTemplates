@@ -5,7 +5,7 @@ using Csla8RestApi.Models;
 namespace Csla8ModelTemplates.Models.Complex.List
 {
     /// <summary>
-    /// Represents a read-only player info collection.
+    /// Represents a read-only player collection.
     /// </summary>
     [Serializable]
     public class TeamListPlayers : ReadOnlyList<TeamListPlayers, TeamListPlayer>

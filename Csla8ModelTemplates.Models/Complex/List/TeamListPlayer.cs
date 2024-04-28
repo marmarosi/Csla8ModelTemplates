@@ -8,7 +8,7 @@ using Csla8RestApi.Dal.Contracts;
 namespace Csla8ModelTemplates.Models.Complex.List
 {
     /// <summary>
-    /// Represents an item in a read-only player info collection.
+    /// Represents an item in a read-only player collection.
     /// </summary>
     [Serializable]
     public class TeamListPlayer : ReadOnlyModel<TeamListPlayer>
