@@ -108,8 +108,6 @@ namespace Csla8RestApi.SnippetGenerator
                         map.ShortTarget = Path.Combine(map.TargetFolder, targetFile);
                         map.TargetPath = Path.Combine(data.TargetBasePath, map.TargetFolder, targetFile);
                         break;
-                    case "Target":
-                        break;
                     case "Title":
                         map.Title = value;
                         break;
