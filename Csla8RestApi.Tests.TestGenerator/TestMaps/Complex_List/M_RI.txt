@@ -1,0 +1,7 @@
+Snippet:        Complex_List\M_RI.snippet
+Project:        Model
+FileName:       ===ListItem
+
+root_name:      product
+ROOT_MODEL:     Product
+CHILD_MODEL:    Part

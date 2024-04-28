@@ -1,0 +1,10 @@
+Source:         Complex\View\TeamViewPlayer.cs
+Target:         M_CI.snippet
+Title:          Model | Read-only child list item
+Description:    Implements a read-only child model.
+Shortcut:       c8cvci
+Test:           Model | ===View---
+
+/// player:     child_name    | part
+Team:           ROOT_MODEL    | Product
+Player:         CHILD_MODEL   | Part

@@ -1,0 +1,10 @@
+using Csla;
+using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Models;
+using Csla8RestApi.Tests.Contracts;
+using Csla8RestApi.Tests.Contracts.Simple.Command;
+
+namespace Csla8RestApi.Tests.Models.Simple.Command
+{
+    $snippet$
+}

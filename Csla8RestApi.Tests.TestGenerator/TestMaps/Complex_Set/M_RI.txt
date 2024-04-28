@@ -1,0 +1,7 @@
+Snippet:        Complex_Set\M_RI.snippet
+Project:        Model
+FileName:       ===SetItem
+
+root_name:      product
+ROOT_MODEL:     Product
+CHILD_MODEL:    Part

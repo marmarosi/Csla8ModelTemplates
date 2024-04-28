@@ -1,0 +1,9 @@
+Snippet:        Complex_Set\M_CI.snippet
+Project:        Model
+FileName:       ===Set---
+
+child_name:     part
+ROOT_MODEL:     Product
+root_variable:  product
+CHILD_MODEL:    Part
+child_variable: part

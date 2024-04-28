@@ -1,0 +1,10 @@
+Source:         Arrangement\Sorting\SortedTeamListItem.cs
+Target:         M_RI.snippet
+Title:          Model | Read-only sorted list item
+Description:    Implements a read-only child model.
+Shortcut:       c8asri
+Test:           Model | ===ListItem
+
+/// team:       root_name     | product
+SortedTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

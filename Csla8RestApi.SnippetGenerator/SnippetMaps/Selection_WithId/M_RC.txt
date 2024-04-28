@@ -1,0 +1,10 @@
+Source:         Selection\WithId\TeamWithIdChoice.cs
+Target:         M_RC.snippet
+Title:          Model | Read-only ID choice
+Description:    Implements the data access of the read-only root collection.
+Shortcut:       c8lirc
+Test:           Model | ===Choice
+
+/// team:       root_name     | product
+TeamWithId:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

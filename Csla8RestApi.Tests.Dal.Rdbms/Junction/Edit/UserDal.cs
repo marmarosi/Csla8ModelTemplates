@@ -1,7 +1,7 @@
-using Csla8RestApi.Tests.Contracts.Junction.Edit;
-using Csla8RestApi.Tests.Entities;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
+using Csla8RestApi.Tests.Contracts.Junction.Edit;
+using Csla8RestApi.Tests.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Csla8RestApi.Tests.Dal.Rdbms.Junction.Edit

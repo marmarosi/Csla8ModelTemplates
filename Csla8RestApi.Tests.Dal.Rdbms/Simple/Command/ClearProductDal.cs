@@ -1,4 +1,3 @@
-using Csla8RestApi.Tests.Contracts.Simple.Command;
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Csla8RestApi.Tests.Contracts.Simple.Command;

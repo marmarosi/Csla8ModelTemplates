@@ -1,0 +1,11 @@
+Source:         Complex\Edit\TeamPlayer.cs
+Target:         M_CI.snippet
+Title:          Model | Editable child list item
+Description:    Implements an editable child model.
+Shortcut:       c8ceci
+Test:           Model | ===---
+
+/// player:     child_name    | part
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product
+Player:         CHILD_MODEL   | Part

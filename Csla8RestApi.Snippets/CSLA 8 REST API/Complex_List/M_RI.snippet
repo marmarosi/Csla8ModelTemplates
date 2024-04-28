@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Model | Read-only root list item</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only list item model.</Description>
+            <Shortcut>c8clri</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents an item in a read-only $root_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$ListItem : ReadOnlyModel<$ROOT_MODEL$ListItem>
+    {
+        #region Properties
+
+        public static readonly PropertyInfo<long?> $ROOT_MODEL$KeyProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Key));
+        public long? $ROOT_MODEL$Key
+        {
+            get => GetProperty($ROOT_MODEL$KeyProperty);
+            private set => LoadProperty($ROOT_MODEL$KeyProperty, value);
+        }
+
+        public static readonly PropertyInfo<long?> $ROOT_MODEL$IdProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string $ROOT_MODEL$Id
+        {
+            get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
+            private set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
+        }
+
+        public static readonly PropertyInfo<string> $ROOT_MODEL$CodeProperty = RegisterProperty<string>(nameof($ROOT_MODEL$Code));
+        public string $ROOT_MODEL$Code
+        {
+            get => GetProperty($ROOT_MODEL$CodeProperty);
+            private set => LoadProperty($ROOT_MODEL$CodeProperty, value);
+        }
+
+        public static readonly PropertyInfo<string> $ROOT_MODEL$NameProperty = RegisterProperty<string>(nameof($ROOT_MODEL$Name));
+        public string $ROOT_MODEL$Name
+        {
+            get => GetProperty($ROOT_MODEL$NameProperty);
+            private set => LoadProperty($ROOT_MODEL$NameProperty, value);
+        }
+
+        public static readonly PropertyInfo<$ROOT_MODEL$List$CHILD_MODEL$s> $CHILD_MODEL$sProperty = RegisterProperty<$ROOT_MODEL$List$CHILD_MODEL$s>(nameof($CHILD_MODEL$s));
+        public $ROOT_MODEL$List$CHILD_MODEL$s $CHILD_MODEL$s
+        {
+            get => ReadProperty($CHILD_MODEL$sProperty);
+            private set => LoadProperty($CHILD_MODEL$sProperty, value);
+        }
+
+        #endregion
+
+        #region Business Rules
+
+        //protected override void AddBusinessRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        new IsInRole(
+        //            AuthorizationActions.ReadProperty,
+        //            $ROOT_MODEL$NameProperty,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$ListItem),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Data Access
+
+        [FetchChild]
+        private async Task FetchAsync(
+            $ROOT_MODEL$ListItemDao dao,
+            [Inject] IChildDataPortal<$ROOT_MODEL$List$CHILD_MODEL$s> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            DataMapper.Map(dao, this, "$CHILD_MODEL$s");
+            $CHILD_MODEL$s = await itemPortal.FetchChildAsync(dao.$CHILD_MODEL$s);
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

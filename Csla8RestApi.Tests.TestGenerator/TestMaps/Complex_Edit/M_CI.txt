@@ -1,0 +1,8 @@
+Snippet:        Complex_Edit\M_CI.snippet
+Project:        Model
+FileName:       ===---
+
+child_name:     part
+ROOT_MODEL:     Product
+root_variable:  product
+CHILD_MODEL:    Part

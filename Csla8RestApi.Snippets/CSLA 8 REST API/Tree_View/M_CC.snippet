@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Model | Read-only child collection</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only child collection.</Description>
+            <Shortcut>c8tvcc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a read-only $root_name$ node collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$Nodes : ReadOnlyList<$ROOT_MODEL$Nodes, $ROOT_MODEL$Node>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$NodeList),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Data Access
+
+        [FetchChild]
+        private void Fetch(
+            List<$ROOT_MODEL$NodeDao> list,
+            [Inject] IChildDataPortal<$ROOT_MODEL$Node> childPortal
+            )
+        {
+            using (LoadListMode)
+            {
+                foreach (var item in list)
+                    Add(childPortal.FetchChild(item));
+            }
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

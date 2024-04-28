@@ -1,0 +1,6 @@
+Snippet:        Complex_Set\M_RC.snippet
+Project:        Model
+FileName:       ===Set
+
+root_name:      product
+ROOT_MODEL:     Product

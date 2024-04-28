@@ -1,0 +1,9 @@
+Source:         Arrangement\Full\ArrangedTeamList.cs
+Target:         M_RM.snippet
+Title:          Model | Read-only list container
+Description:    Implements a read-only root model.
+Shortcut:       c8afrm
+Test:           Model | ===List
+
+/// team:       root_name     | product
+ArrangedTeam:   ROOT_MODEL    | Product

@@ -1,0 +1,7 @@
+Snippet:        Complex_Edit\M_CC.snippet
+Project:        Model
+FileName:       ===---s
+
+child_name:     part
+ROOT_MODEL:     Product
+CHILD_MODEL:    Part

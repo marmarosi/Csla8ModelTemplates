@@ -150,12 +150,12 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         }
 
         /// <summary>
-        /// Builds a new or existing team.
+        /// Builds a new or existing group.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <param name="childFactory">The child data portal factory.</param>
         /// <param name="dto"></param>
-        /// <returns>The team built.</returns>
+        /// <returns>The group built.</returns>
         public static async Task<Group> BuildAsync(
             IDataPortalFactory factory,
             IChildDataPortalFactory childFactory,
@@ -163,11 +163,11 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             )
         {
             long? groupKey = KeyHash.Decode(ID.Group, dto.GroupId);
-            Group team = groupKey.HasValue ?
+            Group group = groupKey.HasValue ?
                 await GetAsync(factory, dto.GroupId!) :
                 await NewAsync(factory);
-            team.SetValuesOnBuild(dto, childFactory);
-            return team;
+            group.SetValuesOnBuild(dto, childFactory);
+            return group;
         }
 
         /// <summary>

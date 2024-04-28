@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Model | Read-only child list</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only child collection.</Description>
+            <Shortcut>c8cccc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a read-only $command_name$ result collection.
+    /// </summary>
+    [Serializable]
+    public class $COMMAND_MODEL$Results : ReadOnlyList<$COMMAND_MODEL$Results, $COMMAND_MODEL$Result>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($COMMAND_MODEL$List),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Data Access
+
+        [FetchChild]
+        private async Task FetchAsync(
+            List<$COMMAND_MODEL$ResultDao> list,
+            [Inject] IChildDataPortal<$COMMAND_MODEL$Result> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            foreach (var item in list)
+                Items.Add(await itemPortal.FetchChildAsync(item));
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

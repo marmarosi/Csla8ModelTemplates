@@ -61,7 +61,7 @@ namespace Csla8ModelTemplates.Models.Junction {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The person key is not unique..
+        ///   Looks up a localized string similar to The person is not unique..
         /// </summary>
         internal static string GroupPerson_PersonId_NotUnique {
             get {

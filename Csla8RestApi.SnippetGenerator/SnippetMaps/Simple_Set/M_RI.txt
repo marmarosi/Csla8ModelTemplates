@@ -1,0 +1,10 @@
+Source:         Simple\Set\SimpleTeamSetItem.cs
+Target:         M_RI.snippet
+Title:          Model | Editable list item
+Description:    Implements an editable child model.
+Shortcut:       c8ssri
+Test:           Model | ===SetItem
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

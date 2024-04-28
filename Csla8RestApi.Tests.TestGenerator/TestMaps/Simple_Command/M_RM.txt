@@ -1,0 +1,7 @@
+Snippet:        Simple_Command\M_RM.snippet
+Project:        Model
+FileName:       +++
+
+command_name:   clear product
+COMMAND_MODEL:  ClearProduct
+ROOT_MODEL:     Product

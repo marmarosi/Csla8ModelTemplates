@@ -1,0 +1,7 @@
+Snippet:        Complex_View\M_CI.snippet
+Project:        Model
+FileName:       ===View---
+
+child_name:     part
+ROOT_MODEL:     Product
+CHILD_MODEL:    Part

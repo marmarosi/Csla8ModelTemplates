@@ -1,0 +1,10 @@
+Source:         Simple\Command\RenameTeam.cs
+Target:         M_RM.snippet
+Title:          Model | Command model
+Description:    Implements a command model.
+Shortcut:       c8scrm
+Test:           Model | +++
+
+/// team:       command_name  | clear product
+RenameTeam:     COMMAND_MODEL | ClearProduct
+Team:           ROOT_MODEL    | Product

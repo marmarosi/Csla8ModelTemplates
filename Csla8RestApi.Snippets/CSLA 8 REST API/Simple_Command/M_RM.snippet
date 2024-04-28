@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Model | Command model</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a command model.</Description>
+            <Shortcut>c8scrm</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents the rename $command_name$ command.
+    /// </summary>
+    [Serializable]
+    public class $COMMAND_MODEL$ : CommandBase<$COMMAND_MODEL$>
+    {
+        #region Properties
+
+        public static readonly PropertyInfo<long?> $ROOT_MODEL$KeyProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Key));
+        public long? $ROOT_MODEL$Key
+        {
+            get => ReadProperty($ROOT_MODEL$KeyProperty);
+            private set => LoadProperty($ROOT_MODEL$KeyProperty, value);
+        }
+
+        public static readonly PropertyInfo<long?> $ROOT_MODEL$IdProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string $ROOT_MODEL$Id
+        {
+            get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
+            set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$NameProperty = RegisterProperty<string?>(c => c.$ROOT_MODEL$Name);
+        public string? $ROOT_MODEL$Name
+        {
+            get => ReadProperty($ROOT_MODEL$NameProperty);
+            private set => LoadProperty($ROOT_MODEL$NameProperty, value);
+        }
+
+        public static readonly PropertyInfo<bool> ResultProperty = RegisterProperty<bool>(c => c.Result);
+        public bool Result
+        {
+            get => ReadProperty(ResultProperty);
+            private set => LoadProperty(ResultProperty, value);
+        }
+
+        #endregion
+
+        #region Business Rules
+
+        private void Validate()
+        {
+            if (string.IsNullOrEmpty($ROOT_MODEL$Name))
+                throw new BrokenRulesException(
+                    nameof($COMMAND_MODEL$),
+                    nameof($ROOT_MODEL$Name),
+                    SimpleText.$COMMAND_MODEL$_$ROOT_MODEL$Name_Required
+                    );
+        }
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($COMMAND_MODEL$),
+        //        new IsInRole(
+        //            AuthorizationActions.ExecuteMethod,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Executes the rename $command_name$ command.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="dto">The data transer object of the rename $command_name$ command.</param>
+        /// <returns>The command instance.</returns>
+        public static async Task<$COMMAND_MODEL$> ExecuteAsync(
+            IDataPortalFactory factory,
+            $COMMAND_MODEL$Dto dto
+            )
+        {
+            return await factory.GetPortal<$COMMAND_MODEL$>().ExecuteAsync(dto);
+        }
+
+        #endregion
+
+        #region Data Access
+
+        [Execute]
+        private async Task ExecuteAsync(
+            $COMMAND_MODEL$Dto dto,
+            [Inject] I$COMMAND_MODEL$Dal dal
+            )
+        {
+            // Execute the command.
+            $ROOT_MODEL$Id = dto.$ROOT_MODEL$Id!;
+            $ROOT_MODEL$Name = dto.$ROOT_MODEL$Name;
+            Validate();
+
+            using (var transaction = dal.BeginTransaction())
+            {
+                $COMMAND_MODEL$Dao dao = new $COMMAND_MODEL$Dao($ROOT_MODEL$Key ?? 0, $ROOT_MODEL$Name);
+                await dal.ExecuteAsync(dao);
+            }
+
+            // Set new data.
+            Result = true;
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

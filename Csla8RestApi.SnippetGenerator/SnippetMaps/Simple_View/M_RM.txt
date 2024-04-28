@@ -1,0 +1,10 @@
+Source:         Simple\View\SimpleTeamView.cs
+Target:         M_RM.snippet
+Title:          Model | Read-only model
+Description:    Implements a read-only root model.
+Shortcut:       c8svrm
+Test:           Model | ===View
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

@@ -1,5 +1,5 @@
-using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Dal;
+using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Tests.Contracts.Arrangement.Full;
 using Microsoft.EntityFrameworkCore;
 

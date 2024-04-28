@@ -1,0 +1,11 @@
+Source:         Junction\Edit\GroupPerson.cs
+Target:         M_CI.snippet
+Title:          Model | Editable child list item
+Description:    Implements an editable child model.
+Shortcut:       c8jeci
+Test:           Model | ===---
+
+/// group:      root_name     | user
+/// person:     child_name    | role
+Group:          ROOT_MODEL    | User
+Person:         CHILD_MODEL   | Role

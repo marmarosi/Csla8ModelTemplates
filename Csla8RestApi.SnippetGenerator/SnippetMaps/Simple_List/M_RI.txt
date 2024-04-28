@@ -1,0 +1,10 @@
+Source:         Simple\List\SimpleTeamListItem.cs
+Target:         M_RI.snippet
+Title:          Model | Read-only list item
+Description:    Implements a read-only child model.
+Shortcut:       c8slri
+Test:           Model | ===ListItem
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

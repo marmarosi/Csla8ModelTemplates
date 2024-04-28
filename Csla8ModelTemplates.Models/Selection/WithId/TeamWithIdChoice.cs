@@ -1,8 +1,8 @@
 using Csla;
 using Csla8ModelTemplates.Contracts;
 using Csla8ModelTemplates.Contracts.Selection.WithId;
-using Csla8RestApi.Models;
 using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Models;
 
 namespace Csla8ModelTemplates.Models.Selection.WithId
 {

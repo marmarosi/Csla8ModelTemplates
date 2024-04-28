@@ -1,0 +1,6 @@
+Snippet:        Simple_View\M_RM.snippet
+Project:        Model
+FileName:       ===View
+
+root_name:      product
+ROOT_MODEL:     Product

@@ -1,0 +1,8 @@
+Snippet:        Junction_Edit\M_CI.snippet
+Project:        Model
+FileName:       ===---
+
+root_name:      user
+child_name:     role
+ROOT_MODEL:     User
+CHILD_MODEL:    Role

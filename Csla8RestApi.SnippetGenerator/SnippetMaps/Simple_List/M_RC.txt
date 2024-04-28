@@ -1,0 +1,9 @@
+Source:         Simple\List\SimpleTeamList.cs
+Target:         M_RC.snippet
+Title:          Model | Read-only list
+Description:    Implements a read-only root collection.
+Shortcut:       c8slrc
+Test:           Model | ===List
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product

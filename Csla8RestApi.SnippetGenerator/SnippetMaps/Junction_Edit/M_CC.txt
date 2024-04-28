@@ -1,0 +1,11 @@
+Source:         Junction\Edit\GroupPersons.cs
+Target:         M_CC.snippet
+Title:          Model | Editable child list
+Description:    Implements an editable child collection.
+Shortcut:       c8jecc
+Test:           Model | ===---s
+
+/// group:      root_name     | user
+/// person:     child_name    | role
+Group:          ROOT_MODEL    | User
+Person:         CHILD_MODEL   | Role

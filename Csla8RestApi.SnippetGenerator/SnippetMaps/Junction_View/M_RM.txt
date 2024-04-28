@@ -1,0 +1,10 @@
+Source:         Junction\View\GroupView.cs
+Target:         M_RM.snippet
+Title:          Model | Read-only root model
+Description:    Implements a read-only root model.
+Shortcut:       c8jvrm
+Test:           Model | ===View
+
+/// group:      root_name     | user
+Group:          ROOT_MODEL    | User
+Person:         CHILD_MODEL   | Role

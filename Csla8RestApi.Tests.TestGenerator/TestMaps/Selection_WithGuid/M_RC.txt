@@ -1,0 +1,6 @@
+Snippet:        Selection_WithGuid\M_RC.snippet
+Project:        Model
+FileName:       ===Choice
+
+root_name:      product
+ROOT_MODEL:     Product

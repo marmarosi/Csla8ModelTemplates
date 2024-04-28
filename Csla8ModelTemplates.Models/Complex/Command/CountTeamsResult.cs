@@ -6,7 +6,7 @@ using Csla8RestApi.Models;
 namespace Csla8ModelTemplates.Models.Complex.Command
 {
     /// <summary>
-    /// Represents an item in a read-only count result collection.
+    /// Represents an item in a read-only count teams result collection.
     /// </summary>
     [Serializable]
     public class CountTeamsResult : ReadOnlyModel<CountTeamsResult>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Model | Read-only child list</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only child collection.</Description>
+            <Shortcut>c8clcc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a read-only $child_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$List$CHILD_MODEL$s : ReadOnlyList<$ROOT_MODEL$List$CHILD_MODEL$s, $ROOT_MODEL$List$CHILD_MODEL$>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($CHILD_MODEL$Infos),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Data Access
+
+        [FetchChild]
+        private async Task FetchAsync(
+            List<$ROOT_MODEL$List$CHILD_MODEL$Dao> list,
+            [Inject] IChildDataPortal<$ROOT_MODEL$List$CHILD_MODEL$> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            foreach (var item in list)
+                Items.Add(await itemPortal.FetchChildAsync(item));
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

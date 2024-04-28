@@ -159,7 +159,7 @@ namespace Csla8RestApi.SnippetGenerator
                     templateType = "Dal";
                     break;
                 case "M_":
-                    templateType = "WebApi";
+                    templateType = "Model";
                     break;
                 default:
                     templateType = "WebApi";

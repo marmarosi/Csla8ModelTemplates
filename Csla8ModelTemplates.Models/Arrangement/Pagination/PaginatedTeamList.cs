@@ -13,11 +13,11 @@ namespace Csla8ModelTemplates.Models.Arrangement.Pagination
     {
         #region Properties
 
-        public static readonly PropertyInfo<PaginatedTeamListItems> PlayersProperty = RegisterProperty<PaginatedTeamListItems>(nameof(Data));
+        public static readonly PropertyInfo<PaginatedTeamListItems> DataProperty = RegisterProperty<PaginatedTeamListItems>(nameof(Data));
         public PaginatedTeamListItems Data
         {
-            get => GetProperty(PlayersProperty);
-            private set => LoadProperty(PlayersProperty, value);
+            get => GetProperty(DataProperty);
+            private set => LoadProperty(DataProperty, value);
         }
 
         public static readonly PropertyInfo<int> TotalCountProperty = RegisterProperty<int>(c => c.TotalCount);

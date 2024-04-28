@@ -1,0 +1,11 @@
+Source:         Complex\Command\CountTeamsResults.cs
+Target:         M_CC.snippet
+Title:          Model | Read-only child list
+Description:    Implements a read-only child collection.
+Shortcut:       c8cccc
+Test:           Model | +++===s
+
+/// count teams:    command_name  | count products
+CountTeams:         COMMAND_MODEL | CountProducts
+Team:               ROOT_MODEL    | Product
+Player:             CHILD_MODEL   | Part

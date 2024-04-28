@@ -4,7 +4,7 @@ using Csla8ModelTemplates.Contracts.Complex.Command;
 namespace Csla8ModelTemplates.Models.Complex.Command
 {
     /// <summary>
-    /// Counts the roots grouped by the number of their items.
+    /// Represents the count teams command.
     /// </summary>
     [Serializable]
     public class CountTeams : CommandBase<CountTeams>
@@ -52,10 +52,10 @@ namespace Csla8ModelTemplates.Models.Complex.Command
         #region Factory Methods
 
         /// <summary>
-        /// Counts the teams grouped by the number of their items.
+        /// Executes the count teams command.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="criteria">The criteria of the count teams by item count command.</param>
+        /// <param name="criteria">The criteria of the count teams command.</param>
         /// <returns>The command instance.</returns>
         public static async Task<CountTeams> ExecuteAsync(
             IDataPortalFactory factory,

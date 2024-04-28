@@ -1,7 +1,6 @@
 using Csla8RestApi.Dal;
 using Csla8RestApi.Dal.Exceptions;
 using Csla8RestApi.Tests.Contracts.Complex.Edit;
-using Csla8RestApi.Tests.Dal.Rdbms;
 using Csla8RestApi.Tests.Entities;
 using Microsoft.EntityFrameworkCore;
 

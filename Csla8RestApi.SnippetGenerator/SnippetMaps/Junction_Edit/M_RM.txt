@@ -1,0 +1,11 @@
+Source:         Junction\Edit\Group.cs
+Target:         M_RM.snippet
+Title:          Model | Editable root model
+Description:    Implements an editable root model.
+Shortcut:       c8jerm
+Test:           Model | ===
+
+/// group:      root_name     | user
+Group:          ROOT_MODEL    | User
+group:          root_variable | user
+Person:         CHILD_MODEL   | Role

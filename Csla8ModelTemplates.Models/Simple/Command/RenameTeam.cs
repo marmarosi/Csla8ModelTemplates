@@ -7,7 +7,7 @@ using Csla8RestApi.Models;
 namespace Csla8ModelTemplates.Models.Simple.Command
 {
     /// <summary>
-    /// Renames the specified team.
+    /// Represents the rename team command.
     /// </summary>
     [Serializable]
     public class RenameTeam : CommandBase<RenameTeam>
@@ -73,7 +73,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
         #region Factory Methods
 
         /// <summary>
-        /// Renames the specified team.
+        /// Executes the rename team command.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
         /// <param name="dto">The data transer object of the rename team command.</param>

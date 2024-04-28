@@ -1,0 +1,9 @@
+Source:         Simple\Set\SimpleTeamSet.cs
+Target:         M_RC.snippet
+Title:          Model | Editable list
+Description:    Implements an editable root collection.
+Shortcut:       c8ssrc
+Test:           Model | ===Set
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
