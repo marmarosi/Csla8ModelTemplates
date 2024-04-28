@@ -1,5 +1,4 @@
 Source:         Simple\Command\RenameTeamDal.cs
-Target:         D_RM.snippet
 Title:          DAL | Command model
 Description:    Implements the data access of the command model.
 Shortcut:       c8scrmd

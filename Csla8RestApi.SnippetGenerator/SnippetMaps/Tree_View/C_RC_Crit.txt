@@ -1,5 +1,4 @@
 Source:         Tree\View\FolderTreeCriteria.cs
-Target:         C_RC_Crit.snippet
 Title:          Contract | Read-only tree criteria
 Description:    Defines the criteria of a read-only root collection.
 Shortcut:       c8tvrcc

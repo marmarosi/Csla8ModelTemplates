@@ -1,5 +1,4 @@
 Source:         Junction\Edit\GroupPerson.cs
-Target:         M_CI.snippet
 Title:          Model | Editable child list item
 Description:    Implements an editable child model.
 Shortcut:       c8jeci

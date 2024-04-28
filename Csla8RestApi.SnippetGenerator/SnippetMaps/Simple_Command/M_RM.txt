@@ -1,5 +1,4 @@
 Source:         Simple\Command\RenameTeam.cs
-Target:         M_RM.snippet
 Title:          Model | Command model
 Description:    Implements a command model.
 Shortcut:       c8scrm

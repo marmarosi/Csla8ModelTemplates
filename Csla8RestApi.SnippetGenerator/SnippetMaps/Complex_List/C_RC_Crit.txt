@@ -1,5 +1,4 @@
 Source:         Complex\List\TeamListCriteria.cs
-Target:         C_RC_Crit.snippet
 Title:          Contract | Read-only root list criteria
 Description:    Defines the criteria of a read-only root collection.
 Shortcut:       c8clrcc

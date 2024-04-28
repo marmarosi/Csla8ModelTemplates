@@ -1,5 +1,4 @@
 Source:         Simple\Edit\SimpleTeamDal.cs
-Target:         D_RM.snippet
 Title:          DAL | Editable model
 Description:    Implements the data access of the editable root model.
 Shortcut:       c8sermd

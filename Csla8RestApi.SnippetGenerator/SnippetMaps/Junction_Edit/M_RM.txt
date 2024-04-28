@@ -1,5 +1,4 @@
 Source:         Junction\Edit\Group.cs
-Target:         M_RM.snippet
 Title:          Model | Editable root model
 Description:    Implements an editable root model.
 Shortcut:       c8jerm

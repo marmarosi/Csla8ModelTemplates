@@ -1,5 +1,4 @@
 Source:         Complex\Edit\TeamPlayerDal.cs
-Target:         D_CI.snippet
 Title:          DAL | Editable child list item
 Description:    Implements the data access of the editable child model.
 Shortcut:       c8cecid

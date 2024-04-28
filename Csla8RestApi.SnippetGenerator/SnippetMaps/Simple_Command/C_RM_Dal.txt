@@ -1,5 +1,4 @@
 Source:         Simple\Command\IRenameTeamDal.cs
-Target:         C_RM_Dal.snippet
 Title:          Contract | Command model DAL interface
 Description:    Defines the DAL interface of a command model.
 Shortcut:       c8scrmi

@@ -1,5 +1,4 @@
 Source:         Junction\View\GroupViewDal.cs
-Target:         D_RM.snippet
 Title:          DAL | Read-only root model
 Description:    Implements the data access of the read-only root model.
 Shortcut:       c8jvrmd

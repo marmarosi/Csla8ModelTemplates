@@ -1,5 +1,4 @@
 Source:         Complex\Command\CountTeams.cs
-Target:         M_RM.snippet
 Title:          Model | Command model
 Description:    Implements a command model.
 Shortcut:       c8ccrm

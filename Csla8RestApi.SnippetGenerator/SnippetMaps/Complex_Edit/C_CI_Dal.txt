@@ -1,5 +1,4 @@
 Source:         Complex\Edit\ITeamPlayerDal.cs
-Target:         C_CI_Dal.snippet
 Title:          Contract | Editable child list item DAL interface
 Description:    Defines the DAL interface of an editable child model.
 Shortcut:       c8cecii

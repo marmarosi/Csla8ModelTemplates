@@ -1,5 +1,4 @@
 Source:         Complex\List\TeamList.cs
-Target:         M_RC.snippet
 Title:          Model | Read-only root list
 Description:    Implements a read-only root collection.
 Shortcut:       c8clrc

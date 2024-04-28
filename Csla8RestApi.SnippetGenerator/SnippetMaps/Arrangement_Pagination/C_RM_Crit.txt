@@ -1,5 +1,4 @@
 Source:         Arrangement\Pagination\PaginatedTeamListCriteria.cs
-Target:         C_RM_Crit.snippet
 Title:          Contract | Read-only paginated list criteria
 Description:    Defines the criteria of a read-only root model.
 Shortcut:       c8aprmc

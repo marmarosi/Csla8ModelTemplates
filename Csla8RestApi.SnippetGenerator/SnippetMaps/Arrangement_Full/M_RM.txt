@@ -1,5 +1,4 @@
 Source:         Arrangement\Full\ArrangedTeamList.cs
-Target:         M_RM.snippet
 Title:          Model | Read-only list container
 Description:    Implements a read-only root model.
 Shortcut:       c8afrm

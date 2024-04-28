@@ -1,5 +1,4 @@
 Source:         Arrangement\Full\ArrangedTeamListDal.cs
-Target:         D_RM.snippet
 Title:          DAL | Read-only sorted-paginated list
 Description:    Implements the data access of the read-only root model.
 Shortcut:       c8afrmd

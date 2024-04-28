@@ -1,5 +1,4 @@
 Source:         Selection\WithGuid\TeamWithGuidChoiceCriteria.cs
-Target:         C_RC_Crit.snippet
 Title:          Contract | Read-only Guid choice criteria
 Description:    Defines the criteria of a read-only root collection.
 Shortcut:       c8lgrcc

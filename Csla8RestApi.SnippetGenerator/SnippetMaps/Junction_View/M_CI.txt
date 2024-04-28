@@ -1,5 +1,4 @@
 Source:         Junction\View\GroupViewPerson.cs
-Target:         M_CI.snippet
 Title:          Model | Read-only child list item
 Description:    Implements a read-only child model.
 Shortcut:       c8jvci

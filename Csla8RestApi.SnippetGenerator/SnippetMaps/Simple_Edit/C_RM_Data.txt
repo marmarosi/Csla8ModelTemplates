@@ -1,5 +1,4 @@
 Source:         Simple\Edit\SimpleTeamData.cs
-Target:         C_RM_Data.snippet
 Title:          Contract | Editable model data objects
 Description:    Defines the data objects of an editable root model.
 Shortcut:       c8sermo

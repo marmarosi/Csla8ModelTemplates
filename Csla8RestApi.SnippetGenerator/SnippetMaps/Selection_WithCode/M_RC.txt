@@ -1,5 +1,4 @@
 Source:         Selection\WithCode\TeamWithCodeChoice.cs
-Target:         M_RC.snippet
 Title:          Model | Read-only code choice
 Description:    Implements the data access of the read-only root collection.
 Shortcut:       c8lcrc

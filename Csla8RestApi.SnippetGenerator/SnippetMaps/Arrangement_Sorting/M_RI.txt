@@ -1,5 +1,4 @@
 Source:         Arrangement\Sorting\SortedTeamListItem.cs
-Target:         M_RI.snippet
 Title:          Model | Read-only sorted list item
 Description:    Implements a read-only child model.
 Shortcut:       c8asri

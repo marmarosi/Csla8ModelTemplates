@@ -1,5 +1,4 @@
 Source:         Complex\Set\TeamSetItemDal.cs
-Target:         D_RI.snippet
 Title:          DAL | Editable root list item
 Description:    Implements the data access of the editable child model.
 Shortcut:       c8csrid

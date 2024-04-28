@@ -1,5 +1,4 @@
 Source:         Selection\WithKey\TeamWithKeyChoiceCriteria.cs
-Target:         C_RC_Crit.snippet
 Title:          Contract | Read-only key choice criteria
 Description:    Defines the criteria of a read-only root collection.
 Shortcut:       c8lkrcc

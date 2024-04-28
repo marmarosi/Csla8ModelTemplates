@@ -1,5 +1,4 @@
 Source:         Simple\Set\ISimpleTeamSetDal.cs
-Target:         C_RC_Dal.snippet
 Title:          Contract | Editable list DAL interface
 Description:    Defines the DAL interface of an editable root collection.
 Shortcut:       c8ssrci

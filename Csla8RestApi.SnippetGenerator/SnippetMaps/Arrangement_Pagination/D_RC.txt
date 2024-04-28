@@ -1,5 +1,4 @@
 Source:         Arrangement\Pagination\PaginatedTeamListDal.cs
-Target:         D_RC.snippet
 Title:          DAL | Read-only paginated list
 Description:    Implements the data access of the read-only root collection.
 Shortcut:       c8aprcd

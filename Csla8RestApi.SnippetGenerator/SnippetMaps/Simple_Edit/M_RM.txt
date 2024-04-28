@@ -1,5 +1,4 @@
 Source:         Simple\Edit\SimpleTeam.cs
-Target:         M_RM.snippet
 Title:          Model | Editable model
 Description:    Implements an editable root model.
 Shortcut:       c8serm

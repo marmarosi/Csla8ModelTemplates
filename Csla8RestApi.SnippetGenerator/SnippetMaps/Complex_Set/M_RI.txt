@@ -1,5 +1,4 @@
 Source:         Complex\Set\TeamSetItem.cs
-Target:         M_RI.snippet
 Title:          Model | Editable root list item
 Description:    Implements an editable child model.
 Shortcut:       c8csri

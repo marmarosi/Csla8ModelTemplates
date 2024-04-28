@@ -1,5 +1,4 @@
 Source:         Arrangement\Pagination\IPaginatedTeamListDal.cs
-Target:         C_RM_Dal.snippet
 Title:          Contract | Read-only sorted list DAL interface
 Description:    Defines the DAL interface of a read-only root collection.
 Shortcut:       c8asrci

@@ -1,5 +1,4 @@
 Source:         Tree\View\FolderNodeData.cs
-Target:         C_CM_Data.snippet
 Title:          Contract | Read-only tree node data objects
 Description:    Defines the data objects of a read-only child model.
 Shortcut:       c8tvcmo

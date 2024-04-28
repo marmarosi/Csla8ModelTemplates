@@ -1,5 +1,4 @@
 Source:         Arrangement\Pagination\PaginatedTeamListItems.cs
-Target:         M_CC.snippet
 Title:          Model | Read-only paginated list
 Description:    Implements a read-only child collection.
 Shortcut:       c8apcc

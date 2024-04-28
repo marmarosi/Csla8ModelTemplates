@@ -1,5 +1,4 @@
 Source:         Junction\Edit\GroupCriteria.cs
-Target:         C_RM_Crit.snippet
 Title:          Contract | Editable root model criteria
 Description:    Defines the criteria of an editable root model.
 Shortcut:       c6jermc

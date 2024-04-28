@@ -84,7 +84,6 @@ namespace Csla8RestApi.SnippetGenerator
             )
         {
             var map = new SnippetMap();
-            var targetFolder = "";
             var lines = File.ReadLines(snippetMapPath);
             foreach (var line in lines)
             {
@@ -103,13 +102,11 @@ namespace Csla8RestApi.SnippetGenerator
                 {
                     case "Source":
                         map.SourcePath = value;
-                        targetFolder = GetTargetFolder(value);
-                        break;
-                    case "Target":
-                        map.SourcePath = GetSourcePath(map.SourcePath, value, data.TemplateSources);
-                        map.TargetFolder = targetFolder;
-                        map.ShortTarget = Path.Combine(targetFolder, value);
-                        map.TargetPath = Path.Combine(data.TargetBasePath, targetFolder, value);
+                        map.TargetFolder = GetTargetFolder(value);
+                        var targetFile = Path.GetFileNameWithoutExtension(snippetMapPath) + ".snippet";
+                        map.SourcePath = GetSourcePath(map.SourcePath, targetFile, data.TemplateSources);
+                        map.ShortTarget = Path.Combine(map.TargetFolder, targetFile);
+                        map.TargetPath = Path.Combine(data.TargetBasePath, map.TargetFolder, targetFile);
                         break;
                     case "Title":
                         map.Title = value;

@@ -1,5 +1,4 @@
 Source:         Arrangement\Sorting\SortedTeamListSortBy.cs
-Target:         C_RC_Sort.snippet
 Title:          Contract | Sorting enumeration
 Description:    Defines the options of sorting.
 Shortcut:       c8asrcs

@@ -1,5 +1,4 @@
 Source:         Complex\List\TeamListItem.cs
-Target:         M_RI.snippet
 Title:          Model | Read-only root list item
 Description:    Implements a read-only list item model.
 Shortcut:       c8clri

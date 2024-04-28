@@ -1,5 +1,4 @@
 Source:         Complex\Set\TeamSetCriteria.cs
-Target:         C_RC_Crit.snippet
 Title:          Contract | Editable root list criteria
 Description:    Defines the criteria of an editable root collection.
 Shortcut:       c8csrcc
