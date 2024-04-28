@@ -1,5 +1,4 @@
 Source:         Simple\Edit\SimpleTeamCriteria.cs
-Target:         C_RM_Crit.snippet
 Title:          Contract | Editable model criteria
 Description:    Defines the criteria of an editable root model.
 Shortcut:       c8sermc

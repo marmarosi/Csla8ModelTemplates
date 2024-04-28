@@ -1,5 +1,4 @@
 Source:         Junction\Edit\GroupDal.cs
-Target:         D_RM.snippet
 Title:          DAL | Editable root model
 Description:    Implements the data access of the editable root model.
 Shortcut:       c8jermd

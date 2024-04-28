@@ -1,5 +1,4 @@
 Source:         Complex\Set\ITeamSetItemDal.cs
-Target:         C_RI_Dal.snippet
 Title:          Contract | Editable root list item DAL interface
 Description:    Defines the DAL interface of an editable child model.
 Shortcut:       c8csrii

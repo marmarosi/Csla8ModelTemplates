@@ -1,5 +1,4 @@
 Source:         Complex\Edit\TeamPlayerCriteria.cs
-Target:         C_CI_Crit.snippet
 Title:          Contract | Editable child list item criteria
 Description:    Defines the criteria of an editable child model.
 Shortcut:       c8cecic

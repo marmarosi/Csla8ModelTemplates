@@ -1,5 +1,4 @@
 Source:         Arrangement\Full\ArrangedTeamListItems.cs
-Target:         M_CC.snippet
 Title:          Model | Read-only sorted-paginated list
 Description:    Implements a read-only child collection.
 Shortcut:       c8afcc

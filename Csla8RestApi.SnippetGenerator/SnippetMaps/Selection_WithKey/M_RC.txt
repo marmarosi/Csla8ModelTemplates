@@ -1,5 +1,4 @@
 Source:         Selection\WithKey\TeamWithKeyChoice.cs
-Target:         M_RC.snippet
 Title:          Model | Read-only key choice
 Description:    Implements the data access of the read-only root collection.
 Shortcut:       c8lkrc

@@ -1,5 +1,4 @@
 Source:         Tree\View\FolderNode.cs
-Target:         M_CM.snippet
 Title:          Model | Read-only tree node
 Description:    Implements a read-only child model.
 Shortcut:       c8tvcm

@@ -1,5 +1,4 @@
 Source:         Complex\Edit\ITeamDal.cs
-Target:         C_RM_Dal.snippet
 Title:          Contract | Editable root model DAL interface
 Description:    Defines the DAL interface of an editable root model.
 Shortcut:       c8cermi

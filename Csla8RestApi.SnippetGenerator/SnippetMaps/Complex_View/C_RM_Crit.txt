@@ -1,5 +1,4 @@
 Source:         Complex\View\TeamViewCriteria.cs
-Target:         C_RM_Crit.snippet
 Title:          Contract | Read-only root model criteria
 Description:    Defines the criteria of a read-only root model.
 Shortcut:       c8cvrmc

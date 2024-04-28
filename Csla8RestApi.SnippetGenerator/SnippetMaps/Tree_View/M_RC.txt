@@ -1,5 +1,4 @@
 Source:         Tree\View\FolderTree.cs
-Target:         M_RC.snippet
 Title:          Model | Read-only root collection
 Description:    Implements a read-only root collection.
 Shortcut:       c8tvrc

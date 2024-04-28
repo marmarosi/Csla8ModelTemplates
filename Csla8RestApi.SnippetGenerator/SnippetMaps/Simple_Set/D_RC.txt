@@ -1,5 +1,4 @@
 Source:         Simple\Set\SimpleTeamSetDal.cs
-Target:         D_RC.snippet
 Title:          DAL | Editable list
 Description:    Implements the data access of the editable root collection.
 Shortcut:       c8ssrcd

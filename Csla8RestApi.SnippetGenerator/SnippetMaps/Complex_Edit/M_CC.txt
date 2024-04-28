@@ -1,5 +1,4 @@
 Source:         Complex\Edit\TeamPlayers.cs
-Target:         M_CC.snippet
 Title:          Model | Editable child list
 Description:    Implements an editable child collection.
 Shortcut:       c8cecc

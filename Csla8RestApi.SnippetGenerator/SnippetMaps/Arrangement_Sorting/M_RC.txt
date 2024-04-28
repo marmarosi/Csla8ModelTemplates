@@ -1,5 +1,4 @@
 Source:         Arrangement\Sorting\SortedTeamList.cs
-Target:         M_RC.snippet
 Title:          Model | Read-only sorted list
 Description:    Implements a read-only root collection.
 Shortcut:       c8asrc

@@ -1,5 +1,4 @@
 Source:         Arrangement\Full\IArrangedTeamListDal.cs
-Target:         C_RM_Dal.snippet
 Title:          Contract | Read-only sorted-paginated list DAL interface
 Description:    Defines the DAL interface of a read-only root model.
 Shortcut:       c8afrmi

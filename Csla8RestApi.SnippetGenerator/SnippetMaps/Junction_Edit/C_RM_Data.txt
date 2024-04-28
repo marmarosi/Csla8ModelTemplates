@@ -1,5 +1,4 @@
 Source:         Junction\Edit\GroupData.cs
-Target:         C_RM_Data.snippet
 Title:          Contract | Editable root model data objects
 Description:    Defines the data objects of an editable root model.
 Shortcut:       c8jermo

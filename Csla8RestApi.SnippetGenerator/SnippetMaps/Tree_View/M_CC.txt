@@ -1,5 +1,4 @@
 Source:         Tree\View\FolderNodes.cs
-Target:         M_CC.snippet
 Title:          Model | Read-only child collection
 Description:    Implements a read-only child collection.
 Shortcut:       c8tvcc

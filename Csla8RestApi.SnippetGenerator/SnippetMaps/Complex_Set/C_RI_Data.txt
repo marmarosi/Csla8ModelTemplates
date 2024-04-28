@@ -1,5 +1,4 @@
 Source:         Complex\Set\TeamSetItemData.cs
-Target:         C_RI_Data.snippet
 Title:          Contract | Editable root list item data objects
 Description:    Defines the data objects of an editable child model.
 Shortcut:       c8csrio

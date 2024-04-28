@@ -1,5 +1,4 @@
 Source:         Complex\Set\TeamSet.cs
-Target:         M_RC.snippet
 Title:          Model | Editable root list
 Description:    Implements an editable root collection.
 Shortcut:       c8csrc

@@ -1,5 +1,4 @@
 Source:         Simple\Set\SimpleTeamSetItemCriteria.cs
-Target:         C_RI_Crit.snippet
 Title:          Contract | Editable list item criteria
 Description:    Defines the criteria of an editable child model.
 Shortcut:       c8ssric

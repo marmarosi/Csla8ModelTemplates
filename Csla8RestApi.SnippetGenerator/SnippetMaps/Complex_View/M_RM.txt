@@ -1,5 +1,4 @@
 Source:         Complex\View\TeamView.cs
-Target:         M_RM.snippet
 Title:          Model | Read-only root model
 Description:    Implements a read-only root model.
 Shortcut:       c8cvrm

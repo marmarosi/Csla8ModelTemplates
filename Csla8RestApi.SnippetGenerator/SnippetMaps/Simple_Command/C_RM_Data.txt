@@ -1,5 +1,4 @@
 Source:         Simple\Command\RenameTeamData.cs
-Target:         C_RM_Data.snippet
 Title:          Contract | Command data objects
 Description:    Defines the data objects of a command model.
 Shortcut:       c8scrmo

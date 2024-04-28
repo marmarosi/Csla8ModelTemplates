@@ -1,5 +1,4 @@
 Source:         Arrangement\Sorting\SortedTeamListItemData.cs
-Target:         C_RI_Data.snippet
 Title:          Contract | Read-only sorted list item data objects
 Description:    Defines the data objects of a read-only child model.
 Shortcut:       c8ascmo
