@@ -192,10 +192,13 @@ namespace Csla8RestApi.Models
             )
         {
             var cslaBase = GetProperty(cslaProperty);
-            object value = cslaProperty.Type
-                .GetMethod("ToDto")!
-                .Invoke(cslaBase, null)!;
-            dtoProperty.SetValue(dto, value);
+            if (cslaBase != null)
+            {
+                object value = cslaProperty.Type
+                    .GetMethod("ToDto")!
+                    .Invoke(cslaBase, null)!;
+                dtoProperty.SetValue(dto, value);
+            }
         }
 
         #endregion
