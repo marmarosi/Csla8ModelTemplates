@@ -1,4 +1,5 @@
 using Csla8RestApi.Tests.TestGenerator.Models;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -21,8 +22,13 @@ namespace Csla8RestApi.Tests.TestGenerator
                 .First();
             var source = snippet.Value;
 
-            foreach(var textSwap in testMap.TextSwaps)
+            foreach (var textSwap in testMap.TextSwaps)
+            {
+                var count = Regex.Matches(source, $"\\${textSwap.Placeholder}\\$").Count;
                 source = source.Replace($"${textSwap.Placeholder}$", textSwap.Name);
+                if (count == 0)
+                    Console.WriteLine($"    {testMap.ShortWrapper} - {textSwap.Placeholder}: no occurrences");
+            }
             source = source.Replace("$end$", "");
 
             var wrapper = GetWrapper(wrapperRoot, testMap.ShortWrapper);

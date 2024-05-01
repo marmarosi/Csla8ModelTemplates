@@ -2,9 +2,9 @@ Source:         Complex\Command\CountTeamsResult.cs
 Title:          Model | Read-only child list item
 Description:    Implements a read-only child model.
 Shortcut:       c8ccci
-Test:           Model | +++===
+Test:           Model | +++Result
 
-/// count teams:    command_name    | count products
+/// count teams:    command_name  | count products
 CountTeams:         COMMAND_MODEL | CountProducts
 Team:               ROOT_MODEL    | Product
 Player:             CHILD_MODEL   | Part

@@ -4,7 +4,7 @@ Description:    Implements the data access of the editable child model.
 Shortcut:       c8cecid
 Test:           DAL | ===---Dal
 
-/// team:       root_name      | product
+/// player:     child_name     | part
 Team:           ROOT_MODEL     | Product
 Player:         CHILD_MODEL    | Part
 player:         child_variable | part

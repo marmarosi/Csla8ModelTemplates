@@ -1,8 +1,6 @@
 Snippet:        Complex_Command\M_CC.snippet
 Project:        Model
-FileName:       +++===s
+FileName:       +++Results
 
 command_name:   count products
 COMMAND_MODEL:  CountProducts
-ROOT_MODEL:     Product
-CHILD_MODEL:    Part

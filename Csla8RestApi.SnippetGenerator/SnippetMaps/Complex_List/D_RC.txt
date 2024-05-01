@@ -6,6 +6,5 @@ Test:           DAL | ===ListDal
 
 /// team:       root_name     | product
 Team:           ROOT_MODEL    | Product
-team:           root_variable | product
 Player:         CHILD_MODEL   | Part
 MySqlContext:   DB_CONTEXT    | RdbmsContext

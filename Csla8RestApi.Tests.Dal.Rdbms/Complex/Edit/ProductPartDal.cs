@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.Edit
 {
     /// <summary>
-    /// Implements the data access functions of the editable player object.
+    /// Implements the data access functions of the editable part object.
     /// </summary>
     [DalImplementation]
     public class ProductPartDal : DalBase<RdbmsContext>, IProductPartDal
@@ -30,9 +30,9 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.Edit
         #region Insert
 
         /// <summary>
-        /// Creates a new player using the specified data.
+        /// Creates a new part using the specified data.
         /// </summary>
-        /// <param name="dao">The data of the player.</param>
+        /// <param name="dao">The data of the part.</param>
         public async Task InsertAsync(
             ProductPartDao dao
             )
@@ -69,9 +69,9 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.Edit
         #region Update
 
         /// <summary>
-        /// Updates an existing player using the specified data.
+        /// Updates an existing part using the specified data.
         /// </summary>
-        /// <param name="dao">The data of the player.</param>
+        /// <param name="dao">The data of the part.</param>
         public async Task UpdateAsync(
             ProductPartDao dao
             )
@@ -114,9 +114,9 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.Edit
         #region Delete
 
         /// <summary>
-        /// Deletes the specified player.
+        /// Deletes the specified part.
         /// </summary>
-        /// <param name="criteria">The criteria of the player.</param>
+        /// <param name="criteria">The criteria of the part.</param>
         public async Task DeleteAsync(
             ProductPartCriteria criteria
             )

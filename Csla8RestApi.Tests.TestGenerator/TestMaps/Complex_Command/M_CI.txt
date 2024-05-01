@@ -1,6 +1,6 @@
 Snippet:        Complex_Command\M_CI.snippet
 Project:        Model
-FileName:       +++===
+FileName:       +++Result
 
 command_name:   count products
 COMMAND_MODEL:  CountProducts

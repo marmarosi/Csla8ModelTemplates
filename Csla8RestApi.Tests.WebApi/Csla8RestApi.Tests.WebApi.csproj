@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Csla8RestApi.Tests.Dal.Rdbms\Csla8RestApi.Tests.Dal.Rdbms.csproj" />
     <ProjectReference Include="..\Csla8RestApi.Tests.Models\Csla8RestApi.Tests.Models.csproj" />
   </ItemGroup>
 

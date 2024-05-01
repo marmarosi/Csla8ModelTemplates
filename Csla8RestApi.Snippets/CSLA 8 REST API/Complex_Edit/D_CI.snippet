@@ -10,7 +10,7 @@
         <Snippet>
             <Code Language="CSharp">
                 <![CDATA[/// <summary>
-    /// Implements the data access functions of the editable player object.
+    /// Implements the data access functions of the editable $child_name$ object.
     /// </summary>
     [DalImplementation]
     public class $ROOT_MODEL$$CHILD_MODEL$Dal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$$CHILD_MODEL$Dal
@@ -33,9 +33,9 @@
         #region Insert
 
         /// <summary>
-        /// Creates a new player using the specified data.
+        /// Creates a new $child_name$ using the specified data.
         /// </summary>
-        /// <param name="dao">The data of the player.</param>
+        /// <param name="dao">The data of the $child_name$.</param>
         public async Task InsertAsync(
             $ROOT_MODEL$$CHILD_MODEL$Dao dao
             )
@@ -72,9 +72,9 @@
         #region Update
 
         /// <summary>
-        /// Updates an existing player using the specified data.
+        /// Updates an existing $child_name$ using the specified data.
         /// </summary>
-        /// <param name="dao">The data of the player.</param>
+        /// <param name="dao">The data of the $child_name$.</param>
         public async Task UpdateAsync(
             $ROOT_MODEL$$CHILD_MODEL$Dao dao
             )
@@ -117,9 +117,9 @@
         #region Delete
 
         /// <summary>
-        /// Deletes the specified player.
+        /// Deletes the specified $child_name$.
         /// </summary>
-        /// <param name="criteria">The criteria of the player.</param>
+        /// <param name="criteria">The criteria of the $child_name$.</param>
         public async Task DeleteAsync(
             $ROOT_MODEL$$CHILD_MODEL$Criteria criteria
             )
@@ -148,9 +148,9 @@
             </Code>
             <Declarations>
                 <Literal>
-                    <ID>root_name</ID>
-                    <ToolTip>The description of the root model in comments.</ToolTip>
-                    <Default>root_name</Default>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
                 </Literal>
                 <Literal>
                     <ID>ROOT_MODEL</ID>
