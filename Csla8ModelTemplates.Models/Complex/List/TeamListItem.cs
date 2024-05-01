@@ -22,22 +22,22 @@ namespace Csla8ModelTemplates.Models.Complex.List
             private set => LoadProperty(TeamKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> TeamIdProperty = RegisterProperty<long?>(nameof(TeamId), RelationshipTypes.PrivateField);
-        public string TeamId
+        public static readonly PropertyInfo<string?> TeamIdProperty = RegisterProperty<string?>(nameof(TeamId), RelationshipTypes.PrivateField);
+        public string? TeamId
         {
             get => KeyHash.Encode(ID.Team, TeamKey);
             private set => TeamKey = KeyHash.Decode(ID.Team, value);
         }
 
-        public static readonly PropertyInfo<string> TeamCodeProperty = RegisterProperty<string>(nameof(TeamCode));
-        public string TeamCode
+        public static readonly PropertyInfo<string?> TeamCodeProperty = RegisterProperty<string?>(nameof(TeamCode));
+        public string? TeamCode
         {
             get => GetProperty(TeamCodeProperty);
             private set => LoadProperty(TeamCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> TeamNameProperty = RegisterProperty<string>(nameof(TeamName));
-        public string TeamName
+        public static readonly PropertyInfo<string?> TeamNameProperty = RegisterProperty<string?>(nameof(TeamName));
+        public string? TeamName
         {
             get => GetProperty(TeamNameProperty);
             private set => LoadProperty(TeamNameProperty, value);

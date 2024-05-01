@@ -21,8 +21,8 @@ namespace Csla8RestApi.Tests.Models.Simple.Command
             private set => LoadProperty(ProductKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ProductIdProperty = RegisterProperty<long?>(nameof(ProductId), RelationshipTypes.PrivateField);
-        public string ProductId
+        public static readonly PropertyInfo<string?> ProductIdProperty = RegisterProperty<string?>(nameof(ProductId), RelationshipTypes.PrivateField);
+        public string? ProductId
         {
             get => KeyHash.Encode(ID.Product, ProductKey);
             set => ProductKey = KeyHash.Decode(ID.Product, value);
@@ -103,7 +103,7 @@ namespace Csla8RestApi.Tests.Models.Simple.Command
 
             using (var transaction = dal.BeginTransaction())
             {
-                ClearProductDao dao = new ClearProductDao(ProductKey ?? 0, ProductName);
+                ClearProductDao dao = new ClearProductDao(ProductKey, ProductName);
                 await dal.ExecuteAsync(dao);
             }
 

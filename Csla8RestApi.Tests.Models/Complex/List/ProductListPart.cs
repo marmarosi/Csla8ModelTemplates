@@ -22,22 +22,22 @@ namespace Csla8RestApi.Tests.Models.Complex.List
             private set => LoadProperty(PartKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> PartIdProperty = RegisterProperty<long?>(nameof(PartId), RelationshipTypes.PrivateField);
-        public string PartId
+        public static readonly PropertyInfo<string?> PartIdProperty = RegisterProperty<string?>(nameof(PartId), RelationshipTypes.PrivateField);
+        public string? PartId
         {
             get => KeyHash.Encode(ID.Part, PartKey);
             private set => PartKey = KeyHash.Decode(ID.Part, value);
         }
 
-        public static readonly PropertyInfo<string> PartCodeProperty = RegisterProperty<string>(nameof(PartCode));
-        public string PartCode
+        public static readonly PropertyInfo<string?> PartCodeProperty = RegisterProperty<string?>(nameof(PartCode));
+        public string? PartCode
         {
             get => GetProperty(PartCodeProperty);
             private set => LoadProperty(PartCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> PartNameProperty = RegisterProperty<string>(nameof(PartName));
-        public string PartName
+        public static readonly PropertyInfo<string?> PartNameProperty = RegisterProperty<string?>(nameof(PartName));
+        public string? PartName
         {
             get => GetProperty(PartNameProperty);
             private set => LoadProperty(PartNameProperty, value);

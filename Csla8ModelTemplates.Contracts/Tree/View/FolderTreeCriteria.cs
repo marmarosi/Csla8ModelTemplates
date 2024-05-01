@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Tree.View
 {
@@ -8,10 +8,10 @@ namespace Csla8ModelTemplates.Contracts.Tree.View
     [Serializable]
     public class FolderTreeParams
     {
-        public string RootId { get; set; }
+        public string? RootId { get; set; }
 
         public FolderTreeParams(
-            string rootId
+            string? rootId
             )
         {
             RootId = rootId;
@@ -32,6 +32,6 @@ namespace Csla8ModelTemplates.Contracts.Tree.View
     [Serializable]
     public class FolderTreeCriteria
     {
-        public long RootKey { get; set; }
+        public long? RootKey { get; set; }
     }
 }

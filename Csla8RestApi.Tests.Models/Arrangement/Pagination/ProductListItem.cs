@@ -22,22 +22,22 @@ namespace Csla8RestApi.Tests.Models.Arrangement.Pagination
             private set => LoadProperty(ProductKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ProductIdProperty = RegisterProperty<long?>(nameof(ProductId), RelationshipTypes.PrivateField);
-        public string ProductId
+        public static readonly PropertyInfo<string?> ProductIdProperty = RegisterProperty<string?>(nameof(ProductId), RelationshipTypes.PrivateField);
+        public string? ProductId
         {
             get => KeyHash.Encode(ID.Product, ProductKey);
             private set => ProductKey = KeyHash.Decode(ID.Product, value);
         }
 
-        public static readonly PropertyInfo<string> ProductCodeProperty = RegisterProperty<string>(nameof(ProductCode));
-        public string ProductCode
+        public static readonly PropertyInfo<string?> ProductCodeProperty = RegisterProperty<string?>(nameof(ProductCode));
+        public string? ProductCode
         {
             get => GetProperty(ProductCodeProperty);
             private set => LoadProperty(ProductCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> ProductNameProperty = RegisterProperty<string>(nameof(ProductName));
-        public string ProductName
+        public static readonly PropertyInfo<string?> ProductNameProperty = RegisterProperty<string?>(nameof(ProductName));
+        public string? ProductName
         {
             get => GetProperty(ProductNameProperty);
             private set => LoadProperty(ProductNameProperty, value);
@@ -76,12 +76,15 @@ namespace Csla8RestApi.Tests.Models.Arrangement.Pagination
         #region Data Access
 
         [FetchChild]
-        protected void Fetch(
+        protected async Task FetchAsync(
             ProductListItemDao dao
             )
         {
             // Set values from data access object.
-            DataMapper.Map(dao, this);
+            await Task.Run(() =>
+            {
+                DataMapper.Map(dao, this);
+            });
         }
 
         #endregion

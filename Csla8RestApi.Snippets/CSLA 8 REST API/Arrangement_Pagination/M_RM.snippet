@@ -17,8 +17,8 @@
     {
         #region Properties
 
-        public static readonly PropertyInfo<$ROOT_MODEL$ListItems> DataProperty = RegisterProperty<$ROOT_MODEL$ListItems>(nameof(Data));
-        public $ROOT_MODEL$ListItems Data
+        public static readonly PropertyInfo<$ROOT_MODEL$ListItems?> DataProperty = RegisterProperty<$ROOT_MODEL$ListItems?>(nameof(Data));
+        public $ROOT_MODEL$ListItems? Data
         {
             get => GetProperty(DataProperty);
             private set => LoadProperty(DataProperty, value);

@@ -13,8 +13,8 @@ namespace Csla8RestApi.Tests.Models.Arrangement.Full
     {
         #region Properties
 
-        public static readonly PropertyInfo<ProductListItems> DataProperty = RegisterProperty<ProductListItems>(nameof(Data));
-        public ProductListItems Data
+        public static readonly PropertyInfo<ProductListItems?> DataProperty = RegisterProperty<ProductListItems?>(nameof(Data));
+        public ProductListItems? Data
         {
             get => GetProperty(DataProperty);
             private set => LoadProperty(DataProperty, value);
@@ -86,7 +86,7 @@ namespace Csla8RestApi.Tests.Models.Arrangement.Full
         {
             // Load values from persistent storage.
             IPaginatedList<ProductListItemDao> dao = await dal.FetchAsync(criteria);
-            Data = itemsPortal.FetchChild(dao.Data);
+            Data = await itemsPortal.FetchChildAsync(dao.Data);
             TotalCount = dao.TotalCount;
         }
 

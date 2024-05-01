@@ -59,7 +59,7 @@ namespace Csla8ModelTemplates.Models.Tree.Choice
             {
                 List<IdNameOptionDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(itemPortal.FetchChild(item, ID.Folder));
+                    Add(await itemPortal.FetchChildAsync(item, ID.Folder));
             }
         }
 

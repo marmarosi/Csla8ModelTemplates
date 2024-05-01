@@ -22,22 +22,22 @@ namespace Csla8RestApi.Tests.Models.Junction.View
             private set => LoadProperty(UserKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> UserIdProperty = RegisterProperty<long?>(nameof(UserId), RelationshipTypes.PrivateField);
-        public string UserId
+        public static readonly PropertyInfo<string?> UserIdProperty = RegisterProperty<string?>(nameof(UserId), RelationshipTypes.PrivateField);
+        public string? UserId
         {
             get => KeyHash.Encode(ID.User, UserKey);
             private set => UserKey = KeyHash.Decode(ID.User, value);
         }
 
-        public static readonly PropertyInfo<string> UserCodeProperty = RegisterProperty<string>(nameof(UserCode));
-        public string UserCode
+        public static readonly PropertyInfo<string?> UserCodeProperty = RegisterProperty<string?>(nameof(UserCode));
+        public string? UserCode
         {
             get => GetProperty(UserCodeProperty);
             private set => LoadProperty(UserCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> UserNameProperty = RegisterProperty<string>(nameof(UserName));
-        public string UserName
+        public static readonly PropertyInfo<string?> UserNameProperty = RegisterProperty<string?>(nameof(UserName));
+        public string? UserName
         {
             get => GetProperty(UserNameProperty);
             private set => LoadProperty(UserNameProperty, value);

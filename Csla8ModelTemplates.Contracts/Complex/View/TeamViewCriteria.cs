@@ -8,10 +8,10 @@ namespace Csla8ModelTemplates.Contracts.Complex.View
     [Serializable]
     public class TeamViewParams
     {
-        public string TeamId { get; set; }
+        public string? TeamId { get; set; }
 
         public TeamViewParams(
-            string teamId
+            string? teamId
             )
         {
             TeamId = teamId;
@@ -32,6 +32,6 @@ namespace Csla8ModelTemplates.Contracts.Complex.View
     [Serializable]
     public class TeamViewCriteria
     {
-        public long TeamKey { get; set; }
+        public long? TeamKey { get; set; }
     }
 }

@@ -142,12 +142,15 @@ namespace Csla8RestApi.Models
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public virtual void SetValuesOnBuild(
+        public virtual async Task SetValuesOnBuild(
             Dto dto,
             IChildDataPortalFactory childFactory
             )
         {
-            throw new NotImplementedException();
+            await Task.Run(() =>
+            {
+                throw new NotImplementedException();
+            });
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla8ModelTemplates.Contracts.Tree.View;
 using Csla8RestApi.Models;
 
@@ -29,7 +29,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<FolderNodeDao> list,
             [Inject] IChildDataPortal<FolderNode> childPortal
             )
@@ -37,7 +37,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
             using (LoadListMode)
             {
                 foreach (var item in list)
-                    Add(childPortal.FetchChild(item));
+                    Add(await childPortal.FetchChildAsync(item));
             }
         }
 

@@ -21,8 +21,8 @@ namespace Csla8ModelTemplates.Models.Simple.Command
             private set => LoadProperty(TeamKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> TeamIdProperty = RegisterProperty<long?>(nameof(TeamId), RelationshipTypes.PrivateField);
-        public string TeamId
+        public static readonly PropertyInfo<string?> TeamIdProperty = RegisterProperty<string?>(nameof(TeamId), RelationshipTypes.PrivateField);
+        public string? TeamId
         {
             get => KeyHash.Encode(ID.Team, TeamKey);
             set => TeamKey = KeyHash.Decode(ID.Team, value);
@@ -103,7 +103,7 @@ namespace Csla8ModelTemplates.Models.Simple.Command
 
             using (var transaction = dal.BeginTransaction())
             {
-                RenameTeamDao dao = new RenameTeamDao(TeamKey ?? 0, TeamName);
+                RenameTeamDao dao = new RenameTeamDao(TeamKey, TeamName);
                 await dal.ExecuteAsync(dao);
             }
 

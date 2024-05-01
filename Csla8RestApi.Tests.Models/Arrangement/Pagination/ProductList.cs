@@ -13,8 +13,8 @@ namespace Csla8RestApi.Tests.Models.Arrangement.Pagination
     {
         #region Properties
 
-        public static readonly PropertyInfo<ProductListItems> DataProperty = RegisterProperty<ProductListItems>(nameof(Data));
-        public ProductListItems Data
+        public static readonly PropertyInfo<ProductListItems?> DataProperty = RegisterProperty<ProductListItems?>(nameof(Data));
+        public ProductListItems? Data
         {
             get => GetProperty(DataProperty);
             private set => LoadProperty(DataProperty, value);

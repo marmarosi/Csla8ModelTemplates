@@ -8,10 +8,10 @@ namespace Csla8RestApi.Tests.Contracts.Junction.Edit
     [Serializable]
     public class UserParams
     {
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
         public UserParams(
-            string userId
+            string? userId
             )
         {
             UserId = userId;

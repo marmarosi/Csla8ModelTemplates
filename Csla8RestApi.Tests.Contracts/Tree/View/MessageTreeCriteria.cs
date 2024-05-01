@@ -8,10 +8,10 @@ namespace Csla8RestApi.Tests.Contracts.Tree.View
     [Serializable]
     public class MessageTreeParams
     {
-        public string RootId { get; set; }
+        public string? RootId { get; set; }
 
         public MessageTreeParams(
-            string rootId
+            string? rootId
             )
         {
             RootId = rootId;
@@ -32,6 +32,6 @@ namespace Csla8RestApi.Tests.Contracts.Tree.View
     [Serializable]
     public class MessageTreeCriteria
     {
-        public long RootKey { get; set; }
+        public long? RootKey { get; set; }
     }
 }

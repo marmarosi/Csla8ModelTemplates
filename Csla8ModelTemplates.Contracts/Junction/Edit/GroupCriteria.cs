@@ -1,4 +1,4 @@
-﻿using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Dal.Contracts;
 
 namespace Csla8ModelTemplates.Contracts.Junction.Edit
 {
@@ -8,10 +8,10 @@ namespace Csla8ModelTemplates.Contracts.Junction.Edit
     [Serializable]
     public class GroupParams
     {
-        public string GroupId { get; set; }
+        public string? GroupId { get; set; }
 
         public GroupParams(
-            string groupId
+            string? groupId
             )
         {
             GroupId = groupId;

@@ -142,13 +142,13 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             TeamPlayerDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this);
-            BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         #endregion

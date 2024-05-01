@@ -25,15 +25,15 @@
             private set => LoadProperty($CHILD_MODEL$KeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> $CHILD_MODEL$IdProperty = RegisterProperty<long?>(nameof($CHILD_MODEL$Id), RelationshipTypes.PrivateField);
-        public string $CHILD_MODEL$Id
+        public static readonly PropertyInfo<string?> $CHILD_MODEL$IdProperty = RegisterProperty<string?>(nameof($CHILD_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $CHILD_MODEL$Id
         {
             get => KeyHash.Encode(ID.$CHILD_MODEL$, $CHILD_MODEL$Key);
             set => $CHILD_MODEL$Key = KeyHash.Decode(ID.$CHILD_MODEL$, value);
         }
 
-        public static readonly PropertyInfo<string> $CHILD_MODEL$NameProperty = RegisterProperty<string>(nameof($CHILD_MODEL$Name));
-        public string $CHILD_MODEL$Name
+        public static readonly PropertyInfo<string?> $CHILD_MODEL$NameProperty = RegisterProperty<string?>(nameof($CHILD_MODEL$Name));
+        public string? $CHILD_MODEL$Name
         {
             get => GetProperty($CHILD_MODEL$NameProperty);
             private set => LoadProperty($CHILD_MODEL$NameProperty, value);
@@ -115,13 +115,13 @@
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             $ROOT_MODEL$$CHILD_MODEL$Dto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this);
-            BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         #endregion

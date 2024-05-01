@@ -29,14 +29,14 @@ namespace Csla8ModelTemplates.Models.Arrangement.Full
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async void Fetch(
             List<ArrangedTeamListItemDao> list,
             [Inject] IChildDataPortal<ArrangedTeamListItem> itemPortal
             )
         {
             // Load values from persistent storage.
             foreach (var item in list)
-                Items.Add(itemPortal.FetchChild(item));
+                Items.Add(await itemPortal.FetchChildAsync(item));
         }
 
         #endregion

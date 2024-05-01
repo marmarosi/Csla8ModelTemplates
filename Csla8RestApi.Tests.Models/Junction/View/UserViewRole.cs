@@ -22,15 +22,15 @@ namespace Csla8RestApi.Tests.Models.Junction.View
             private set => LoadProperty(RoleKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> RoleIdProperty = RegisterProperty<long?>(nameof(RoleId), RelationshipTypes.PrivateField);
-        public string RoleId
+        public static readonly PropertyInfo<string?> RoleIdProperty = RegisterProperty<string?>(nameof(RoleId), RelationshipTypes.PrivateField);
+        public string? RoleId
         {
             get => KeyHash.Encode(ID.Role, RoleKey);
             private set => RoleKey = KeyHash.Decode(ID.Role, value);
         }
 
-        public static readonly PropertyInfo<string> RoleNameProperty = RegisterProperty<string>(nameof(RoleName));
-        public string RoleName
+        public static readonly PropertyInfo<string?> RoleNameProperty = RegisterProperty<string?>(nameof(RoleName));
+        public string? RoleName
         {
             get => GetProperty(RoleNameProperty);
             private set => LoadProperty(RoleNameProperty, value);

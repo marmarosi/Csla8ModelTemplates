@@ -8,10 +8,10 @@ namespace Csla8RestApi.Tests.Contracts.Complex.View
     [Serializable]
     public class ProductViewParams
     {
-        public string ProductId { get; set; }
+        public string? ProductId { get; set; }
 
         public ProductViewParams(
-            string productId
+            string? productId
             )
         {
             ProductId = productId;
@@ -32,6 +32,6 @@ namespace Csla8RestApi.Tests.Contracts.Complex.View
     [Serializable]
     public class ProductViewCriteria
     {
-        public long ProductKey { get; set; }
+        public long? ProductKey { get; set; }
     }
 }

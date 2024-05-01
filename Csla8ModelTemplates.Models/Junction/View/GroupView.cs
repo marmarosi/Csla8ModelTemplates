@@ -22,22 +22,22 @@ namespace Csla8ModelTemplates.Models.Junction.View
             private set => LoadProperty(GroupKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> GroupIdProperty = RegisterProperty<long?>(nameof(GroupId), RelationshipTypes.PrivateField);
-        public string GroupId
+        public static readonly PropertyInfo<string?> GroupIdProperty = RegisterProperty<string?>(nameof(GroupId), RelationshipTypes.PrivateField);
+        public string? GroupId
         {
             get => KeyHash.Encode(ID.Group, GroupKey);
             private set => GroupKey = KeyHash.Decode(ID.Group, value);
         }
 
-        public static readonly PropertyInfo<string> GroupCodeProperty = RegisterProperty<string>(nameof(GroupCode));
-        public string GroupCode
+        public static readonly PropertyInfo<string?> GroupCodeProperty = RegisterProperty<string?>(nameof(GroupCode));
+        public string? GroupCode
         {
             get => GetProperty(GroupCodeProperty);
             private set => LoadProperty(GroupCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> GroupNameProperty = RegisterProperty<string>(nameof(GroupName));
-        public string GroupName
+        public static readonly PropertyInfo<string?> GroupNameProperty = RegisterProperty<string?>(nameof(GroupName));
+        public string? GroupName
         {
             get => GetProperty(GroupNameProperty);
             private set => LoadProperty(GroupNameProperty, value);

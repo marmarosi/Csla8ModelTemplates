@@ -63,7 +63,7 @@
             {
                 List<$ROOT_MODEL$ListItemDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(itemPortal.FetchChild(item));
+                    Add(await itemPortal.FetchChildAsync(item));
             }
         }
 

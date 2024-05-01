@@ -34,7 +34,7 @@
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<$ROOT_MODEL$NodeDao> list,
             [Inject] IChildDataPortal<$ROOT_MODEL$Node> childPortal
             )
@@ -42,7 +42,7 @@
             using (LoadListMode)
             {
                 foreach (var item in list)
-                    Add(childPortal.FetchChild(item));
+                    Add(await childPortal.FetchChildAsync(item));
             }
         }
 

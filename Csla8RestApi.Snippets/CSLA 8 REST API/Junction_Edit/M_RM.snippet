@@ -25,17 +25,17 @@
             private set => SetProperty($ROOT_MODEL$KeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> $ROOT_MODEL$IdProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
-        public string $ROOT_MODEL$Id
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$IdProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $ROOT_MODEL$Id
         {
             get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
             set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
         }
 
-        public static readonly PropertyInfo<string> $ROOT_MODEL$CodeProperty = RegisterProperty<string>(nameof($ROOT_MODEL$Code));
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$CodeProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Code));
         [Required]
         [MaxLength(10)]
-        public string $ROOT_MODEL$Code
+        public string? $ROOT_MODEL$Code
         {
             get => GetProperty($ROOT_MODEL$CodeProperty);
             set => SetProperty($ROOT_MODEL$CodeProperty, value);
@@ -108,14 +108,14 @@
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             $ROOT_MODEL$Dto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this, "$CHILD_MODEL$s");
-            BusinessRules.CheckRules();
-            $CHILD_MODEL$s.SetValuesById(dto.$CHILD_MODEL$s, "$CHILD_MODEL$Id", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await $CHILD_MODEL$s.SetValuesById(dto.$CHILD_MODEL$s, "$CHILD_MODEL$Id", childFactory);
         }
 
         #endregion
@@ -166,7 +166,7 @@
             $ROOT_MODEL$ $root_variable$ = $root_variable$Key.HasValue ?
                 await GetAsync(factory, dto.$ROOT_MODEL$Id!) :
                 await NewAsync(factory);
-            $root_variable$.SetValuesOnBuild(dto, childFactory);
+            await $root_variable$.SetValuesOnBuild(dto, childFactory);
             return $root_variable$;
         }
 
@@ -195,12 +195,9 @@
             )
         {
             // Load default values.
-            await Task.Run(async () =>
-            {
-                //LoadProperty($ROOT_MODEL$CodeProperty, "");
-                $CHILD_MODEL$s = await itemsPortal.CreateChildAsync();
-                await BusinessRules.CheckRulesAsync();
-            });
+            //LoadProperty($ROOT_MODEL$CodeProperty, "");
+            $CHILD_MODEL$s = await itemsPortal.CreateChildAsync();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [Fetch]

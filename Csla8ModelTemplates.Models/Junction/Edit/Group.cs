@@ -25,17 +25,17 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             private set => SetProperty(GroupKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> GroupIdProperty = RegisterProperty<long?>(nameof(GroupId), RelationshipTypes.PrivateField);
-        public string GroupId
+        public static readonly PropertyInfo<string?> GroupIdProperty = RegisterProperty<string?>(nameof(GroupId), RelationshipTypes.PrivateField);
+        public string? GroupId
         {
             get => KeyHash.Encode(ID.Group, GroupKey);
             set => GroupKey = KeyHash.Decode(ID.Group, value);
         }
 
-        public static readonly PropertyInfo<string> GroupCodeProperty = RegisterProperty<string>(nameof(GroupCode));
+        public static readonly PropertyInfo<string?> GroupCodeProperty = RegisterProperty<string?>(nameof(GroupCode));
         [Required]
         [MaxLength(10)]
-        public string GroupCode
+        public string? GroupCode
         {
             get => GetProperty(GroupCodeProperty);
             set => SetProperty(GroupCodeProperty, value);
@@ -108,14 +108,14 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             GroupDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this, "Persons");
-            BusinessRules.CheckRules();
-            Persons.SetValuesById(dto.Persons, "PersonId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await Persons.SetValuesById(dto.Persons, "PersonId", childFactory);
         }
 
         #endregion
@@ -166,7 +166,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             Group group = groupKey.HasValue ?
                 await GetAsync(factory, dto.GroupId!) :
                 await NewAsync(factory);
-            group.SetValuesOnBuild(dto, childFactory);
+            await group.SetValuesOnBuild(dto, childFactory);
             return group;
         }
 
@@ -195,12 +195,9 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             )
         {
             // Load default values.
-            await Task.Run(async () =>
-            {
-                //LoadProperty(GroupCodeProperty, "");
-                Persons = await itemsPortal.CreateChildAsync();
-                await BusinessRules.CheckRulesAsync();
-            });
+            //LoadProperty(GroupCodeProperty, "");
+            Persons = await itemsPortal.CreateChildAsync();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [Fetch]

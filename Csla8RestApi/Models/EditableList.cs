@@ -44,7 +44,7 @@ namespace Csla8RestApi.Models
         /// <param name="list">The list of data transfer objects.</param>
         /// <param name="keyName">The name of the key property.</param>
         /// <param name="childFactory">The data portal factory of the items.</param>
-        public void SetValuesByKey(
+        public async Task SetValuesByKey(
             List<Dto> list,
             string keyName,
             IChildDataPortalFactory childFactory
@@ -62,7 +62,7 @@ namespace Csla8RestApi.Models
                     RemoveItem(i);
                 else
                 {
-                    item.SetValuesOnBuild(dto, childFactory);
+                    await item.SetValuesOnBuild(dto, childFactory);
                     indeces.Remove(list.IndexOf(dto));
                 }
             }
@@ -72,7 +72,7 @@ namespace Csla8RestApi.Models
                 foreach (int index in indeces)
                 {
                     C item = portal.CreateChild();
-                    item.SetValuesOnBuild(list[index], childFactory);
+                    await item.SetValuesOnBuild(list[index], childFactory);
                     Items.Add(item);
                 }
             }
@@ -98,7 +98,7 @@ namespace Csla8RestApi.Models
         /// <param name="list">The list of data transfer objects.</param>
         /// <param name="idName">The name of the identifier property.</param>
         /// <param name="childFactory">The data portal factory of the items.</param>
-        public void SetValuesById(
+        public async Task SetValuesById(
             List<Dto> list,
             string idName,
             IChildDataPortalFactory childFactory
@@ -116,7 +116,7 @@ namespace Csla8RestApi.Models
                     RemoveItem(i);
                 else
                 {
-                    item.SetValuesOnBuild(dto, childFactory);
+                    await item.SetValuesOnBuild(dto, childFactory);
                     indeces.Remove(list.IndexOf(dto));
                 }
             }
@@ -126,7 +126,7 @@ namespace Csla8RestApi.Models
                 foreach (int index in indeces)
                 {
                     C item = portal.CreateChild();
-                    item.SetValuesOnBuild(list[index], childFactory);
+                    await item.SetValuesOnBuild(list[index], childFactory);
                     Items.Add(item);
                 }
             }

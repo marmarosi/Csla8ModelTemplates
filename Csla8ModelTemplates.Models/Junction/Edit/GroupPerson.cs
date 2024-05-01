@@ -27,15 +27,15 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             private set => LoadProperty(PersonKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> PersonIdProperty = RegisterProperty<long?>(nameof(PersonId), RelationshipTypes.PrivateField);
-        public string PersonId
+        public static readonly PropertyInfo<string?> PersonIdProperty = RegisterProperty<string?>(nameof(PersonId), RelationshipTypes.PrivateField);
+        public string? PersonId
         {
             get => KeyHash.Encode(ID.Person, PersonKey);
             set => PersonKey = KeyHash.Decode(ID.Person, value);
         }
 
-        public static readonly PropertyInfo<string> PersonNameProperty = RegisterProperty<string>(nameof(PersonName));
-        public string PersonName
+        public static readonly PropertyInfo<string?> PersonNameProperty = RegisterProperty<string?>(nameof(PersonName));
+        public string? PersonName
         {
             get => GetProperty(PersonNameProperty);
             private set => LoadProperty(PersonNameProperty, value);
@@ -117,13 +117,13 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             GroupPersonDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this);
-            BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         #endregion

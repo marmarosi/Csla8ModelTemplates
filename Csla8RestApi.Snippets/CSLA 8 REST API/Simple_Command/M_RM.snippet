@@ -24,8 +24,8 @@
             private set => LoadProperty($ROOT_MODEL$KeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> $ROOT_MODEL$IdProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
-        public string $ROOT_MODEL$Id
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$IdProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $ROOT_MODEL$Id
         {
             get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
             set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
@@ -106,7 +106,7 @@
 
             using (var transaction = dal.BeginTransaction())
             {
-                $COMMAND_MODEL$Dao dao = new $COMMAND_MODEL$Dao($ROOT_MODEL$Key ?? 0, $ROOT_MODEL$Name);
+                $COMMAND_MODEL$Dao dao = new $COMMAND_MODEL$Dao($ROOT_MODEL$Key, $ROOT_MODEL$Name);
                 await dal.ExecuteAsync(dao);
             }
 

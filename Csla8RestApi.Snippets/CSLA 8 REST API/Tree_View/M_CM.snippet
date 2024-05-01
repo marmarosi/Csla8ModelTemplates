@@ -24,8 +24,8 @@
             private set => LoadProperty($ROOT_MODEL$KeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> $ROOT_MODEL$IdProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
-        public string $ROOT_MODEL$Id
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$IdProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $ROOT_MODEL$Id
         {
             get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
             private set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
@@ -38,15 +38,15 @@
             private set => LoadProperty(ParentKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ParentIdProperty = RegisterProperty<long?>(nameof(ParentId), RelationshipTypes.PrivateField);
-        public string ParentId
+        public static readonly PropertyInfo<string?> ParentIdProperty = RegisterProperty<string?>(nameof(ParentId), RelationshipTypes.PrivateField);
+        public string? ParentId
         {
             get => KeyHash.Encode(ID.$ROOT_MODEL$, ParentKey);
             private set => ParentKey = KeyHash.Decode(ID.$ROOT_MODEL$, value);
         }
 
-        public static readonly PropertyInfo<string> $ROOT_MODEL$NameProperty = RegisterProperty<string>(nameof($ROOT_MODEL$Name));
-        public string $ROOT_MODEL$Name
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$NameProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Name));
+        public string? $ROOT_MODEL$Name
         {
             get => GetProperty($ROOT_MODEL$NameProperty);
             private set => LoadProperty($ROOT_MODEL$NameProperty, value);
@@ -59,8 +59,8 @@
             private set => LoadProperty(LevelProperty, value);
         }
 
-        public static readonly PropertyInfo<$ROOT_MODEL$Nodes> ChildrenProperty = RegisterProperty<$ROOT_MODEL$Nodes>(nameof(Children));
-        public $ROOT_MODEL$Nodes Children
+        public static readonly PropertyInfo<$ROOT_MODEL$Nodes?> ChildrenProperty = RegisterProperty<$ROOT_MODEL$Nodes?>(nameof(Children));
+        public $ROOT_MODEL$Nodes? Children
         {
             get => GetProperty(ChildrenProperty);
             private set => LoadProperty(ChildrenProperty, value);
@@ -96,26 +96,17 @@
 
         #endregion
 
-        #region Factory Methods
-
-        //internal static $ROOT_MODEL$Node Fetch($ROOT_MODEL$NodeDao dao)
-        //{
-        //    return DataPortal.FetchChild<$ROOT_MODEL$Node>(dao);
-        //}
-
-        #endregion
-
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             $ROOT_MODEL$NodeDao dao,
             [Inject] IChildDataPortal<$ROOT_MODEL$Nodes> itemsPortal
             )
         {
             // Load values from persistent storage.
             DataMapper.Map(dao, this, "Children", "$ROOT_MODEL$Order");
-            Children = itemsPortal.FetchChild(dao.Children);
+            Children = await itemsPortal.FetchChildAsync(dao.Children);
         }
 
         #endregion

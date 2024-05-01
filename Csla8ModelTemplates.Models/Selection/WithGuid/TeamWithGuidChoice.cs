@@ -59,7 +59,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithGuid
             {
                 List<GuidNameOptionDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(itemPortal.FetchChild(item));
+                    Add(await itemPortal.FetchChildAsync(item));
             }
         }
 

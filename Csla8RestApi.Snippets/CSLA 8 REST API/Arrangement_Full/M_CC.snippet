@@ -34,14 +34,14 @@
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async void Fetch(
             List<$ROOT_MODEL$ListItemDao> list,
             [Inject] IChildDataPortal<$ROOT_MODEL$ListItem> itemPortal
             )
         {
             // Load values from persistent storage.
             foreach (var item in list)
-                Items.Add(itemPortal.FetchChild(item));
+                Items.Add(await itemPortal.FetchChildAsync(item));
         }
 
         #endregion

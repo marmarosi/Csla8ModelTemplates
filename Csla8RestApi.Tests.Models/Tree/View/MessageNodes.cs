@@ -29,7 +29,7 @@ namespace Csla8RestApi.Tests.Models.Tree.View
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             List<MessageNodeDao> list,
             [Inject] IChildDataPortal<MessageNode> childPortal
             )
@@ -37,7 +37,7 @@ namespace Csla8RestApi.Tests.Models.Tree.View
             using (LoadListMode)
             {
                 foreach (var item in list)
-                    Add(childPortal.FetchChild(item));
+                    Add(await childPortal.FetchChildAsync(item));
             }
         }
 

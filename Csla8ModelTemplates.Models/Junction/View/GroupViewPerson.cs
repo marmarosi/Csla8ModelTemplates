@@ -22,15 +22,15 @@ namespace Csla8ModelTemplates.Models.Junction.View
             private set => LoadProperty(PersonKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> PersonIdProperty = RegisterProperty<long?>(nameof(PersonId), RelationshipTypes.PrivateField);
-        public string PersonId
+        public static readonly PropertyInfo<string?> PersonIdProperty = RegisterProperty<string?>(nameof(PersonId), RelationshipTypes.PrivateField);
+        public string? PersonId
         {
             get => KeyHash.Encode(ID.Person, PersonKey);
             private set => PersonKey = KeyHash.Decode(ID.Person, value);
         }
 
-        public static readonly PropertyInfo<string> PersonNameProperty = RegisterProperty<string>(nameof(PersonName));
-        public string PersonName
+        public static readonly PropertyInfo<string?> PersonNameProperty = RegisterProperty<string?>(nameof(PersonName));
+        public string? PersonName
         {
             get => GetProperty(PersonNameProperty);
             private set => LoadProperty(PersonNameProperty, value);

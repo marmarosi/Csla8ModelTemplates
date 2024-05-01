@@ -59,7 +59,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
             {
                 List<FolderNodeDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(itemPortal.FetchChild(item));
+                    Add(await itemPortal.FetchChildAsync(item));
             }
         }
 

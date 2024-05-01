@@ -60,7 +60,7 @@ namespace Csla8RestApi.Tests.Models.Selection.WithId
             {
                 List<IdNameOptionDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(itemPortal.FetchChild(item, ID.Product));
+                    Add(await itemPortal.FetchChildAsync(item, ID.Product));
             }
         }
 

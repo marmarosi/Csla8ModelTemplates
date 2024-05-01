@@ -22,8 +22,8 @@ namespace Csla8ModelTemplates.Models.Tree.View
             private set => LoadProperty(FolderKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> FolderIdProperty = RegisterProperty<long?>(nameof(FolderId), RelationshipTypes.PrivateField);
-        public string FolderId
+        public static readonly PropertyInfo<string?> FolderIdProperty = RegisterProperty<string?>(nameof(FolderId), RelationshipTypes.PrivateField);
+        public string? FolderId
         {
             get => KeyHash.Encode(ID.Folder, FolderKey);
             private set => FolderKey = KeyHash.Decode(ID.Folder, value);
@@ -36,15 +36,15 @@ namespace Csla8ModelTemplates.Models.Tree.View
             private set => LoadProperty(ParentKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ParentIdProperty = RegisterProperty<long?>(nameof(ParentId), RelationshipTypes.PrivateField);
-        public string ParentId
+        public static readonly PropertyInfo<string?> ParentIdProperty = RegisterProperty<string?>(nameof(ParentId), RelationshipTypes.PrivateField);
+        public string? ParentId
         {
             get => KeyHash.Encode(ID.Folder, ParentKey);
             private set => ParentKey = KeyHash.Decode(ID.Folder, value);
         }
 
-        public static readonly PropertyInfo<string> FolderNameProperty = RegisterProperty<string>(nameof(FolderName));
-        public string FolderName
+        public static readonly PropertyInfo<string?> FolderNameProperty = RegisterProperty<string?>(nameof(FolderName));
+        public string? FolderName
         {
             get => GetProperty(FolderNameProperty);
             private set => LoadProperty(FolderNameProperty, value);
@@ -57,8 +57,8 @@ namespace Csla8ModelTemplates.Models.Tree.View
             private set => LoadProperty(LevelProperty, value);
         }
 
-        public static readonly PropertyInfo<FolderNodes> ChildrenProperty = RegisterProperty<FolderNodes>(nameof(Children));
-        public FolderNodes Children
+        public static readonly PropertyInfo<FolderNodes?> ChildrenProperty = RegisterProperty<FolderNodes?>(nameof(Children));
+        public FolderNodes? Children
         {
             get => GetProperty(ChildrenProperty);
             private set => LoadProperty(ChildrenProperty, value);
@@ -94,26 +94,17 @@ namespace Csla8ModelTemplates.Models.Tree.View
 
         #endregion
 
-        #region Factory Methods
-
-        //internal static FolderNode Fetch(FolderNodeDao dao)
-        //{
-        //    return DataPortal.FetchChild<FolderNode>(dao);
-        //}
-
-        #endregion
-
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             FolderNodeDao dao,
             [Inject] IChildDataPortal<FolderNodes> itemsPortal
             )
         {
             // Load values from persistent storage.
             DataMapper.Map(dao, this, "Children", "FolderOrder");
-            Children = itemsPortal.FetchChild(dao.Children);
+            Children = await itemsPortal.FetchChildAsync(dao.Children);
         }
 
         #endregion

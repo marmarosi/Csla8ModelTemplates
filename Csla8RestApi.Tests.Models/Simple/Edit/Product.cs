@@ -25,17 +25,17 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             private set => SetProperty(ProductKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ProductIdProperty = RegisterProperty<long?>(nameof(ProductId), RelationshipTypes.PrivateField);
-        public string ProductId
+        public static readonly PropertyInfo<string?> ProductIdProperty = RegisterProperty<string?>(nameof(ProductId), RelationshipTypes.PrivateField);
+        public string? ProductId
         {
             get => KeyHash.Encode(ID.Product, ProductKey);
             set => ProductKey = KeyHash.Decode(ID.Product, value);
         }
 
-        public static readonly PropertyInfo<string> ProductCodeProperty = RegisterProperty<string>(nameof(ProductCode));
+        public static readonly PropertyInfo<string?> ProductCodeProperty = RegisterProperty<string?>(nameof(ProductCode));
         [Required]
         [MaxLength(10)]
-        public string ProductCode
+        public string? ProductCode
         {
             get => GetProperty(ProductCodeProperty);
             set => SetProperty(ProductCodeProperty, value);
@@ -101,13 +101,13 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             ProductDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this);
-            BusinessRules.CheckRules();
+            await BusinessRules.CheckRulesAsync();
         }
 
         #endregion

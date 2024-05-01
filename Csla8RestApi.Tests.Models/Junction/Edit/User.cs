@@ -25,17 +25,17 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             private set => SetProperty(UserKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> UserIdProperty = RegisterProperty<long?>(nameof(UserId), RelationshipTypes.PrivateField);
-        public string UserId
+        public static readonly PropertyInfo<string?> UserIdProperty = RegisterProperty<string?>(nameof(UserId), RelationshipTypes.PrivateField);
+        public string? UserId
         {
             get => KeyHash.Encode(ID.User, UserKey);
             set => UserKey = KeyHash.Decode(ID.User, value);
         }
 
-        public static readonly PropertyInfo<string> UserCodeProperty = RegisterProperty<string>(nameof(UserCode));
+        public static readonly PropertyInfo<string?> UserCodeProperty = RegisterProperty<string?>(nameof(UserCode));
         [Required]
         [MaxLength(10)]
-        public string UserCode
+        public string? UserCode
         {
             get => GetProperty(UserCodeProperty);
             set => SetProperty(UserCodeProperty, value);
@@ -108,14 +108,14 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             UserDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this, "Roles");
-            BusinessRules.CheckRules();
-            Roles.SetValuesById(dto.Roles, "RoleId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await Roles.SetValuesById(dto.Roles, "RoleId", childFactory);
         }
 
         #endregion
@@ -166,7 +166,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             User user = userKey.HasValue ?
                 await GetAsync(factory, dto.UserId!) :
                 await NewAsync(factory);
-            user.SetValuesOnBuild(dto, childFactory);
+            await user.SetValuesOnBuild(dto, childFactory);
             return user;
         }
 
@@ -195,12 +195,9 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             )
         {
             // Load default values.
-            await Task.Run(async () =>
-            {
-                //LoadProperty(UserCodeProperty, "");
-                Roles = await itemsPortal.CreateChildAsync();
-                await BusinessRules.CheckRulesAsync();
-            });
+            //LoadProperty(UserCodeProperty, "");
+            Roles = await itemsPortal.CreateChildAsync();
+            await BusinessRules.CheckRulesAsync();
         }
 
         [Fetch]

@@ -21,7 +21,7 @@ namespace Csla8RestApi.Models
         /// <param name="list">The list of data transfer objects.</param>
         /// <param name="keyName">The name of the key property.</param>
         /// <param name="childFactory">The data portal factory of the items.</param>
-        void SetValuesByKey
+        Task SetValuesByKey
             (List<Dto> list,
             string keyName,
             IChildDataPortalFactory childFactory
@@ -33,7 +33,7 @@ namespace Csla8RestApi.Models
         /// <param name="list">The list of data transfer objects.</param>
         /// <param name="idName">The name of the identifier property.</param>
         /// <param name="childFactory">The data portal factory of the items.</param>
-        void SetValuesById(
+        Task SetValuesById(
             List<Dto> list,
             string idName,
             IChildDataPortalFactory childFactory

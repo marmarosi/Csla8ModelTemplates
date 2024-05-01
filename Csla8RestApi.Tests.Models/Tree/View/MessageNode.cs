@@ -22,8 +22,8 @@ namespace Csla8RestApi.Tests.Models.Tree.View
             private set => LoadProperty(MessageKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> MessageIdProperty = RegisterProperty<long?>(nameof(MessageId), RelationshipTypes.PrivateField);
-        public string MessageId
+        public static readonly PropertyInfo<string?> MessageIdProperty = RegisterProperty<string?>(nameof(MessageId), RelationshipTypes.PrivateField);
+        public string? MessageId
         {
             get => KeyHash.Encode(ID.Message, MessageKey);
             private set => MessageKey = KeyHash.Decode(ID.Message, value);
@@ -36,15 +36,15 @@ namespace Csla8RestApi.Tests.Models.Tree.View
             private set => LoadProperty(ParentKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ParentIdProperty = RegisterProperty<long?>(nameof(ParentId), RelationshipTypes.PrivateField);
-        public string ParentId
+        public static readonly PropertyInfo<string?> ParentIdProperty = RegisterProperty<string?>(nameof(ParentId), RelationshipTypes.PrivateField);
+        public string? ParentId
         {
             get => KeyHash.Encode(ID.Message, ParentKey);
             private set => ParentKey = KeyHash.Decode(ID.Message, value);
         }
 
-        public static readonly PropertyInfo<string> MessageNameProperty = RegisterProperty<string>(nameof(MessageName));
-        public string MessageName
+        public static readonly PropertyInfo<string?> MessageNameProperty = RegisterProperty<string?>(nameof(MessageName));
+        public string? MessageName
         {
             get => GetProperty(MessageNameProperty);
             private set => LoadProperty(MessageNameProperty, value);
@@ -57,8 +57,8 @@ namespace Csla8RestApi.Tests.Models.Tree.View
             private set => LoadProperty(LevelProperty, value);
         }
 
-        public static readonly PropertyInfo<MessageNodes> ChildrenProperty = RegisterProperty<MessageNodes>(nameof(Children));
-        public MessageNodes Children
+        public static readonly PropertyInfo<MessageNodes?> ChildrenProperty = RegisterProperty<MessageNodes?>(nameof(Children));
+        public MessageNodes? Children
         {
             get => GetProperty(ChildrenProperty);
             private set => LoadProperty(ChildrenProperty, value);
@@ -94,26 +94,17 @@ namespace Csla8RestApi.Tests.Models.Tree.View
 
         #endregion
 
-        #region Factory Methods
-
-        //internal static MessageNode Fetch(MessageNodeDao dao)
-        //{
-        //    return DataPortal.FetchChild<MessageNode>(dao);
-        //}
-
-        #endregion
-
         #region Data Access
 
         [FetchChild]
-        private void Fetch(
+        private async Task FetchAsync(
             MessageNodeDao dao,
             [Inject] IChildDataPortal<MessageNodes> itemsPortal
             )
         {
             // Load values from persistent storage.
             DataMapper.Map(dao, this, "Children", "MessageOrder");
-            Children = itemsPortal.FetchChild(dao.Children);
+            Children = await itemsPortal.FetchChildAsync(dao.Children);
         }
 
         #endregion

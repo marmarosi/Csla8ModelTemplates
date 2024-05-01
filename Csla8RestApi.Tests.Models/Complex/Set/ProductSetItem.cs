@@ -106,14 +106,14 @@ namespace Csla8RestApi.Tests.Models.Complex.Set
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             ProductSetItemDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this, "Parts");
-            BusinessRules.CheckRules();
-            Parts.SetValuesById(dto.Parts, "PartId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await Parts.SetValuesById(dto.Parts, "PartId", childFactory);
         }
 
         #endregion

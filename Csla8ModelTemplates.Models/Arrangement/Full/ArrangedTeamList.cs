@@ -13,8 +13,8 @@ namespace Csla8ModelTemplates.Models.Arrangement.Full
     {
         #region Properties
 
-        public static readonly PropertyInfo<ArrangedTeamListItems> DataProperty = RegisterProperty<ArrangedTeamListItems>(nameof(Data));
-        public ArrangedTeamListItems Data
+        public static readonly PropertyInfo<ArrangedTeamListItems?> DataProperty = RegisterProperty<ArrangedTeamListItems?>(nameof(Data));
+        public ArrangedTeamListItems? Data
         {
             get => GetProperty(DataProperty);
             private set => LoadProperty(DataProperty, value);
@@ -86,7 +86,7 @@ namespace Csla8ModelTemplates.Models.Arrangement.Full
         {
             // Load values from persistent storage.
             IPaginatedList<ArrangedTeamListItemDao> dao = await dal.FetchAsync(criteria);
-            Data = itemsPortal.FetchChild(dao.Data);
+            Data = await itemsPortal.FetchChildAsync(dao.Data);
             TotalCount = dao.TotalCount;
         }
 

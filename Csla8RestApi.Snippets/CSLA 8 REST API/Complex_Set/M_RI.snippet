@@ -106,14 +106,14 @@
         /// </summary>
         /// <param name="dto">The data transfer object.</param>
         /// <param name="childFactory">The child data portal factory.</param>
-        public override void SetValuesOnBuild(
+        public override async Task SetValuesOnBuild(
             $ROOT_MODEL$SetItemDto dto,
             IChildDataPortalFactory childFactory
             )
         {
             DataMapper.Map(dto, this, "$CHILD_MODEL$s");
-            BusinessRules.CheckRules();
-            $CHILD_MODEL$s.SetValuesById(dto.$CHILD_MODEL$s, "$CHILD_MODEL$Id", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await $CHILD_MODEL$s.SetValuesById(dto.$CHILD_MODEL$s, "$CHILD_MODEL$Id", childFactory);
         }
 
         #endregion

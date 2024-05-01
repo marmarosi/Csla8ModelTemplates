@@ -58,7 +58,7 @@ namespace Csla8ModelTemplates.Models.Arrangement.Sorting
             {
                 List<SortedTeamListItemDao> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(itemPortal.FetchChild(item));
+                    Add(await itemPortal.FetchChildAsync(item));
             }
         }
 
