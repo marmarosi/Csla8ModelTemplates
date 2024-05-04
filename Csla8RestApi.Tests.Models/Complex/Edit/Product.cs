@@ -145,8 +145,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             string id
             )
         {
-            var criteria = new ProductParams(id);
-            return await factory.GetPortal<Product>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<Product>().FetchAsync(new ProductCriteria(id));
         }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             Product product = productKey.HasValue ?
                 await GetAsync(factory, dto.ProductId!) :
                 await NewAsync(factory);
-            product.SetValuesOnBuild(dto, childFactory);
+            await product.SetValuesOnBuild(dto, childFactory);
             return product;
         }
 
@@ -180,8 +179,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             string id
             )
         {
-            var criteria = new ProductParams(id);
-            await factory.GetPortal<Product>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(id));
         }
 
         #endregion
@@ -269,12 +267,12 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new ProductCriteria(ProductKey), dal, itemPortal);
+                await DeleteAsync(ProductId, dal, itemPortal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            ProductCriteria criteria,
+            string? id,
             [Inject] IProductDal dal,
             [Inject] IChildDataPortal<ProductParts> itemPortal
             )
@@ -282,6 +280,8 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
+                var criteria = new ProductCriteria(id);
+
                 if (!ProductKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);
 

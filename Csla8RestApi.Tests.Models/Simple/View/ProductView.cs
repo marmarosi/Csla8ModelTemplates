@@ -86,8 +86,7 @@ namespace Csla8RestApi.Tests.Models.Simple.View
             string id
             )
         {
-            var criteria = new ProductViewParams(id);
-            return await factory.GetPortal<ProductView>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<ProductView>().FetchAsync(new ProductViewCriteria(id));
         }
 
         #endregion

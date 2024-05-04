@@ -145,8 +145,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             string id
             )
         {
-            var criteria = new UserParams(id);
-            return await factory.GetPortal<User>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<User>().FetchAsync(new UserCriteria(id));
         }
 
         /// <summary>
@@ -180,8 +179,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             string id
             )
         {
-            var criteria = new UserParams(id);
-            await factory.GetPortal<User>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<User>().DeleteAsync(new UserCriteria(id));
         }
 
         #endregion
@@ -269,12 +267,12 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new UserCriteria(UserKey), dal, itemPortal);
+                await DeleteAsync(UserId, dal, itemPortal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            UserCriteria criteria,
+            string? id,
             [Inject] IUserDal dal,
             [Inject] IChildDataPortal<UserRoles> itemPortal
             )
@@ -282,6 +280,8 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
+                var criteria = new UserCriteria(id);
+
                 if (!UserKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);
 

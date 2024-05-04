@@ -97,7 +97,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Complex
             // The updated team must have new values.
             var updatedTeam3 = ((List<TeamSetItemDto>)updatedList).Find(o => o.TeamCode == "T-9301");
 
-            Assert.Equal(pristineTeam3.TeamId, updatedTeam3.TeamId);
+            Assert.Equal(pristineTeam3.TeamId, updatedTeam3!.TeamId);
             Assert.Equal(pristineTeam3.TeamCode, updatedTeam3.TeamCode);
             Assert.Equal(pristineTeam3.TeamName, updatedTeam3.TeamName);
             Assert.NotEqual(pristineTeam3.Timestamp, updatedTeam3.Timestamp);
@@ -106,7 +106,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Complex
 
             // The updated player must reflect the changes.
             var updatedPlayer31 = updatedTeam3.Players.Find(o => o.PlayerCode == "P-9301-1");
-            Assert.Equal(pristinePlayer31.PlayerCode, updatedPlayer31.PlayerCode);
+            Assert.Equal(pristinePlayer31.PlayerCode, updatedPlayer31!.PlayerCode);
             Assert.Equal(pristinePlayer31.PlayerName, updatedPlayer31.PlayerName);
 
             // The created team must have new values.

@@ -86,8 +86,7 @@ namespace Csla8ModelTemplates.Models.Simple.View
             string id
             )
         {
-            var criteria = new SimpleTeamViewParams(id);
-            return await factory.GetPortal<SimpleTeamView>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<SimpleTeamView>().FetchAsync(new SimpleTeamViewCriteria(id));
         }
 
         #endregion

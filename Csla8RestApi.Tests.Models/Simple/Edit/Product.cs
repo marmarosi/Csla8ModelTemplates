@@ -137,8 +137,7 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             string id
             )
         {
-            var criteria = new ProductParams(id);
-            return await factory.GetPortal<Product>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<Product>().FetchAsync(new ProductCriteria(id));
         }
 
         /// <summary>
@@ -158,7 +157,7 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             Product team = teamKey.HasValue ?
                 await GetAsync(factory, dto.ProductId!) :
                 await NewAsync(factory);
-            team.SetValuesOnBuild(dto, childFactory);
+            await team.SetValuesOnBuild(dto, childFactory);
             return team;
         }
 
@@ -172,8 +171,7 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             string id
             )
         {
-            var criteria = new ProductParams(id);
-            await factory.GetPortal<Product>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(id));
         }
 
         #endregion
@@ -251,19 +249,19 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new ProductCriteria(ProductKey), dal);
+                await DeleteAsync(ProductId, dal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            ProductCriteria criteria,
+            string? id,
             [Inject] IProductDal dal
             )
         {
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                await dal.DeleteAsync(criteria);
+                await dal.DeleteAsync(new ProductCriteria(id));
                 dal.Commit(transaction);
             }
         }

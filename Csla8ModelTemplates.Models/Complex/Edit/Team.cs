@@ -145,8 +145,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             string id
             )
         {
-            var criteria = new TeamParams(id);
-            return await factory.GetPortal<Team>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<Team>().FetchAsync(new TeamCriteria(id));
         }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             Team team = teamKey.HasValue ?
                 await GetAsync(factory, dto.TeamId!) :
                 await NewAsync(factory);
-            team.SetValuesOnBuild(dto, childFactory);
+            await team.SetValuesOnBuild(dto, childFactory);
             return team;
         }
 
@@ -180,8 +179,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             string id
             )
         {
-            var criteria = new TeamParams(id);
-            await factory.GetPortal<Team>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<Team>().DeleteAsync(new TeamCriteria(id));
         }
 
         #endregion
@@ -269,12 +267,12 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new TeamCriteria(TeamKey), dal, itemPortal);
+                await DeleteAsync(TeamId, dal, itemPortal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            TeamCriteria criteria,
+            string? id,
             [Inject] ITeamDal dal,
             [Inject] IChildDataPortal<TeamPlayers> itemPortal
             )
@@ -282,6 +280,8 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
+                var criteria = new TeamCriteria(id);
+
                 if (!TeamKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);
 

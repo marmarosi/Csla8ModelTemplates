@@ -93,8 +93,7 @@ namespace Csla8ModelTemplates.Models.Junction.View
             string id
             )
         {
-            var criteria = new GroupViewParams(id);
-            return await factory.GetPortal<GroupView>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<GroupView>().FetchAsync(new GroupViewCriteria(id));
         }
 
         #endregion

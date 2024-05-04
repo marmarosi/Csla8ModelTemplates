@@ -3,27 +3,6 @@ using Csla8RestApi.Dal.Contracts;
 namespace Csla8ModelTemplates.Contracts.Simple.Edit
 {
     /// <summary>
-    /// Represents the criteria of the read-only team object.
-    /// </summary>
-    [Serializable]
-    public class SimpleTeamParams
-    {
-        public string? TeamId { get; set; }
-
-        public SimpleTeamParams(
-            string teamId
-            )
-        {
-            TeamId = teamId;
-        }
-
-        public SimpleTeamCriteria Decode()
-        {
-            return new SimpleTeamCriteria(KeyHash.Decode(ID.Team, TeamId));
-        }
-    }
-
-    /// <summary>
     /// Represents the criteria of the editable team object.
     /// </summary>
     [Serializable]
@@ -32,10 +11,10 @@ namespace Csla8ModelTemplates.Contracts.Simple.Edit
         public long? TeamKey { get; set; }
 
         public SimpleTeamCriteria(
-            long? teamKey
+            string? teamId
             )
         {
-            TeamKey = teamKey;
+            TeamKey = KeyHash.Decode(ID.Team, teamId);
         }
     }
 }

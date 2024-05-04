@@ -17,9 +17,8 @@ namespace Csla8RestApi.Tests.TestGenerator
             Console.WriteLine(testMap.ShortTest);
 
             var xml = XDocument.Load(testMap.SnippetPath);
-            var snippet = (XCData)xml.Root.DescendantNodes()
-                .Where(x => x.NodeType == XmlNodeType.CDATA)
-                .First();
+            var snippet = (XCData)xml.Root!.DescendantNodes()
+                .First(x => x.NodeType == XmlNodeType.CDATA);
             var source = snippet.Value;
 
             foreach (var textSwap in testMap.TextSwaps)
@@ -113,22 +112,6 @@ namespace Csla8RestApi.Tests.TestGenerator
             return testMap;
         }
 
-        private static SnippetType GetSnippetType(
-            string snippetPath
-            )
-        {
-            var fileName = Path.GetFileName(snippetPath);
-            if (fileName.StartsWith("C_"))
-                return SnippetType.Contract;
-            if (fileName.StartsWith("D_"))
-                return SnippetType.Dal;
-            if (fileName.StartsWith("M_"))
-                return SnippetType.Model;
-            if (fileName.EndsWith("Controller"))
-                return SnippetType.Controller;
-            return SnippetType.None;
-        }
-
         private static string GetWrapper(
             string wrapperRoot,
             string shortWrapper
@@ -138,7 +121,7 @@ namespace Csla8RestApi.Tests.TestGenerator
             CheckFolder(Path.GetDirectoryName(wrapperPath));
 
             wrapperPath = Path.Combine(
-                Path.GetDirectoryName(wrapperPath),
+                Path.GetDirectoryName(wrapperPath)!,
                 Path.GetFileNameWithoutExtension(wrapperPath) + ".txt"
                 );
             return File.ReadAllText(wrapperPath);

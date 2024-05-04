@@ -145,8 +145,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             string id
             )
         {
-            var criteria = new GroupParams(id);
-            return await factory.GetPortal<Group>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<Group>().FetchAsync(new GroupCriteria(id));
         }
 
         /// <summary>
@@ -180,8 +179,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             string id
             )
         {
-            var criteria = new GroupParams(id);
-            await factory.GetPortal<Group>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<Group>().DeleteAsync(new GroupCriteria(id));
         }
 
         #endregion
@@ -269,12 +267,12 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new GroupCriteria(GroupKey), dal, itemPortal);
+                await DeleteAsync(GroupId, dal, itemPortal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            GroupCriteria criteria,
+            string? id,
             [Inject] IGroupDal dal,
             [Inject] IChildDataPortal<GroupPersons> itemPortal
             )
@@ -282,6 +280,8 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
+                var criteria = new GroupCriteria(id);
+
                 if (!GroupKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);
 

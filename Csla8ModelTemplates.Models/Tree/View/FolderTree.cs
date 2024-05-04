@@ -36,11 +36,10 @@ namespace Csla8ModelTemplates.Models.Tree.View
         /// <returns>The requested read-only folder tree.</returns>
         public static async Task<FolderTree> GetAsync(
             IDataPortalFactory factory,
-            string rootId
+            string? rootId
             )
         {
-            var criteria = new FolderTreeParams(rootId);
-            return await factory.GetPortal<FolderTree>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<FolderTree>().FetchAsync(new FolderTreeCriteria(rootId));
         }
 
         #endregion

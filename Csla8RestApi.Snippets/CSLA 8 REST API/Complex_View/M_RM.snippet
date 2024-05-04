@@ -95,8 +95,7 @@
             string id
             )
         {
-            var criteria = new $ROOT_MODEL$ViewParams(id);
-            return await factory.GetPortal<$ROOT_MODEL$View>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<$ROOT_MODEL$View>().FetchAsync(new $ROOT_MODEL$ViewCriteria(id));
         }
 
         #endregion

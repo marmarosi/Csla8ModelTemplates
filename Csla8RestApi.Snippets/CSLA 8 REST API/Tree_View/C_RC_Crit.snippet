@@ -13,33 +13,16 @@
     /// Represents the criteria of the read-only $root_name$ tree object.
     /// </summary>
     [Serializable]
-    public class $ROOT_MODEL$TreeParams
-    {
-        public string? RootId { get; set; }
-
-        public $ROOT_MODEL$TreeParams(
-            string? rootId
-            )
-        {
-            RootId = rootId;
-        }
-
-        public $ROOT_MODEL$TreeCriteria Decode()
-        {
-            return new $ROOT_MODEL$TreeCriteria
-            {
-                RootKey = KeyHash.Decode(ID.$ROOT_MODEL$, RootId) ?? 0
-            };
-        }
-    }
-
-    /// <summary>
-    /// Represents the criteria of the read-only $root_name$ tree object.
-    /// </summary>
-    [Serializable]
     public class $ROOT_MODEL$TreeCriteria
     {
         public long? RootKey { get; set; }
+
+        public $ROOT_MODEL$TreeCriteria(
+            string? rootId
+            )
+        {
+            RootKey = KeyHash.Decode(ID.$ROOT_MODEL$, rootId);
+        }
     }$end$]]>
             </Code>
             <Declarations>

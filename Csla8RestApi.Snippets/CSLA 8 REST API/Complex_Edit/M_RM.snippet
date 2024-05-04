@@ -145,8 +145,7 @@
             string id
             )
         {
-            var criteria = new $ROOT_MODEL$Params(id);
-            return await factory.GetPortal<$ROOT_MODEL$>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<$ROOT_MODEL$>().FetchAsync(new $ROOT_MODEL$Criteria(id));
         }
 
         /// <summary>
@@ -166,7 +165,7 @@
             $ROOT_MODEL$ $root_variable$ = $root_variable$Key.HasValue ?
                 await GetAsync(factory, dto.$ROOT_MODEL$Id!) :
                 await NewAsync(factory);
-            $root_variable$.SetValuesOnBuild(dto, childFactory);
+            await $root_variable$.SetValuesOnBuild(dto, childFactory);
             return $root_variable$;
         }
 
@@ -180,8 +179,7 @@
             string id
             )
         {
-            var criteria = new $ROOT_MODEL$Params(id);
-            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(new $ROOT_MODEL$Criteria(id));
         }
 
         #endregion
@@ -269,12 +267,12 @@
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new $ROOT_MODEL$Criteria($ROOT_MODEL$Key), dal, itemPortal);
+                await DeleteAsync($ROOT_MODEL$Id, dal, itemPortal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            $ROOT_MODEL$Criteria criteria,
+            string? id,
             [Inject] I$ROOT_MODEL$Dal dal,
             [Inject] IChildDataPortal<$ROOT_MODEL$$CHILD_MODEL$s> itemPortal
             )
@@ -282,6 +280,8 @@
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
+                var criteria = new $ROOT_MODEL$Criteria(id);
+
                 if (!$ROOT_MODEL$Key.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);
 

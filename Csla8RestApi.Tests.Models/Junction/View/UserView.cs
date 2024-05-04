@@ -93,8 +93,7 @@ namespace Csla8RestApi.Tests.Models.Junction.View
             string id
             )
         {
-            var criteria = new UserViewParams(id);
-            return await factory.GetPortal<UserView>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<UserView>().FetchAsync(new UserViewCriteria(id));
         }
 
         #endregion

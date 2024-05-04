@@ -13,33 +13,16 @@
     /// Represents the criteria of the read-only $root_name$ object.
     /// </summary>
     [Serializable]
-    public class $ROOT_MODEL$ViewParams
-    {
-        public string? $ROOT_MODEL$Id { get; set; }
-
-        public $ROOT_MODEL$ViewParams(
-            string $root_variable$Id
-            )
-        {
-            $ROOT_MODEL$Id = $root_variable$Id;
-        }
-
-        public $ROOT_MODEL$ViewCriteria Decode()
-        {
-            return new $ROOT_MODEL$ViewCriteria
-            {
-                $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, $ROOT_MODEL$Id) ?? 0
-            };
-        }
-    }
-
-    /// <summary>
-    /// Represents the criteria of the read-only $root_name$ object.
-    /// </summary>
-    [Serializable]
     public class $ROOT_MODEL$ViewCriteria
     {
         public long? $ROOT_MODEL$Key { get; set; }
+
+        public $ROOT_MODEL$ViewCriteria(
+            string? $root_variable$Id
+            )
+        {
+            $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, $root_variable$Id);
+        }
     }$end$]]>
             </Code>
             <Declarations>

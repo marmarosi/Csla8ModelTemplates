@@ -41,11 +41,10 @@
         /// <returns>The requested read-only $root_name$ tree.</returns>
         public static async Task<$ROOT_MODEL$Tree> GetAsync(
             IDataPortalFactory factory,
-            string rootId
+            string? rootId
             )
         {
-            var criteria = new $ROOT_MODEL$TreeParams(rootId);
-            return await factory.GetPortal<$ROOT_MODEL$Tree>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<$ROOT_MODEL$Tree>().FetchAsync(new $ROOT_MODEL$TreeCriteria(rootId));
         }
 
         #endregion

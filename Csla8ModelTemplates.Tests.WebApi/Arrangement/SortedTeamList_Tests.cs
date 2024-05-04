@@ -34,8 +34,14 @@ namespace Csla8ModelTemplates.Tests.WebApi.Arrangement
             // The code and names must end with 5 or 50.
             foreach (var item in list)
             {
-                Assert.True(item.TeamCode.EndsWith("5") || item.TeamCode.EndsWith("50"));
-                Assert.True(item.TeamName.EndsWith("5") || item.TeamName.EndsWith("50"));
+                Assert.NotNull(item.TeamCode);
+                Assert.NotNull(item.TeamName);
+                string teamCode = item.TeamCode;
+                string teamName = item.TeamName;
+#pragma warning disable S6610 // "StartsWith" and "EndsWith" overloads that take a "char" should be used instead of the ones that take a "string"
+                Assert.True(teamCode.EndsWith("5") || teamCode.EndsWith("50"));
+                Assert.True(teamName.EndsWith("5") || teamName.EndsWith("50"));
+#pragma warning restore S6610 // "StartsWith" and "EndsWith" overloads that take a "char" should be used instead of the ones that take a "string"
             }
         }
     }

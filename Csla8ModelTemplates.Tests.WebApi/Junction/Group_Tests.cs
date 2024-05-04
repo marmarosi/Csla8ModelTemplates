@@ -25,8 +25,8 @@ namespace Csla8ModelTemplates.Tests.WebApi.Junction
             var group = Assert.IsAssignableFrom<GroupDto>(okObjectResult.Value);
 
             // The code and name must miss.
-            Assert.Empty(group.GroupCode);
-            Assert.Empty(group.GroupName);
+            Assert.Null(group.GroupCode);
+            Assert.Null(group.GroupName);
             Assert.Null(group.Timestamp);
             Assert.Empty(group.Persons);
         }

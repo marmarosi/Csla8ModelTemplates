@@ -36,11 +36,10 @@ namespace Csla8RestApi.Tests.Models.Tree.View
         /// <returns>The requested read-only message tree.</returns>
         public static async Task<MessageTree> GetAsync(
             IDataPortalFactory factory,
-            string rootId
+            string? rootId
             )
         {
-            var criteria = new MessageTreeParams(rootId);
-            return await factory.GetPortal<MessageTree>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<MessageTree>().FetchAsync(new MessageTreeCriteria(rootId));
         }
 
         #endregion

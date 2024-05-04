@@ -137,8 +137,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             string id
             )
         {
-            var criteria = new SimpleTeamParams(id);
-            return await factory.GetPortal<SimpleTeam>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<SimpleTeam>().FetchAsync(new SimpleTeamCriteria(id));
         }
 
         /// <summary>
@@ -158,7 +157,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             SimpleTeam team = teamKey.HasValue ?
                 await GetAsync(factory, dto.TeamId!) :
                 await NewAsync(factory);
-            team.SetValuesOnBuild(dto, childFactory);
+            await team.SetValuesOnBuild(dto, childFactory);
             return team;
         }
 
@@ -172,8 +171,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             string id
             )
         {
-            var criteria = new SimpleTeamParams(id);
-            await factory.GetPortal<SimpleTeam>().DeleteAsync(criteria.Decode());
+            await factory.GetPortal<SimpleTeam>().DeleteAsync(new SimpleTeamCriteria(id));
         }
 
         #endregion
@@ -251,19 +249,19 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             )
         {
             using (BypassPropertyChecks)
-                await DeleteAsync(new SimpleTeamCriteria(TeamKey), dal);
+                await DeleteAsync(TeamId, dal);
         }
 
         [Delete]
         protected async Task DeleteAsync(
-            SimpleTeamCriteria criteria,
+            string? id,
             [Inject] ISimpleTeamDal dal
             )
         {
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                await dal.DeleteAsync(criteria);
+                await dal.DeleteAsync(new SimpleTeamCriteria(id));
                 dal.Commit(transaction);
             }
         }

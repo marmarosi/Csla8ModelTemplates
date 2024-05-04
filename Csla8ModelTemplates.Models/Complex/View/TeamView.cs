@@ -93,8 +93,7 @@ namespace Csla8ModelTemplates.Models.Complex.View
             string id
             )
         {
-            var criteria = new TeamViewParams(id);
-            return await factory.GetPortal<TeamView>().FetchAsync(criteria.Decode());
+            return await factory.GetPortal<TeamView>().FetchAsync(new TeamViewCriteria(id));
         }
 
         #endregion

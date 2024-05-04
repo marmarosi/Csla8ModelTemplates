@@ -58,7 +58,7 @@ namespace Csla8ModelTemplates.Models.Simple.Set
             )
         {
             var set = await factory.GetPortal<SimpleTeamSet>().FetchAsync(criteria);
-            set.SetValuesById(list, "TeamId", childFactory);
+            await set.SetValuesById(list, "TeamId", childFactory);
             return set;
         }
 
