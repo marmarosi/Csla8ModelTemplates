@@ -138,14 +138,14 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
         /// Gets an existing editable user instance.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the user.</param>
+        /// <param name="userId">The identifier of the user.</param>
         /// <returns>The requested editable user instance.</returns>
         public static async Task<User> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string userId
             )
         {
-            return await factory.GetPortal<User>().FetchAsync(new UserCriteria(id));
+            return await factory.GetPortal<User>().FetchAsync(new UserCriteria(userId));
         }
 
         /// <summary>
@@ -173,13 +173,13 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
         /// Deletes an existing user.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the user.</param>
+        /// <param name="userId">The identifier of the user.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string userId
             )
         {
-            await factory.GetPortal<User>().DeleteAsync(new UserCriteria(id));
+            await factory.GetPortal<User>().DeleteAsync(new UserCriteria(userId));
         }
 
         #endregion
@@ -272,7 +272,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? userId,
             [Inject] IUserDal dal,
             [Inject] IChildDataPortal<UserRoles> itemPortal
             )
@@ -280,7 +280,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                var criteria = new UserCriteria(id);
+                var criteria = new UserCriteria(userId);
 
                 if (!UserKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);

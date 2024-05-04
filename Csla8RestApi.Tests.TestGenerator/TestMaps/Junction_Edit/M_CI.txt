@@ -3,6 +3,7 @@ Project:        Model
 FileName:       ===---
 
 root_name:      user
-child_name:     role
 ROOT_MODEL:     User
+child_name:     role
 CHILD_MODEL:    Role
+root_variable:  user

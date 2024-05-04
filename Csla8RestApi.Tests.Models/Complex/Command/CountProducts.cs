@@ -31,8 +31,8 @@ namespace Csla8RestApi.Tests.Models.Complex.Command
 
         //private void Validate()
         //{
-        //    if (string.IsNullOrEmpty(ProductName))
-        //        throw new CommandException(ValidationText.CountProducts_ProductName_Required);
+        //    if (string.IsNullOrEmpty(CountProductsName))
+        //        throw new CommandException(ValidationText.CountProducts_CountProductsName_Required);
         //}
 
         //private static void AddObjectAuthorizationRules()

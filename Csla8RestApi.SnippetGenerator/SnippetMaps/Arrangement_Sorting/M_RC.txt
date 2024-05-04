@@ -5,4 +5,5 @@ Shortcut:       c8asrc
 Test:           Model | ===List
 
 /// team:       root_name     | product
+/// SortedTeam: ROOT_MODEL    | Product
 SortedTeam:     ROOT_MODEL    | Product

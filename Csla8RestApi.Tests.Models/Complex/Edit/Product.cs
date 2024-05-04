@@ -138,14 +138,14 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
         /// Gets the specified product to edit.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the product.</param>
+        /// <param name="productId">The identifier of the product.</param>
         /// <returns>The requested product.</returns>
         public static async Task<Product> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string productId
             )
         {
-            return await factory.GetPortal<Product>().FetchAsync(new ProductCriteria(id));
+            return await factory.GetPortal<Product>().FetchAsync(new ProductCriteria(productId));
         }
 
         /// <summary>
@@ -173,13 +173,13 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
         /// Deletes the specified product.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the product.</param>
+        /// <param name="productId">The identifier of the product.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string productId
             )
         {
-            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(id));
+            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(productId));
         }
 
         #endregion
@@ -272,7 +272,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? productId,
             [Inject] IProductDal dal,
             [Inject] IChildDataPortal<ProductParts> itemPortal
             )
@@ -280,7 +280,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                var criteria = new ProductCriteria(id);
+                var criteria = new ProductCriteria(productId);
 
                 if (!ProductKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);

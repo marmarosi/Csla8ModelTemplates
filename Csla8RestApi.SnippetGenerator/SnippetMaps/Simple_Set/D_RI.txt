@@ -5,6 +5,8 @@ Shortcut:       c8ssrid
 Test:           DAL | ===SetItemDal
 
 /// team:       root_name      | product
+/// SimpleTeam: ROOT_MODEL     | Product
+/// Team:       ROOT_MODEL     | Product
 SimpleTeam:     ROOT_MODEL     | Product
 Team:           ROOT_MODEL     | Product
 team:           root_variable  | product

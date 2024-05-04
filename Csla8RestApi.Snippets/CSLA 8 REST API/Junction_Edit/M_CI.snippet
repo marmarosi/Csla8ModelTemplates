@@ -99,8 +99,8 @@
                 if (target.Parent == null)
                     return;
 
-                $ROOT_MODEL$ group = ($ROOT_MODEL$)target.Parent.Parent;
-                var count = group.$CHILD_MODEL$s.Count(gp => gp.$CHILD_MODEL$Id == target.$CHILD_MODEL$Id);
+                $ROOT_MODEL$ $root_variable$ = ($ROOT_MODEL$)target.Parent.Parent;
+                var count = $root_variable$.$CHILD_MODEL$s.Count(gp => gp.$CHILD_MODEL$Id == target.$CHILD_MODEL$Id);
                 if (count > 1)
                     context.AddErrorResult(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_$CHILD_MODEL$Id_NotUnique);
             }
@@ -207,19 +207,24 @@
                     <Default>root_name</Default>
                 </Literal>
                 <Literal>
-                    <ID>child_name</ID>
-                    <ToolTip>The description of the child model in comments.</ToolTip>
-                    <Default>root_variable</Default>
-                </Literal>
-                <Literal>
                     <ID>ROOT_MODEL</ID>
                     <ToolTip>The name of the root model.</ToolTip>
                     <Default>ROOT_MODEL</Default>
                 </Literal>
                 <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
                     <ID>CHILD_MODEL</ID>
                     <ToolTip>The name of the child model.</ToolTip>
                     <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
                 </Literal>
             </Declarations>
         </Snippet>

@@ -5,6 +5,7 @@ Shortcut:       c8ccci
 Test:           Model | +++Result
 
 /// count teams:    command_name  | count products
+/// CountTeams:     COMMAND_MODEL | CountProducts
 CountTeams:         COMMAND_MODEL | CountProducts
 Team:               ROOT_MODEL    | Product
 Player:             CHILD_MODEL   | Part

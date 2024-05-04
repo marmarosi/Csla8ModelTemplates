@@ -5,4 +5,5 @@ Shortcut:       c8tvrc
 Test:           Model | ===Tree
 
 /// folder:     root_name     | message
+/// Folder:     ROOT_MODEL    | Message
 Folder:         ROOT_MODEL    | Message

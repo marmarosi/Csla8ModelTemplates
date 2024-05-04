@@ -130,14 +130,14 @@
         /// Gets the specified $root_name$ to edit.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the $root_name$.</param>
+        /// <param name="$root_name$Id">The identifier of the $root_name$.</param>
         /// <returns>The requested $root_name$.</returns>
         public static async Task<$ROOT_MODEL$> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string $root_variable$Id
             )
         {
-            return await factory.GetPortal<$ROOT_MODEL$>().FetchAsync(new $ROOT_MODEL$Criteria(id));
+            return await factory.GetPortal<$ROOT_MODEL$>().FetchAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
         }
 
         /// <summary>
@@ -153,25 +153,25 @@
             $ROOT_MODEL$Dto dto
             )
         {
-            long? teamKey = KeyHash.Decode(ID.$ROOT_MODEL$, dto.$ROOT_MODEL$Id);
-            $ROOT_MODEL$ team = teamKey.HasValue ?
+            long? $root_variable$Key = KeyHash.Decode(ID.$ROOT_MODEL$, dto.$ROOT_MODEL$Id);
+            $ROOT_MODEL$ $root_variable$ = $root_variable$Key.HasValue ?
                 await GetAsync(factory, dto.$ROOT_MODEL$Id!) :
                 await NewAsync(factory);
-            await team.SetValuesOnBuild(dto, childFactory);
-            return team;
+            await $root_variable$.SetValuesOnBuild(dto, childFactory);
+            return $root_variable$;
         }
 
         /// <summary>
         /// Deletes the specified $root_name$.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the $root_name$.</param>
+        /// <param name="$root_name$Id">The identifier of the $root_name$.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string $root_variable$Id
             )
         {
-            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(new $ROOT_MODEL$Criteria(id));
+            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
         }
 
         #endregion
@@ -254,14 +254,14 @@
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? $root_variable$Id,
             [Inject] I$ROOT_MODEL$Dal dal
             )
         {
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                await dal.DeleteAsync(new $ROOT_MODEL$Criteria(id));
+                await dal.DeleteAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
                 dal.Commit(transaction);
             }
         }
@@ -279,6 +279,11 @@
                     <ID>ROOT_MODEL</ID>
                     <ToolTip>The name of the root model.</ToolTip>
                     <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
                 </Literal>
             </Declarations>
         </Snippet>

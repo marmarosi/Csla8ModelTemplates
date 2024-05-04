@@ -90,10 +90,10 @@ namespace Csla8RestApi.Tests.Models.Complex.View
         /// <returns>The requested product view.</returns>
         public static async Task<ProductView> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string productId
             )
         {
-            return await factory.GetPortal<ProductView>().FetchAsync(new ProductViewCriteria(id));
+            return await factory.GetPortal<ProductView>().FetchAsync(new ProductViewCriteria(productId));
         }
 
         #endregion

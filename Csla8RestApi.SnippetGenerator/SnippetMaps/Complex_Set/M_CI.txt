@@ -5,6 +5,8 @@ Shortcut:       c8csci
 Test:           Model | ===Set---
 
 /// player:     child_name     | part
+/// Team:       ROOT_MODEL     | Product
+/// Player:     CHILD_MODEL    | Part
 Team:           ROOT_MODEL     | Product
 team:           root_variable  | product
 Player:         CHILD_MODEL    | Part

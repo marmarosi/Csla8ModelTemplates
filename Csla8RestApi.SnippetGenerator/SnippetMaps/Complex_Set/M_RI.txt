@@ -5,5 +5,6 @@ Shortcut:       c8csri
 Test:           Model | ===SetItem
 
 /// team:       root_name     | product
+/// Team:       ROOT_MODEL    | Product
 Team:           ROOT_MODEL    | Product
 Player:         CHILD_MODEL   | Part

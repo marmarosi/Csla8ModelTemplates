@@ -40,7 +40,7 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Tree.View
         {
             var tree = new List<MessageNodeDao>();
 
-            // Get all subfolders of the root foolder.
+            // Get all submessages of the root foolder.
             AllMessages = await DbContext.Messages
                 .Where(e =>
                     e.RootKey == criteria.RootKey
@@ -68,33 +68,33 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Tree.View
             List<MessageNodeDao> parentChildren
             )
         {
-            // Get the folders of the level.
-            var folders = AllMessages!
+            // Get the messages of the level.
+            var messages = AllMessages!
                 .Where(o => o.ParentKey == parentKey)
                 .OrderBy(o => o.MessageOrder)
                 .ToList();
 
-            foreach (MessageNodeDao folder in folders)
+            foreach (MessageNodeDao message in messages)
             {
-                // Create folder node.
-                MessageNodeDao folderNode = new MessageNodeDao
+                // Create message node.
+                MessageNodeDao messageNode = new MessageNodeDao
                 {
-                    MessageKey = folder.MessageKey,
-                    ParentKey = folder.ParentKey,
-                    MessageOrder = folder.MessageOrder,
-                    MessageName = folder.MessageName,
+                    MessageKey = message.MessageKey,
+                    ParentKey = message.ParentKey,
+                    MessageOrder = message.MessageOrder,
+                    MessageName = message.MessageName,
                     Level = level,
                     Children = new List<MessageNodeDao>()
                 };
 
-                // Add folder to the parent's children.
-                parentChildren.Add(folderNode);
+                // Add message to the parent's children.
+                parentChildren.Add(messageNode);
 
-                // Get the subfolders of this folder.
+                // Get the submessages of this message.
                 PopulateLevel(
                     level + 1,
-                    folder.MessageKey,
-                    folderNode.Children
+                    message.MessageKey,
+                    messageNode.Children
                     );
             }
         }

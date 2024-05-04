@@ -5,5 +5,7 @@ Shortcut:       c8cscc
 Test:           Model | ===Set---s
 
 /// player:     child_name    | part
+/// Team:       ROOT_MODEL    | Product
+/// Player:     CHILD_MODEL   | Part
 Team:           ROOT_MODEL    | Product
 Player:         CHILD_MODEL   | Part

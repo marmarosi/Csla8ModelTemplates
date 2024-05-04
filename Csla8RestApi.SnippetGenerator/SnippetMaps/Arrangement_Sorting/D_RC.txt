@@ -5,6 +5,8 @@ Shortcut:       c8asrcd
 Test:           DAL | ===ListDal
 
 /// team:       root_name     | product
+/// SortedTeam: ROOT_MODEL    | Product
+/// Team:       ROOT_MODEL    | Product
 SortedTeam:     ROOT_MODEL    | Product
 Team:           ROOT_MODEL    | Product
 MySqlContext:   DB_CONTEXT    | RdbmsContext

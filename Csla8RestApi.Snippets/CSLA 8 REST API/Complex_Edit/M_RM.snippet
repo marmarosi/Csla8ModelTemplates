@@ -138,14 +138,14 @@
         /// Gets the specified $root_name$ to edit.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the $root_name$.</param>
+        /// <param name="$root_name$Id">The identifier of the $root_name$.</param>
         /// <returns>The requested $root_name$.</returns>
         public static async Task<$ROOT_MODEL$> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string $root_variable$Id
             )
         {
-            return await factory.GetPortal<$ROOT_MODEL$>().FetchAsync(new $ROOT_MODEL$Criteria(id));
+            return await factory.GetPortal<$ROOT_MODEL$>().FetchAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
         }
 
         /// <summary>
@@ -173,13 +173,13 @@
         /// Deletes the specified $root_name$.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the $root_name$.</param>
+        /// <param name="$root_name$Id">The identifier of the $root_name$.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string $root_variable$Id
             )
         {
-            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(new $ROOT_MODEL$Criteria(id));
+            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
         }
 
         #endregion
@@ -272,7 +272,7 @@
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? $root_variable$Id,
             [Inject] I$ROOT_MODEL$Dal dal,
             [Inject] IChildDataPortal<$ROOT_MODEL$$CHILD_MODEL$s> itemPortal
             )
@@ -280,7 +280,7 @@
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                var criteria = new $ROOT_MODEL$Criteria(id);
+                var criteria = new $ROOT_MODEL$Criteria($root_variable$Id);
 
                 if (!$ROOT_MODEL$Key.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);

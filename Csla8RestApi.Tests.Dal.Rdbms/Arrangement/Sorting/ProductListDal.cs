@@ -37,7 +37,7 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Arrangement.Sorting
             ProductListCriteria criteria
             )
         {
-            // Filter the teams.
+            // Filter the products.
             var query = DbContext.Products
                 .Where(e =>
                     criteria.ProductName == null || e.ProductName!.Contains(criteria.ProductName)

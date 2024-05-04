@@ -5,5 +5,7 @@ Shortcut:       c8ccrm
 Test:           Model | +++
 
 /// count teams:    command_name  | count products
+/// CountTeams:     COMMAND_MODEL | CountProducts
+/// Team:           COMMAND_MODEL | CountProducts
 CountTeams:         COMMAND_MODEL | CountProducts
 Team:               ROOT_MODEL    | Product

@@ -5,5 +5,7 @@ Shortcut:       c8asri
 Test:           Model | ===ListItem
 
 /// team:       root_name     | product
+/// SortedTeam: ROOT_MODEL    | Product
+/// Team:       ROOT_MODEL    | Product
 SortedTeam:     ROOT_MODEL    | Product
 Team:           ROOT_MODEL    | Product

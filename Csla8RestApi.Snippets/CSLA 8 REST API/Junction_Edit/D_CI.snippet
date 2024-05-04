@@ -40,7 +40,7 @@
             $ROOT_MODEL$$CHILD_MODEL$Dao dao
             )
         {
-            // Check unique $root_variable$-$child_variable$.
+            // Check unique $root_name$-$child_name$.
             var $root_variable$$CHILD_MODEL$ = await DbContext.$ROOT_MODEL$$CHILD_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key &&
@@ -51,7 +51,7 @@
             if ($root_variable$$CHILD_MODEL$ is not null)
                 throw new DataExistException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_Exists.With(dao.$CHILD_MODEL$Name!));
 
-            // Create the new $root_variable$-$child_variable$.
+            // Create the new $root_name$-$child_name$.
             $CHILD_MODEL$ $child_variable$ = await DbContext.$CHILD_MODEL$s.FindAsync(dao.$CHILD_MODEL$Key)
                 ?? throw new DataExistException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_NotFound.With(dao.$CHILD_MODEL$Name!));
             $root_variable$$CHILD_MODEL$ = new $ROOT_MODEL$$CHILD_MODEL$
@@ -81,7 +81,7 @@
             $ROOT_MODEL$$CHILD_MODEL$Dao dao
             )
         {
-            // Get the specified $root_variable$-$child_variable$.
+            // Get the specified $root_name$-$child_name$.
             $ROOT_MODEL$$CHILD_MODEL$ $root_variable$$CHILD_MODEL$ = await DbContext.$ROOT_MODEL$$CHILD_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key &&
@@ -91,7 +91,7 @@
                 .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_NotFound.With(dao.$CHILD_MODEL$Name!));
 
-            // Delete the $root_variable$-$child_variable$.
+            // Delete the $root_name$-$child_name$.
             DbContext.$ROOT_MODEL$$CHILD_MODEL$s.Remove($root_variable$$CHILD_MODEL$);
 
             int count = await DbContext.SaveChangesAsync();

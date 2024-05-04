@@ -63,7 +63,7 @@
             )
         {
             var set = await factory.GetPortal<$ROOT_MODEL$Set>().FetchAsync(criteria);
-            await set.SetValuesById(list, "TeamId", childFactory);
+            await set.SetValuesById(list, "$ROOT_MODEL$Id", childFactory);
             return set;
         }
 

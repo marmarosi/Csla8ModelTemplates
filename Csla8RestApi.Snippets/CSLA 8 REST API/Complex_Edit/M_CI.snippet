@@ -125,7 +125,7 @@
                     return;
 
                 $ROOT_MODEL$ $root_variable$ = ($ROOT_MODEL$)target.Parent.Parent;
-                var count = $root_variable$.$CHILD_MODEL$s.Count(player => player.$CHILD_MODEL$Code == target.$CHILD_MODEL$Code);
+                var count = $root_variable$.$CHILD_MODEL$s.Count($child_variable$ => $child_variable$.$CHILD_MODEL$Code == target.$CHILD_MODEL$Code);
                 if (count > 1)
                     context.AddErrorResult(ComplexText.$CHILD_MODEL$_$CHILD_MODEL$Code_NotUnique);
             }
@@ -235,6 +235,11 @@
                     <Default>root_variable</Default>
                 </Literal>
                 <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
                     <ID>ROOT_MODEL</ID>
                     <ToolTip>The name of the root model.</ToolTip>
                     <Default>ROOT_MODEL</Default>
@@ -245,9 +250,9 @@
                     <Default></Default>
                 </Literal>
                 <Literal>
-                    <ID>CHILD_MODEL</ID>
-                    <ToolTip>The name of the child model.</ToolTip>
-                    <Default>CHILD_MODEL</Default>
+                    <ID>child_variable</ID>
+                    <ToolTip>The variable name of a child model instance.</ToolTip>
+                    <Default>child_variable</Default>
                 </Literal>
             </Declarations>
         </Snippet>

@@ -32,7 +32,7 @@ namespace Csla8RestApi.Tests.Models.Tree.View
         /// Gets the specified read-only message tree.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="criteria">The criteria of the read-only message tree.</param>
+        /// <param name="rootId">The identifier of the root message.</param>
         /// <returns>The requested read-only message tree.</returns>
         public static async Task<MessageTree> GetAsync(
             IDataPortalFactory factory,

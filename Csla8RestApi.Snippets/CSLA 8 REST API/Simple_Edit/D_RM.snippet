@@ -41,7 +41,7 @@
             $ROOT_MODEL$Criteria criteria
             )
         {
-            // Get the specified $root_variable$.
+            // Get the specified $root_name$.
             var $root_variable$ = await DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key
@@ -72,7 +72,7 @@
             $ROOT_MODEL$Dao dao
             )
         {
-            // Check unique $root_variable$ code.
+            // Check unique $root_name$ code.
             var $root_variable$ = await DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Code == dao.$ROOT_MODEL$Code
@@ -81,7 +81,7 @@
             if ($root_variable$ is not null)
                 throw new DataExistException(SimpleText.$ROOT_MODEL$_$ROOT_MODEL$CodeExists.With(dao.$ROOT_MODEL$Code!));
 
-            // Create the new $root_variable$.
+            // Create the new $root_name$.
             $root_variable$ = new $ROOT_MODEL$
             {
                 $ROOT_MODEL$Code = dao.$ROOT_MODEL$Code,
@@ -110,7 +110,7 @@
             $ROOT_MODEL$Dao dao
             )
         {
-            // Get the specified $root_variable$.
+            // Get the specified $root_name$.
             var $root_variable$ = await DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key
@@ -120,7 +120,7 @@
             if ($root_variable$.Timestamp != dao.Timestamp)
                 throw new ConcurrencyException(SimpleText.$ROOT_MODEL$_Concurrency);
 
-            // Check unique $root_variable$ code.
+            // Check unique $root_name$ code.
             if ($root_variable$.$ROOT_MODEL$Code != dao.$ROOT_MODEL$Code)
             {
                 int exist = await DbContext.$ROOT_MODEL$s
@@ -130,7 +130,7 @@
                     throw new DataExistException(SimpleText.$ROOT_MODEL$_$ROOT_MODEL$CodeExists.With(dao.$ROOT_MODEL$Code!));
             }
 
-            // Update the $root_variable$.
+            // Update the $root_name$.
             $root_variable$.$ROOT_MODEL$Code = dao.$ROOT_MODEL$Code;
             $root_variable$.$ROOT_MODEL$Name = dao.$ROOT_MODEL$Name;
 
@@ -156,7 +156,7 @@
         {
             int count = 0;
 
-            // Get the specified $root_variable$.
+            // Get the specified $root_name$.
             var $root_variable$ = await DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key
@@ -183,7 +183,7 @@
             if (count != $child_variable$s.Count)
                 throw new DeleteFailedException(SimpleText.$ROOT_MODEL$_Delete_$CHILD_MODEL$s);
 
-            // Delete the $root_variable$.
+            // Delete the $root_name$.
             DbContext.$ROOT_MODEL$s.Remove($root_variable$);
 
             count = await DbContext.SaveChangesAsync();

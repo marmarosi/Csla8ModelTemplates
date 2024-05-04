@@ -130,14 +130,14 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         /// Gets the specified team to edit.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
         public static async Task<SimpleTeam> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string teamId
             )
         {
-            return await factory.GetPortal<SimpleTeam>().FetchAsync(new SimpleTeamCriteria(id));
+            return await factory.GetPortal<SimpleTeam>().FetchAsync(new SimpleTeamCriteria(teamId));
         }
 
         /// <summary>
@@ -165,13 +165,13 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
         /// Deletes the specified team.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string teamId
             )
         {
-            await factory.GetPortal<SimpleTeam>().DeleteAsync(new SimpleTeamCriteria(id));
+            await factory.GetPortal<SimpleTeam>().DeleteAsync(new SimpleTeamCriteria(teamId));
         }
 
         #endregion
@@ -254,14 +254,14 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? teamId,
             [Inject] ISimpleTeamDal dal
             )
         {
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                await dal.DeleteAsync(new SimpleTeamCriteria(id));
+                await dal.DeleteAsync(new SimpleTeamCriteria(teamId));
                 dal.Commit(transaction);
             }
         }

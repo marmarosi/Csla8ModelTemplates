@@ -5,5 +5,7 @@ Shortcut:       c8clci
 Test:           Model | ===List---
 
 /// player:     child_name    | part
+/// Team:       ROOT_MODEL    | Product
+/// Player:     CHILD_MODEL   | Part
 Team:           ROOT_MODEL    | Product
 Player:         CHILD_MODEL   | Part

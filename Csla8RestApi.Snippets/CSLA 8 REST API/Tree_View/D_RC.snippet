@@ -45,7 +45,7 @@
         {
             var tree = new List<$ROOT_MODEL$NodeDao>();
 
-            // Get all subfolders of the root foolder.
+            // Get all sub$root_name$s of the root foolder.
             All$ROOT_MODEL$s = await DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     e.RootKey == criteria.RootKey
@@ -73,33 +73,33 @@
             List<$ROOT_MODEL$NodeDao> parentChildren
             )
         {
-            // Get the folders of the level.
-            var folders = All$ROOT_MODEL$s!
+            // Get the $root_name$s of the level.
+            var $root_variable$s = All$ROOT_MODEL$s!
                 .Where(o => o.ParentKey == parentKey)
                 .OrderBy(o => o.$ROOT_MODEL$Order)
                 .ToList();
 
-            foreach ($ROOT_MODEL$NodeDao folder in folders)
+            foreach ($ROOT_MODEL$NodeDao $root_variable$ in $root_variable$s)
             {
-                // Create folder node.
-                $ROOT_MODEL$NodeDao folderNode = new $ROOT_MODEL$NodeDao
+                // Create $root_name$ node.
+                $ROOT_MODEL$NodeDao $root_variable$Node = new $ROOT_MODEL$NodeDao
                 {
-                    $ROOT_MODEL$Key = folder.$ROOT_MODEL$Key,
-                    ParentKey = folder.ParentKey,
-                    $ROOT_MODEL$Order = folder.$ROOT_MODEL$Order,
-                    $ROOT_MODEL$Name = folder.$ROOT_MODEL$Name,
+                    $ROOT_MODEL$Key = $root_variable$.$ROOT_MODEL$Key,
+                    ParentKey = $root_variable$.ParentKey,
+                    $ROOT_MODEL$Order = $root_variable$.$ROOT_MODEL$Order,
+                    $ROOT_MODEL$Name = $root_variable$.$ROOT_MODEL$Name,
                     Level = level,
                     Children = new List<$ROOT_MODEL$NodeDao>()
                 };
 
-                // Add folder to the parent's children.
-                parentChildren.Add(folderNode);
+                // Add $root_name$ to the parent's children.
+                parentChildren.Add($root_variable$Node);
 
-                // Get the subfolders of this folder.
+                // Get the sub$root_name$s of this $root_name$.
                 PopulateLevel(
                     level + 1,
-                    folder.$ROOT_MODEL$Key,
-                    folderNode.Children
+                    $root_variable$.$ROOT_MODEL$Key,
+                    $root_variable$Node.Children
                     );
             }
         }
@@ -117,6 +117,11 @@
                     <ID>ROOT_MODEL</ID>
                     <ToolTip>The name of the root model.</ToolTip>
                     <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
                 </Literal>
                 <Literal>
                     <ID>DB_CONTEXT</ID>

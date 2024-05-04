@@ -35,7 +35,7 @@ namespace Csla8RestApi.SnippetGenerator
                 for (int i = 0; i < sourceLines.Count; i++)
                 {
                     var line = sourceLines[i];
-                    var isComment = line.TrimStart().StartsWith("///");
+                    var isComment = line.TrimStart().StartsWith("//");
                     if (textSwap.InComment && isComment ||
                         !textSwap.InComment && !isComment
                         )

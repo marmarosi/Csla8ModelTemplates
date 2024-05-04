@@ -3,5 +3,5 @@ Project:        Model
 FileName:       ===View---
 
 child_name:     part
-ROOT_MODEL:     Product
 CHILD_MODEL:    Part
+ROOT_MODEL:     Product

@@ -4,4 +4,5 @@ FileName:       ===View
 
 root_name:      user
 ROOT_MODEL:     User
+root_variable:  user
 CHILD_MODEL:    Role

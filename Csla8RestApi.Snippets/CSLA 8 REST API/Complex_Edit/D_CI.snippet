@@ -40,7 +40,7 @@
             $ROOT_MODEL$$CHILD_MODEL$Dao dao
             )
         {
-            // Check unique $child_variable$ code.
+            // Check unique $child_name$ code.
             var $child_variable$ = await DbContext.$CHILD_MODEL$s
                 .Where(e =>
                     e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key &&
@@ -50,7 +50,7 @@
             if ($child_variable$ is not null)
                 throw new DataExistException(ComplexText.$CHILD_MODEL$_$CHILD_MODEL$CodeExists.With(dao.$CHILD_MODEL$Code!));
 
-            // Create the new $child_variable$.
+            // Create the new $child_name$.
             $child_variable$ = new $CHILD_MODEL$
             {
                 $ROOT_MODEL$Key = dao.$ROOT_MODEL$Key,
@@ -79,7 +79,7 @@
             $ROOT_MODEL$$CHILD_MODEL$Dao dao
             )
         {
-            // Get the specified $child_variable$.
+            // Get the specified $child_name$.
             var $child_variable$ = await DbContext.$CHILD_MODEL$s
                 .Where(e =>
                     e.$CHILD_MODEL$Key == dao.$CHILD_MODEL$Key
@@ -87,7 +87,7 @@
                 .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(ComplexText.$CHILD_MODEL$_NotFound);
 
-            // Check unique $child_variable$ code.
+            // Check unique $child_name$ code.
             if ($child_variable$.$CHILD_MODEL$Code != dao.$CHILD_MODEL$Code)
             {
                 int exist = await DbContext.$CHILD_MODEL$s
@@ -101,7 +101,7 @@
                     throw new DataExistException(ComplexText.$CHILD_MODEL$_$CHILD_MODEL$CodeExists.With(dao.$CHILD_MODEL$Code!));
             }
 
-            // Update the $child_variable$.
+            // Update the $child_name$.
             $child_variable$.$CHILD_MODEL$Code = dao.$CHILD_MODEL$Code;
             $child_variable$.$CHILD_MODEL$Name = dao.$CHILD_MODEL$Name;
 
@@ -126,7 +126,7 @@
         {
             int count = 0;
 
-            // Get the specified $child_variable$.
+            // Get the specified $child_name$.
             var $child_variable$ = await DbContext.$CHILD_MODEL$s
                 .Where(e =>
                     e.$CHILD_MODEL$Key == criteria.$CHILD_MODEL$Key
@@ -135,7 +135,7 @@
                 .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(ComplexText.$CHILD_MODEL$_NotFound);
 
-            // Delete the $child_variable$.
+            // Delete the $child_name$.
             DbContext.$CHILD_MODEL$s.Remove($child_variable$);
 
             count = await DbContext.SaveChangesAsync();

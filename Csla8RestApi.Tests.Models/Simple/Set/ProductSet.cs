@@ -58,7 +58,7 @@ namespace Csla8RestApi.Tests.Models.Simple.Set
             )
         {
             var set = await factory.GetPortal<ProductSet>().FetchAsync(criteria);
-            await set.SetValuesById(list, "TeamId", childFactory);
+            await set.SetValuesById(list, "ProductId", childFactory);
             return set;
         }
 

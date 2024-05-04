@@ -79,14 +79,14 @@ namespace Csla8RestApi.Tests.Models.Simple.View
         /// Gets the specified product details to display.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the product.</param>
+        /// <param name="productId">The identifier of the product.</param>
         /// <returns>The requested product view.</returns>
         public static async Task<ProductView> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string productId
             )
         {
-            return await factory.GetPortal<ProductView>().FetchAsync(new ProductViewCriteria(id));
+            return await factory.GetPortal<ProductView>().FetchAsync(new ProductViewCriteria(productId));
         }
 
         #endregion

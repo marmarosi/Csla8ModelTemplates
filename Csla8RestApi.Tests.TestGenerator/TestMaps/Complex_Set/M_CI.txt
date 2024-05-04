@@ -4,6 +4,6 @@ FileName:       ===Set---
 
 child_name:     part
 ROOT_MODEL:     Product
-root_variable:  product
 CHILD_MODEL:    Part
+root_variable:  product
 child_variable: part

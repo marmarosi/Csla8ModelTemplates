@@ -4,5 +4,6 @@ Description:    Implements a read-only child collection.
 Shortcut:       c8afcc
 Test:           Model | ===ListItems
 
-/// team:       root_name     | product
-ArrangedTeam:   ROOT_MODEL    | Product
+/// team:           root_name     | product
+/// ArrangedTeam:   ROOT_MODEL    | Product
+ArrangedTeam:       ROOT_MODEL    | Product

@@ -138,14 +138,14 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// Gets the specified team to edit.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
         public static async Task<Team> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string teamId
             )
         {
-            return await factory.GetPortal<Team>().FetchAsync(new TeamCriteria(id));
+            return await factory.GetPortal<Team>().FetchAsync(new TeamCriteria(teamId));
         }
 
         /// <summary>
@@ -173,13 +173,13 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
         /// Deletes the specified team.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string teamId
             )
         {
-            await factory.GetPortal<Team>().DeleteAsync(new TeamCriteria(id));
+            await factory.GetPortal<Team>().DeleteAsync(new TeamCriteria(teamId));
         }
 
         #endregion
@@ -272,7 +272,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? teamId,
             [Inject] ITeamDal dal,
             [Inject] IChildDataPortal<TeamPlayers> itemPortal
             )
@@ -280,7 +280,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                var criteria = new TeamCriteria(id);
+                var criteria = new TeamCriteria(teamId);
 
                 if (!TeamKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);

@@ -3,6 +3,7 @@ Project:        Model
 FileName:       ===---
 
 child_name:     part
+CHILD_MODEL:    Part
 ROOT_MODEL:     Product
 root_variable:  product
-CHILD_MODEL:    Part
+child_variable: part

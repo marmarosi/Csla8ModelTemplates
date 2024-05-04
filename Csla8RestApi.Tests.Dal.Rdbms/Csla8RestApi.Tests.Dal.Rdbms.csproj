@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -15,11 +15,6 @@
     <ProjectReference Include="..\Csla8RestApi.Tests.Dal\Csla8RestApi.Tests.Dal.csproj" />
     <ProjectReference Include="..\Csla8RestApi.Tests.Entities\Csla8RestApi.Tests.Entities.csproj" />
     <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Simple\Command\" />
-    <Folder Include="Simple\Edit\" />
   </ItemGroup>
 
 </Project>

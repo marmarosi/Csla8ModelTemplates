@@ -36,7 +36,7 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Simple.Set
             ProductSetCriteria criteria
             )
         {
-            // Get the specified team set.
+            // Get the specified product set.
             var list = await DbContext.Products
                 .Where(e =>
                     criteria.ProductName == null || e.ProductName!.Contains(criteria.ProductName)

@@ -41,7 +41,7 @@
             $ROOT_MODEL$ListCriteria criteria
             )
         {
-            // Filter the teams.
+            // Filter the $root_name$s.
             var query = DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     criteria.$ROOT_MODEL$Name == null || e.$ROOT_MODEL$Name!.Contains(criteria.$ROOT_MODEL$Name)
@@ -78,7 +78,7 @@
                 .AsNoTracking()
                 .ToListAsync();
 
-            // Count the matching teams.
+            // Count the matching $root_name$s.
             int totalCount = await query.CountAsync();
 
             // Return the result.

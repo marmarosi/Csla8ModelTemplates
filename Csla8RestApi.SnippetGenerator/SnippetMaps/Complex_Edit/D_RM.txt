@@ -5,6 +5,7 @@ Shortcut:       c8cermd
 Test:           DAL | ===Dal
 
 /// team:       root_name     | product
+/// Team:       ROOT_MODEL    | Product
 Team:           ROOT_MODEL    | Product
 team:           root_variable | product
 Player:         CHILD_MODEL   | Part

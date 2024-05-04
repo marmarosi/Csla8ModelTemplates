@@ -79,14 +79,14 @@ namespace Csla8ModelTemplates.Models.Simple.View
         /// Gets the specified team details to display.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team view.</returns>
         public static async Task<SimpleTeamView> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string teamId
             )
         {
-            return await factory.GetPortal<SimpleTeamView>().FetchAsync(new SimpleTeamViewCriteria(id));
+            return await factory.GetPortal<SimpleTeamView>().FetchAsync(new SimpleTeamViewCriteria(teamId));
         }
 
         #endregion

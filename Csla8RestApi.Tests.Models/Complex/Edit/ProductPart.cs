@@ -127,7 +127,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
                     return;
 
                 Product product = (Product)target.Parent.Parent;
-                var count = product.Parts.Count(player => player.PartCode == target.PartCode);
+                var count = product.Parts.Count(part => part.PartCode == target.PartCode);
                 if (count > 1)
                     context.AddErrorResult(ComplexText.Part_PartCode_NotUnique);
             }

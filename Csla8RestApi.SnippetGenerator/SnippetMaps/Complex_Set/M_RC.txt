@@ -5,4 +5,5 @@ Shortcut:       c8csrc
 Test:           Model | ===Set
 
 /// team:       root_name     | product
+/// Team:       ROOT_MODEL    | Product
 Team:           ROOT_MODEL    | Product

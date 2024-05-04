@@ -67,17 +67,17 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <summary>
         /// Gets the specified team details to display.
         /// </summary>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team view.</returns>
         [HttpGet("{id}/view")]
         [ProducesResponseType(typeof(TeamViewDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamView(
-            string id
+            string teamId
             )
         {
             try
             {
-                var team = await TeamView.GetAsync(Factory, id);
+                var team = await TeamView.GetAsync(Factory, teamId);
                 return Ok(team.ToDto<TeamViewDto>());
             }
             catch (Exception ex)
@@ -149,17 +149,17 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <summary>
         /// Gets the specified team to edit.
         /// </summary>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(TeamDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeam(
-            string id
+            string teamId
             )
         {
             try
             {
-                var team = await Team.GetAsync(Factory, id);
+                var team = await Team.GetAsync(Factory, teamId);
                 return Ok(team.ToDto());
             }
             catch (Exception ex)
@@ -208,18 +208,18 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <summary>
         /// Deletes the specified team.
         /// </summary>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="teamId">The identifier of the team.</param>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteTeam(
-            string id
+            string teamId
             )
         {
             try
             {
                 await RetryOnDeadlock(async () =>
                 {
-                    await Team.DeleteAsync(Factory, id);
+                    await Team.DeleteAsync(Factory, teamId);
                 });
                 return NoContent();
             }

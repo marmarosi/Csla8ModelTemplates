@@ -5,6 +5,9 @@ Shortcut:       c8jeci
 Test:           Model | ===---
 
 /// group:      root_name     | user
+/// Group:      ROOT_MODEL    | User
 /// person:     child_name    | role
+/// Person:     CHILD_MODEL   | Role
 Group:          ROOT_MODEL    | User
+group:          root_variable | user
 Person:         CHILD_MODEL   | Role

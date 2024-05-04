@@ -92,10 +92,10 @@
         /// <returns>The requested $root_name$ view.</returns>
         public static async Task<$ROOT_MODEL$View> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string $root_variable$Id
             )
         {
-            return await factory.GetPortal<$ROOT_MODEL$View>().FetchAsync(new $ROOT_MODEL$ViewCriteria(id));
+            return await factory.GetPortal<$ROOT_MODEL$View>().FetchAsync(new $ROOT_MODEL$ViewCriteria($root_variable$Id));
         }
 
         #endregion
@@ -128,6 +128,11 @@
                     <ID>ROOT_MODEL</ID>
                     <ToolTip>The name of the root model.</ToolTip>
                     <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default></Default>
                 </Literal>
                 <Literal>
                     <ID>CHILD_MODEL</ID>

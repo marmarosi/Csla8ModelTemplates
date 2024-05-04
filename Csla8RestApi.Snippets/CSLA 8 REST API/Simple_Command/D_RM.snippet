@@ -40,13 +40,13 @@
             $COMMAND_MODEL$Dao dao
             )
         {
-            // Get the specified $root_variable$.
+            // Get the specified $root_name$.
             var $root_variable$ = await DbContext.$ROOT_MODEL$s
                 .Where(e => e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key)
                 .FirstOrDefaultAsync()
                 ?? throw new DataNotFoundException(SimpleText.$ROOT_MODEL$_NotFound);
 
-            // Update the $root_variable$.
+            // Update the $root_name$.
             $root_variable$.$ROOT_MODEL$Name = dao.$ROOT_MODEL$Name;
 
             int count = await DbContext.SaveChangesAsync();
@@ -62,6 +62,11 @@
                     <ID>command_name</ID>
                     <ToolTip>The description of the command model in comments.</ToolTip>
                     <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
                 </Literal>
                 <Literal>
                     <ID>COMMAND_MODEL</ID>

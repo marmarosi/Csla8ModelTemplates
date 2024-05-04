@@ -138,14 +138,14 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// Gets an existing editable group instance.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the group.</param>
+        /// <param name="groupId">The identifier of the group.</param>
         /// <returns>The requested editable group instance.</returns>
         public static async Task<Group> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string groupId
             )
         {
-            return await factory.GetPortal<Group>().FetchAsync(new GroupCriteria(id));
+            return await factory.GetPortal<Group>().FetchAsync(new GroupCriteria(groupId));
         }
 
         /// <summary>
@@ -173,13 +173,13 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
         /// Deletes an existing group.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the group.</param>
+        /// <param name="groupId">The identifier of the group.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string groupId
             )
         {
-            await factory.GetPortal<Group>().DeleteAsync(new GroupCriteria(id));
+            await factory.GetPortal<Group>().DeleteAsync(new GroupCriteria(groupId));
         }
 
         #endregion
@@ -272,7 +272,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? groupId,
             [Inject] IGroupDal dal,
             [Inject] IChildDataPortal<GroupPersons> itemPortal
             )
@@ -280,7 +280,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                var criteria = new GroupCriteria(id);
+                var criteria = new GroupCriteria(groupId);
 
                 if (!GroupKey.HasValue)
                     await FetchAsync(criteria, dal, itemPortal);

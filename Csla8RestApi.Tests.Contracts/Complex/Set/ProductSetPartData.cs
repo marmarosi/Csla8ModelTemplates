@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace Csla8RestApi.Tests.Contracts.Complex.Set
 {
     /// <summary>
-    /// Defines the editable team set part data.
+    /// Defines the editable product set part data.
     /// </summary>
     public abstract class ProductSetPartData
     {
@@ -17,7 +17,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.Set
     }
 
     /// <summary>
-    /// Defines the data access object of the editable team set part object.
+    /// Defines the data access object of the editable product set part object.
     /// </summary>
     public class ProductSetPartDao : ProductSetPartData
     {
@@ -26,7 +26,7 @@ namespace Csla8RestApi.Tests.Contracts.Complex.Set
     }
 
     /// <summary>
-    /// Defines the data transfer object of the editable team set part object.
+    /// Defines the data transfer object of the editable product set part object.
     /// </summary>
     public class ProductSetPartDto : ProductSetPartData
     {

@@ -3,6 +3,7 @@ Project:        Contract
 FileName:       ===Set---Data
 
 child_name:     part
+root_name:      product
 CHILD_MODEL:    Part
 ROOT_MODEL:     Product
 root_variable:  product

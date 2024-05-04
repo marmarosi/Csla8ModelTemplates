@@ -5,4 +5,5 @@ Shortcut:       c8cccc
 Test:           Model | +++Results
 
 /// count teams:    command_name  | count products
+/// CountTeams:     COMMAND_MODEL | CountProducts
 CountTeams:         COMMAND_MODEL | CountProducts

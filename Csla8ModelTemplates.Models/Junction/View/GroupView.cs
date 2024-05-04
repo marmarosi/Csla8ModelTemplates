@@ -86,14 +86,14 @@ namespace Csla8ModelTemplates.Models.Junction.View
         /// Gets the specified read-only group instance.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="groupId">The identifier of the group.</param>
         /// <returns>The requested read-only group instance.</returns>
         public static async Task<GroupView> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string groupId
             )
         {
-            return await factory.GetPortal<GroupView>().FetchAsync(new GroupViewCriteria(id));
+            return await factory.GetPortal<GroupView>().FetchAsync(new GroupViewCriteria(groupId));
         }
 
         #endregion

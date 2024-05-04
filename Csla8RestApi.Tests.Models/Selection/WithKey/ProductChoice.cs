@@ -17,7 +17,7 @@ namespace Csla8RestApi.Tests.Models.Selection.WithKey
         //{
         //    // Add authorization rules.
         //    BusinessRules.AddRule(
-        //        typeof(ProductChoice),
+        //        typeof(ProductWithKeyChoice),
         //        new IsInRole(
         //            AuthorizationActions.GetObject,
         //            "Manager"

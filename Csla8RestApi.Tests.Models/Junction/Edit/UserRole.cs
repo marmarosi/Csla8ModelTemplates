@@ -101,8 +101,8 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
                 if (target.Parent == null)
                     return;
 
-                User group = (User)target.Parent.Parent;
-                var count = group.Roles.Count(gp => gp.RoleId == target.RoleId);
+                User user = (User)target.Parent.Parent;
+                var count = user.Roles.Count(gp => gp.RoleId == target.RoleId);
                 if (count > 1)
                     context.AddErrorResult(JunctionText.UserRole_RoleId_NotUnique);
             }

@@ -4,6 +4,8 @@ Description:    Implements a read-only child model.
 Shortcut:       c8afci
 Test:           Model | ===ListItem
 
-/// team:       root_name     | product
-ArrangedTeam:   ROOT_MODEL    | Product
-Team:           ROOT_MODEL    | Product
+/// team:           root_name     | product
+/// ArrangedTeam:   ROOT_MODEL    | Product
+/// Team:           ROOT_MODEL    | Product
+ArrangedTeam:       ROOT_MODEL    | Product
+Team:               ROOT_MODEL    | Product

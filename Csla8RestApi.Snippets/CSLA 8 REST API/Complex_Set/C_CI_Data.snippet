@@ -10,7 +10,7 @@
         <Snippet>
             <Code Language="CSharp">
                 <![CDATA[/// <summary>
-    /// Defines the editable team set $child_name$ data.
+    /// Defines the editable $root_name$ set $child_name$ data.
     /// </summary>
     public abstract class $ROOT_MODEL$Set$CHILD_MODEL$Data
     {
@@ -23,7 +23,7 @@
     }
 
     /// <summary>
-    /// Defines the data access object of the editable team set $child_name$ object.
+    /// Defines the data access object of the editable $root_name$ set $child_name$ object.
     /// </summary>
     public class $ROOT_MODEL$Set$CHILD_MODEL$Dao : $ROOT_MODEL$Set$CHILD_MODEL$Data
     {
@@ -32,7 +32,7 @@
     }
 
     /// <summary>
-    /// Defines the data transfer object of the editable team set $child_name$ object.
+    /// Defines the data transfer object of the editable $root_name$ set $child_name$ object.
     /// </summary>
     public class $ROOT_MODEL$Set$CHILD_MODEL$Dto : $ROOT_MODEL$Set$CHILD_MODEL$Data
     {
@@ -57,6 +57,11 @@
                     <ID>child_name</ID>
                     <ToolTip>The description of the child model in comments.</ToolTip>
                     <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
                 </Literal>
                 <Literal>
                     <ID>CHILD_MODEL</ID>

@@ -4,4 +4,5 @@ FileName:       ===TreeDal
 
 root_name:      message
 ROOT_MODEL:     Message
+root_variable:  message
 DB_CONTEXT:     RdbmsContext

@@ -41,7 +41,7 @@
             $ROOT_MODEL$SetCriteria criteria
             )
         {
-            // Get the specified team set.
+            // Get the specified $root_name$ set.
             var list = await DbContext.$ROOT_MODEL$s
                 .Where(e =>
                     criteria.$ROOT_MODEL$Name == null || e.$ROOT_MODEL$Name!.Contains(criteria.$ROOT_MODEL$Name)

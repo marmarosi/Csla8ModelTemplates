@@ -130,14 +130,14 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
         /// Gets the specified product to edit.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the product.</param>
+        /// <param name="productId">The identifier of the product.</param>
         /// <returns>The requested product.</returns>
         public static async Task<Product> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string productId
             )
         {
-            return await factory.GetPortal<Product>().FetchAsync(new ProductCriteria(id));
+            return await factory.GetPortal<Product>().FetchAsync(new ProductCriteria(productId));
         }
 
         /// <summary>
@@ -153,25 +153,25 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             ProductDto dto
             )
         {
-            long? teamKey = KeyHash.Decode(ID.Product, dto.ProductId);
-            Product team = teamKey.HasValue ?
+            long? productKey = KeyHash.Decode(ID.Product, dto.ProductId);
+            Product product = productKey.HasValue ?
                 await GetAsync(factory, dto.ProductId!) :
                 await NewAsync(factory);
-            await team.SetValuesOnBuild(dto, childFactory);
-            return team;
+            await product.SetValuesOnBuild(dto, childFactory);
+            return product;
         }
 
         /// <summary>
         /// Deletes the specified product.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the product.</param>
+        /// <param name="productId">The identifier of the product.</param>
         public static async Task DeleteAsync(
             IDataPortalFactory factory,
-            string id
+            string productId
             )
         {
-            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(id));
+            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(productId));
         }
 
         #endregion
@@ -254,14 +254,14 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
 
         [Delete]
         protected async Task DeleteAsync(
-            string? id,
+            string? productId,
             [Inject] IProductDal dal
             )
         {
             // Delete values from persistent storage.
             using (var transaction = dal.BeginTransaction())
             {
-                await dal.DeleteAsync(new ProductCriteria(id));
+                await dal.DeleteAsync(new ProductCriteria(productId));
                 dal.Commit(transaction);
             }
         }

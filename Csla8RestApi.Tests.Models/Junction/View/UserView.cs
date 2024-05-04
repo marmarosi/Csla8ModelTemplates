@@ -86,14 +86,14 @@ namespace Csla8RestApi.Tests.Models.Junction.View
         /// Gets the specified read-only user instance.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="id">The identifier of the team.</param>
+        /// <param name="userId">The identifier of the user.</param>
         /// <returns>The requested read-only user instance.</returns>
         public static async Task<UserView> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string userId
             )
         {
-            return await factory.GetPortal<UserView>().FetchAsync(new UserViewCriteria(id));
+            return await factory.GetPortal<UserView>().FetchAsync(new UserViewCriteria(userId));
         }
 
         #endregion

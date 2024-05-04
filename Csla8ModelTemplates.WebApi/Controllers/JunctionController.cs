@@ -35,17 +35,17 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <summary>
         /// Gets the specified group details to display.
         /// </summary>
-        /// <param name="id">The identifier of the group.</param>
+        /// <param name="groupId">The identifier of the group.</param>
         /// <returns>The requested group view.</returns>
         [HttpGet("{id}/view")]
         [ProducesResponseType(typeof(GroupViewDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGroupView(
-            string id
+            string groupId
             )
         {
             try
             {
-                GroupView group = await GroupView.GetAsync(Factory, id);
+                GroupView group = await GroupView.GetAsync(Factory, groupId);
                 return Ok(group.ToDto<GroupViewDto>());
             }
             catch (Exception ex)
@@ -117,17 +117,17 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <summary>
         /// Gets the specified group to edit.
         /// </summary>
-        /// <param name="id">The identifier of the group.</param>
+        /// <param name="groupId">The identifier of the group.</param>
         /// <returns>The requested group.</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(GroupDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGroup(
-            string id
+            string groupId
             )
         {
             try
             {
-                Group group = await Group.GetAsync(Factory, id);
+                Group group = await Group.GetAsync(Factory, groupId);
                 return Ok(group.ToDto());
             }
             catch (Exception ex)
@@ -176,18 +176,18 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <summary>
         /// Deletes the specified group.
         /// </summary>
-        /// <param name="id">The identifier of the group.</param>
+        /// <param name="groupId">The identifier of the group.</param>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteGroup(
-            string id
+            string groupId
             )
         {
             try
             {
                 await RetryOnDeadlock(async () =>
                 {
-                    await Group.DeleteAsync(Factory, id);
+                    await Group.DeleteAsync(Factory, groupId);
                 });
                 return NoContent();
             }

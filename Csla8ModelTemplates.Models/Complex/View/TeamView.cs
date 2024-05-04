@@ -90,10 +90,10 @@ namespace Csla8ModelTemplates.Models.Complex.View
         /// <returns>The requested team view.</returns>
         public static async Task<TeamView> GetAsync(
             IDataPortalFactory factory,
-            string id
+            string teamId
             )
         {
-            return await factory.GetPortal<TeamView>().FetchAsync(new TeamViewCriteria(id));
+            return await factory.GetPortal<TeamView>().FetchAsync(new TeamViewCriteria(teamId));
         }
 
         #endregion

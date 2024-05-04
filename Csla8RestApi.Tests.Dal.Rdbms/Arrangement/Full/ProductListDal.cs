@@ -37,7 +37,7 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Arrangement.Full
             ProductListCriteria criteria
             )
         {
-            // Filter the teams.
+            // Filter the products.
             var query = DbContext.Products
                 .Where(e =>
                     criteria.ProductName == null || e.ProductName!.Contains(criteria.ProductName)
@@ -74,7 +74,7 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Arrangement.Full
                 .AsNoTracking()
                 .ToListAsync();
 
-            // Count the matching teams.
+            // Count the matching products.
             int totalCount = await query.CountAsync();
 
             // Return the result.

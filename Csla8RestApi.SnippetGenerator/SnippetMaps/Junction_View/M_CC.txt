@@ -5,6 +5,8 @@ Shortcut:       c8jvcc
 Test:           Model | ===View---s
 
 /// group:      root_name     | user
+/// Group:      ROOT_MODEL    | User
 /// person:     child_name    | role
+/// Person:     CHILD_MODEL   | Role
 Group:          ROOT_MODEL    | User
 Person:         CHILD_MODEL   | Role

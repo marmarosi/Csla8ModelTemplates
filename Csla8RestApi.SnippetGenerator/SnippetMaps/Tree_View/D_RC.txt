@@ -6,4 +6,5 @@ Test:           DAL | ===TreeDal
 
 /// folder:     root_name     | message
 Folder:         ROOT_MODEL    | Message
+folder:         root_variable | message
 MySqlContext:   DB_CONTEXT    | RdbmsContext

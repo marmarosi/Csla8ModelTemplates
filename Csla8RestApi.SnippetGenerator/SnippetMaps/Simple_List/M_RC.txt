@@ -5,4 +5,5 @@ Shortcut:       c8slrc
 Test:           Model | ===List
 
 /// team:       root_name     | product
+/// SimpleTeam: ROOT_MODEL    | Product
 SimpleTeam:     ROOT_MODEL    | Product

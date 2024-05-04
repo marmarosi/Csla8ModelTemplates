@@ -3,6 +3,7 @@ Project:        DAL
 FileName:       +++Dal
 
 command_name:   clear product
+root_name:      product
 COMMAND_MODEL:  ClearProduct
 ROOT_MODEL:     Product
 root_variable:  product

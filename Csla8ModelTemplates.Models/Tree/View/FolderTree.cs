@@ -32,7 +32,7 @@ namespace Csla8ModelTemplates.Models.Tree.View
         /// Gets the specified read-only folder tree.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="criteria">The criteria of the read-only folder tree.</param>
+        /// <param name="rootId">The identifier of the root folder.</param>
         /// <returns>The requested read-only folder tree.</returns>
         public static async Task<FolderTree> GetAsync(
             IDataPortalFactory factory,
