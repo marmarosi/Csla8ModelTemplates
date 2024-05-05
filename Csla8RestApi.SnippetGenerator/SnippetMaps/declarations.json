@@ -12,7 +12,7 @@
   {
     "ID": "root_variable",
     "ToolTip": "The variable name of a root model instance.",
-    "DefaultValue": ""
+    "DefaultValue": "root_variable"
   },
   {
     "ID": "child_name",

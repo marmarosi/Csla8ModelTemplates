@@ -44,7 +44,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <returns>The key-name choice of the teams.</returns>
         [HttpGet("with-key")]
         [ProducesResponseType(typeof(List<KeyNameOptionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetTeamChoiceWithKey(
+        public async Task<IActionResult> GetTeamWithKeyChoice(
             [FromQuery] TeamWithKeyChoiceCriteria criteria
             )
         {
@@ -70,7 +70,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <returns>The ID-name choice of the teams.</returns>
         [HttpGet("with-id")]
         [ProducesResponseType(typeof(List<IdNameOptionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetTeamChoiceWithId(
+        public async Task<IActionResult> GetTeamWithIdChoice(
             [FromQuery] TeamWithIdChoiceCriteria criteria
             )
         {
@@ -96,7 +96,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <returns>The Guid-name choice of the teams.</returns>
         [HttpGet("with-guid")]
         [ProducesResponseType(typeof(List<GuidNameOptionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetTeamChoiceWithGuid(
+        public async Task<IActionResult> GetTeamWithGuidChoice(
             [FromQuery] TeamWithGuidChoiceCriteria criteria
             )
         {
@@ -119,10 +119,10 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// Gets the code-name choice of the teams.
         /// </summary>
         /// <param name="criteria">The criteria of the team choice.</param>
-        /// <returns>The code-name choice of the tenants.</returns>
+        /// <returns>The code-name choice of the teams.</returns>
         [HttpGet("with-code")]
         [ProducesResponseType(typeof(List<CodeNameOptionDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetTeamChoiceWithCode(
+        public async Task<IActionResult> GetTeamWithCodeChoice(
             [FromQuery] TeamWithCodeChoiceCriteria criteria
             )
         {

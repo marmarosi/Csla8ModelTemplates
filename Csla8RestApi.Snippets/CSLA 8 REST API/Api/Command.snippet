@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>API | Command endpoint</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines a command endpoint.</Description>
+            <Shortcut>c8ex</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[#region Command
+
+        /// <summary>
+        /// Executes the $command_name$ command.
+        /// </summary>
+        /// <param name="dto">The data transer object of the $command_name$ command.</param>
+        /// <returns>True when the command succeeded; otherwise false.</returns>
+        [HttpPatch]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+        public async Task<IActionResult> $COMMAND_MODEL$Command(
+            [FromBody] $COMMAND_MODEL$Dto dto
+            )
+        {
+            try
+            {
+                return Ok(await RetryOnDeadlock(async () =>
+                {
+                    var command = await $COMMAND_MODEL$.ExecuteAsync(Factory, dto);
+                    return command.Result;
+                }));
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -53,14 +53,14 @@ namespace Csla8ModelTemplates.WebApi.Controllers
 
         #endregion
 
-        #region View
+        #region Tree
 
         /// <summary>
         /// Gets the specified folder tree.
         /// </summary>
         /// <param name="rootId">The identifier of the root folder.</param>
         /// <returns>The requested folder tree.</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{rootId}")]
         [ProducesResponseType(typeof(List<FolderNodeDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFolderTree(
             string rootId

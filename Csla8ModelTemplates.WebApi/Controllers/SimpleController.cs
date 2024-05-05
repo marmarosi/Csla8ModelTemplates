@@ -68,7 +68,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team view.</returns>
-        [HttpGet("{id}/view")]
+        [HttpGet("{teamId}/view")]
         [ProducesResponseType(typeof(SimpleTeamViewDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamView(
             string teamId
@@ -150,7 +150,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{teamId}")]
         [ProducesResponseType(typeof(SimpleTeamDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeam(
             string teamId
@@ -208,7 +208,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// Deletes the specified team.
         /// </summary>
         /// <param name="teamId">The identifier of the team.</param>
-        [HttpDelete("{id}")]
+        [HttpDelete("{teamId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteTeam(
             string teamId
@@ -294,10 +294,10 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         #region Command
 
         /// <summary>
-        /// Renames the specified team.
+        /// Executes the rename team command.
         /// </summary>
         /// <param name="dto">The data transer object of the rename team command.</param>
-        /// <returns>True when the team was renamed; otherwise false.</returns>
+        /// <returns>True when the command succeeded; otherwise false.</returns>
         [HttpPatch]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         public async Task<IActionResult> RenameTeamCommand(

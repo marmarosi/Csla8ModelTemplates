@@ -69,7 +69,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team view.</returns>
-        [HttpGet("{id}/view")]
+        [HttpGet("{teamId}/view")]
         [ProducesResponseType(typeof(TeamViewDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamView(
             string teamId
@@ -151,7 +151,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <param name="teamId">The identifier of the team.</param>
         /// <returns>The requested team.</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{teamId}")]
         [ProducesResponseType(typeof(TeamDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeam(
             string teamId
@@ -209,7 +209,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// Deletes the specified team.
         /// </summary>
         /// <param name="teamId">The identifier of the team.</param>
-        [HttpDelete("{id}")]
+        [HttpDelete("{teamId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteTeam(
             string teamId

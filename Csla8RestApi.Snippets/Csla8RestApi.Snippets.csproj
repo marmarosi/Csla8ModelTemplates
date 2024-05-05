@@ -48,6 +48,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CSLA 8 REST API\Api\ChoiceWithGuid.snippet" />
+    <None Include="CSLA 8 REST API\Api\ChoiceWithId.snippet" />
+    <None Include="CSLA 8 REST API\Api\ChoiceWithCode.snippet" />
+    <None Include="CSLA 8 REST API\Api\Create.snippet" />
+    <None Include="CSLA 8 REST API\Api\Delete.snippet" />
+    <None Include="CSLA 8 REST API\Api\Command.snippet" />
+    <None Include="CSLA 8 REST API\Api\ChoiceWithKey.snippet" />
+    <None Include="CSLA 8 REST API\Api\Tree.snippet" />
+    <None Include="CSLA 8 REST API\Api\ReadSet.snippet" />
+    <None Include="CSLA 8 REST API\Api\UpdateSet.snippet" />
+    <None Include="CSLA 8 REST API\Api\Update.snippet" />
+    <None Include="CSLA 8 REST API\Api\Read.snippet" />
+    <None Include="CSLA 8 REST API\Api\New.snippet" />
+    <None Include="CSLA 8 REST API\Api\View.snippet" />
+    <None Include="CSLA 8 REST API\Api\List.snippet" />
+    <None Include="CSLA 8 REST API\Api\Controller.snippet" />
     <None Include="CSLA 8 REST API\Arrangement_Full\C_CI_Data.snippet" />
     <None Include="CSLA 8 REST API\Arrangement_Full\C_RM_Crit.snippet" />
     <None Include="CSLA 8 REST API\Arrangement_Full\C_RM_Dal.snippet" />

@@ -16,7 +16,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
             var sut = new SelectionController(logger, setup.Csla);
 
             // ********** Act
-            var actionResult = await sut.GetTeamChoiceWithId(
+            var actionResult = await sut.GetTeamWithIdChoice(
                 new TeamWithIdChoiceCriteria { TeamName = "0" }
                 );
 

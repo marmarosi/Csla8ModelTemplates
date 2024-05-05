@@ -37,7 +37,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <param name="groupId">The identifier of the group.</param>
         /// <returns>The requested group view.</returns>
-        [HttpGet("{id}/view")]
+        [HttpGet("{groupId}/view")]
         [ProducesResponseType(typeof(GroupViewDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGroupView(
             string groupId
@@ -119,7 +119,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <param name="groupId">The identifier of the group.</param>
         /// <returns>The requested group.</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{groupId}")]
         [ProducesResponseType(typeof(GroupDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetGroup(
             string groupId
@@ -177,7 +177,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// Deletes the specified group.
         /// </summary>
         /// <param name="groupId">The identifier of the group.</param>
-        [HttpDelete("{id}")]
+        [HttpDelete("{groupId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteGroup(
             string groupId

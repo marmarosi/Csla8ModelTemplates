@@ -1,7 +1,7 @@
 using Csla;
+using Csla8RestApi.Dal;
 using Csla8RestApi.Models;
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Dal;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csla8ModelTemplates.WebApi
