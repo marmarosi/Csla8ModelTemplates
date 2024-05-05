@@ -131,10 +131,8 @@ namespace Csla8ModelTemplates.Dal.MySql.Complex.Set
                     e.TeamKey == criteria.TeamKey
                  )
                 .AsNoTracking()
-                .FirstOrDefaultAsync();
-            if (team is null)
-                // TODO
-                throw new DataNotFoundException(ComplexText.TeamSetItem_NotFound.With(team.TeamCode!));
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.TeamSetItem_NotFoundKey);
 
             // Check references.
             //int dependents = 0;

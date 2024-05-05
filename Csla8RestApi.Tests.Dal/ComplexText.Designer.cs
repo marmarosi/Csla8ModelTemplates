@@ -214,6 +214,15 @@ namespace Csla8RestApi.Tests.Dal {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The requested product has not been found..
+        /// </summary>
+        public static string ProductSetItem_NotFoundKey {
+            get {
+                return ResourceManager.GetString("ProductSetItem_NotFoundKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product with code {0} already exists..
         /// </summary>
         public static string ProductSetItem_ProductCodeExists {

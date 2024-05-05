@@ -214,6 +214,15 @@ namespace Csla8ModelTemplates.Dal {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The requested team has not been found..
+        /// </summary>
+        public static string TeamSetItem_NotFoundKey {
+            get {
+                return ResourceManager.GetString("TeamSetItem_NotFoundKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team with code {0} already exists..
         /// </summary>
         public static string TeamSetItem_TeamCodeExists {

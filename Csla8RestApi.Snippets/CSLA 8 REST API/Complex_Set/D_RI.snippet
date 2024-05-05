@@ -134,10 +134,8 @@
                     e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key
                  )
                 .AsNoTracking()
-                .FirstOrDefaultAsync();
-            if ($root_variable$ is null)
-                // TODO
-                throw new DataNotFoundException(ComplexText.$ROOT_MODEL$SetItem_NotFound.With($root_variable$.$ROOT_MODEL$Code!));
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.$ROOT_MODEL$SetItem_NotFoundKey);
 
             // Check references.
             //int dependents = 0;

@@ -131,10 +131,8 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.Set
                     e.ProductKey == criteria.ProductKey
                  )
                 .AsNoTracking()
-                .FirstOrDefaultAsync();
-            if (product is null)
-                // TODO
-                throw new DataNotFoundException(ComplexText.ProductSetItem_NotFound.With(product.ProductCode!));
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.ProductSetItem_NotFoundKey);
 
             // Check references.
             //int dependents = 0;
