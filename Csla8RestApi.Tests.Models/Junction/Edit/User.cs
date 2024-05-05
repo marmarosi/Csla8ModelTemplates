@@ -114,8 +114,9 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             )
         {
             DataMapper.Map(dto, this, "Roles");
-            await BusinessRules.CheckRulesAsync();
             await Roles.SetValuesById(dto.Roles, "RoleId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         #endregion
@@ -196,6 +197,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             //LoadProperty(UserCodeProperty, "");
             Roles = await itemsPortal.CreateChildAsync();
             await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         [Fetch]

@@ -112,8 +112,9 @@ namespace Csla8RestApi.Tests.Models.Complex.Set
             )
         {
             DataMapper.Map(dto, this, "Parts");
-            await BusinessRules.CheckRulesAsync();
             await Parts.SetValuesById(dto.Parts, "PartId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         #endregion
@@ -129,6 +130,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Set
             Parts = await itemsPortal.CreateChildAsync();
             //LoadProperty(ProductCodeProperty, "");
             await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         [FetchChild]

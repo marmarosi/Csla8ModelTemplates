@@ -114,8 +114,9 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             )
         {
             DataMapper.Map(dto, this, "Persons");
-            await BusinessRules.CheckRulesAsync();
             await Persons.SetValuesById(dto.Persons, "PersonId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         #endregion
@@ -196,6 +197,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             //LoadProperty(GroupCodeProperty, "");
             Persons = await itemsPortal.CreateChildAsync();
             await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         [Fetch]

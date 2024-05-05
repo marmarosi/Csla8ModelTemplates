@@ -114,8 +114,9 @@
             )
         {
             DataMapper.Map(dto, this, "$CHILD_MODEL$s");
-            await BusinessRules.CheckRulesAsync();
             await $CHILD_MODEL$s.SetValuesById(dto.$CHILD_MODEL$s, "$CHILD_MODEL$Id", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         #endregion
@@ -196,6 +197,7 @@
             $CHILD_MODEL$s = await itemsPortal.CreateChildAsync();
             //LoadProperty($ROOT_MODEL$CodeProperty, "");
             await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         [Fetch]

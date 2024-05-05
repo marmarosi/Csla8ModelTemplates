@@ -114,8 +114,9 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             )
         {
             DataMapper.Map(dto, this, "Players");
-            await BusinessRules.CheckRulesAsync();
             await Players.SetValuesById(dto.Players, "PlayerId", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         #endregion
@@ -196,6 +197,7 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             Players = await itemsPortal.CreateChildAsync();
             //LoadProperty(TeamCodeProperty, "");
             await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
         }
 
         [Fetch]
