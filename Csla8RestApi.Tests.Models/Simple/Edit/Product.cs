@@ -171,7 +171,7 @@ namespace Csla8RestApi.Tests.Models.Simple.Edit
             string productId
             )
         {
-            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(productId));
+            await factory.GetPortal<Product>().DeleteAsync(productId);
         }
 
         #endregion

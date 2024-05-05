@@ -179,7 +179,7 @@ namespace Csla8RestApi.Tests.Models.Junction.Edit
             string userId
             )
         {
-            await factory.GetPortal<User>().DeleteAsync(new UserCriteria(userId));
+            await factory.GetPortal<User>().DeleteAsync(userId);
         }
 
         #endregion

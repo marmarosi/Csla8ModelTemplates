@@ -25,26 +25,26 @@ namespace Csla8ModelTemplates.Models.Complex.Set
             private set => SetProperty(TeamKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> TeamIdProperty = RegisterProperty<long?>(nameof(TeamId), RelationshipTypes.PrivateField);
-        public string TeamId
+        public static readonly PropertyInfo<string?> TeamIdProperty = RegisterProperty<string?>(nameof(TeamId), RelationshipTypes.PrivateField);
+        public string? TeamId
         {
             get => KeyHash.Encode(ID.Team, TeamKey);
             set => TeamKey = KeyHash.Decode(ID.Team, value);
         }
 
-        public static readonly PropertyInfo<string> TeamCodeProperty = RegisterProperty<string>(nameof(TeamCode));
+        public static readonly PropertyInfo<string?> TeamCodeProperty = RegisterProperty<string?>(nameof(TeamCode));
         [Required]
         [MaxLength(10)]
-        public string TeamCode
+        public string? TeamCode
         {
             get => GetProperty(TeamCodeProperty);
             set => SetProperty(TeamCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> TeamNameProperty = RegisterProperty<string>(nameof(TeamName));
+        public static readonly PropertyInfo<string?> TeamNameProperty = RegisterProperty<string?>(nameof(TeamName));
         [Required]
         [MaxLength(100)]
-        public string TeamName
+        public string? TeamName
         {
             get => GetProperty(TeamNameProperty);
             set => SetProperty(TeamNameProperty, value);

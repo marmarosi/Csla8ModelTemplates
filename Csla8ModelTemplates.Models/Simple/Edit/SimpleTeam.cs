@@ -171,7 +171,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             string teamId
             )
         {
-            await factory.GetPortal<SimpleTeam>().DeleteAsync(new SimpleTeamCriteria(teamId));
+            await factory.GetPortal<SimpleTeam>().DeleteAsync(teamId);
         }
 
         #endregion

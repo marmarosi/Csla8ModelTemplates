@@ -27,8 +27,8 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             private set => SetProperty(PlayerKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> PlayerIdProperty = RegisterProperty<long?>(nameof(PlayerId), RelationshipTypes.PrivateField);
-        public string PlayerId
+        public static readonly PropertyInfo<string?> PlayerIdProperty = RegisterProperty<string?>(nameof(PlayerId), RelationshipTypes.PrivateField);
+        public string? PlayerId
         {
             get => KeyHash.Encode(ID.Player, PlayerKey);
             set => PlayerKey = KeyHash.Decode(ID.Player, value);
@@ -41,26 +41,26 @@ namespace Csla8ModelTemplates.Models.Complex.Edit
             private set => SetProperty(TeamKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> TeamIdProperty = RegisterProperty<long?>(nameof(TeamId), RelationshipTypes.PrivateField);
-        public string TeamId
+        public static readonly PropertyInfo<string?> TeamIdProperty = RegisterProperty<string?>(nameof(TeamId), RelationshipTypes.PrivateField);
+        public string? TeamId
         {
             get => KeyHash.Encode(ID.Team, TeamKey);
             set => TeamKey = KeyHash.Decode(ID.Team, value);
         }
 
-        public static readonly PropertyInfo<string> PlayerCodeProperty = RegisterProperty<string>(nameof(PlayerCode));
+        public static readonly PropertyInfo<string?> PlayerCodeProperty = RegisterProperty<string?>(nameof(PlayerCode));
         [Required]
         [MaxLength(10)]
-        public string PlayerCode
+        public string? PlayerCode
         {
             get => GetProperty(PlayerCodeProperty);
             set => SetProperty(PlayerCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> PlayerNameProperty = RegisterProperty<string>(nameof(PlayerName));
+        public static readonly PropertyInfo<string?> PlayerNameProperty = RegisterProperty<string?>(nameof(PlayerName));
         [Required]
         [MaxLength(100)]
-        public string PlayerName
+        public string? PlayerName
         {
             get => GetProperty(PlayerNameProperty);
             set => SetProperty(PlayerNameProperty, value);

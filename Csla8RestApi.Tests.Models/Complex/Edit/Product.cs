@@ -25,17 +25,17 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             private set => SetProperty(ProductKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ProductIdProperty = RegisterProperty<long?>(nameof(ProductId), RelationshipTypes.PrivateField);
-        public string ProductId
+        public static readonly PropertyInfo<string?> ProductIdProperty = RegisterProperty<string?>(nameof(ProductId), RelationshipTypes.PrivateField);
+        public string? ProductId
         {
             get => KeyHash.Encode(ID.Product, ProductKey);
             set => ProductKey = KeyHash.Decode(ID.Product, value);
         }
 
-        public static readonly PropertyInfo<string> ProductCodeProperty = RegisterProperty<string>(nameof(ProductCode));
+        public static readonly PropertyInfo<string?> ProductCodeProperty = RegisterProperty<string?>(nameof(ProductCode));
         [Required]
         [MaxLength(10)]
-        public string ProductCode
+        public string? ProductCode
         {
             get => GetProperty(ProductCodeProperty);
             set => SetProperty(ProductCodeProperty, value);
@@ -179,7 +179,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             string productId
             )
         {
-            await factory.GetPortal<Product>().DeleteAsync(new ProductCriteria(productId));
+            await factory.GetPortal<Product>().DeleteAsync(productId);
         }
 
         #endregion

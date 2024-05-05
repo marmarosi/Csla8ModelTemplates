@@ -27,8 +27,8 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             private set => SetProperty(PartKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> PartIdProperty = RegisterProperty<long?>(nameof(PartId), RelationshipTypes.PrivateField);
-        public string PartId
+        public static readonly PropertyInfo<string?> PartIdProperty = RegisterProperty<string?>(nameof(PartId), RelationshipTypes.PrivateField);
+        public string? PartId
         {
             get => KeyHash.Encode(ID.Part, PartKey);
             set => PartKey = KeyHash.Decode(ID.Part, value);
@@ -41,26 +41,26 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             private set => SetProperty(ProductKeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> ProductIdProperty = RegisterProperty<long?>(nameof(ProductId), RelationshipTypes.PrivateField);
-        public string ProductId
+        public static readonly PropertyInfo<string?> ProductIdProperty = RegisterProperty<string?>(nameof(ProductId), RelationshipTypes.PrivateField);
+        public string? ProductId
         {
             get => KeyHash.Encode(ID.Product, ProductKey);
             set => ProductKey = KeyHash.Decode(ID.Product, value);
         }
 
-        public static readonly PropertyInfo<string> PartCodeProperty = RegisterProperty<string>(nameof(PartCode));
+        public static readonly PropertyInfo<string?> PartCodeProperty = RegisterProperty<string?>(nameof(PartCode));
         [Required]
         [MaxLength(10)]
-        public string PartCode
+        public string? PartCode
         {
             get => GetProperty(PartCodeProperty);
             set => SetProperty(PartCodeProperty, value);
         }
 
-        public static readonly PropertyInfo<string> PartNameProperty = RegisterProperty<string>(nameof(PartName));
+        public static readonly PropertyInfo<string?> PartNameProperty = RegisterProperty<string?>(nameof(PartName));
         [Required]
         [MaxLength(100)]
-        public string PartName
+        public string? PartName
         {
             get => GetProperty(PartNameProperty);
             set => SetProperty(PartNameProperty, value);

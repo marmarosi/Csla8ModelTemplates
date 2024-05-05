@@ -25,8 +25,8 @@ namespace Csla8ModelTemplates.Tests.WebApi.Simple
             var team = Assert.IsAssignableFrom<SimpleTeamDto>(okObjectResult.Value);
 
             // The code and name must miss.
-            Assert.Null(team.TeamCode);
-            Assert.Null(team.TeamName);
+            Assert.Empty(team.TeamCode!);
+            Assert.Empty(team.TeamName!);
             Assert.Null(team.Timestamp);
         }
 

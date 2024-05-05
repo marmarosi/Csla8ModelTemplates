@@ -20,11 +20,11 @@ namespace Csla8ModelTemplates.Models.Complex.Command
             private set => LoadProperty(PlayerCountProperty, value);
         }
 
-        public static readonly PropertyInfo<int> CountOfTeamsProperty = RegisterProperty<int>(nameof(CountOfTeams));
-        public int CountOfTeams
+        public static readonly PropertyInfo<int> TeamCountByPlayerCountProperty = RegisterProperty<int>(nameof(TeamCountByPlayerCount));
+        public int TeamCountByPlayerCount
         {
-            get => GetProperty(CountOfTeamsProperty);
-            private set => LoadProperty(CountOfTeamsProperty, value);
+            get => GetProperty(TeamCountByPlayerCountProperty);
+            private set => LoadProperty(TeamCountByPlayerCountProperty, value);
         }
 
         #endregion

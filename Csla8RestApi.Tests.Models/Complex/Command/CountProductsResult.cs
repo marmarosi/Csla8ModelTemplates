@@ -20,11 +20,11 @@ namespace Csla8RestApi.Tests.Models.Complex.Command
             private set => LoadProperty(PartCountProperty, value);
         }
 
-        public static readonly PropertyInfo<int> CountOfProductsProperty = RegisterProperty<int>(nameof(CountOfProducts));
-        public int CountOfProducts
+        public static readonly PropertyInfo<int> ProductCountByPartCountProperty = RegisterProperty<int>(nameof(ProductCountByPartCount));
+        public int ProductCountByPartCount
         {
-            get => GetProperty(CountOfProductsProperty);
-            private set => LoadProperty(CountOfProductsProperty, value);
+            get => GetProperty(ProductCountByPartCountProperty);
+            private set => LoadProperty(ProductCountByPartCountProperty, value);
         }
 
         #endregion

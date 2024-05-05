@@ -179,7 +179,7 @@ namespace Csla8ModelTemplates.Models.Junction.Edit
             string groupId
             )
         {
-            await factory.GetPortal<Group>().DeleteAsync(new GroupCriteria(groupId));
+            await factory.GetPortal<Group>().DeleteAsync(groupId);
         }
 
         #endregion

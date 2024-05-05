@@ -42,7 +42,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Tree
             // Level 4
             var nodeLevel4 = nodeLevel3.Children[0];
             Assert.Equal(4, nodeLevel4.Level);
-            Assert.Null(nodeLevel4.Children);
+            Assert.Empty(nodeLevel4.Children!);
         }
     }
 }

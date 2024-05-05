@@ -25,17 +25,17 @@
             private set => SetProperty($ROOT_MODEL$KeyProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> $ROOT_MODEL$IdProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
-        public string $ROOT_MODEL$Id
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$IdProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $ROOT_MODEL$Id
         {
             get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
             set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
         }
 
-        public static readonly PropertyInfo<string> $ROOT_MODEL$CodeProperty = RegisterProperty<string>(nameof($ROOT_MODEL$Code));
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$CodeProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Code));
         [Required]
         [MaxLength(10)]
-        public string $ROOT_MODEL$Code
+        public string? $ROOT_MODEL$Code
         {
             get => GetProperty($ROOT_MODEL$CodeProperty);
             set => SetProperty($ROOT_MODEL$CodeProperty, value);
@@ -179,7 +179,7 @@
             string $root_variable$Id
             )
         {
-            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
+            await factory.GetPortal<$ROOT_MODEL$>().DeleteAsync($root_variable$Id);
         }
 
         #endregion
