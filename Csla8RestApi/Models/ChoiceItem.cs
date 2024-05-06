@@ -1,4 +1,4 @@
-﻿using Csla;
+using Csla;
 using Csla.Data;
 using Csla8RestApi.Dal.Contracts;
 
@@ -53,29 +53,6 @@ namespace Csla8RestApi.Models
         //            )
         //        );
         //}
-
-        #endregion
-
-        #region Factory Methods
-
-        /// <summary>
-        /// Gets a new choice item.
-        /// </summary>
-        /// <param name="value">The value of the choice item.</param>
-        /// <param name="name">The name of the choice item.</param>
-        /// <returns>The new choice item.</returns>
-        public static ChoiceItem<T> New(
-            IDataPortalFactory factory
-            T value,
-            string? name
-            )
-        {
-            return new ChoiceItem<T>
-            {
-                Value = value,
-                Name = name
-            };
-        }
 
         #endregion
 

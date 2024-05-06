@@ -52,7 +52,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithId
         private async Task FetchAsync(
             TeamWithIdChoiceCriteria criteria,
             [Inject] ITeamWithIdChoiceDal dal,
-            [Inject] IChildDataPortal<ChoiceItem<long?>> itemPortal
+            [Inject] IChildDataPortal<ChoiceItem<string?>> itemPortal
             )
         {
             // Load values from persistent storage.
@@ -60,10 +60,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithId
             {
                 List<ChoiceItemDao<long?>> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                {
-                    var data = await itemPortal.FetchChildAsync(item);
-                    Add(ChoiceItem<string?>.New(KeyHash.Encode(ID.Team, data.Value), data.Name));
-                }
+                    Add(await itemPortal.FetchChildAsync(item.ToId(ID.Team)));
             }
         }
 
