@@ -9,7 +9,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithKey
     /// Represents a read-only team choice collection.
     /// </summary>
     [Serializable]
-    public class TeamWithKeyChoice : ReadOnlyList<TeamWithKeyChoice, KeyNameOption>
+    public class TeamWithKeyChoice : ReadOnlyList<TeamWithKeyChoice, ChoiceItem<long?>>
     {
         #region Business Rules
 
@@ -51,13 +51,13 @@ namespace Csla8ModelTemplates.Models.Selection.WithKey
         private async Task FetchAsync(
             TeamWithKeyChoiceCriteria criteria,
             [Inject] ITeamWithKeyChoiceDal dal,
-            [Inject] IChildDataPortal<KeyNameOption> itemPortal
+            [Inject] IChildDataPortal<ChoiceItem<long?>> itemPortal
             )
         {
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<KeyNameOptionDao> list = await dal.FetchAsync(criteria);
+                List<ChoiceItemDao<long?>> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
                     Add(await itemPortal.FetchChildAsync(item));
             }

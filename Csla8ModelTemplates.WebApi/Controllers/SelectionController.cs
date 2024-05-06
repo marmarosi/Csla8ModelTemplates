@@ -43,7 +43,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <param name="criteria">The criteria of the team choice.</param>
         /// <returns>The key-name choice of the teams.</returns>
         [HttpGet("with-key")]
-        [ProducesResponseType(typeof(List<KeyNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<long?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamWithKeyChoice(
             [FromQuery] TeamWithKeyChoiceCriteria criteria
             )
@@ -51,7 +51,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             try
             {
                 var choice = await TeamWithKeyChoice.GetAsync(Factory, criteria);
-                return Ok(choice.ToDto<KeyNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<long?>>());
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <param name="criteria">The criteria of the team choice.</param>
         /// <returns>The ID-name choice of the teams.</returns>
         [HttpGet("with-id")]
-        [ProducesResponseType(typeof(List<IdNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<string?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamWithIdChoice(
             [FromQuery] TeamWithIdChoiceCriteria criteria
             )
@@ -77,7 +77,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             try
             {
                 var choice = await TeamWithIdChoice.GetAsync(Factory, criteria);
-                return Ok(choice.ToDto<IdNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<string?>>());
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <param name="criteria">The criteria of the team choice.</param>
         /// <returns>The Guid-name choice of the teams.</returns>
         [HttpGet("with-guid")]
-        [ProducesResponseType(typeof(List<GuidNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<Guid?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamWithGuidChoice(
             [FromQuery] TeamWithGuidChoiceCriteria criteria
             )
@@ -103,7 +103,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             try
             {
                 var choice = await TeamWithGuidChoice.GetAsync(Factory, criteria);
-                return Ok(choice.ToDto<GuidNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<Guid?>>());
             }
             catch (Exception ex)
             {
@@ -121,7 +121,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// <param name="criteria">The criteria of the team choice.</param>
         /// <returns>The code-name choice of the teams.</returns>
         [HttpGet("with-code")]
-        [ProducesResponseType(typeof(List<CodeNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<string?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetTeamWithCodeChoice(
             [FromQuery] TeamWithCodeChoiceCriteria criteria
             )
@@ -129,7 +129,7 @@ namespace Csla8ModelTemplates.WebApi.Controllers
             try
             {
                 var choice = await TeamWithCodeChoice.GetAsync(Factory, criteria);
-                return Ok(choice.ToDto<CodeNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<string?>>());
             }
             catch (Exception ex)
             {
