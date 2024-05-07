@@ -36,7 +36,7 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// <param name="criteria">The criteria of the product choice.</param>
         /// <returns>The Guid-name choice of the products.</returns>
         [HttpGet("choice")]
-        [ProducesResponseType(typeof(List<GuidNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<Guid?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetProductChoice(
             [FromQuery] ProductChoiceCriteria criteria
             )
@@ -44,7 +44,7 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
             try
             {
                 var choice = await ProductChoice.GetAsync(Factory, criteria);
-                return Ok(choice.ToDto<GuidNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<Guid?>>());
             }
             catch (Exception ex)
             {

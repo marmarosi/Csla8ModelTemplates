@@ -12,9 +12,9 @@
                 <![CDATA[/// <summary>
     /// Defines the data access functions of the read-only $root_name$ choice collection.
     /// </summary>
-    public interface I$ROOT_MODEL$ChoiceDal : IKeyNameChoiceDal<$ROOT_MODEL$ChoiceCriteria>
+    public interface I$ROOT_MODEL$ChoiceDal : IChoiceDal<long?, $ROOT_MODEL$ChoiceCriteria>
     {
-        new Task<List<KeyNameOptionDao>> FetchAsync($ROOT_MODEL$ChoiceCriteria criteria);
+        new Task<List<ChoiceItemDao<long?>>> FetchAsync($ROOT_MODEL$ChoiceCriteria criteria);
     }$end$]]>
             </Code>
             <Declarations>

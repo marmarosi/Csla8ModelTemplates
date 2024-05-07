@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Selection.WithGuid
         /// </summary>
         /// <param name="criteria">The criteria of the team choice.</param>
         /// <returns>The data transfer object of the requested team choice.</returns>
-        public async Task<List<GuidNameOptionDao>> FetchAsync(
+        public async Task<List<ChoiceItemDao<Guid?>>> FetchAsync(
             TeamWithGuidChoiceCriteria criteria
             )
         {
@@ -41,9 +41,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Selection.WithGuid
                 .Where(e =>
                     criteria.TeamName == null || e.TeamName!.Contains(criteria.TeamName)
                 )
-                .Select(e => new GuidNameOptionDao
+                .Select(e => new ChoiceItemDao<Guid?>
                 {
-                    Guid = e.TeamGuid,
+                    Value = e.TeamGuid,
                     Name = e.TeamName
                 })
                 .OrderBy(o => o.Name)

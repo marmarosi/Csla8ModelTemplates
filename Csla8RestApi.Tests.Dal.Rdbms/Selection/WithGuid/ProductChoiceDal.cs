@@ -33,7 +33,7 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Selection.WithGuid
         /// </summary>
         /// <param name="criteria">The criteria of the product choice.</param>
         /// <returns>The data transfer object of the requested product choice.</returns>
-        public async Task<List<GuidNameOptionDao>> FetchAsync(
+        public async Task<List<ChoiceItemDao<Guid?>>> FetchAsync(
             ProductChoiceCriteria criteria
             )
         {
@@ -41,9 +41,9 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Selection.WithGuid
                 .Where(e =>
                     criteria.ProductName == null || e.ProductName!.Contains(criteria.ProductName)
                 )
-                .Select(e => new GuidNameOptionDao
+                .Select(e => new ChoiceItemDao<Guid?>
                 {
-                    Guid = e.ProductGuid,
+                    Value = e.ProductGuid,
                     Name = e.ProductName
                 })
                 .OrderBy(o => o.Name)

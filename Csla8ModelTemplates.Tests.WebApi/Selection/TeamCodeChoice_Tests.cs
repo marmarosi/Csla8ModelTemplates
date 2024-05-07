@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
     public class TeamCodeChoice_Tests
     {
         [Fact]
-        public async Task GetTeamChoiceWithCode_ReturnsAChoice()
+        public async Task GetTeamWithCodeChoice_ReturnsAChoice()
         {
             // ********** Arrange
             var setup = TestSetup.GetInstance();
@@ -22,7 +22,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
 
             // ********** Assert
             var okObjectResult = Assert.IsType<OkObjectResult>(actionResult);
-            var choice = Assert.IsAssignableFrom<IList<CodeNameOptionDto>>(okObjectResult.Value);
+            var choice = Assert.IsAssignableFrom<IList<ChoiceItemDto<string?>>>(okObjectResult.Value);
 
             // The choice must have 5 items.
             Assert.Equal(5, choice.Count);
@@ -30,7 +30,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
             // The codes and names must end with 9.
             foreach (var option in choice)
             {
-                Assert.EndsWith("9", option.Code);
+                Assert.EndsWith("9", option.Value);
                 Assert.EndsWith("9", option.Name);
             }
         }

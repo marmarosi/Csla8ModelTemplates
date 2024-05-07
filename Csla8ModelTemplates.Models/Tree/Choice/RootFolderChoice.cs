@@ -10,7 +10,7 @@ namespace Csla8ModelTemplates.Models.Tree.Choice
     /// Represents a read-only tree choice collection.
     /// </summary>
     [Serializable]
-    public class RootFolderChoice : ReadOnlyList<RootFolderChoice, IdNameOption>
+    public class RootFolderChoice : ReadOnlyList<RootFolderChoice, ChoiceItem<string?>>
     {
         #region Business Rules
 
@@ -51,15 +51,15 @@ namespace Csla8ModelTemplates.Models.Tree.Choice
         private async Task FetchAsync(
             RootFolderChoiceCriteria criteria,
             [Inject] IRootFolderChoiceDal dal,
-            [Inject] IChildDataPortal<IdNameOption> itemPortal
+            [Inject] IChildDataPortal<ChoiceItem<string?>> itemPortal
             )
         {
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<IdNameOptionDao> list = await dal.FetchAsync(criteria);
+                List<ChoiceItemDao<long?>> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(await itemPortal.FetchChildAsync(item, ID.Folder));
+                    Add(await itemPortal.FetchChildAsync(item.ToId(ID.Folder)));
             }
         }
 

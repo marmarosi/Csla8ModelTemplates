@@ -17,7 +17,7 @@
         /// <param name="criteria">The criteria of the $root_name$ choice.</param>
         /// <returns>The ID-name choice of the $root_name$s.</returns>
         [HttpGet("choice")]
-        [ProducesResponseType(typeof(List<IdNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<string?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get$ROOT_MODEL$Choice(
             [FromQuery] $ROOT_MODEL$ChoiceCriteria criteria
             )
@@ -25,7 +25,7 @@
             try
             {
                 var choice = await $ROOT_MODEL$Choice.GetAsync(Factory, criteria);
-                return Ok(choice.ToDto<IdNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<string?>>());
             }
             catch (Exception ex)
             {

@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
     public class TeamKeyChoice_Tests
     {
         [Fact]
-        public async Task GetTeamChoiceWithKey_ReturnsAChoice()
+        public async Task GetTeamWithKeyChoice_ReturnsAChoice()
         {
             // ********** Arrange
             var setup = TestSetup.GetInstance();
@@ -22,7 +22,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
 
             // ********** Assert
             var okObjectResult = Assert.IsType<OkObjectResult>(actionResult);
-            var choice = Assert.IsAssignableFrom<IList<KeyNameOptionDto>>(okObjectResult.Value);
+            var choice = Assert.IsAssignableFrom<IList<ChoiceItemDto<long?>>>(okObjectResult.Value);
 
             // The choice must have 5 items.
             Assert.Equal(5, choice.Count);

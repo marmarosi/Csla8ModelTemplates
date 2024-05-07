@@ -10,7 +10,7 @@ namespace Csla8ModelTemplates.Models.Selection.WithId
     /// Represents a read-only team choice collection.
     /// </summary>
     [Serializable]
-    public class TeamWithIdChoice : ReadOnlyList<TeamWithIdChoice, IdNameOption>
+    public class TeamWithIdChoice : ReadOnlyList<TeamWithIdChoice, ChoiceItem<string?>>
     {
         #region Business Rules
 
@@ -52,15 +52,15 @@ namespace Csla8ModelTemplates.Models.Selection.WithId
         private async Task FetchAsync(
             TeamWithIdChoiceCriteria criteria,
             [Inject] ITeamWithIdChoiceDal dal,
-            [Inject] IChildDataPortal<IdNameOption> itemPortal
+            [Inject] IChildDataPortal<ChoiceItem<string?>> itemPortal
             )
         {
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<IdNameOptionDao> list = await dal.FetchAsync(criteria);
+                List<ChoiceItemDao<long?>> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
-                    Add(await itemPortal.FetchChildAsync(item, ID.Team));
+                    Add(await itemPortal.FetchChildAsync(item.ToId(ID.Team)));
             }
         }
 

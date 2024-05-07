@@ -5,31 +5,22 @@ using Csla8RestApi.Dal.Contracts;
 namespace Csla8RestApi.Models
 {
     /// <summary>
-    /// Represents a key-name option in a read-only choice object.
+    /// Represents an item in a read-only choice object.
     /// </summary>
     [Serializable]
-    public class IdNameOption : ReadOnlyModel<IdNameOption>
+    public class ChoiceItem<T> : ReadOnlyModel<ChoiceItem<T>>
     {
         #region Properties
 
-        private string? HashModel;
-
-        public static readonly PropertyInfo<long?> KeyProperty = RegisterProperty<long?>(nameof(Key));
-        public long? Key
+        public static readonly PropertyInfo<T> ValueProperty = RegisterProperty<T>(nameof(Value));
+        public T Value
         {
-            get => GetProperty(KeyProperty);
-            private set => LoadProperty(KeyProperty, value);
+            get => GetProperty(ValueProperty);
+            private set => LoadProperty(ValueProperty, value);
         }
 
-        public static readonly PropertyInfo<long?> IdProperty = RegisterProperty<long?>(nameof(Id), RelationshipTypes.PrivateField);
-        public string Id
-        {
-            get => KeyHash.Encode(HashModel!, Key);
-            private set => Key = KeyHash.Decode(HashModel!, value);
-        }
-
-        public static readonly PropertyInfo<string> NameProperty = RegisterProperty<string>(nameof(Name));
-        public string Name
+        public static readonly PropertyInfo<string?> NameProperty = RegisterProperty<string?>(nameof(Name));
+        public string? Name
         {
             get => GetProperty(NameProperty);
             private set => LoadProperty(NameProperty, value);
@@ -45,7 +36,7 @@ namespace Csla8RestApi.Models
         //    BusinessRules.AddRule(
         //        new IsInRole(
         //            AuthorizationActions.ReadProperty,
-        //            TeamNameProperty,
+        //            NameProperty,
         //            "Manager"
         //            )
         //        );
@@ -55,7 +46,7 @@ namespace Csla8RestApi.Models
         //{
         //    // Add authorization rules.
         //    BusinessRules.AddRule(
-        //        typeof(IdNameOption),
+        //        typeof(ChoiceItem<T>),
         //        new IsInRole(
         //            AuthorizationActions.GetObject,
         //            "Manager"
@@ -69,12 +60,10 @@ namespace Csla8RestApi.Models
 
         [FetchChild]
         private void Fetch(
-            IdNameOptionDao dao,
-            string hashModel
+            ChoiceItemDao<T> dao
             )
         {
             // Set values from data access object.
-            HashModel = hashModel;
             DataMapper.Map(dao, this);
         }
 

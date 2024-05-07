@@ -5,8 +5,8 @@ namespace Csla8ModelTemplates.Contracts.Selection.WithId
     /// <summary>
     /// Defines the data access functions of the read-only team choice collection.
     /// </summary>
-    public interface ITeamWithIdChoiceDal : IIdNameChoiceDal<TeamWithIdChoiceCriteria>
+    public interface ITeamWithIdChoiceDal : IChoiceDal<long?, TeamWithIdChoiceCriteria>
     {
-        new Task<List<IdNameOptionDao>> FetchAsync(TeamWithIdChoiceCriteria criteria);
+        new Task<List<ChoiceItemDao<long?>>> FetchAsync(TeamWithIdChoiceCriteria criteria);
     }
 }

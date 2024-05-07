@@ -37,13 +37,13 @@ namespace Csla8ModelTemplates.WebApi.Controllers
         /// </summary>
         /// <returns>The ID-name choice of the trees.</returns>
         [HttpGet("choice")]
-        [ProducesResponseType(typeof(List<IdNameOptionDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<string?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetRootFolderChoice()
         {
             try
             {
                 var choice = await RootFolderChoice.GetAsync(Factory);
-                return Ok(choice.ToDto<IdNameOptionDto>());
+                return Ok(choice.ToDto<ChoiceItemDto<string?>>());
             }
             catch (Exception ex)
             {
