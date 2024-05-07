@@ -9,7 +9,7 @@ namespace Csla8RestApi.Tests.Models.Selection.WithCode
     /// Represents a read-only product choice collection.
     /// </summary>
     [Serializable]
-    public class ProductChoice : ReadOnlyList<ProductChoice, CodeNameOption>
+    public class ProductChoice : ReadOnlyList<ProductChoice, ChoiceItem<string?>>
     {
         #region Business Rules
 
@@ -51,13 +51,13 @@ namespace Csla8RestApi.Tests.Models.Selection.WithCode
         private async Task FetchAsync(
             ProductChoiceCriteria criteria,
             [Inject] IProductChoiceDal dal,
-            [Inject] IChildDataPortal<CodeNameOption> itemPortal
+            [Inject] IChildDataPortal<ChoiceItem<string?>> itemPortal
             )
         {
             // Load values from persistent storage.
             using (LoadListMode)
             {
-                List<CodeNameOptionDao> list = await dal.FetchAsync(criteria);
+                List<ChoiceItemDao<string?>> list = await dal.FetchAsync(criteria);
                 foreach (var item in list)
                     Add(await itemPortal.FetchChildAsync(item));
             }

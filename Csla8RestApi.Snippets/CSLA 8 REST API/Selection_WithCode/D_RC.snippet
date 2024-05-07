@@ -37,7 +37,7 @@
         /// </summary>
         /// <param name="criteria">The criteria of the $root_name$ choice.</param>
         /// <returns>The data transfer object of the requested $root_name$ choice.</returns>
-        public async Task<List<CodeNameOptionDao>> FetchAsync(
+        public async Task<List<ChoiceItemDao<string?>>> FetchAsync(
             $ROOT_MODEL$ChoiceCriteria criteria
             )
         {
@@ -45,9 +45,9 @@
                 .Where(e =>
                     criteria.$ROOT_MODEL$Name == null || e.$ROOT_MODEL$Name!.Contains(criteria.$ROOT_MODEL$Name)
                 )
-                .Select(e => new CodeNameOptionDao
+                .Select(e => new ChoiceItemDao<string?>
                 {
-                    Code = e.$ROOT_MODEL$Code,
+                    Value = e.$ROOT_MODEL$Code,
                     Name = e.$ROOT_MODEL$Name
                 })
                 .OrderBy(o => o.Name)

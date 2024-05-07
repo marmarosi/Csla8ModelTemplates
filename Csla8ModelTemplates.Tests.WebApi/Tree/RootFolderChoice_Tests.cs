@@ -7,7 +7,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Tree
     public class RootFolderChoice_Tests
     {
         [Fact]
-        public async Task GetTeamChoiceWithId_ReturnsAChoice()
+        public async Task GetRootFolderChoice_ReturnsAChoice()
         {
             // ********** Arrange
             var setup = TestSetup.GetInstance();
@@ -19,7 +19,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Tree
 
             // ********** Assert
             var okObjectResult = Assert.IsType<OkObjectResult>(actionResult);
-            var choice = Assert.IsAssignableFrom<IList<IdNameOptionDto>>(okObjectResult.Value);
+            var choice = Assert.IsAssignableFrom<IList<ChoiceItemDto<string?>>>(okObjectResult.Value);
 
             // The choice must have 3 items.
             Assert.Equal(3, choice.Count);

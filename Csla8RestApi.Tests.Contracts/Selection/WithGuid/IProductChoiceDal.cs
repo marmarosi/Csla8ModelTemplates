@@ -5,8 +5,8 @@ namespace Csla8RestApi.Tests.Contracts.Selection.WithGuid
     /// <summary>
     /// Defines the data access functions of the read-only product choice collection.
     /// </summary>
-    public interface IProductChoiceDal : IGuidNameChoiceDal<ProductChoiceCriteria>
+    public interface IProductChoiceDal : IChoiceDal<Guid?, ProductChoiceCriteria>
     {
-        new Task<List<GuidNameOptionDao>> FetchAsync(ProductChoiceCriteria criteria);
+        new Task<List<ChoiceItemDao<Guid?>>> FetchAsync(ProductChoiceCriteria criteria);
     }
 }

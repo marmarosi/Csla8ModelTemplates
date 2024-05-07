@@ -33,15 +33,17 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Selection.WithId
         /// </summary>
         /// <param name="criteria">The criteria of the product choice.</param>
         /// <returns>The data transfer object of the requested product choice.</returns>
-        public async Task<List<IdNameOptionDao>> FetchAsync(
+        public async Task<List<ChoiceItemDao<long?>>> FetchAsync(
             ProductChoiceCriteria criteria
             )
         {
             var choice = await DbContext.Products
-                .Where(e => criteria.ProductName == null || e.ProductName!.Contains(criteria.ProductName))
-                .Select(e => new IdNameOptionDao
+                .Where(e =>
+                    criteria.ProductName == null || e.ProductName!.Contains(criteria.ProductName)
+                )
+                .Select(e => new ChoiceItemDao<long?>
                 {
-                    Key = e.ProductKey,
+                    Value = e.ProductKey,
                     Name = e.ProductName
                 })
                 .OrderBy(o => o.Name)
