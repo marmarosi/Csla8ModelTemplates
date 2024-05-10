@@ -1,0 +1,2 @@
+  csla8modeltemplates.database:
+    # Pull the latest DB2 image.
