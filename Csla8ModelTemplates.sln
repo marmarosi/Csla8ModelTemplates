@@ -56,7 +56,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8RestApi.Tests.Dal", "Csla8RestApi.Tests.Dal\Csla8RestApi.Tests.Dal.csproj", "{F0DFA812-063E-4A57-BE9A-37330E1DD572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8RestApi.Tests.Dal.Rdbms", "Csla8RestApi.Tests.Dal.Rdbms\Csla8RestApi.Tests.Dal.Rdbms.csproj", "{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8RestApi.Tests.Dal.Rdbms", "Csla8RestApi.Tests.Dal.Rdbms\Csla8RestApi.Tests.Dal.Rdbms.csproj", "{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeDatabase", "ChangeDatabase\ChangeDatabase.csproj", "{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerData", "DockerData", "{FE1D07F1-408F-4D8B-9E32-104EAB31D164}"
+	ProjectSection(SolutionItems) = preProject
+		DockerData\DB2.txt = DockerData\DB2.txt
+		DockerData\docker-compose.yml = DockerData\docker-compose.yml
+		DockerData\Firebird.txt = DockerData\Firebird.txt
+		DockerData\MySQL.txt = DockerData\MySQL.txt
+		DockerData\Oracle.txt = DockerData\Oracle.txt
+		DockerData\PostgreSQL.txt = DockerData\PostgreSQL.txt
+		DockerData\SQLite.txt = DockerData\SQLite.txt
+		DockerData\SQLServer.txt = DockerData\SQLServer.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -284,6 +298,18 @@ Global
 		{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B}.Release|arm64.Build.0 = Release|Any CPU
 		{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B}.Release|x86.ActiveCfg = Release|Any CPU
 		{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B}.Release|x86.Build.0 = Release|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Debug|arm64.Build.0 = Debug|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Debug|x86.Build.0 = Debug|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Release|arm64.ActiveCfg = Release|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Release|arm64.Build.0 = Release|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Release|x86.ActiveCfg = Release|Any CPU
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -300,6 +326,7 @@ Global
 		{68289960-60FE-44FC-8BA7-D6F93207DE43} = {01A7149A-297B-4870-B3FA-4A8788CB4F03}
 		{F0DFA812-063E-4A57-BE9A-37330E1DD572} = {7FBE3DAE-483E-43EA-A3E3-132B64165D08}
 		{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B} = {7FBE3DAE-483E-43EA-A3E3-132B64165D08}
+		{FE1D07F1-408F-4D8B-9E32-104EAB31D164} = {133DDFA6-0FE4-4290-8D02-4CE922B55163}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66B6477D-4119-45B8-BB69-D8BA452E85EB}
