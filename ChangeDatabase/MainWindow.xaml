@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChangeDatabase.MainWindow"
+<Window x:Class="ChangeDatabase.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="CSLA 8 Model Templates Tool" Height="230" Width="400">
     <Grid>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="160" Height="25.96" Padding="4">
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" Margin="0,73,0,0" VerticalAlignment="Top" Width="160" Height="26" Padding="4"
+                  SelectionChanged="comboBox_SelectionChanged">
             <ComboBoxItem Content="DB2"/>
             <ComboBoxItem Content="Firebird"/>
             <ComboBoxItem Content="MySQL" IsSelected="True"/>
@@ -16,10 +17,12 @@
             <ComboBoxItem Content="SQLite"/>
             <ComboBoxItem Content="SQLServer"/>
         </ComboBox>
-        <Label x:Name="label" Content="Select database:" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" Width="160"/>
-        <Button x:Name="button" Content="Update source files" HorizontalAlignment="Center" Margin="0,141,0,0" VerticalAlignment="Top" Width="160" Height="25"
+        <Label x:Name="label" Content="Select database:" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" Width="160"/>
+        <Button x:Name="button" Content="Update source files" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Width="160" Height="25"
                 Click="comboBox_Click"/>
-        <Label x:Name="title" Content="Change Database" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Label x:Name="title" Content="Change Database" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" RenderTransformOrigin="0.515,0.096"/>
+        <Label x:Name="message" HorizontalAlignment="Center" Margin="0,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,-0.268" Width="400" Height="61"
+               HorizontalContentAlignment="Center" Content="" />
 
     </Grid>
 </Window>
