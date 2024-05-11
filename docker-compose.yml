@@ -7,19 +7,7 @@ volumes:
 services:
   # Database Service
   csla8modeltemplates.database:
-    # Pull the latest PostgreSQL image.
-    image: postgres:13.15
-    # Map port 5432 on the PostgreSQL container to port 5432 in the host.
-    ports:
-      - "5432:5432"
-    # Specify where the persisted data should be stored.
-    volumes:
-      - datafiles:/var/lib/postgresql
-      #- "~/sql-scripts/setup.sql:/docker-entrypoint-initdb.d/1.sql"
-    restart: always
-    # Specify environment variables for PostgreSQL.
-    environment: 
-      POSTGRES_PASSWORD: L7KFpHIGQm9Hbqm
+    # Pull the latest Oracle image.
   # API Service
   csla8modeltemplates.webapi:
     image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
