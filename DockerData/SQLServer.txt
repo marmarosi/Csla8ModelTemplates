@@ -1,2 +1,15 @@
   csla8modeltemplates.database:
-    # Pull the latest SQLServer image.
+    # Pull the latest SQL Server image.
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # Map port 1433 on the MySQL container to port 1433 in the host.
+    ports:
+      - "1433:1433"
+    # Specify where the persisted data should be stored.
+    volumes:
+      - datafiles:/var/lib/sqlserver
+      #- "~/sql-scripts/setup.sql:/docker-entrypoint-initdb.d/1.sql"
+    restart: always
+    # Specify environment variables for SQL Server.
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: MWGfWg4lid2lL2I0

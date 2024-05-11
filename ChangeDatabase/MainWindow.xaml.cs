@@ -61,21 +61,25 @@ namespace ChangeDatabase
                 writer.Write(targetLines.ToString());
             }
 
-            // Update app-settings.
-            var settingsFile = Path.Combine(rootDir, "Csla8ModelTemplates.WebApi", "appsettings.json");
-            sourceLines = File.ReadLines(settingsFile);
-            targetLines = new StringBuilder();
-
-            foreach (var line in sourceLines)
+            // Update app-settings files.
+            var projectList = new string[] { "Csla8ModelTemplates.WebApi", "Csla8ModelTemplates.Tests.WebApi" };
+            foreach (var project in projectList)
             {
-                if (line.Contains("ActiveDals"))
-                    targetLines.AppendLine($"  \"ActiveDals\": [ \"{database}\" ],");
-                else
-                    targetLines.AppendLine(line);
-            }
-            using (StreamWriter writer = new StreamWriter(settingsFile, false))
-            { 
-                writer.Write(targetLines.ToString());
+                var settingsFile = Path.Combine(rootDir, project, "AppSettings.json");
+                sourceLines = File.ReadLines(settingsFile);
+                targetLines = new StringBuilder();
+
+                foreach (var line in sourceLines)
+                {
+                    if (line.Contains("ActiveDals"))
+                        targetLines.AppendLine($"  \"ActiveDals\": [ \"{database}\" ],");
+                    else
+                        targetLines.AppendLine(line);
+                }
+                using (StreamWriter writer = new StreamWriter(settingsFile, false))
+                {
+                    writer.Write(targetLines.ToString());
+                }
             }
 
             // Done.

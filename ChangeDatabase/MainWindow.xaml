@@ -11,11 +11,11 @@
                   SelectionChanged="comboBox_SelectionChanged">
             <ComboBoxItem Content="DB2"/>
             <ComboBoxItem Content="Firebird"/>
-            <ComboBoxItem Content="MySQL" IsSelected="True"/>
+            <ComboBoxItem Content="MySQL"/>
             <ComboBoxItem Content="Oracle"/>
             <ComboBoxItem Content="PostgreSQL"/>
             <ComboBoxItem Content="SQLite"/>
-            <ComboBoxItem Content="SQLServer"/>
+            <ComboBoxItem Content="SQLServer" IsSelected="True"/>
         </ComboBox>
         <Label x:Name="label" Content="Select database:" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" Width="160"/>
         <Button x:Name="button" Content="Update source files" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Width="160" Height="25"
