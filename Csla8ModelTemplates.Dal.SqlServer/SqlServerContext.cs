@@ -3,12 +3,12 @@ using Csla8RestApi.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Csla8ModelTemplates.Dal.MySql
+namespace Csla8ModelTemplates.Dal.SqlServer
 {
     /// <summary>
     /// Represents a session with the database.
     /// </summary>
-    public class MySqlContext : DbContext, ITransactionOptions
+    public class SqlServerContext : DbContext, ITransactionOptions
     {
         #region Constructors
 
@@ -18,12 +18,12 @@ namespace Csla8ModelTemplates.Dal.MySql
         public bool IsUnderTest { get; private set; }
 
         /// <summary>
-        /// Creates a new MySQL context instance.
+        /// Creates a new SQL Server context instance.
         /// </summary>
         /// <param name="options">The options to be used by DbContext.</param>
         /// <param name="configuration">Teh application configuration.</param>
-        public MySqlContext(
-            DbContextOptions<MySqlContext> options,
+        public SqlServerContext(
+            DbContextOptions<SqlServerContext> options,
             IConfiguration configuration
             )
             : base(options)

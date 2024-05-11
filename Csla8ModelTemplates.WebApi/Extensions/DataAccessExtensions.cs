@@ -48,9 +48,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //case DAL.SQLite:
                     //    services.AddSqliteDal(detector);
                     //    break;
-                    //case DAL.SQLServer:
-                    //    services.AddSqlServerDal(detector);
-                    //    break;
+                    case DAL.SQLServer:
+                        services.AddSqlServerDal(_configuration, detector);
+                        break;
                 }
             }
             services.AddSingleton(typeof(ITransactionOptions), new TransactionOptions(false));
@@ -90,9 +90,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //case DAL.SQLite:
                     //    app.RunSqliteSeeders(isDevelopment, contentRootPath);
                     //    break;
-                    //case DAL.SQLServer:
-                    //    app.RunSqlServerSeeders(isDevelopment, contentRootPath);
-                    //    break;
+                    case DAL.SQLServer:
+                        app.RunSqlServerSeeders(isDevelopment, contentRootPath);
+                        break;
                 }
             }
         }
