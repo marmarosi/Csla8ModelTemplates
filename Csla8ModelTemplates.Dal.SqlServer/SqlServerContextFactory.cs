@@ -21,8 +21,7 @@ namespace Csla8ModelTemplates.Dal.SqlServer
             )
         {
             IConfiguration configuration = ConfigurationCreator.Create();
-            var connectionString = configuration.GetConnectionString(DAL.SQLServer)!
-                .Replace("csla8modeltemplates.database", "localhost");
+            var connectionString = configuration.GetConnectionString(DAL.SQLServer);
             var assemblyName = GetType().Assembly.GetName().Name;
 
             return new SqlServerContext(

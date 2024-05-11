@@ -7,22 +7,20 @@ volumes:
 services:
   # Database Service
   csla8modeltemplates.database:
-    # Pull the latest SQLServer image.
-    image: mysql:8.0.22
-    # Map port 3306 on the MySQL container to port 3306 in the host.
+    # Pull the latest SQL Server image.
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # Map port 1433 on the MySQL container to port 1433 in the host.
     ports:
-      - "3306:3306"
+      - "1433:1433"
     # Specify where the persisted data should be stored.
     volumes:
-      - datafiles:/var/lib/mysql
+      - datafiles:/var/lib/sqlserver
       #- "~/sql-scripts/setup.sql:/docker-entrypoint-initdb.d/1.sql"
     restart: always
-    # Specify environment variables for MySQL.
-    environment: 
-      MYSQL_ROOT_PASSWORD: v%gRTNEQV$
-      MYSQL_USER: csla8mt
-      MYSQL_PASSWORD: 1raCRcojsu8h5Qx1
-      MYSQL_DATABASE: Csla8mt
+    # Specify environment variables for SQL Server.
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: MWGfWg4lid2lL2I0
   # API Service
   csla8modeltemplates.webapi:
     image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
