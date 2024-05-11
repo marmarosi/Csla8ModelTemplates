@@ -19,7 +19,7 @@ const projects = [
   'WebApi',
   'WebApiTests'
   ];
-const appName = 'Csla6ModelTemplates';
+const appName = 'Csla8ModelTemplates';
 const tmplPath = `./${appName}._/${appName}._.csproj`;
 const OTag = '<Version>';
 const CTag = '</Version>';

@@ -46,9 +46,9 @@ namespace Csla8ModelTemplates.Tests.WebApi
                     //case DAL.Oracle:
                     //    services.AddOracleDal(detector);
                     //    break;
-                    //case DAL.PostgreSQL:
-                    //    services.AddPostgreSqlDal(detector);
-                    //    break;
+                    case DAL.PostgreSQL:
+                        services.AddPostgreSqlDal(_configuration, detector);
+                        break;
                     //case DAL.SQLite:
                     //    services.AddSqliteDal(detector);
                     //    break;

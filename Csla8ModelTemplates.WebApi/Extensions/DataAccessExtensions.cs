@@ -42,9 +42,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //case DAL.Oracle:
                     //    services.AddOracleDal(detector);
                     //    break;
-                    //case DAL.PostgreSQL:
-                    //    services.AddPostgreSqlDal(detector);
-                    //    break;
+                    case DAL.PostgreSQL:
+                        services.AddPostgreSqlDal(_configuration, detector);
+                        break;
                     //case DAL.SQLite:
                     //    services.AddSqliteDal(detector);
                     //    break;
@@ -84,9 +84,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //case DAL.Oracle:
                     //    app.RunOracleSeeders(isDevelopment, contentRootPath);
                     //    break;
-                    //case DAL.PostgreSQL:
-                    //    app.RunPostgreSqlSeeders(isDevelopment, contentRootPath);
-                    //    break;
+                    case DAL.PostgreSQL:
+                        app.RunPostgreSqlSeeders(isDevelopment, contentRootPath);
+                        break;
                     //case DAL.SQLite:
                     //    app.RunSqliteSeeders(isDevelopment, contentRootPath);
                     //    break;
