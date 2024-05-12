@@ -21,7 +21,7 @@ namespace Csla8ModelTemplates.Dal.Oracle
             string contentRootPath
             )
         {
-            context.Database.EnsureDeleted();
+            //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             //context.Database.Migrate();
 

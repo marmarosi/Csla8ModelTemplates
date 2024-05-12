@@ -8,6 +8,18 @@ services:
   # Database Service
   csla8modeltemplates.database:
     # Pull the latest Oracle image.
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    # Map port 1521 on the Oracle container to port 1521 in the host.
+    ports:
+      - "1521:1521"
+    # Specify where the persisted data should be stored.
+    volumes:
+      - datafiles:/opt/oracle/oradata
+      #- "~/sql-scripts/setup.sql:/docker-entrypoint-initdb.d/1.sql"
+    restart: always
+    # Specify environment variables for Oracle.
+    environment: 
+      ORACLE_PWD: KsytkxvbFRJ2sM
   # API Service
   csla8modeltemplates.webapi:
     image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
