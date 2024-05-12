@@ -33,9 +33,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //case DAL.DB2:
                     //    services.AddDb2Dal(detector);
                     //    break;
-                    //case DAL.Firebird:
-                    //    services.AddFirebirdDal(detector);
-                    //    break;
+                    case DAL.Firebird:
+                        services.AddFirebirdDal(_configuration, detector);
+                        break;
                     case DAL.MySQL:
                         services.AddMySqlDal(_configuration, detector);
                         break;
@@ -75,9 +75,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     //case DAL.DB2:
                     //    app.RunDb2Seeders(isDevelopment, contentRootPath);
                     //    break;
-                    //case DAL.Firebird:
-                    //    app.RunFirebirdSeeders(isDevelopment, contentRootPath);
-                    //    break;
+                    case DAL.Firebird:
+                        app.RunFirebirdSeeders(isDevelopment, contentRootPath);
+                        break;
                     case DAL.MySQL:
                         app.RunMySqlSeeders(isDevelopment, contentRootPath);
                         break;

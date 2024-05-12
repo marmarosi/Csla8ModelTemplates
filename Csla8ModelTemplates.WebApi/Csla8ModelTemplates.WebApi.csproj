@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Csla8ModelTemplates.Dal.Firebird\Csla8ModelTemplates.Dal.Firebird.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Dal.MySql\Csla8ModelTemplates.Dal.MySql.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Dal.Oracle\Csla8ModelTemplates.Dal.Oracle.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.Dal.PostgreSql\Csla8ModelTemplates.Dal.PostgreSql.csproj" />

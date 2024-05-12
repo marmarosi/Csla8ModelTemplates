@@ -78,7 +78,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dals", "Dals", "{65EDE4F1-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.PostgreSql", "Csla8ModelTemplates.Dal.PostgreSql\Csla8ModelTemplates.Dal.PostgreSql.csproj", "{623D7575-3E30-4B98-9897-04676BB47705}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Dal.Oracle", "Csla8ModelTemplates.Dal.Oracle\Csla8ModelTemplates.Dal.Oracle.csproj", "{DBDABCC7-9074-429A-91CA-18954919F6B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.Oracle", "Csla8ModelTemplates.Dal.Oracle\Csla8ModelTemplates.Dal.Oracle.csproj", "{DBDABCC7-9074-429A-91CA-18954919F6B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Dal.Firebird", "Csla8ModelTemplates.Dal.Firebird\Csla8ModelTemplates.Dal.Firebird.csproj", "{B50648DC-2CDD-4EAC-976D-CE184B9185F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -354,6 +356,18 @@ Global
 		{DBDABCC7-9074-429A-91CA-18954919F6B2}.Release|arm64.Build.0 = Release|Any CPU
 		{DBDABCC7-9074-429A-91CA-18954919F6B2}.Release|x86.ActiveCfg = Release|Any CPU
 		{DBDABCC7-9074-429A-91CA-18954919F6B2}.Release|x86.Build.0 = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|arm64.Build.0 = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|x86.Build.0 = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|arm64.ActiveCfg = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|arm64.Build.0 = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|x86.ActiveCfg = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -377,6 +391,7 @@ Global
 		{32425674-280D-4846-8C59-AA7EB0E06ADB} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 		{623D7575-3E30-4B98-9897-04676BB47705} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 		{DBDABCC7-9074-429A-91CA-18954919F6B2} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66B6477D-4119-45B8-BB69-D8BA452E85EB}

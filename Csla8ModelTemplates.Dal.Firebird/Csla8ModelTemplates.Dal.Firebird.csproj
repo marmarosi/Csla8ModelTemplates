@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebirdSql.EntityFrameworkCore.Firebird" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Dal\Csla8ModelTemplates.Dal.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Entities\Csla8ModelTemplates.Entities.csproj" />
+    <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
+  </ItemGroup>
+
+</Project>
