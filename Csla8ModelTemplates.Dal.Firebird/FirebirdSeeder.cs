@@ -1,4 +1,5 @@
 using Csla8ModelTemplates.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Csla8ModelTemplates.Dal.Firebird
 {

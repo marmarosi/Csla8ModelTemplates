@@ -2,12 +2,26 @@ version: '3.4'
 
 # Create a volume for the database container to ensure data persists after the container is stopped.
 volumes:
-  datafiles:
+  firebird:
 
 services:
   # Database Service
   csla8modeltemplates.database:
     # Pull the latest Firebird image.
+    image: jacobalberty/firebird:v5.0
+    # Map port 3050 on the Firebird container to port 3050 in the host.
+    ports:
+      - "3050:3050"
+    # Specify where the persisted data should be stored.
+    volumes:
+      - firebird:/firebird
+    restart: always
+    # Specify environment variables for Firebird.
+    environment: 
+      ISC_PASSWORD: AS07pUPTC6d6lZFh
+      FIREBIRD_USER: csla8mt
+      FIREBIRD_PASSWORD: SsEsEu5g6Vh
+      FIREBIRD_DATABASE: Csla8mt
   # API Service
   csla8modeltemplates.webapi:
     image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
