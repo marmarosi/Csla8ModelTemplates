@@ -7,19 +7,19 @@ volumes:
 services:
   # Database Service
   csla8modeltemplates.database:
-    # Pull the latest PostgreSQL image.
-    image: postgres:13.15
-    # Map port 5432 on the PostgreSQL container to port 5432 in the host.
+    # Pull the latest Oracle image.
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    # Map port 1521 on the Oracle container to port 1521 in the host.
     ports:
-      - "5432:5432"
+      - "1521:1521"
     # Specify where the persisted data should be stored.
     volumes:
-      - datafiles:/var/lib/postgresql
+      - datafiles:/opt/oracle/oradata
       #- "~/sql-scripts/setup.sql:/docker-entrypoint-initdb.d/1.sql"
     restart: always
-    # Specify environment variables for PostgreSQL.
+    # Specify environment variables for Oracle.
     environment: 
-      POSTGRES_PASSWORD: L7KFpHIGQm9Hbqm
+      ORACLE_PWD: KsytkxvbFRJ2sM
   # API Service
   csla8modeltemplates.webapi:
     image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
