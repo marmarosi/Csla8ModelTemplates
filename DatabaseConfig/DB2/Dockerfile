@@ -13,7 +13,7 @@ COPY ["Csla8RestApi/Csla8RestApi.csproj", "Csla8RestApi/"]
 COPY ["Csla8ModelTemplates.Contracts/Csla8ModelTemplates.Contracts.csproj", "Csla8ModelTemplates.Contracts/"]
 COPY ["Csla8ModelTemplates.Dal/Csla8ModelTemplates.Dal.csproj", "Csla8ModelTemplates.Dal/"]
 COPY ["Csla8ModelTemplates.Entities/Csla8ModelTemplates.Entities.csproj", "Csla8ModelTemplates.Entities/"]
-COPY ["Csla8ModelTemplates.Dal.SqlServer/Csla8ModelTemplates.Dal.SqlServer.csproj", "Csla8ModelTemplates.Dal.SqlServer/"]
+COPY ["Csla8ModelTemplates.Dal.Db2/Csla8ModelTemplates.Dal.Db2.csproj", "Csla8ModelTemplates.Dal.Db2/"]
 COPY ["Csla8ModelTemplates.Models/Csla8ModelTemplates.Models.csproj", "Csla8ModelTemplates.Models/"]
 COPY ["Csla8ModelTemplates.WebApi/Csla8ModelTemplates.WebApi.csproj", "Csla8ModelTemplates.WebApi/"]
 RUN dotnet restore "./Csla8ModelTemplates.WebApi/Csla8ModelTemplates.WebApi.csproj"

@@ -1,4 +1,5 @@
 using System.Reflection;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace Csla8ModelTemplates.WebApi.Extensions
 {
@@ -34,6 +35,17 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                 config.AddEnvironmentVariables();
             });
 #pragma warning disable ASP0013
+        }
+
+        public static void Add_ConnectionStrings(
+            this ConfigurationManager configuration
+        )
+        {
+            var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
+            foreach (var dalName in dalNames!)
+            {
+                configuration.AddIniFile($"./bin/Debug/net8.0/{dalName}.ini", optional: false, reloadOnChange: true);
+            }
         }
     }
 }

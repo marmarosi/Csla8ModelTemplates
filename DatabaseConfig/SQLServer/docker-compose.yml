@@ -2,12 +2,11 @@ version: '3.4'
 
 # Create a volume for the database container to ensure data persists after the container is stopped.
 volumes:
-  sqlserver-2022:
+  datafiles:
 
 services:
   # Database Service
-  csla8mt.database:
-    container_name: sqlserver-2022
+  csla8modeltemplates.database:
     # Pull the latest SQL Server image.
     image: mcr.microsoft.com/mssql/server:2022-latest
     # Map port 1433 on the SQL Server container to port 1433 in the host.
@@ -15,24 +14,22 @@ services:
       - "1433:1433"
     # Specify where the persisted data should be stored.
     volumes:
-      - sqlserver-2022:/var/opt/mssql
+      - datafiles:/var/lib/sqlserver
     restart: always
     # Specify environment variables for SQL Server.
     environment:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: MWGfWg4lid2lL2I0
   # API Service
-  csla8mt.webapi:
-    container_name: csla8mt-sqlserver
-    # Pull the latest Web API image.
-    image: csla8mt-sqlserver
+  csla8modeltemplates.webapi:
+    image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
     build:
       context: .
       # Use the Docker file in that Directory.
       dockerfile: Csla8ModelTemplates.WebApi/Dockerfile
     # This service depends on the database service specifed above.
     depends_on: 
-      - csla8mt.database
+      - csla8modeltemplates.database
     # Map port 8888 in the API container to port 80 in the Api
     ports:
       - "8080:80"
