@@ -1,5 +1,4 @@
 using System.Reflection;
-using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace Csla8ModelTemplates.WebApi.Extensions
 {
@@ -37,14 +36,23 @@ namespace Csla8ModelTemplates.WebApi.Extensions
 #pragma warning disable ASP0013
         }
 
+        /// <summary>
+        /// Adds connection strings to application configuration.
+        /// </summary>
+        /// <param name="configuration">The configuration manager.</param>
+        /// <param name="environment">The hosting environment.</param>
         public static void Add_ConnectionStrings(
-            this ConfigurationManager configuration
+            this ConfigurationManager configuration,
+            IWebHostEnvironment environment
         )
         {
             var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
             foreach (var dalName in dalNames!)
             {
-                configuration.AddIniFile($"./bin/Debug/net8.0/{dalName}.ini", optional: false, reloadOnChange: true);
+                var path = environment.IsDevelopment()
+                    ? $"./bin/Debug/net8.0/{dalName}.ini"
+                    : $"./{dalName}.ini";
+                configuration.AddIniFile(path, false, true);
             }
         }
     }

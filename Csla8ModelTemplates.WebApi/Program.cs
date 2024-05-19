@@ -1,11 +1,9 @@
 using Csla8ModelTemplates.WebApi.Extensions;
-using Microsoft.Extensions.Configuration;
 
 // ---------- Create the app builder.
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.Add_ConnectionStrings();
 //builder.Host.Add_JsonConfiguratioFile();
-var cs = builder.Configuration.GetConnectionString("SQLServer");
+builder.Configuration.Add_ConnectionStrings(builder.Environment);
 
 // ********** Add services to the container.
 

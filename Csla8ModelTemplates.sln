@@ -80,7 +80,51 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.Pos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.Oracle", "Csla8ModelTemplates.Dal.Oracle\Csla8ModelTemplates.Dal.Oracle.csproj", "{DBDABCC7-9074-429A-91CA-18954919F6B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Dal.Db2", "Csla8ModelTemplates.Dal.Db2\Csla8ModelTemplates.Dal.Db2.csproj", "{52EC1FAD-40E3-49E8-9DC4-4EA5F14B36ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.Db2", "Csla8ModelTemplates.Dal.Db2\Csla8ModelTemplates.Dal.Db2.csproj", "{52EC1FAD-40E3-49E8-9DC4-4EA5F14B36ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseConfig", "DatabaseConfig", "{A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB2", "DB2", "{CC59E9B4-CD84-476A-B843-4FD6FAE4C95D}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\DB2\docker-compose.yml = DatabaseConfig\DB2\docker-compose.yml
+		DatabaseConfig\DB2\Dockerfile = DatabaseConfig\DB2\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Firebird", "Firebird", "{C74DEC95-0D90-459D-8A80-4E097F0F0726}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\Firebird\docker-compose.yml = DatabaseConfig\Firebird\docker-compose.yml
+		DatabaseConfig\Firebird\Dockerfile = DatabaseConfig\Firebird\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MySQL", "MySQL", "{BE10D31E-8D86-4660-9AF4-B013A1329814}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\MySQL\docker-compose.yml = DatabaseConfig\MySQL\docker-compose.yml
+		DatabaseConfig\MySQL\Dockerfile = DatabaseConfig\MySQL\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oracle", "Oracle", "{B531D609-AFC1-40E7-B0CB-15DDE8DCDD64}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\Oracle\docker-compose.yml = DatabaseConfig\Oracle\docker-compose.yml
+		DatabaseConfig\Oracle\Dockerfile = DatabaseConfig\Oracle\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQL", "PostgreSQL", "{ABC358FC-56E4-4378-A846-B17F9C62FB94}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\PostgreSQL\docker-compose.yml = DatabaseConfig\PostgreSQL\docker-compose.yml
+		DatabaseConfig\PostgreSQL\Dockerfile = DatabaseConfig\PostgreSQL\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{30E7C99B-904D-4E32-A313-B525D1FF9C3C}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\SQLite\docker-compose.yml = DatabaseConfig\SQLite\docker-compose.yml
+		DatabaseConfig\SQLite\Dockerfile = DatabaseConfig\SQLite\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLServer", "SQLServer", "{705499BE-78E6-46E3-A3BA-D0132270A8CE}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\SQLServer\docker-compose.yml = DatabaseConfig\SQLServer\docker-compose.yml
+		DatabaseConfig\SQLServer\Dockerfile = DatabaseConfig\SQLServer\Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -386,12 +430,19 @@ Global
 		{9DB9CAF5-77BB-4BFD-9B1A-DF839482C696} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 		{F0DFA812-063E-4A57-BE9A-37330E1DD572} = {7FBE3DAE-483E-43EA-A3E3-132B64165D08}
 		{76F0B7DB-5FD8-4424-8805-8E4BC4A9AC7B} = {7FBE3DAE-483E-43EA-A3E3-132B64165D08}
-		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
+		{E74AC34E-CA4E-44BC-985E-BC7FCFE32A3D} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
 		{FE1D07F1-408F-4D8B-9E32-104EAB31D164} = {133DDFA6-0FE4-4290-8D02-4CE922B55163}
 		{32425674-280D-4846-8C59-AA7EB0E06ADB} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 		{623D7575-3E30-4B98-9897-04676BB47705} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 		{DBDABCC7-9074-429A-91CA-18954919F6B2} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 		{52EC1FAD-40E3-49E8-9DC4-4EA5F14B36ED} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
+		{CC59E9B4-CD84-476A-B843-4FD6FAE4C95D} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{C74DEC95-0D90-459D-8A80-4E097F0F0726} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{BE10D31E-8D86-4660-9AF4-B013A1329814} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{B531D609-AFC1-40E7-B0CB-15DDE8DCDD64} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{ABC358FC-56E4-4378-A846-B17F9C62FB94} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{30E7C99B-904D-4E32-A313-B525D1FF9C3C} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{705499BE-78E6-46E3-A3BA-D0132270A8CE} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66B6477D-4119-45B8-BB69-D8BA452E85EB}

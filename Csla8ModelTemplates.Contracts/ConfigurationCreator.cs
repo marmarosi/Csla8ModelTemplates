@@ -4,7 +4,7 @@ using System.Reflection;
 namespace Csla8ModelTemplates.Contracts
 {
     /// <summary>
-    /// Provide methods to create the application configuration.
+    /// Provide methods to create the application configuration (design time).
     /// </summary>
     public static class ConfigurationCreator
     {
@@ -14,14 +14,26 @@ namespace Csla8ModelTemplates.Contracts
         /// <returns>The application configuration.</returns>
         public static IConfiguration Create()
         {
-            var webRootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var basePath = Path.Join(webRootPath, "../../..");
-            var settings = Path.Join(basePath, "../Csla8ModelTemplates.WebApi/appsettings.json");
+            // Add application settings.
+            var currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var apiPath = Path.Join(currentPath, "../../../../Csla8ModelTemplates.WebApi");
+            var settingsPath = Path.Join(apiPath, "/AppSettings.json");
 
             var builder = new ConfigurationBuilder()
-                .AddJsonFile(settings, true, true);
+                .AddJsonFile(settingsPath, false, true);
 
             IConfiguration configuration = builder.Build();
+
+            // Add connection strings.
+            var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
+            foreach (var dalName in dalNames!)
+            {
+                var iniPath = Path.Join(apiPath, $"bin/Debug/net8.0/{dalName}.ini");
+                builder.AddIniFile(iniPath, false, true);
+            }
+            configuration = builder.Build();
+
+            // Return the application configuration.
             return configuration;
         }
     }

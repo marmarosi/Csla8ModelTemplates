@@ -21,6 +21,12 @@ namespace Csla8ModelTemplates.Tests.WebApi
                 .AddEnvironmentVariables();
 
             IConfiguration configuration = builder.Build();
+
+            var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
+            foreach (var dalName in dalNames!)
+            {
+                builder.AddIniFile($"./bin/Debug/net8.0/{dalName}.ini", false, true);
+            }
             return configuration;
         }
     }

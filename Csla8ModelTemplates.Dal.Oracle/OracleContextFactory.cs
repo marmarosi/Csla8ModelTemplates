@@ -22,7 +22,7 @@ namespace Csla8ModelTemplates.Dal.Oracle
         {
             IConfiguration configuration = ConfigurationCreator.Create();
             var connectionString = configuration.GetConnectionString(DAL.MySQL)!
-                .Replace("csla8modeltemplates.database", "localhost");
+                .Replace("csla8mt.database", "localhost");
             var assemblyName = GetType().Assembly.GetName().Name;
 
             return new OracleContext(
