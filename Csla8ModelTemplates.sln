@@ -122,10 +122,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{30E7C9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLServer", "SQLServer", "{705499BE-78E6-46E3-A3BA-D0132270A8CE}"
 	ProjectSection(SolutionItems) = preProject
+		DatabaseConfig\SQLServer\db-run = DatabaseConfig\SQLServer\db-run
 		DatabaseConfig\SQLServer\docker-compose.yml = DatabaseConfig\SQLServer\docker-compose.yml
 		DatabaseConfig\SQLServer\Dockerfile = DatabaseConfig\SQLServer\Dockerfile
 	EndProjectSection
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Dal.Firebird", "Csla8ModelTemplates.Dal.Firebird\Csla8ModelTemplates.Dal.Firebird.csproj", "{B50648DC-2CDD-4EAC-976D-CE184B9185F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.Firebird", "Csla8ModelTemplates.Dal.Firebird\Csla8ModelTemplates.Dal.Firebird.csproj", "{B50648DC-2CDD-4EAC-976D-CE184B9185F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

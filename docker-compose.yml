@@ -7,7 +7,7 @@ volumes:
 services:
   # Database Service
   csla8mt.database:
-    container_name: sqlserver.2022
+    container_name: sqlserver-2022
     # Pull the latest SQL Server image.
     image: mcr.microsoft.com/mssql/server:2022-latest
     # Map port 1433 on the SQL Server container to port 1433 in the host.
@@ -17,15 +17,13 @@ services:
     volumes:
       - sqlserver-2022:/var/opt/mssql
     restart: always
-    # Specify environment variables for Firebird.
-    environment: 
-      ISC_PASSWORD: AS07pUPTC6d6lZFh
-      FIREBIRD_USER: csla8mt
-      FIREBIRD_PASSWORD: SsEsEu5g6Vh
-      FIREBIRD_DATABASE: Csla8mt
+    # Specify environment variables for SQL Server.
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: MWGfWg4lid2lL2I0
   # API Service
   csla8mt.webapi:
-    container_name: csla8mt.sqlserver
+    container_name: csla8mt-sqlserver
     # Pull the latest Web API image.
     image: csla8mt.sqlserver
     build:
