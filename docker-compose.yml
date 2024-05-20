@@ -12,15 +12,17 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     # Map port 1433 on the SQL Server container to port 1433 in the host.
     ports:
-      - "1433:1433"
+      - "3050:3050"
     # Specify where the persisted data should be stored.
     volumes:
       - sqlserver-2022:/var/opt/mssql
     restart: always
-    # Specify environment variables for SQL Server.
-    environment:
-      ACCEPT_EULA: Y
-      MSSQL_SA_PASSWORD: MWGfWg4lid2lL2I0
+    # Specify environment variables for Firebird.
+    environment: 
+      ISC_PASSWORD: AS07pUPTC6d6lZFh
+      FIREBIRD_USER: csla8mt
+      FIREBIRD_PASSWORD: SsEsEu5g6Vh
+      FIREBIRD_DATABASE: Csla8mt
   # API Service
   csla8mt.webapi:
     container_name: csla8mt.sqlserver

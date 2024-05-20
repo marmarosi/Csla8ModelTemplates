@@ -125,6 +125,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLServer", "SQLServer", "{
 		DatabaseConfig\SQLServer\docker-compose.yml = DatabaseConfig\SQLServer\docker-compose.yml
 		DatabaseConfig\SQLServer\Dockerfile = DatabaseConfig\SQLServer\Dockerfile
 	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Dal.Firebird", "Csla8ModelTemplates.Dal.Firebird\Csla8ModelTemplates.Dal.Firebird.csproj", "{B50648DC-2CDD-4EAC-976D-CE184B9185F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -412,6 +413,18 @@ Global
 		{52EC1FAD-40E3-49E8-9DC4-4EA5F14B36ED}.Release|arm64.Build.0 = Release|Any CPU
 		{52EC1FAD-40E3-49E8-9DC4-4EA5F14B36ED}.Release|x86.ActiveCfg = Release|Any CPU
 		{52EC1FAD-40E3-49E8-9DC4-4EA5F14B36ED}.Release|x86.Build.0 = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|arm64.Build.0 = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Debug|x86.Build.0 = Debug|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|arm64.ActiveCfg = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|arm64.Build.0 = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|x86.ActiveCfg = Release|Any CPU
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -443,6 +456,7 @@ Global
 		{ABC358FC-56E4-4378-A846-B17F9C62FB94} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
 		{30E7C99B-904D-4E32-A313-B525D1FF9C3C} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
 		{705499BE-78E6-46E3-A3BA-D0132270A8CE} = {A3764808-809E-4F09-8AA3-E4B5E8DEDB5E}
+		{B50648DC-2CDD-4EAC-976D-CE184B9185F9} = {65EDE4F1-0CA6-41E4-A493-5FED85F6CCF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66B6477D-4119-45B8-BB69-D8BA452E85EB}
