@@ -76,6 +76,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Migrations
                 {
                     TeamKey = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    TeamGuid = table.Column<Guid>(type: "char(36)", nullable: true),
                     TeamCode = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: true),
                     TeamName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
                     Timestamp = table.Column<DateTimeOffset>(type: "datetime", nullable: false)

@@ -31,34 +31,19 @@ namespace ChangeDatabase
             }
 
             // Update docker-compose.
-            var dataFile = Path.Combine(rootDir, "DockerData", $"{database}.txt");
-            if (!File.Exists(dataFile))
+            var setupFile = Path.Combine(rootDir, "Setup", $"{database}.docker-compose.yml");
+            if (!File.Exists(setupFile))
             {
-                message.Content = $"File DockerData\\{database}.txt dows not exist.";
+                message.Content = $"File Setup\\{database}.docker-compose.yml does not exist.";
                 message.Foreground = new SolidColorBrush(Colors.Red);
                 return;
             }
+            var setupContent = File.ReadAllText(setupFile);
 
             var dockerFile = Path.Combine(rootDir, "docker-compose.yml");
-            var sourceLines = File.ReadLines(dockerFile);
-            var targetLines = new StringBuilder();
-            var isDatabasePart = false;
-
-            foreach (var line in sourceLines)
-            {
-                if (line.Contains("# API Service"))
-                    isDatabasePart = false;
-                if (!isDatabasePart)
-                    targetLines.AppendLine(line);
-                if (line.Contains("# Database Service"))
-                {
-                    isDatabasePart = true;
-                    targetLines.Append(File.ReadAllText(dataFile));
-                }
-            }
             using (StreamWriter writer = new StreamWriter(dockerFile, false))
             { 
-                writer.Write(targetLines.ToString());
+                writer.Write(setupContent);
             }
 
             // Update app-settings files.
@@ -66,8 +51,8 @@ namespace ChangeDatabase
             foreach (var project in projectList)
             {
                 var settingsFile = Path.Combine(rootDir, project, "AppSettings.json");
-                sourceLines = File.ReadLines(settingsFile);
-                targetLines = new StringBuilder();
+                var sourceLines = File.ReadLines(settingsFile);
+                var targetLines = new StringBuilder();
 
                 foreach (var line in sourceLines)
                 {

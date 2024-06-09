@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using Csla8ModelTemplates.Contracts;
 
 namespace Csla8ModelTemplates.Tests.WebApi
 {
@@ -37,38 +38,6 @@ namespace Csla8ModelTemplates.Tests.WebApi
 
             // Return the configuration.
             return configuration;
-        }
-
-        private class EnvironmentConfig
-        {
-            private readonly Dictionary<string, string> _data = new Dictionary<string, string>();
-
-            public EnvironmentConfig(
-                string path
-                )
-            {
-                var lines = File.ReadAllLines(path);
-                foreach (var line in lines)
-                {
-                    var values = line.Split(':');
-                    _data.Add($"{values[0]}.name", $"{values[0].ToUpper()}_CONNSTR");
-                    _data.Add($"{values[0]}.value", $"{values[1]}");
-                }
-            }
-
-            public string GetName(
-                string database
-                )
-            {
-                return _data[$"{database}.name"];
-            }
-
-            public string GetValue(
-                string database
-                )
-            {
-                return _data[$"{database}.value"];
-            }
         }
     }
 }

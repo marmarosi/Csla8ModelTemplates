@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Configuration;
-using System.Reflection;
 
 namespace Csla8ModelTemplates.Contracts
 {
@@ -14,15 +13,26 @@ namespace Csla8ModelTemplates.Contracts
         /// <returns>The application configuration.</returns>
         public static IConfiguration Create()
         {
-            // Add application settings.
-            var currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var apiPath = Path.Join(currentPath, "../../../../Csla8ModelTemplates.WebApi");
-            var settingsPath = Path.Join(apiPath, "/AppSettings.json");
-
+            // Read base configuration.
             var builder = new ConfigurationBuilder()
-                .AddJsonFile(settingsPath, false, true);
+                .AddJsonFile("AppSettings.json", false, true);
 
             IConfiguration configuration = builder.Build();
+
+            // Set database environment variables.
+            var envConfig = new EnvironmentConfig("../Csla8ModelTemplates.Tests.WebApi/Environment.cfg");
+            var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
+            foreach (var dalName in dalNames!)
+            {
+                Environment.SetEnvironmentVariable(
+                    envConfig.GetName(dalName),
+                    envConfig.GetValue(dalName)
+                    );
+            }
+
+            // Add environment variables to configuration.
+            builder.AddEnvironmentVariables();
+            configuration = builder.Build();
 
             // Return the application configuration.
             return configuration;

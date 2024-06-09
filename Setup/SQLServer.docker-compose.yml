@@ -7,7 +7,7 @@ services:
   csla8mt.database:
     container_name: sqlserver-2022
     # Build the container.
-    build: ./DbSetup/SQLServer
+    build: ./Setup/SQLServer
     # Map port 1433 on the SQL Server container to port 1433 in the host.
     ports:
       - "1433:1433"

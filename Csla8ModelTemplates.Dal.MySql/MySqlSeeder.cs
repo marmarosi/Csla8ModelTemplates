@@ -26,6 +26,7 @@ namespace Csla8ModelTemplates.Dal.MySql
             context.Database.Migrate();
 
             await DeleteAllData(context);
+            await ReseedAllTables(context);
 
             await CreateTeamsPlayers(context);
             await CreateGroupsPersons(context);
@@ -86,6 +87,21 @@ namespace Csla8ModelTemplates.Dal.MySql
 
             context.Folders.RemoveRange(delFolders);
             await context.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Reseed all tables
+
+        private static async Task ReseedAllTables(
+            MySqlContext context
+            )
+        {
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE `Teams` AUTO_INCREMENT = 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE `Players` AUTO_INCREMENT = 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE `Groups` AUTO_INCREMENT = 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE `Persons` AUTO_INCREMENT = 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE `Folders` AUTO_INCREMENT = 1;");
         }
 
         #endregion

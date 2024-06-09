@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Csla8ModelTemplates.Dal.MySql.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20240219215142_Initial")]
+    [Migration("20240609142231_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Csla8ModelTemplates.Entities.Folder", b =>
@@ -150,6 +150,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Migrations
                     b.Property<string>("TeamCode")
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
+
+                    b.Property<Guid?>("TeamGuid")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("TeamName")
                         .HasMaxLength(100)

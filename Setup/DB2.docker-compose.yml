@@ -42,7 +42,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORT=8081
+      - ASPNETCORE_HTTPS_PORTS=8081
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Development.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
       - DB2_CONNSTR=Server=localhost;Database=Csla8mt;UserID=su;Password=;PersistSecurityInfo=True

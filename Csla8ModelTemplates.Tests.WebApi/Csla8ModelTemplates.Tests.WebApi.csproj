@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
     <ProjectReference Include="..\Csla8ModelTemplates.WebApi\Csla8ModelTemplates.WebApi.csproj" />
     <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
   </ItemGroup>

@@ -16,7 +16,7 @@ namespace Csla8ModelTemplates.Dal.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Csla8ModelTemplates.Entities.Folder", b =>
@@ -147,6 +147,9 @@ namespace Csla8ModelTemplates.Dal.MySql.Migrations
                     b.Property<string>("TeamCode")
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
+
+                    b.Property<Guid?>("TeamGuid")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("TeamName")
                         .HasMaxLength(100)

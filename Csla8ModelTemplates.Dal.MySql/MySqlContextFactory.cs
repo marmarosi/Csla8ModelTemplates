@@ -21,8 +21,7 @@ namespace Csla8ModelTemplates.Dal.MySql
             )
         {
             IConfiguration configuration = ConfigurationCreator.Create();
-            var connectionString = configuration.GetConnectionString(DAL.MySQL)!
-                .Replace("csla8mt.database", "localhost");
+            var connectionString = configuration.GetValue<string>("MYSQL_CONNSTR")!;
             var assemblyName = GetType().Assembly.GetName().Name;
 
             return new MySqlContext(
