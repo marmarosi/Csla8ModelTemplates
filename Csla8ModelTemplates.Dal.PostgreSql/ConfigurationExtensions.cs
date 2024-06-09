@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<PostgreSqlContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString(DAL.PostgreSQL)!)
+                options.UseNpgsql(configuration.GetValue<string>("POSTGRESQL_CONNSTR")!)
                 );
 
             // Configure data access layer.
@@ -66,7 +66,7 @@ namespace Csla8ModelTemplates.Configuration
         /// <param name="app">The application builder.</param>
         /// <param name="isDevelopment">Indicates whether the hosting environment is development.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void RunPostgreSqlSeeders(
+        public static async Task RunPostgreSqlSeeders(
             this IApplicationBuilder app,
             bool isDevelopment,
             string contentRootPath
@@ -76,7 +76,7 @@ namespace Csla8ModelTemplates.Configuration
             {
                 var context = scope.ServiceProvider.GetRequiredService<PostgreSqlContext>();
 
-                PostgreSqlSeeder.Run(context, isDevelopment, contentRootPath);
+                await PostgreSqlSeeder.Run(context, isDevelopment, contentRootPath);
             }
         }
     }

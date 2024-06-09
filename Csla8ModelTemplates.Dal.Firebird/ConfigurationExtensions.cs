@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<FirebirdContext>(options =>
-                options.UseFirebird(configuration.GetConnectionString(DAL.Firebird)!)
+                options.UseFirebird(configuration.GetValue<string>("FIREBIRD_CONNSTR")!)
                 );
 
             // Configure data access layer.
@@ -81,7 +81,7 @@ namespace Csla8ModelTemplates.Configuration
         /// <param name="app">The application builder.</param>
         /// <param name="isDevelopment">Indicates whether the hosting environment is development.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void RunFirebirdSeeders(
+        public static async Task RunFirebirdSeeders(
             this IApplicationBuilder app,
             bool isDevelopment,
             string contentRootPath
@@ -91,7 +91,7 @@ namespace Csla8ModelTemplates.Configuration
             {
                 var context = scope.ServiceProvider.GetRequiredService<FirebirdContext>();
 
-                FirebirdSeeder.Run(context, isDevelopment, contentRootPath);
+                await FirebirdSeeder.Run(context, isDevelopment, contentRootPath);
             }
         }
     }

@@ -60,7 +60,7 @@ namespace Csla8ModelTemplates.WebApi.Extensions
         /// Runs seeders of persistent storages.
         /// </summary>
         /// <param name="app">The web application.</param>
-        public static void Run_StorageSeeders(
+        public static async Task Run_StorageSeeders(
             this WebApplication app
             )
         {
@@ -73,25 +73,25 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                 switch (dalName)
                 {
                     case DAL.DB2:
-                        app.RunDb2Seeders(isDevelopment, contentRootPath);
+                        await app.RunDb2Seeders(isDevelopment, contentRootPath);
                         break;
                     case DAL.Firebird:
-                        app.RunFirebirdSeeders(isDevelopment, contentRootPath);
+                        await app.RunFirebirdSeeders(isDevelopment, contentRootPath);
                         break;
                     case DAL.MySQL:
-                        app.RunMySqlSeeders(isDevelopment, contentRootPath);
+                        await app.RunMySqlSeeders(isDevelopment, contentRootPath);
                         break;
                     case DAL.Oracle:
-                        app.RunOracleSeeders(isDevelopment, contentRootPath);
+                        await app.RunOracleSeeders(isDevelopment, contentRootPath);
                         break;
                     case DAL.PostgreSQL:
-                        app.RunPostgreSqlSeeders(isDevelopment, contentRootPath);
+                        await app.RunPostgreSqlSeeders(isDevelopment, contentRootPath);
                         break;
                     //case DAL.SQLite:
-                    //    app.RunSqliteSeeders(isDevelopment, contentRootPath);
+                    //    await app.RunSqliteSeeders(isDevelopment, contentRootPath);
                     //    break;
                     case DAL.SQLServer:
-                        app.RunSqlServerSeeders(isDevelopment, contentRootPath);
+                        await app.RunSqlServerSeeders(isDevelopment, contentRootPath);
                         break;
                 }
             }

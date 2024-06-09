@@ -1,2 +1,0 @@
-  csla8modeltemplates.database:
-    # Pull the latest SQLite image.

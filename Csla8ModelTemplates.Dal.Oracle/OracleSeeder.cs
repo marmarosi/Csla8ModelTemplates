@@ -1,4 +1,5 @@
 using Csla8ModelTemplates.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Csla8ModelTemplates.Dal.Oracle
 {
@@ -15,18 +16,87 @@ namespace Csla8ModelTemplates.Dal.Oracle
         /// <param name="isDevelopment">The database context.</param>
         /// <param name="isDevelopment">Indicates whether the app is running in development mode.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void Run(
+        public static async Task Run(
             OracleContext context,
             bool isDevelopment,
             string contentRootPath
             )
         {
-            //context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-            //context.Database.Migrate();
+            Thread.Sleep(60);
+            context.Database.Migrate();
 
-            #region Team data
+            await DeleteAllData(context);
 
+            await CreateTeamsPlayers(context);
+            await CreateGroupsPersons(context);
+            await CreateFolders(context);
+        }
+
+        #region Delete all data
+
+        private static async Task DeleteAllData(
+            OracleContext context
+            )
+        {
+            await RemoveFolders(context, null);
+
+            var delGroupPersons = await context.GroupPersons.ToListAsync();
+            if (delGroupPersons.Count > 0)
+            {
+                context.GroupPersons.RemoveRange(delGroupPersons);
+                await context.SaveChangesAsync();
+            }
+            var delPersons = await context.Persons.ToListAsync();
+            if (delPersons.Count > 0)
+            {
+                context.Persons.RemoveRange(delPersons);
+                await context.SaveChangesAsync();
+            }
+            var delGroups = await context.Groups.ToListAsync();
+            if (delGroups.Count > 0)
+            {
+                context.Groups.RemoveRange(delGroups);
+                await context.SaveChangesAsync();
+            }
+            var delPlayers = await context.Players.ToListAsync();
+            if (delPlayers.Count > 0)
+            {
+                context.Players.RemoveRange(delPlayers);
+                await context.SaveChangesAsync();
+            }
+            var delTeams = await context.Teams.ToListAsync();
+            if (delTeams.Count > 0)
+            {
+                context.Teams.RemoveRange(delTeams);
+                await context.SaveChangesAsync();
+            }
+        }
+
+        private static async Task RemoveFolders(
+            OracleContext context,
+            long? parentKey
+            )
+        {
+            var delFolders = await context.Folders
+                .Where(e => e.ParentKey == parentKey)
+                .ToListAsync();
+
+            foreach (var delFolder in delFolders)
+                await RemoveFolders(context, delFolder.FolderKey);
+
+            context.Folders.RemoveRange(delFolders);
+            await context.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Create teams & players
+
+        private static async Task CreateTeamsPlayers(
+            OracleContext context
+            )
+        {
+            // Create teams.
             for (int i = 0; i < 50; i++)
             {
                 int serialNumber = i + 1;
@@ -36,33 +106,34 @@ namespace Csla8ModelTemplates.Dal.Oracle
                     TeamCode = $"T-{serialNumber.ToString("0000")}",
                     TeamName = $"Team entry number {serialNumber}",
                 };
-                context.Teams.Add(team);
-                context.SaveChanges();
+                await context.Teams.AddAsync(team);
+                await context.SaveChangesAsync();
 
+                // Create team's players.
                 int count = random.Next(1, 5);
                 for (int j = 0; j < count; j++)
                 {
                     int index = j + 1;
-                    context.Players.Add(new Player
+                    await context.Players.AddAsync(new Player
                     {
                         TeamKey = team.TeamKey,
                         PlayerCode = $"P-{serialNumber.ToString("0000")}-{index}",
                         PlayerName = $"Item entry number {serialNumber}.{index}",
                     });
                 }
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
+        }
 
-            #endregion
+        #endregion
 
-            #region Folder data
+        #region Create groups and persons
 
-            CreateFolderLevel(context, 1, null, null, null);
-
-            #endregion
-
-            #region Group data
-
+        private static async Task CreateGroupsPersons(
+            OracleContext context
+            )
+        {
+            // Create groups.
             List<long> groupKeys = new List<long>();
             for (int i = 0; i < 20; i++)
             {
@@ -72,15 +143,12 @@ namespace Csla8ModelTemplates.Dal.Oracle
                     GroupCode = $"G-{serialNumber.ToString("00")}",
                     GroupName = $"Group No. {serialNumber}",
                 };
-                context.Groups.Add(group);
-                context.SaveChanges();
+                await context.Groups.AddAsync(group);
+                await context.SaveChangesAsync();
                 groupKeys.Add(group.GroupKey!.Value);
             }
 
-            #endregion
-
-            #region Person data
-
+            // Create persons.
             List<long> personKeys = new List<long>();
             for (int i = 0; i < 20; i++)
             {
@@ -90,15 +158,12 @@ namespace Csla8ModelTemplates.Dal.Oracle
                     PersonCode = $"XY-{serialNumber.ToString("00")}",
                     PersonName = $"Person #{serialNumber}",
                 };
-                context.Persons.Add(person);
-                context.SaveChanges();
+                await context.Persons.AddAsync(person);
+                await context.SaveChangesAsync();
                 personKeys.Add(person.PersonKey!.Value);
             }
 
-            #endregion
-
-            #region GroupPerson data
-
+            // Create group-person relations.
             foreach (long groupKey in groupKeys)
             {
                 int count = random.Next(1, 5);
@@ -107,7 +172,7 @@ namespace Csla8ModelTemplates.Dal.Oracle
                 {
                     int index = random.Next(1, 20 - j);
                     long personKey = tempKeys[index];
-                    context.GroupPersons.Add(new GroupPerson
+                    await context.GroupPersons.AddAsync(new GroupPerson
                     {
                         GroupKey = groupKey,
                         PersonKey = personKey
@@ -115,14 +180,21 @@ namespace Csla8ModelTemplates.Dal.Oracle
                     tempKeys.Remove(personKey);
                 }
             }
-            context.SaveChanges();
-
-            #endregion
+            await context.SaveChangesAsync();
         }
 
-        #region Folder helpers
+        #endregion
 
-        private static void CreateFolderLevel(
+        #region Craete folders
+
+        private static async Task CreateFolders(
+            OracleContext context
+            )
+        {
+            await CreateFolderLevel(context, 1, null, null, null);
+        }
+
+        private static async Task CreateFolderLevel(
             OracleContext context,
             int level,
             long? parentKey,
@@ -140,13 +212,13 @@ namespace Csla8ModelTemplates.Dal.Oracle
                     folderOrder,
                     parentPath
                     );
-                context.Folders.Add(folder);
-                context.SaveChanges();
+                await context.Folders.AddAsync(folder);
+                await context.SaveChangesAsync();
 
                 if (level == 1)
                 {
                     folder.RootKey = folder.FolderKey;
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                 }
 
                 if (level < 4)
@@ -154,7 +226,7 @@ namespace Csla8ModelTemplates.Dal.Oracle
                     string path = parentPath == null
                         ? folderOrder.ToString()
                         : $"{parentPath}.{folderOrder}";
-                    CreateFolderLevel(
+                    await CreateFolderLevel(
                         context,
                         level + 1,                      // level
                         folder.FolderKey,               // parentKey

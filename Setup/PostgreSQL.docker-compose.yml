@@ -7,21 +7,18 @@ volumes:
 services:
   # Database Service
   csla8modeltemplates.database:
-    # Pull the latest MySQL image.
-    image: mysql:8.0.22
-    # Map port 3306 on the MySQL container to port 3306 in the host.
+    # Pull the latest PostgreSQL image.
+    image: postgres:13.15
+    # Map port 5432 on the PostgreSQL container to port 5432 in the host.
     ports:
-      - "3306:3306"
+      - "5432:5432"
     # Specify where the persisted data should be stored.
     volumes:
-      - datafiles:/var/lib/mysql
+      - datafiles:/var/lib/postgresql
     restart: always
-    # Specify environment variables for MySQL.
+    # Specify environment variables for PostgreSQL.
     environment: 
-      MYSQL_ROOT_PASSWORD: v%gRTNEQV$
-      MYSQL_USER: csla8mt
-      MYSQL_PASSWORD: 1raCRcojsu8h5Qx1
-      MYSQL_DATABASE: Csla8mt
+      POSTGRES_PASSWORD: L7KFpHIGQm9Hbqm
   # API Service
   csla8modeltemplates.webapi:
     image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
@@ -44,6 +41,8 @@ services:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORT=8081
-    #volumes:
-    #  - ${APPDATA}/Microsoft/UserSecrets/:/root/.microsoft/usersecrets
-    #  - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https/
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Development.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
+      - POSTRGRESQL_CONNSTR=Host=csla8mt.database;Database=Csla8mt;Username=csla8mt;Password=gZdoi427R7H9
+    volumes:
+      - ${APPDATA}/Certificates:/https/

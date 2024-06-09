@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<SqlServerContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString(DAL.SQLServer)!)
+                options.UseSqlServer(configuration.GetValue<string>("SQLSERVER_CONNSTR")!)
                 );
 
             // Configure data access layer.
@@ -66,7 +66,7 @@ namespace Csla8ModelTemplates.Configuration
         /// <param name="app">The application builder.</param>
         /// <param name="isDevelopment">Indicates whether the hosting environment is development.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void RunSqlServerSeeders(
+        public static async Task RunSqlServerSeeders(
             this IApplicationBuilder app,
             bool isDevelopment,
             string contentRootPath
@@ -76,7 +76,7 @@ namespace Csla8ModelTemplates.Configuration
             {
                 var context = scope.ServiceProvider.GetRequiredService<SqlServerContext>();
 
-                SqlServerSeeder.Run(context, isDevelopment, contentRootPath);
+                await SqlServerSeeder.Run(context, isDevelopment, contentRootPath);
             }
         }
     }

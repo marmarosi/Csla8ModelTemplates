@@ -17,10 +17,4 @@
     <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Oracle.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

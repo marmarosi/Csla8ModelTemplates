@@ -34,7 +34,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<Db2Context>(options =>
-                options.UseDb2(configuration.GetConnectionString(DAL.DB2)!, null)
+                options.UseDb2(configuration.GetValue<string>("SQLSERVER_CONNSTR")!, null)
                 );
 
             // Configure data access layer.
@@ -67,7 +67,7 @@ namespace Csla8ModelTemplates.Configuration
         /// <param name="app">The application builder.</param>
         /// <param name="isDevelopment">Indicates whether the hosting environment is development.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void RunDb2Seeders(
+        public static async Task RunDb2Seeders(
             this IApplicationBuilder app,
             bool isDevelopment,
             string contentRootPath
@@ -77,7 +77,7 @@ namespace Csla8ModelTemplates.Configuration
             {
                 var context = scope.ServiceProvider.GetRequiredService<Db2Context>();
 
-                Db2Seeder.Run(context, isDevelopment, contentRootPath);
+                await Db2Seeder.Run(context, isDevelopment, contentRootPath);
             }
         }
     }

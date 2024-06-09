@@ -33,7 +33,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<MySqlContext>(options =>
-                options.UseMySQL(configuration.GetConnectionString(DAL.MySQL)!)
+                options.UseMySQL(configuration.GetValue<string>("MYSQL_CONNSTR")!)
                 );
 
             // Configure data access layer.
@@ -66,7 +66,7 @@ namespace Csla8ModelTemplates.Configuration
         /// <param name="app">The application builder.</param>
         /// <param name="isDevelopment">Indicates whether the hosting environment is development.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void RunMySqlSeeders(
+        public static async Task RunMySqlSeeders(
             this IApplicationBuilder app,
             bool isDevelopment,
             string contentRootPath
@@ -76,7 +76,7 @@ namespace Csla8ModelTemplates.Configuration
             {
                 var context = scope.ServiceProvider.GetRequiredService<MySqlContext>();
 
-                MySqlSeeder.Run(context, isDevelopment, contentRootPath);
+                await MySqlSeeder.Run(context, isDevelopment, contentRootPath);
             }
         }
     }

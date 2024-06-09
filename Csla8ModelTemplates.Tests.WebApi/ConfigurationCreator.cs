@@ -13,21 +13,62 @@ namespace Csla8ModelTemplates.Tests.WebApi
         /// <returns>The application configuration.</returns>
         public static IConfiguration Create()
         {
+            // Read base configuration.
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Path.Join(Directory.GetCurrentDirectory(), "../../.."))
-                //.AddJsonFile(appSettings, true, true)
-                .AddJsonFile("AppSettings.json", true, true)
-                //.AddJsonFile(sharedSettings, true, true)
-                .AddEnvironmentVariables();
+                .AddJsonFile("AppSettings.json", true, true);
 
             IConfiguration configuration = builder.Build();
 
+            // Set database environment variables.
+            var envConfig = new EnvironmentConfig("Environment.cfg");
             var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
             foreach (var dalName in dalNames!)
             {
-                builder.AddIniFile($"./bin/Debug/net8.0/{dalName}.ini", false, true);
+                Environment.SetEnvironmentVariable(
+                    envConfig.GetName(dalName),
+                    envConfig.GetValue(dalName)
+                    );
             }
+
+            // Add environment variables to configuration.
+            builder.AddEnvironmentVariables();
+            configuration = builder.Build();
+
+            // Return the configuration.
             return configuration;
+        }
+
+        private class EnvironmentConfig
+        {
+            private readonly Dictionary<string, string> _data = new Dictionary<string, string>();
+
+            public EnvironmentConfig(
+                string path
+                )
+            {
+                var lines = File.ReadAllLines(path);
+                foreach (var line in lines)
+                {
+                    var values = line.Split(':');
+                    _data.Add($"{values[0]}.name", $"{values[0].ToUpper()}_CONNSTR");
+                    _data.Add($"{values[0]}.value", $"{values[1]}");
+                }
+            }
+
+            public string GetName(
+                string database
+                )
+            {
+                return _data[$"{database}.name"];
+            }
+
+            public string GetValue(
+                string database
+                )
+            {
+                return _data[$"{database}.value"];
+            }
         }
     }
 }

@@ -24,15 +24,6 @@ namespace Csla8ModelTemplates.Contracts
 
             IConfiguration configuration = builder.Build();
 
-            // Add connection strings.
-            var dalNames = configuration.GetSection("ActiveDals").Get<List<string>>();
-            foreach (var dalName in dalNames!)
-            {
-                var iniPath = Path.Join(apiPath, $"bin/Debug/net8.0/{dalName}.ini");
-                builder.AddIniFile(iniPath, false, true);
-            }
-            configuration = builder.Build();
-
             // Return the application configuration.
             return configuration;
         }

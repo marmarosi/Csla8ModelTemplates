@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 
 namespace Csla8ModelTemplates.Configuration
@@ -33,7 +34,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<OracleContext>(options =>
-                options.UseOracle(configuration.GetConnectionString(DAL.Oracle)!)
+                options.UseOracle(configuration.GetValue<string>("ORACLE_CONNSTR")!)
                 );
 
             // Configure data access layer.
@@ -66,7 +67,7 @@ namespace Csla8ModelTemplates.Configuration
         /// <param name="app">The application builder.</param>
         /// <param name="isDevelopment">Indicates whether the hosting environment is development.</param>
         /// <param name="contentRootPath">The root path of the web site.</param>
-        public static void RunOracleSeeders(
+        public static async Task RunOracleSeeders(
             this IApplicationBuilder app,
             bool isDevelopment,
             string contentRootPath
@@ -76,7 +77,7 @@ namespace Csla8ModelTemplates.Configuration
             {
                 var context = scope.ServiceProvider.GetRequiredService<OracleContext>();
 
-                OracleSeeder.Run(context, isDevelopment, contentRootPath);
+                await OracleSeeder.Run(context, isDevelopment, contentRootPath);
             }
         }
     }
