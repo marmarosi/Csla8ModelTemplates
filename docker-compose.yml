@@ -38,7 +38,7 @@ services:
     ports:
       - "8080:80"
       - "8081:443"
-    #restart: always
+    restart: always
     # Specify environment variables for the API service.
     environment: 
       - DBHOST=database
@@ -50,4 +50,5 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
       - MYSQL_CONNSTR=server=csla8mt-mysql.database;uid=csla8mt;pwd=1raCRcojsu8h5Qx1;database=Csla8mt
     volumes:
-      - ${APPDATA}/Certificates:/https/
+      # ${APPDATA}/Certificates:/https/
+      - ./Https:/https/:ro

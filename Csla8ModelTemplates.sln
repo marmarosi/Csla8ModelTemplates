@@ -91,6 +91,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLServer", "SQLServer", "{
 		Setup\SQLServer\run-initialization.sh = Setup\SQLServer\run-initialization.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Https", "Https", "{51DB9FE3-CA7C-4663-8943-9B1FDAE97259}"
+	ProjectSection(SolutionItems) = preProject
+		Https\Development.pfx = Https\Development.pfx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
