@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    body {
+      font-family: Arial;
+      margin: 0 32px 32px 32px;
+    }
+    .category {
+      border: black 1px solid;
+      padding: 4px 9px;
+      text-align: center;
+      margin-bottom: 5px;
+      width: 1066px;
+    }
+    .model {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #ead8c0;
+      padding: 5px 10px;
+      margin-bottom: 5px;
+      width: 1066px;
+      border-radius: 5px 5px;
+    }
+    .right {
+      display: inline-block;
+      float: right;
+      letter-spacing: 3px;
+      width: 30px;
+    }
+    .snippets {
+      display: none;
+      margin-bottom: 5px;
+    }
+    th {
+      font-weight: normal;
+      padding: 3px 5px;
+      background-color: #fff2e1;
+    }
+    td {
+      text-align: center;
+      padding: 3px 5px;
+    }
+    .left {
+      text-align: left;
+    }
+    .description {
+      width: 340px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .shortcut {
+      width: 80px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .filename {
+      width: 160px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .param {
+      width: 40px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .cl-abbr {
+      width: 100px;
+    }
+    .cl-param {
+      width: 250px;
+    }
+    .cl-desc {
+      width: 500px;
+    }
+    .cl-example {
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+    <script type="text/javascript">
+        let selectedId = '';
+        function toggle(snippetId) {
+            if (selectedId) {
+                if (selectedId === snippetId) {
+                    const div = document.getElementById(selectedId);
+                    div.style.display = div.style.display === 'none' ? 'block' : 'none';
+                }
+                else {
+                    document.getElementById(selectedId).style.display = 'none';
+                    selectedId = snippetId;
+                    document.getElementById(selectedId).style.display = 'block';
+                }
+            }
+            else {
+                selectedId = snippetId;
+                document.getElementById(selectedId).style.display = 'block';
+            }
+        }
+    </script>
+
+    <h1>CSLA 8 REST API Code Snippets</h1>
+
+#contents#
+
+    <h3>Column labels</h3>
+    <p>The following table explains the columns containing the snippet parameters to be replaced during code generation:</p>
+    <table>
+        <thead>
+            <tr>
+                <th class="cl-abbr">Abbreviation</th>
+                <th class="cl-param">Stands for parameter</th>
+                <th class="cl-desc">Description</th>
+                <th class="cl-example">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">rn</td>
+                <td class="left">root_name</td>
+                <td class="left">textual description of the root model in comments</td>
+                <td class="left">order</td>
+            </tr>
+            <tr>
+                <td class="left">RM</td>
+                <td class="left">ROOT_MODEL</td>
+                <td class="left">the name of the root model</td>
+                <td class="left">Order</td>
+            </tr>
+            <tr>
+                <td class="left">rv</td>
+                <td class="left">root_variable</td>
+                <td class="left">the name of the variable for the root model</td>
+                <td class="left">order</td>
+            <tr>
+                <td class="left">cn</td>
+                <td class="left">child_name</td>
+                <td class="left">textual description of the child model in comments</td>
+                <td class="left">order line</td>
+            </tr>
+            <tr>
+                <td class="left">CM</td>
+                <td class="left">CHILD_MODEL</td>
+                <td class="left">the name of the child model</td>
+                <td class="left">OrderLine</td>
+            </tr>
+            <tr>
+                <td class="left">cv</td>
+                <td class="left">child_variable</td>
+                <td class="left">the name of the variable for the child model</td>
+                <td class="left">orderLine</td>
+            </tr>
+            <tr>
+                <td class="left">cmd</td>
+                <td class="left">command_name</td>
+                <td class="left">textual description of the command in comments</td>
+                <td class="left">set order status</td>
+            </tr>
+            <tr>
+                <td class="left">CMD</td>
+                <td class="left">COMMAND_MODEL</td>
+                <td class="left">the name of the command model</td>
+                <td class="left">SetOrderStatus</td>
+            </tr>
+            <tr>
+                <td class="left">ctx</td>
+                <td class="left">DB_CONTEXT</td>
+                <td class="left">the name of the database context</td>
+                <td class="left">ShopDbContext</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>File names</h3>
+    <div>The file name column shows the suggested file name for the particular building block, where:</div>
+    <table>
+        <tbody>
+            <tr>
+                <td class="left">===</td>
+                <td class="left">represents the root model name</td>
+            </tr>
+            <tr>
+                <td class="left">---</td>
+                <td class="left">represents the child model name</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

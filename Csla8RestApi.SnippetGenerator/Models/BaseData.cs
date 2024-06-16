@@ -9,5 +9,6 @@ namespace Csla8RestApi.SnippetGenerator.Models
         public List<TemplateSource> TemplateSources { get; set; }
         public string SnippetTemplate { get; set; }
         public string LiteralTemplate { get; set; }
+        public List<Category> Summary { get; set; }
     }
 }

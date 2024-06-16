@@ -76,6 +76,9 @@ namespace Csla8RestApi.SnippetGenerator
                 data.TestBasePath, snippetMap.TargetFolder, Path.GetFileName(snippetMapPath)
                 );
             SaveFile(testMapPath, testMap);
+
+            // Add summary.
+            AddSummary(data, snippetMap);
         }
 
         private static SnippetMap GetMap(
@@ -252,6 +255,55 @@ namespace Csla8RestApi.SnippetGenerator
         {
             var length = Math.Max(text.Length + 1, 16);
             return (text + new string(' ', 20)).Substring(0, length);
+        }
+
+        private static void AddSummary(
+            BaseData data,
+            SnippetMap snippetMap
+            )
+        {
+            var snippetBrief = new SnippetBrief();
+            snippetBrief.Title = snippetMap.Title;
+            snippetBrief.Shortcut = snippetMap.Shortcut;
+            snippetBrief.FileName = snippetMap.FileName;
+
+            foreach (var textSwap in snippetMap.TextSwaps)
+            {
+                switch (textSwap.To)
+                {
+                    case "root_name":
+                        snippetBrief.RootName = true;
+                        break;
+                    case "ROOT_MODEL":
+                        snippetBrief.RootModel = true;
+                        break;
+                    case "root_variable":
+                        snippetBrief.RootVariable = true;
+                        break;
+                    case "child_name":
+                        snippetBrief.ChildName = true;
+                        break;
+                    case "CHILD_MODEL":
+                        snippetBrief.ChildModel = true;
+                        break;
+                    case "child_variable":
+                        snippetBrief.ChildVariable = true;
+                        break;
+                    case "command_name":
+                        snippetBrief.CommandName = true;
+                        break;
+                    case "COMMAND_MODEL":
+                        snippetBrief.CommandModel = true;
+                        break;
+                    case "DB_CONTEXT":
+                        snippetBrief.DbContext = true;
+                        break;
+                }
+            }
+
+            var category = data.Summary.Find(o => o.CategoryCode == snippetMap.Shortcut.Substring(2, 1));
+            var model = category!.Models.Find(o => o.ModelCode == snippetMap.Shortcut.Substring(2, 2));
+            model!.Snippets.Add(snippetBrief);
         }
     }
 }
