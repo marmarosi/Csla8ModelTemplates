@@ -1,7 +1,7 @@
 Source:         Arrangement\Full\ArrangedTeamListItem.cs
 Title:          Model | Read-only sorted-paginated list item
 Description:    Implements a read-only child model.
-Shortcut:       c8afci
+Shortcut:       c8axci
 Test:           Model | ===ListItem
 
 /// team:           root_name     | product

@@ -1,7 +1,7 @@
 Source:         Arrangement\Full\ArrangedTeamListDal.cs
 Title:          DAL | Read-only sorted-paginated list
 Description:    Implements the data access of the read-only root model.
-Shortcut:       c8afrmd
+Shortcut:       c8axrmd
 Test:           DAL | ===ListDal
 
 /// team:           root_name     | product

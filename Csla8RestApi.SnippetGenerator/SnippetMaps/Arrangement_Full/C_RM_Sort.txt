@@ -1,7 +1,7 @@
 Source:         Arrangement\Full\ArrangedTeamListSortBy.cs
 Title:          Contract | Sorting enumeration
 Description:    Defines the options of sorting.
-Shortcut:       c8afrms
+Shortcut:       c8axrms
 Test:           Contract | ===ListSortBy
 
 /// team:       root_name  | product

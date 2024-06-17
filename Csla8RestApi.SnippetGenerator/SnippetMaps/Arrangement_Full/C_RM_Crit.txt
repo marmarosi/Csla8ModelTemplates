@@ -1,7 +1,7 @@
 Source:         Arrangement\Full\ArrangedTeamListCriteria.cs
 Title:          Contract | Read-only sorted-paginated list criteria
 Description:    Defines the criteria of a read-only root model.
-Shortcut:       c8afrmc
+Shortcut:       c8axrmc
 Test:           Contract | ===ListCriteria
 
 /// team:       root_name  | product

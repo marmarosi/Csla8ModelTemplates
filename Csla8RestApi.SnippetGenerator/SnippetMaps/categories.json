@@ -50,8 +50,8 @@
         "Snippets": []
       },
       {
-        "ModelCode": "af",
-        "ModelName": "Full List",
+        "ModelCode": "ax",
+        "ModelName": "Sorted-Paginated List",
         "Snippets": []
       }
     ]

@@ -46,8 +46,9 @@ namespace Csla8RestApi.SnippetGenerator
             var source = string.Join("\r\n", sourceLines);
 
             // Compose and save snippet.
+            var model = GetModel(data, snippetMap);
             var snippet = data.SnippetTemplate
-                .Replace("$title$", snippetMap.Title)
+                .Replace("$title$", $"{model.ModelName} \u25CF {snippetMap.Title}")
                 .Replace("$author$", data.Author)
                 .Replace("$description$", snippetMap.Description)
                 .Replace("$shortcut$", snippetMap.Shortcut)
@@ -301,9 +302,20 @@ namespace Csla8RestApi.SnippetGenerator
                 }
             }
 
+            //var category = data.Summary.Find(o => o.CategoryCode == snippetMap.Shortcut.Substring(2, 1));
+            //var model = category!.Models.Find(o => o.ModelCode == snippetMap.Shortcut.Substring(2, 2));
+            var model = GetModel(data, snippetMap);
+            model!.Snippets.Add(snippetBrief);
+        }
+
+        private static Model GetModel(
+            BaseData data,
+            SnippetMap snippetMap
+            )
+        {
             var category = data.Summary.Find(o => o.CategoryCode == snippetMap.Shortcut.Substring(2, 1));
             var model = category!.Models.Find(o => o.ModelCode == snippetMap.Shortcut.Substring(2, 2));
-            model!.Snippets.Add(snippetBrief);
+            return model!;
         }
     }
 }
