@@ -22,8 +22,10 @@ namespace Csla8ModelTemplates.Dal.Firebird
             string contentRootPath
             )
         {
-            Thread.Sleep(60);
-            context.Database.Migrate();
+            Console.WriteLine("Waiting 10 seconds for the Firebird server to start...");
+            Thread.Sleep(10000);
+            Console.WriteLine("Initializing the Firebird database...");
+            await context.Database.MigrateAsync();
 
             await DeleteAllData(context);
 

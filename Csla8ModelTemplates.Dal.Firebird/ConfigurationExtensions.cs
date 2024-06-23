@@ -57,7 +57,7 @@ namespace Csla8ModelTemplates.Configuration
             Exception ex
             )
         {
-            return ex is FbException && (ex as FbException).ErrorCode == 40001;
+            return ex is FbException && (ex as FbException)?.ErrorCode == 40001;
             //if (ex is FbException)
             //{
             //    switch ((ex as FbException).ErrorCode)

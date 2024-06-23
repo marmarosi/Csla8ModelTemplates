@@ -28,13 +28,33 @@ namespace Csla8RestApi.Dal.Contracts
         /// <param name="model">The type of the business model.</param>
         /// <param name="key">The key of the business object.</param>
         /// <returns>The hash ID.</returns>
-        public static string Encode(
+        public static string? Encode(
             string model,
             long? key
             )
         {
+            if (key == null)
+                return null;
+            else
+            {
+                var hashids = GetHashids(model);
+                return hashids.EncodeLong(key.Value);
+            }
+        }
+
+        /// <summary>
+        /// Encodes the provided key into a hash string.
+        /// </summary>
+        /// <param name="model">The type of the business model.</param>
+        /// <param name="key">The key of the business object.</param>
+        /// <returns>The hash ID.</returns>
+        public static string Encode(
+            string model,
+            long key
+            )
+        {
             var hashids = GetHashids(model);
-            return hashids.EncodeLong(key ?? 0);
+            return hashids.EncodeLong(key);
         }
 
         /// <summary>
@@ -58,6 +78,22 @@ namespace Csla8RestApi.Dal.Contracts
                     return null;
                 return keys[0] == 0 ? null : (long?)keys[0];
             }
+        }
+
+        /// <summary>
+        /// Decodes the provided hash string into key.
+        /// </summary>
+        /// <param name="model">The type of the business model.</param>
+        /// <param name="hashid">The hash ID.</param>
+        /// <returns>The key of the business object.</returns>
+        public static long DecodeNotNull(
+            string model,
+            string hashid
+            )
+        {
+            var hashids = GetHashids(model);
+            var keys = hashids.DecodeLong(hashid);
+            return keys.Length == 0 ? 0 :keys[0];
         }
     }
 }

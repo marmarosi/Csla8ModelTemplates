@@ -22,8 +22,10 @@ namespace Csla8ModelTemplates.Dal.MySql
             string contentRootPath
             )
         {
-            Thread.Sleep(60);
-            context.Database.Migrate();
+            Console.WriteLine("Waiting 10 seconds for the MySQL server to start...");
+            Thread.Sleep(10000);
+            Console.WriteLine("Initializing the MySQL database...");
+            await context.Database.MigrateAsync();
 
             await DeleteAllData(context);
             await ReseedAllTables(context);

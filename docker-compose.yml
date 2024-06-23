@@ -1,38 +1,33 @@
 # Create a volume for the database container to ensure data persists after the container is stopped.
 volumes:
-  mysql-80:
+  sqlserver-2022:
 
 services:
   # Database Service
-  csla8mt-mysql.database:
-    container_name: mysql-80
-    # Pull the latest MySQL image.
-    image: mysql:8.0.22
-    # Map port 3306 on the MySQL container to port 3306 in the host.
+  csla8mt-sqlserver.database:
+    container_name: sqlserver-2022
+    # Build the container.
+    image: sqlserver:2022
+    build: ./Setup/SQLServer
+    # Map port 1433 on the SQL Server container to port 1433 in the host.
     ports:
-      - "3306:3306"
+      - "1433:1433"
     # Specify where the persisted data should be stored.
     volumes:
-      - mysql-80:/var/lib/mysql
+      - sqlserver-2022:/var/opt/mssql
     restart: always
-    # Specify environment variables for MySQL.
-    environment: 
-      MYSQL_ROOT_PASSWORD: v%gRTNEQV$
-      MYSQL_USER: csla8mt
-      MYSQL_PASSWORD: 1raCRcojsu8h5Qx1
-      MYSQL_DATABASE: Csla8mt
   # API Service
-  csla8mt-mysql.webapi:
-    container_name: csla8mt-mysql
+  csla8mt-sqlserver.webapi:
+    container_name: csla8mt-sqlserver
     # Pull the latest Web API image.
-    image: csla8mt.mysql
+    image: csla8mt-sqlserver
     build:
       context: .
-      # Use the Docker file in that Directory.
+      # Use the Docker file in that directory.
       dockerfile: Csla8ModelTemplates.WebApi/Dockerfile
     # This service depends on the database service specifed above.
     depends_on: 
-      - csla8mt-mysql.database
+      - csla8mt-sqlserver.database
     # Map port 80 in the API container to port 8080 in the host
     # Map port 443 in the API container to port 8081 in the host
     ports:
@@ -41,14 +36,12 @@ services:
     restart: always
     # Specify environment variables for the API service.
     environment: 
-      - DBHOST=database
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Development.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
-      - MYSQL_CONNSTR=server=csla8mt-mysql.database;uid=csla8mt;pwd=1raCRcojsu8h5Qx1;database=Csla8mt
+      - SQLSERVER_CONNSTR=Server=csla8mt-sqlserver.database;Initial Catalog=Csla8mt;User Id=csla8mt;Password=iYJdR7exyFSuA;Trust Server Certificate=True
     volumes:
-      # ${APPDATA}/Certificates:/https/
       - ./Https:/https/:ro

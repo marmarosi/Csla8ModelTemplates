@@ -22,8 +22,10 @@ namespace Csla8ModelTemplates.Dal.SqlServer
             string contentRootPath
             )
         {
-            Thread.Sleep(30);
-            context.Database.Migrate();
+            Console.WriteLine("Waiting 10 seconds for the SQL Server to start...");
+            Thread.Sleep(10000);
+            Console.WriteLine("Initializing the SQL Server database...");
+            await context.Database.MigrateAsync();
 
             await DeleteAllData(context);
             await ReseedAllTables(context);
