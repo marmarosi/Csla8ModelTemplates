@@ -18,9 +18,9 @@ namespace Csla8ModelTemplates.Contracts
             var lines = File.ReadAllLines(path);
             foreach (var line in lines)
             {
-                var values = line.Split(':');
-                var name = values[0].Trim();
-                var value = values[1].Trim();
+                var pos = line.IndexOf(':');
+                var name = line.Substring(0, pos).Trim();
+                var value = line.Substring(pos + 1).Trim();
                 _data.Add($"{name}.name", $"{name.ToUpper()}_CONNSTR");
                 _data.Add($"{name}.value", $"{value}");
             }

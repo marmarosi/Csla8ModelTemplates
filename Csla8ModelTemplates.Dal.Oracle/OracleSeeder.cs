@@ -28,6 +28,7 @@ namespace Csla8ModelTemplates.Dal.Oracle
             await context.Database.MigrateAsync();
 
             await DeleteAllData(context);
+            await ReseedAllTables(context);
 
             await CreateTeamsPlayers(context);
             await CreateGroupsPersons(context);
@@ -88,6 +89,21 @@ namespace Csla8ModelTemplates.Dal.Oracle
 
             context.Folders.RemoveRange(delFolders);
             await context.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Reseed all tables
+
+        private static async Task ReseedAllTables(
+            OracleContext context
+            )
+        {
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Teams\" MODIFY \"TeamKey\" GENERATED ALWAYS AS IDENTITY RESTART START WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Players\" MODIFY \"PlayerKey\" GENERATED ALWAYS AS IDENTITY RESTART START WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Groups\" MODIFY \"GroupKey\" GENERATED ALWAYS AS IDENTITY RESTART START WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Persons\" MODIFY \"PersonKey\" GENERATED ALWAYS AS IDENTITY RESTART START WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Folders\" MODIFY \"FolderKey\" GENERATED ALWAYS AS IDENTITY RESTART START WITH 1;");
         }
 
         #endregion
