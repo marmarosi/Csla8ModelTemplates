@@ -28,6 +28,7 @@ namespace Csla8ModelTemplates.Dal.PostgreSql
             await context.Database.MigrateAsync();
 
             await DeleteAllData(context);
+            await ReseedAllTables(context);
 
             await CreateTeamsPlayers(context);
             await CreateGroupsPersons(context);
@@ -88,6 +89,21 @@ namespace Csla8ModelTemplates.Dal.PostgreSql
 
             context.Folders.RemoveRange(delFolders);
             await context.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Reseed all tables
+
+        private static async Task ReseedAllTables(
+            PostgreSqlContext context
+            )
+        {
+            await context.Database.ExecuteSqlRawAsync("ALTER SEQUENCE \"Teams_TeamKey_seq\" RESTART WITH 1");
+            await context.Database.ExecuteSqlRawAsync("ALTER SEQUENCE \"Players_PlayerKey_seq\" RESTART WITH 1");
+            await context.Database.ExecuteSqlRawAsync("ALTER SEQUENCE \"Groups_GroupKey_seq\" RESTART WITH 1");
+            await context.Database.ExecuteSqlRawAsync("ALTER SEQUENCE \"Persons_PersonKey_seq\" RESTART WITH 1");
+            await context.Database.ExecuteSqlRawAsync("ALTER SEQUENCE \"Folders_FolderKey_seq\" RESTART WITH 1");
         }
 
         #endregion
