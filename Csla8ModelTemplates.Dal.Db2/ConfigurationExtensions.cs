@@ -5,7 +5,6 @@ using Csla8RestApi.Dal;
 using IBM.Data.Db2;
 using IBM.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,7 +33,7 @@ namespace Csla8ModelTemplates.Configuration
                 configuration = ConfigurationCreator.Create();
             }
             services.AddDbContext<Db2Context>(options =>
-                options.UseDb2(configuration.GetValue<string>("SQLSERVER_CONNSTR")!, null)
+                options.UseDb2(configuration.GetValue<string>("DB2_CONNSTR")!, null)
                 );
 
             // Configure data access layer.

@@ -22,8 +22,7 @@ namespace Csla8ModelTemplates.Dal.Db2
             )
         {
             IConfiguration configuration = ConfigurationCreator.Create();
-            var connectionString = configuration.GetConnectionString(DAL.DB2)!
-                .Replace("csla8mt.database", "localhost");
+            var connectionString = configuration.GetValue<string>("DB2_CONNSTR")!;
             var assemblyName = GetType().Assembly.GetName().Name;
 
             return new Db2Context(
