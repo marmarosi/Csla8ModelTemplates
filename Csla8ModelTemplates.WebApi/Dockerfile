@@ -18,6 +18,7 @@ COPY ["Csla8ModelTemplates.Dal.Firebird/Csla8ModelTemplates.Dal.Firebird.csproj"
 COPY ["Csla8ModelTemplates.Dal.MySql/Csla8ModelTemplates.Dal.MySql.csproj", "Csla8ModelTemplates.Dal.MySql/"]
 COPY ["Csla8ModelTemplates.Dal.Oracle/Csla8ModelTemplates.Dal.Oracle.csproj", "Csla8ModelTemplates.Dal.Oracle/"]
 COPY ["Csla8ModelTemplates.Dal.PostgreSql/Csla8ModelTemplates.Dal.PostgreSql.csproj", "Csla8ModelTemplates.Dal.PostgreSql/"]
+COPY ["Csla8ModelTemplates.Dal.Sqlite/Csla8ModelTemplates.Dal.Sqlite.csproj", "Csla8ModelTemplates.Dal.Sqlite/"]
 COPY ["Csla8ModelTemplates.Dal.SqlServer/Csla8ModelTemplates.Dal.SqlServer.csproj", "Csla8ModelTemplates.Dal.SqlServer/"]
 COPY ["Csla8ModelTemplates.Models/Csla8ModelTemplates.Models.csproj", "Csla8ModelTemplates.Models/"]
 COPY ["Csla8ModelTemplates.WebApi/Csla8ModelTemplates.WebApi.csproj", "Csla8ModelTemplates.WebApi/"]

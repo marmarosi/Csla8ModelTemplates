@@ -45,9 +45,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     case DAL.PostgreSQL:
                         services.AddPostgreSqlDal(_configuration, detector);
                         break;
-                    //case DAL.SQLite:
-                    //    services.AddSqliteDal(detector);
-                    //    break;
+                    case DAL.SQLite:
+                        services.AddSqliteDal(_configuration, detector);
+                        break;
                     case DAL.SQLServer:
                         services.AddSqlServerDal(_configuration, detector);
                         break;
@@ -87,9 +87,9 @@ namespace Csla8ModelTemplates.WebApi.Extensions
                     case DAL.PostgreSQL:
                         await app.RunPostgreSqlSeeders(isDevelopment, contentRootPath);
                         break;
-                    //case DAL.SQLite:
-                    //    await app.RunSqliteSeeders(isDevelopment, contentRootPath);
-                    //    break;
+                    case DAL.SQLite:
+                        await app.RunSqliteSeeders(isDevelopment, contentRootPath);
+                        break;
                     case DAL.SQLServer:
                         await app.RunSqlServerSeeders(isDevelopment, contentRootPath);
                         break;
