@@ -19,9 +19,9 @@
     <NoWarn>1701;1702;S125</NoWarn>
   </PropertyGroup>
 
-    <PropertyGroup>
-        <ProcessorArchitecture>amd64</ProcessorArchitecture>
-    </PropertyGroup>
+  <PropertyGroup>
+    <ProcessorArchitecture>amd64</ProcessorArchitecture>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Csla" Version="8.2.4" />

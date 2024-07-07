@@ -21,8 +21,7 @@ namespace Csla8ModelTemplates.Dal.Firebird
             )
         {
             IConfiguration configuration = ConfigurationCreator.Create();
-            var connectionString = configuration.GetConnectionString(DAL.Firebird)!
-                .Replace("csla8mt.database", "localhost");
+            var connectionString = configuration.GetValue<string>("FIREBIRD_CONNSTR")!;
             var assemblyName = GetType().Assembly.GetName().Name;
 
             return new FirebirdContext(

@@ -1,12 +1,11 @@
-version: '3.4'
-
 # Create a volume for the database container to ensure data persists after the container is stopped.
 volumes:
-  datafiles:
+  firebird-50:
 
 services:
   # Database Service
-  csla8modeltemplates.database:
+  csla8mt-firebird.database:
+    container_name: firebird-50
     # Pull the latest Firebird image.
     image: jacobalberty/firebird:v5.0
     # Map port 3050 on the Firebird container to port 3050 in the host.
@@ -14,7 +13,7 @@ services:
       - "3050:3050"
     # Specify where the persisted data should be stored.
     volumes:
-      - firebird:/firebird
+      - firebird-50:/firebird
     restart: always
     # Specify environment variables for Firebird.
     environment: 
@@ -23,29 +22,31 @@ services:
       FIREBIRD_PASSWORD: SsEsEu5g6Vh
       FIREBIRD_DATABASE: Csla8mt
   # API Service
-  csla8modeltemplates.webapi:
-    image: ${DOCKER_REGISTRY-}csla8modeltemplateswebapi
+  csla8mt-firebird.webapi:
+    container_name: csla8mt-firebird
+    # Pull the latest Web API image.
+    image: csla8mt-firebird
     build:
       context: .
       # Use the Docker file in that Directory.
       dockerfile: Csla8ModelTemplates.WebApi/Dockerfile
     # This service depends on the database service specifed above.
     depends_on: 
-      - csla8modeltemplates.database
-    # Map port 8888 in the API container to port 80 in the Api
+      - csla8mt-firebird.database
+    # Map port 80 in the API container to port 8080 in the host
+    # Map port 443 in the API container to port 8081 in the host
     ports:
       - "8080:80"
       - "8081:443"
-    restart: always
+    #restart: always
     # Specify environment variables for the API service.
     environment: 
-      - DBHOST=database
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Development.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
-      - FIREBIRD_CONNSTR=DataSource=csla8mt.database;Database=/firebird/data/Csla8mt;Port=3050;User=csla8mt;Password=SsEsEu5g6Vh;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0
+      - FIREBIRD_CONNSTR=DataSource=csla8mt-firebird.database;Database=/firebird/data/Csla8mt;Port=3050;User=csla8mt;Password=SsEsEu5g6Vh;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0
     volumes:
-      - ${APPDATA}/Certificates:/https/
+      - ./Https:/https/:ro

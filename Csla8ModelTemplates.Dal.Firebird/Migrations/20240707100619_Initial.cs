@@ -1,12 +1,13 @@
-using System;
+﻿using System;
+using FirebirdSql.EntityFrameworkCore.Firebird.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
+namespace Csla8ModelTemplates.Dal.Firebird.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,13 +16,13 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 name: "Folders",
                 columns: table => new
                 {
-                    FolderKey = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ParentKey = table.Column<long>(type: "INTEGER", nullable: true),
-                    RootKey = table.Column<long>(type: "INTEGER", nullable: true),
+                    FolderKey = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Fb:ValueGenerationStrategy", FbValueGenerationStrategy.IdentityColumn),
+                    ParentKey = table.Column<long>(type: "BIGINT", nullable: true),
+                    RootKey = table.Column<long>(type: "BIGINT", nullable: true),
                     FolderOrder = table.Column<int>(type: "INTEGER", nullable: true),
-                    FolderName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    Timestamp = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    FolderName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true),
+                    Timestamp = table.Column<string>(type: "VARCHAR(48)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,11 +38,11 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 name: "Groups",
                 columns: table => new
                 {
-                    GroupKey = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    GroupCode = table.Column<string>(type: "TEXT", maxLength: 10, nullable: true),
-                    GroupName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    Timestamp = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    GroupKey = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Fb:ValueGenerationStrategy", FbValueGenerationStrategy.IdentityColumn),
+                    GroupCode = table.Column<string>(type: "VARCHAR(10)", maxLength: 10, nullable: true),
+                    GroupName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true),
+                    Timestamp = table.Column<string>(type: "VARCHAR(48)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,11 +53,11 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 name: "Persons",
                 columns: table => new
                 {
-                    PersonKey = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    PersonCode = table.Column<string>(type: "TEXT", maxLength: 10, nullable: true),
-                    PersonName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    Timestamp = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    PersonKey = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Fb:ValueGenerationStrategy", FbValueGenerationStrategy.IdentityColumn),
+                    PersonCode = table.Column<string>(type: "VARCHAR(10)", maxLength: 10, nullable: true),
+                    PersonName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true),
+                    Timestamp = table.Column<string>(type: "VARCHAR(48)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,12 +68,12 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 name: "Teams",
                 columns: table => new
                 {
-                    TeamKey = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    TeamGuid = table.Column<Guid>(type: "TEXT", nullable: true),
-                    TeamCode = table.Column<string>(type: "TEXT", maxLength: 10, nullable: true),
-                    TeamName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
-                    Timestamp = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    TeamKey = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Fb:ValueGenerationStrategy", FbValueGenerationStrategy.IdentityColumn),
+                    TeamGuid = table.Column<Guid>(type: "CHAR(16) CHARACTER SET OCTETS", nullable: true),
+                    TeamCode = table.Column<string>(type: "VARCHAR(10)", maxLength: 10, nullable: true),
+                    TeamName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true),
+                    Timestamp = table.Column<string>(type: "VARCHAR(48)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,8 +84,8 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 name: "GroupPersons",
                 columns: table => new
                 {
-                    GroupKey = table.Column<long>(type: "INTEGER", nullable: false),
-                    PersonKey = table.Column<long>(type: "INTEGER", nullable: false)
+                    GroupKey = table.Column<long>(type: "BIGINT", nullable: false),
+                    PersonKey = table.Column<long>(type: "BIGINT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,7 +97,7 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                         principalColumn: "GroupKey",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GroupPersons_Persons_PersonKey",
+                        name: "FK_GroupPersons_Persons_Person~",
                         column: x => x.PersonKey,
                         principalTable: "Persons",
                         principalColumn: "PersonKey",
@@ -107,11 +108,11 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 name: "Players",
                 columns: table => new
                 {
-                    PlayerKey = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    TeamKey = table.Column<long>(type: "INTEGER", nullable: true),
-                    PlayerCode = table.Column<string>(type: "TEXT", maxLength: 10, nullable: true),
-                    PlayerName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true)
+                    PlayerKey = table.Column<long>(type: "BIGINT", nullable: false)
+                        .Annotation("Fb:ValueGenerationStrategy", FbValueGenerationStrategy.IdentityColumn),
+                    TeamKey = table.Column<long>(type: "BIGINT", nullable: true),
+                    PlayerCode = table.Column<string>(type: "VARCHAR(10)", maxLength: 10, nullable: true),
+                    PlayerName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -124,7 +125,7 @@ namespace Csla8ModelTemplates.Dal.Sqlite.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Folders_ParentKey_FolderOrder",
+                name: "IX_Folders_ParentKey_FolderOrd~",
                 table: "Folders",
                 columns: new[] { "ParentKey", "FolderOrder" });
 
