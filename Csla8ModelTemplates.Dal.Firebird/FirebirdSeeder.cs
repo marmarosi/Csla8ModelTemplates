@@ -28,6 +28,7 @@ namespace Csla8ModelTemplates.Dal.Firebird
             await context.Database.MigrateAsync();
 
             await DeleteAllData(context);
+            await ReseedAllTables(context);
 
             await CreateTeamsPlayers(context);
             await CreateGroupsPersons(context);
@@ -88,6 +89,21 @@ namespace Csla8ModelTemplates.Dal.Firebird
 
             context.Folders.RemoveRange(delFolders);
             await context.SaveChangesAsync();
+        }
+
+        #endregion
+
+        #region Reseed all tables
+
+        private static async Task ReseedAllTables(
+            FirebirdContext context
+            )
+        {
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Teams\" ALTER COLUMN \"TeamKey\" RESTART WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Players\" ALTER COLUMN \"PlayerKey\" RESTART WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Groups\" ALTER COLUMN \"GroupKey\" RESTART WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Persons\" ALTER COLUMN \"PersonKey\" RESTART WITH 1;");
+            await context.Database.ExecuteSqlRawAsync("ALTER TABLE \"Folders\" ALTER COLUMN \"FolderKey\" RESTART WITH 1;");
         }
 
         #endregion
