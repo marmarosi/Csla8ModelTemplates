@@ -1,0 +1,7 @@
+Snippet:        Controllers\EP_Read.snippet
+Project:        WebApi
+FileName:       ReadController
+
+root_name:      product
+root_variable:  product
+ROOT_MODEL:     Product

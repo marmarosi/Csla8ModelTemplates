@@ -1,0 +1,7 @@
+Snippet:        Controllers\EP_View.snippet
+Project:        WebApi
+FileName:       ViewController
+
+root_name:      product
+root_variable:  product
+ROOT_MODEL:     Product

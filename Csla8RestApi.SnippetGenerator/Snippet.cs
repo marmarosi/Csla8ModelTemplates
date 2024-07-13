@@ -10,6 +10,8 @@ namespace Csla8RestApi.SnippetGenerator
             BaseData data
             )
         {
+            //if (!snippetMapPath.Contains("EP_")) return;
+
             // Get mapping data to convert source to snippet.
             var snippetMap = GetMap(snippetMapPath, data);
             Console.WriteLine(snippetMap.ShortTarget);
@@ -30,7 +32,7 @@ namespace Csla8RestApi.SnippetGenerator
             var literals = sb.ToString();
 
             // Read source.
-            var sourceLines = GetSource(snippetMap.SourcePath);
+            var sourceLines = GetSource(snippetMap.SourcePath, snippetMap.Region);
             foreach (var textSwap in snippetMap.TextSwaps)
                 for (int i = 0; i < sourceLines.Count; i++)
                 {
@@ -105,6 +107,14 @@ namespace Csla8RestApi.SnippetGenerator
                 switch (key)
                 {
                     case "Source":
+                        if (value.Contains('|'))
+                        {
+                            var parts = value.Split('|');
+                            value = parts[0].Trim();
+                            if (value.Length == 0)
+                                continue;
+                            map.Region = parts[1].Trim();
+                        }
                         map.SourcePath = value;
                         map.TargetFolder = GetTargetFolder(value);
                         var targetFile = Path.GetFileNameWithoutExtension(snippetMapPath) + ".snippet";
@@ -202,7 +212,8 @@ namespace Csla8RestApi.SnippetGenerator
         }
 
         private static List<string> GetSource(
-            string sourcePath
+            string sourcePath,
+            string region
             )
         {
             var source = new List<string>();
@@ -210,19 +221,38 @@ namespace Csla8RestApi.SnippetGenerator
             var isContent = false;
             foreach (var line in lines)
             {
-                if (line.StartsWith('{'))
+                if (region?.Length > 0)
                 {
-                    isContent = true;
-                    continue;
+                    if (line.EndsWith($"#region {region}"))
+                    {
+                        isContent = true;
+                    }
+                    if (line.EndsWith("#endregion") && isContent)
+                    {
+                        source.Add(line);
+                        isContent = false;
+                    }
+                    if (isContent)
+                    {
+                        source.Add(line);
+                    }
                 }
-                if (line.StartsWith('}'))
+                else
                 {
-                    isContent = false;
-                    continue;
-                }
-                if (isContent)
-                {
-                    source.Add(line);
+                    if (line.StartsWith('{'))
+                    {
+                        isContent = true;
+                        continue;
+                    }
+                    if (line.StartsWith('}'))
+                    {
+                        isContent = false;
+                        continue;
+                    }
+                    if (isContent)
+                    {
+                        source.Add(line);
+                    }
                 }
             }
             return source;

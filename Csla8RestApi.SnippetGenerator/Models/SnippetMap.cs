@@ -3,6 +3,7 @@ namespace Csla8RestApi.SnippetGenerator.Models
     internal class SnippetMap
     {
         public string SourcePath { get; set; }
+        public string Region { get; set; }
         public string TargetPath { get; set; }
         public string TargetFolder { get; set; }
         public string ShortTarget { get; set; }

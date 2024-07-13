@@ -1,0 +1,7 @@
+Snippet:        Controllers\EP_Create.snippet
+Project:        WebApi
+FileName:       CreateController
+
+root_name:      product
+root_variable:  product
+ROOT_MODEL:     Product

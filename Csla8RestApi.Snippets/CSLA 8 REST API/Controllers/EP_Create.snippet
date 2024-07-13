@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Create Endpoint ● Controller | Create endpoint</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines an endpoint to create a new editable model.</Description>
+            <Shortcut>c8ec</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[#region Create
+
+        /// <summary>
+        /// Creates a new $root_name$.
+        /// </summary>
+        /// <param name="dto">The data transer object of the $root_name$.</param>
+        /// <returns>The created $root_name$.</returns>
+        [HttpPost]
+        [ProducesResponseType(typeof($ROOT_MODEL$Dto), StatusCodes.Status201Created)]
+        public async Task<IActionResult> Create$ROOT_MODEL$(
+            [FromBody] $ROOT_MODEL$Dto dto
+            )
+        {
+            try
+            {
+                return Created(Uri, await RetryOnDeadlock(async () =>
+                {
+                    var $root_variable$ = await $ROOT_MODEL$.BuildAsync(Factory, ChildFactory, dto);
+                    if ($root_variable$.IsValid)
+                    {
+                        $root_variable$ = await $root_variable$.SaveAsync();
+                    }
+                    return $root_variable$.ToDto();
+                }));
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

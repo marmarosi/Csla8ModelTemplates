@@ -1,0 +1,10 @@
+Source:         Controllers\SimpleController.cs | Read
+Title:          Controller | Read endpoint
+Description:    Defines an endpoint to fetch an editable model.
+Shortcut:       c8er
+Test:           WebApi | ReadController
+
+/// team:       root_name     | product
+team:           root_variable | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

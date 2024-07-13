@@ -1,0 +1,7 @@
+Snippet:        Controllers\EP_Update.snippet
+Project:        WebApi
+FileName:       UpdateController
+
+root_name:      product
+root_variable:  product
+ROOT_MODEL:     Product

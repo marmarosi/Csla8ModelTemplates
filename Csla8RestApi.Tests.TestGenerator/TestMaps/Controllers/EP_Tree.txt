@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_Tree.snippet
+Project:        WebApi
+FileName:       TreeController
+
+root_name:      message
+ROOT_MODEL:     Message

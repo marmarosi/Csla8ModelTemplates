@@ -10,7 +10,7 @@
         <Snippet>
             <Code Language="CSharp">
                 <![CDATA[/// <summary>
-    /// Represents the rename $command_name$ command.
+    /// Represents the $command_name$ command.
     /// </summary>
     [Serializable]
     public class $COMMAND_MODEL$ : CommandBase<$COMMAND_MODEL$>
@@ -76,10 +76,10 @@
         #region Factory Methods
 
         /// <summary>
-        /// Executes the rename $command_name$ command.
+        /// Executes the $command_name$ command.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="dto">The data transer object of the rename $command_name$ command.</param>
+        /// <param name="dto">The data transer object of the $command_name$ command.</param>
         /// <returns>The command instance.</returns>
         public static async Task<$COMMAND_MODEL$> ExecuteAsync(
             IDataPortalFactory factory,

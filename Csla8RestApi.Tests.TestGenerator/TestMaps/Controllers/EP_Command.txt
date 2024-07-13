@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_Command.snippet
+Project:        WebApi
+FileName:       CommandController
+
+command_name:   clear product
+COMMAND_MODEL:  ClearProduct

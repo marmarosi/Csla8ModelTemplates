@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Delete Endpoint ● Controller | Delete endpoint</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines an endpoint to delete an editable model.</Description>
+            <Shortcut>c8ed</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[#region Delete
+
+        /// <summary>
+        /// Deletes the specified $root_name$.
+        /// </summary>
+        /// <param name="$root_name$Id">The identifier of the $root_name$.</param>
+        [HttpDelete("{$root_variable$Id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Delete$ROOT_MODEL$(
+            string $root_variable$Id
+            )
+        {
+            try
+            {
+                await RetryOnDeadlock(async () =>
+                {
+                    await $ROOT_MODEL$.DeleteAsync(Factory, $root_variable$Id);
+                });
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
