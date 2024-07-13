@@ -1,0 +1,32 @@
+using Csla8RestApi.Models.Utilities;
+using Csla8RestApi.Tests.Contracts.Simple.Set;
+using Csla8RestApi.Tests.Models.Simple.Set;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Csla8RestApi.Tests.WebApi.Controllers
+{
+    /// <summary>
+    /// Contains the API endpoint for update set.
+    /// </summary>
+    [Route("api/update-set")]
+    [ApiController]
+    public class UpdateSetController : ApiController
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Creates a new instance.
+        /// </summary>
+        /// <param name="logger">The application logging service.</param>
+        /// <param name="csla">The CSLA helper service.</param>
+        public UpdateSetController(
+            ILogger<UpdateSetController> logger,
+            ICslaService csla
+            ) : base(logger, csla)
+        { }
+
+        #endregion
+
+        $snippet$
+    }
+}

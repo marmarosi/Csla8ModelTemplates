@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | New
 Title:          Controller | New endpoint
 Description:    Defines an endpoint to fetch a new editable model.
-Shortcut:       c8en
+Shortcut:       c8epn
 Test:           WebApi | NewController
 
 /// team:       root_name     | product

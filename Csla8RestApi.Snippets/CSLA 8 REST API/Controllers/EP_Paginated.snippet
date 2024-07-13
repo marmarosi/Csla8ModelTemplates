@@ -2,10 +2,10 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>Paginated List Endpoint ● Controller | Paginated list endpoint</Title>
+            <Title>Controller ● Controller | Paginated list endpoint</Title>
             <Author>Mármarosi József</Author>
             <Description>Defines an endpoint to fetch a read-only paginated collection.</Description>
-            <Shortcut>c8ep</Shortcut>
+            <Shortcut>c8epp</Shortcut>
         </Header>
         <Snippet>
             <Code Language="CSharp">
@@ -17,15 +17,15 @@
         /// <param name="criteria">The criteria of the $root_name$ list.</param>
         /// <returns>The requested page of the $root_name$ list.</returns>
         [HttpGet("paginated")]
-        [ProducesResponseType(typeof(PaginatedList<Paginated$ROOT_MODEL$ListItemDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetPaginated$ROOT_MODEL$List(
-            [FromQuery] Paginated$ROOT_MODEL$ListCriteria criteria
+        [ProducesResponseType(typeof(PaginatedList<$ROOT_MODEL$ListItemDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get$ROOT_MODEL$List(
+            [FromQuery] $ROOT_MODEL$ListCriteria criteria
             )
         {
             try
             {
-                var list = await Paginated$ROOT_MODEL$List.GetAsync(Factory, criteria);
-                return Ok(list.ToDto<PaginatedList<Paginated$ROOT_MODEL$ListItemDto>>());
+                var list = await $ROOT_MODEL$List.GetAsync(Factory, criteria);
+                return Ok(list.ToDto<PaginatedList<$ROOT_MODEL$ListItemDto>>());
             }
             catch (Exception ex)
             {

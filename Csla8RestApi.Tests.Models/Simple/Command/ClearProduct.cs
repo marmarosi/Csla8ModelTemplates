@@ -7,7 +7,7 @@ using Csla8RestApi.Tests.Contracts.Simple.Command;
 namespace Csla8RestApi.Tests.Models.Simple.Command
 {
     /// <summary>
-    /// Represents the rename clear product command.
+    /// Represents the clear product command.
     /// </summary>
     [Serializable]
     public class ClearProduct : CommandBase<ClearProduct>
@@ -73,10 +73,10 @@ namespace Csla8RestApi.Tests.Models.Simple.Command
         #region Factory Methods
 
         /// <summary>
-        /// Executes the rename clear product command.
+        /// Executes the clear product command.
         /// </summary>
         /// <param name="factory">The data portal factory.</param>
-        /// <param name="dto">The data transer object of the rename clear product command.</param>
+        /// <param name="dto">The data transer object of the clear product command.</param>
         /// <returns>The command instance.</returns>
         public static async Task<ClearProduct> ExecuteAsync(
             IDataPortalFactory factory,

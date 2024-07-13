@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | Command
 Title:          Controller | Command endpoint
 Description:    Defines an endpoint to execute a command model.
-Shortcut:       c8em
+Shortcut:       c8epm
 Test:           WebApi | CommandController
 
 /// rename team:    command_name  | clear product

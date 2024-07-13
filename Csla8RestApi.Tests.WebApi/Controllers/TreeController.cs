@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Csla8RestApi.Tests.WebApi.Controllers
 {
     /// <summary>
-    /// Contains the API endpoints for messages.
+    /// Contains the API endpoint for tree.
     /// </summary>
-    [Route("api/message")]
+    [Route("api/tree")]
     [ApiController]
-    public class MessageController : ApiController
+    public class TreeController : ApiController
     {
         #region Constructor
 
@@ -19,8 +19,8 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// </summary>
         /// <param name="logger">The application logging service.</param>
         /// <param name="csla">The CSLA helper service.</param>
-        public MessageController(
-            ILogger<MessageController> logger,
+        public TreeController(
+            ILogger<TreeController> logger,
             ICslaService csla
             ) : base(logger, csla)
         { }

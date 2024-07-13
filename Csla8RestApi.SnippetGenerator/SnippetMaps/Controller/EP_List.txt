@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | List
 Title:          Controller | List endpoint
 Description:    Defines an endpoint to fetch a read-only collection.
-Shortcut:       c8el
+Shortcut:       c8epl
 Test:           WebApi | ListController
 
 /// team:       root_name     | product

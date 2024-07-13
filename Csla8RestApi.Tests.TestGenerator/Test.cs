@@ -82,7 +82,7 @@ namespace Csla8RestApi.Tests.TestGenerator
                             case "Model":
                                 testMap.TestPath = data.ModelBasePath;
                                 break;
-                            case "Controller":
+                            case "WebApi":
                                 testMap.TestPath = data.ControllerBasePath;
                                 break;
                         }

@@ -10,8 +10,6 @@ namespace Csla8RestApi.SnippetGenerator
             BaseData data
             )
         {
-            //if (!snippetMapPath.Contains("EP_")) return;
-
             // Get mapping data to convert source to snippet.
             var snippetMap = GetMap(snippetMapPath, data);
             Console.WriteLine(snippetMap.ShortTarget);
@@ -296,7 +294,9 @@ namespace Csla8RestApi.SnippetGenerator
             var snippetBrief = new SnippetBrief();
             snippetBrief.Title = snippetMap.Title;
             snippetBrief.Shortcut = snippetMap.Shortcut;
-            snippetBrief.FileName = snippetMap.FileName;
+            snippetBrief.FileName = snippetMap.Region?.Length > 0
+                ? "===Controller"
+                : snippetMap.FileName;
 
             foreach (var textSwap in snippetMap.TextSwaps)
             {
@@ -332,8 +332,6 @@ namespace Csla8RestApi.SnippetGenerator
                 }
             }
 
-            //var category = data.Summary.Find(o => o.CategoryCode == snippetMap.Shortcut.Substring(2, 1));
-            //var model = category!.Models.Find(o => o.ModelCode == snippetMap.Shortcut.Substring(2, 2));
             var model = GetModel(data, snippetMap);
             model!.Snippets.Add(snippetBrief);
         }

@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | Delete
 Title:          Controller | Delete endpoint
 Description:    Defines an endpoint to delete an editable model.
-Shortcut:       c8ed
+Shortcut:       c8epd
 Test:           WebApi | DeleteController
 
 /// team:       root_name     | product

@@ -4,63 +4,8 @@
     "CategoryName": "Endpoints",
     "Models": [
       {
-        "ModelCode": "el",
-        "ModelName": "List Endpoint",
-        "Snippets": []
-      },
-      {
         "ModelCode": "ep",
-        "ModelName": "Paginated List Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "ev",
-        "ModelName": "View Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "en",
-        "ModelName": "New Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "ec",
-        "ModelName": "Create Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "er",
-        "ModelName": "Read Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "eu",
-        "ModelName": "Update Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "ed",
-        "ModelName": "Delete Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "em",
-        "ModelName": "Command Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "et",
-        "ModelName": "Tree Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "eq",
-        "ModelName": "Read Set Endpoint",
-        "Snippets": []
-      },
-      {
-        "ModelCode": "es",
-        "ModelName": "Update Set Endpoint",
+        "ModelName": "Controller",
         "Snippets": []
       }
     ]

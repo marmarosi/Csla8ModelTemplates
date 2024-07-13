@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | View
 Title:          Controller | View endpoint
 Description:    Defines an endpoint to fetch a read-only model.
-Shortcut:       c8ev
+Shortcut:       c8epv
 Test:           WebApi | ViewController
 
 /// team:       root_name     | product

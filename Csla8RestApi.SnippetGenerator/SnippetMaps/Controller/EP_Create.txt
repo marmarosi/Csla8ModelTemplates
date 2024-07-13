@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | Create
 Title:          Controller | Create endpoint
 Description:    Defines an endpoint to create a new editable model.
-Shortcut:       c8ec
+Shortcut:       c8epc
 Test:           WebApi | CreateController
 
 /// team:       root_name     | product

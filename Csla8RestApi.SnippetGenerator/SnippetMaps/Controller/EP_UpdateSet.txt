@@ -1,7 +1,7 @@
 Source:         Controllers\SimpleController.cs | Update-Set
 Title:          Controller | Update set endpoint
 Description:    Defines an endpoint to update an editable collection.
-Shortcut:       c8es
+Shortcut:       c8eps
 Test:           WebApi | UpdateSetController
 
 /// team:       root_name     | product
