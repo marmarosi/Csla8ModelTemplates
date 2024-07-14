@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_ChoiceCode.snippet
+Project:        WebApi
+FileName:       ChoiceWithCodeController
+
+root_name:      product
+ROOT_MODEL:     Product

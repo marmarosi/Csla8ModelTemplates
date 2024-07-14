@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_ChoiceKey.snippet
+Project:        WebApi
+FileName:       ChoiceWithKeyController
+
+root_name:      product
+ROOT_MODEL:     Product

@@ -1,15 +1,15 @@
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Tests.Models.Simple.Edit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csla8RestApi.Tests.WebApi.Controllers
 {
     /// <summary>
-    /// Contains the API endpoint for delete.
+    /// Contains the API endpoints for products.
     /// </summary>
-    [Route("api/delete")]
+    [Route("api/Product")]
     [ApiController]
-    public class DeleteController : ApiController
+    [Produces("application/json")]
+    public class ProductController : ApiController
     {
         #region Constructor
 
@@ -18,14 +18,13 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// </summary>
         /// <param name="logger">The application logging service.</param>
         /// <param name="csla">The CSLA helper service.</param>
-        public DeleteController(
-            ILogger<DeleteController> logger,
+        public ProductController(
+            ILogger<ProductController> logger,
             ICslaService csla
             ) : base(logger, csla)
         { }
 
         #endregion
 
-        $snippet$
     }
 }

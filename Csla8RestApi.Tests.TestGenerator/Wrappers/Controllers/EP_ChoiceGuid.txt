@@ -1,15 +1,17 @@
+using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Tests.Models.Simple.Edit;
+using Csla8RestApi.Tests.Contracts.Selection.WithGuid;
+using Csla8RestApi.Tests.Models.Selection.WithGuid;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csla8RestApi.Tests.WebApi.Controllers
 {
     /// <summary>
-    /// Contains the API endpoint for delete.
+    /// Contains the API endpoint for choice with Guid.
     /// </summary>
-    [Route("api/delete")]
+    [Route("api/with-guid")]
     [ApiController]
-    public class DeleteController : ApiController
+    public class ChoiceWithGuidController : ApiController
     {
         #region Constructor
 
@@ -18,8 +20,8 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// </summary>
         /// <param name="logger">The application logging service.</param>
         /// <param name="csla">The CSLA helper service.</param>
-        public DeleteController(
-            ILogger<DeleteController> logger,
+        public ChoiceWithGuidController(
+            ILogger<ChoiceWithGuidController> logger,
             ICslaService csla
             ) : base(logger, csla)
         { }

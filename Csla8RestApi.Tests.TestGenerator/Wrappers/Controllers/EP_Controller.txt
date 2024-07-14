@@ -1,0 +1,7 @@
+using Csla8RestApi.Models.Utilities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Csla8RestApi.Tests.WebApi.Controllers
+{
+    $snippet$
+}

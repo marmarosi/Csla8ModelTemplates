@@ -133,7 +133,12 @@
     <None Include="CSLA 8 REST API\Complex_View\M_CC.snippet" />
     <None Include="CSLA 8 REST API\Complex_View\M_CI.snippet" />
     <None Include="CSLA 8 REST API\Complex_View\M_RM.snippet" />
+    <None Include="CSLA 8 REST API\Controllers\EP_ChoiceCode.snippet" />
+    <None Include="CSLA 8 REST API\Controllers\EP_ChoiceGuid.snippet" />
+    <None Include="CSLA 8 REST API\Controllers\EP_ChoiceId.snippet" />
+    <None Include="CSLA 8 REST API\Controllers\EP_ChoiceKey.snippet" />
     <None Include="CSLA 8 REST API\Controllers\EP_Command.snippet" />
+    <None Include="CSLA 8 REST API\Controllers\EP_Controller.snippet" />
     <None Include="CSLA 8 REST API\Controllers\EP_Create.snippet" />
     <None Include="CSLA 8 REST API\Controllers\EP_Delete.snippet" />
     <None Include="CSLA 8 REST API\Controllers\EP_List.snippet" />

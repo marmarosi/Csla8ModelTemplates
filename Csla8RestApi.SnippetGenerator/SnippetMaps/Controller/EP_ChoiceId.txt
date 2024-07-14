@@ -1,0 +1,8 @@
+Source:         Controllers\SelectionController.cs | Choice with ID
+Title:          Controller | Choice with ID endpoint
+Description:    Defines an endpoint to fetch a read-only ID-name options.
+Shortcut:       c8epi
+Test:           WebApi | ChoiceWithIdController
+
+/// team:       root_name     | product
+TeamWithId:     ROOT_MODEL    | Product

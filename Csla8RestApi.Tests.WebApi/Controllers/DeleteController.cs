@@ -1,5 +1,4 @@
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Tests.Contracts.Simple.Edit;
 using Csla8RestApi.Tests.Models.Simple.Edit;
 using Microsoft.AspNetCore.Mvc;
 

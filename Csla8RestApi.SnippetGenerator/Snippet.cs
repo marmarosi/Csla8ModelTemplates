@@ -294,7 +294,7 @@ namespace Csla8RestApi.SnippetGenerator
             var snippetBrief = new SnippetBrief();
             snippetBrief.Title = snippetMap.Title;
             snippetBrief.Shortcut = snippetMap.Shortcut;
-            snippetBrief.FileName = snippetMap.Region?.Length > 0
+            snippetBrief.FileName = snippetMap.Region?.Length > 0 || snippetMap.FileName.StartsWith("Empty")
                 ? "===Controller"
                 : snippetMap.FileName;
 
