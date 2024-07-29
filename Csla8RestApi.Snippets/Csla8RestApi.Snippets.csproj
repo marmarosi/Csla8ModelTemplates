@@ -239,6 +239,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="SnippetData.js" />
     <Content Include="Snippets.html" />
   </ItemGroup>
   <ItemGroup />

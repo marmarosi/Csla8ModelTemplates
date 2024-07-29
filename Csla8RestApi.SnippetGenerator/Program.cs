@@ -40,6 +40,7 @@ ProcessResource(snippetMapPath, data);
 
 // Generate summary.
 Summary.Generate(data);
+DocsData.Generate(data);
 
 #region Helper methods
 
