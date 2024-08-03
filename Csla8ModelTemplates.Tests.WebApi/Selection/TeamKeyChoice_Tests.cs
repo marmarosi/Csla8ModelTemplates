@@ -1,4 +1,4 @@
-using Csla8ModelTemplates.Contracts.Selection.WithKey;
+using Csla8ModelTemplates.Contracts.Selection.ByKey;
 using Csla8ModelTemplates.WebApi.Controllers;
 using Csla8RestApi.Dal.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
     public class TeamKeyChoice_Tests
     {
         [Fact]
-        public async Task GetTeamWithKeyChoice_ReturnsAChoice()
+        public async Task GetTeamByKeyChoice_ReturnsAChoice()
         {
             // ********** Arrange
             var setup = TestSetup.GetInstance();
@@ -16,8 +16,8 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
             var sut = new SelectionController(logger, setup.Csla);
 
             // ********** Act
-            var actionResult = await sut.GetTeamWithKeyChoice(
-                new TeamWithKeyChoiceCriteria { TeamName = "7" }
+            var actionResult = await sut.GetTeamByKeyChoice(
+                new TeamByKeyChoiceCriteria { TeamName = "7" }
                 );
 
             // ********** Assert

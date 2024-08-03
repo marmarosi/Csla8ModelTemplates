@@ -2,21 +2,21 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>Controller ● Controller | Choice with ID endpoint</Title>
+            <Title>Controller ● Controller | Choice by ID endpoint</Title>
             <Author>Mármarosi József</Author>
             <Description>Defines an endpoint to fetch a read-only ID-name options.</Description>
             <Shortcut>c8epi</Shortcut>
         </Header>
         <Snippet>
             <Code Language="CSharp">
-                <![CDATA[#region Choice with ID
+                <![CDATA[#region Choice by ID
 
         /// <summary>
         /// Gets the ID-name choice of the $root_name$s.
         /// </summary>
         /// <param name="criteria">The criteria of the $root_name$ choice.</param>
         /// <returns>The ID-name choice of the $root_name$s.</returns>
-        [HttpGet("with-id")]
+        [HttpGet("by-id")]
         [ProducesResponseType(typeof(List<ChoiceItemDto<string?>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get$ROOT_MODEL$Choice(
             [FromQuery] $ROOT_MODEL$ChoiceCriteria criteria

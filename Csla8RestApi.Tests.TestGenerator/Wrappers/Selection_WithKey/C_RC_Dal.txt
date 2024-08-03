@@ -1,6 +1,0 @@
-using Csla8RestApi.Dal.Contracts;
-
-namespace Csla8RestApi.Tests.Contracts.Selection.WithKey
-{
-    $snippet$
-}

@@ -1,0 +1,10 @@
+Source:         Selection\ByKey\TeamByKeyChoiceDal.cs
+Title:          DAL | Read-only key choice
+Description:    Implements the data access of the read-only root collection.
+Shortcut:       c8lkrcd
+Test:           DAL | ===ChoiceDal
+
+/// team:       root_name     | product
+TeamByKey:      ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+MySqlContext:   DB_CONTEXT    | RdbmsContext

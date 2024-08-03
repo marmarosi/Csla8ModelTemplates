@@ -68,22 +68,22 @@
     "Models": [
       {
         "ModelCode": "lk",
-        "ModelName": "Selection with Key",
+        "ModelName": "Selection by Key",
         "Snippets": []
       },
       {
         "ModelCode": "li",
-        "ModelName": "Selection with ID",
+        "ModelName": "Selection by ID",
         "Snippets": []
       },
       {
         "ModelCode": "lg",
-        "ModelName": "Selection with Guid",
+        "ModelName": "Selection by Guid",
         "Snippets": []
       },
       {
         "ModelCode": "lc",
-        "ModelName": "Selection with Code",
+        "ModelName": "Selection by Code",
         "Snippets": []
       }
     ]

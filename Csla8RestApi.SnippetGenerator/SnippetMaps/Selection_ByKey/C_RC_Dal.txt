@@ -1,0 +1,8 @@
+Source:         Selection\ByKey\ITeamByKeyChoiceDal.cs
+Title:          Contract | Read-only key choice DAL interface
+Description:    Defines the DAL interface of a read-only root collection.
+Shortcut:       c8lkrci
+Test:           Contract | I===ChoiceDal
+
+/// team:       root_name  | product
+TeamByKey:      ROOT_MODEL | Product

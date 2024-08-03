@@ -5,7 +5,7 @@ const data = [
       name: 'Controller',
       code: 'ep',
       snippets: [{
-        title: 'Controller | Choice with code endpoint',
+        title: 'Controller | Choice by code endpoint',
         shortcut: 'c8epx',
         fileName: '===Controller',
         rootName: 'x',
@@ -18,7 +18,7 @@ const data = [
         commandModel: '',
         dbContext: ''
       }, {
-        title: 'Controller | Choice with Guid endpoint',
+        title: 'Controller | Choice by Guid endpoint',
         shortcut: 'c8epg',
         fileName: '===Controller',
         rootName: 'x',
@@ -31,7 +31,7 @@ const data = [
         commandModel: '',
         dbContext: ''
       }, {
-        title: 'Controller | Choice with ID endpoint',
+        title: 'Controller | Choice by ID endpoint',
         shortcut: 'c8epi',
         fileName: '===Controller',
         rootName: 'x',
@@ -44,7 +44,7 @@ const data = [
         commandModel: '',
         dbContext: ''
       }, {
-        title: 'Controller | Choice with key endpoint',
+        title: 'Controller | Choice by key endpoint',
         shortcut: 'c8epk',
         fileName: '===Controller',
         rootName: 'x',
@@ -931,7 +931,7 @@ const data = [
   }, {
     category: 'Selection',
     models: [{
-      name: 'Selection with Key',
+      name: 'Selection by Key',
       code: 'lk',
       snippets: [{
         title: 'Contract | Read-only key choice criteria',
@@ -987,7 +987,7 @@ const data = [
         dbContext: ''
       }]
     }, {
-      name: 'Selection with ID',
+      name: 'Selection by ID',
       code: 'li',
       snippets: [{
         title: 'Contract | Read-only ID choice criteria',
@@ -1043,7 +1043,7 @@ const data = [
         dbContext: ''
       }]
     }, {
-      name: 'Selection with Guid',
+      name: 'Selection by Guid',
       code: 'lg',
       snippets: [{
         title: 'Contract | Read-only Guid choice criteria',
@@ -1099,7 +1099,7 @@ const data = [
         dbContext: ''
       }]
     }, {
-      name: 'Selection with Code',
+      name: 'Selection by Code',
       code: 'lc',
       snippets: [{
         title: 'Contract | Read-only code choice criteria',

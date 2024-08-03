@@ -1,17 +1,17 @@
 using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Tests.Contracts.Selection.WithId;
-using Csla8RestApi.Tests.Models.Selection.WithId;
+using Csla8RestApi.Tests.Contracts.Selection.ById;
+using Csla8RestApi.Tests.Models.Selection.ById;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csla8RestApi.Tests.WebApi.Controllers
 {
     /// <summary>
-    /// Contains the API endpoint for choice with ID.
+    /// Contains the API endpoint for choice by ID.
     /// </summary>
-    [Route("api/with-id")]
+    [Route("api/by-id")]
     [ApiController]
-    public class ChoiceWithIdController : ApiController
+    public class ChoiceByIdController : ApiController
     {
         #region Constructor
 
@@ -20,8 +20,8 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// </summary>
         /// <param name="logger">The application logging service.</param>
         /// <param name="csla">The CSLA helper service.</param>
-        public ChoiceWithIdController(
-            ILogger<ChoiceWithIdController> logger,
+        public ChoiceByIdController(
+            ILogger<ChoiceByIdController> logger,
             ICslaService csla
             ) : base(logger, csla)
         { }

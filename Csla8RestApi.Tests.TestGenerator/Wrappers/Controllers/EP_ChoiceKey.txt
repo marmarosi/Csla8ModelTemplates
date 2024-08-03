@@ -1,17 +1,17 @@
 using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Tests.Contracts.Selection.WithKey;
-using Csla8RestApi.Tests.Models.Selection.WithKey;
+using Csla8RestApi.Tests.Contracts.Selection.ByKey;
+using Csla8RestApi.Tests.Models.Selection.ByKey;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csla8RestApi.Tests.WebApi.Controllers
 {
     /// <summary>
-    /// Contains the API endpoint for choice with key.
+    /// Contains the API endpoint for choice by key.
     /// </summary>
-    [Route("api/with-key")]
+    [Route("api/by-key")]
     [ApiController]
-    public class ChoiceWithKeyController : ApiController
+    public class ChoiceByKeyController : ApiController
     {
         #region Constructor
 
@@ -20,8 +20,8 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// </summary>
         /// <param name="logger">The application logging service.</param>
         /// <param name="csla">The CSLA helper service.</param>
-        public ChoiceWithKeyController(
-            ILogger<ChoiceWithKeyController> logger,
+        public ChoiceByKeyController(
+            ILogger<ChoiceByKeyController> logger,
             ICslaService csla
             ) : base(logger, csla)
         { }

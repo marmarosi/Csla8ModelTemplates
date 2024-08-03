@@ -1,8 +1,0 @@
-Source:         Selection\WithId\ITeamWithIdChoiceDal.cs
-Title:          Contract | Read-only ID choice DAL interface
-Description:    Defines the DAL interface of a read-only root collection.
-Shortcut:       c8lirci
-Test:           Contract | I===ChoiceDal
-
-/// team:       root_name  | product
-TeamWithId:     ROOT_MODEL | Product

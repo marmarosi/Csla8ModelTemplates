@@ -1,9 +1,0 @@
-Source:         Selection\WithId\TeamWithIdChoiceCriteria.cs
-Title:          Contract | Read-only ID choice criteria
-Description:    Defines the criteria of a read-only root collection.
-Shortcut:       c8lircc
-Test:           Contract | ===ChoiceCriteria
-
-/// team:       root_name  | product
-TeamWithId:     ROOT_MODEL | Product
-Team:           ROOT_MODEL | Product

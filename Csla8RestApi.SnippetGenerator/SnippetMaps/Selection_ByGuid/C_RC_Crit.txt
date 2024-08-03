@@ -1,0 +1,9 @@
+Source:         Selection\ByGuid\TeamByGuidChoiceCriteria.cs
+Title:          Contract | Read-only Guid choice criteria
+Description:    Defines the criteria of a read-only root collection.
+Shortcut:       c8lgrcc
+Test:           Contract | ===ChoiceCriteria
+
+/// team:       root_name  | product
+TeamByGuid:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

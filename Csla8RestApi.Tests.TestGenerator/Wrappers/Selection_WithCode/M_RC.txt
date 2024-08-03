@@ -1,9 +1,0 @@
-using Csla;
-using Csla8RestApi.Dal.Contracts;
-using Csla8RestApi.Models;
-using Csla8RestApi.Tests.Contracts.Selection.WithCode;
-
-namespace Csla8RestApi.Tests.Models.Selection.WithCode
-{
-    $snippet$
-}

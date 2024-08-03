@@ -1,4 +1,4 @@
-using Csla8ModelTemplates.Contracts.Selection.WithGuid;
+using Csla8ModelTemplates.Contracts.Selection.ByGuid;
 using Csla8ModelTemplates.WebApi.Controllers;
 using Csla8RestApi.Dal.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
     public class TeamGuidChoice_Tests
     {
         [Fact]
-        public async Task GetTeamWithGuidChoice_ReturnsAChoice()
+        public async Task GetTeamByGuidChoice_ReturnsAChoice()
         {
             // ********** Arrange
             var setup = TestSetup.GetInstance();
@@ -16,8 +16,8 @@ namespace Csla8ModelTemplates.Tests.WebApi.Selection
             var sut = new SelectionController(logger, setup.Csla);
 
             // ********** Act
-            var actionResult = await sut.GetTeamWithGuidChoice(
-                new TeamWithGuidChoiceCriteria { TeamName = "5" }
+            var actionResult = await sut.GetTeamByGuidChoice(
+                new TeamByGuidChoiceCriteria { TeamName = "5" }
                 );
 
             // ********** Assert

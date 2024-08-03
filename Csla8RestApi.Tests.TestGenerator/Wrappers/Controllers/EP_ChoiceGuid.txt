@@ -1,17 +1,17 @@
 using Csla8RestApi.Dal.Contracts;
 using Csla8RestApi.Models.Utilities;
-using Csla8RestApi.Tests.Contracts.Selection.WithGuid;
-using Csla8RestApi.Tests.Models.Selection.WithGuid;
+using Csla8RestApi.Tests.Contracts.Selection.ByGuid;
+using Csla8RestApi.Tests.Models.Selection.ByGuid;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Csla8RestApi.Tests.WebApi.Controllers
 {
     /// <summary>
-    /// Contains the API endpoint for choice with Guid.
+    /// Contains the API endpoint for choice by Guid.
     /// </summary>
-    [Route("api/with-guid")]
+    [Route("api/by-guid")]
     [ApiController]
-    public class ChoiceWithGuidController : ApiController
+    public class ChoiceByGuidController : ApiController
     {
         #region Constructor
 
@@ -20,8 +20,8 @@ namespace Csla8RestApi.Tests.WebApi.Controllers
         /// </summary>
         /// <param name="logger">The application logging service.</param>
         /// <param name="csla">The CSLA helper service.</param>
-        public ChoiceWithGuidController(
-            ILogger<ChoiceWithGuidController> logger,
+        public ChoiceByGuidController(
+            ILogger<ChoiceByGuidController> logger,
             ICslaService csla
             ) : base(logger, csla)
         { }
