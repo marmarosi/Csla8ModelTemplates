@@ -104,14 +104,15 @@
             $ROOT_MODEL$Name = dto.$ROOT_MODEL$Name;
             Validate();
 
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 $COMMAND_MODEL$Dao dao = new $COMMAND_MODEL$Dao($ROOT_MODEL$Key, $ROOT_MODEL$Name);
-                await dal.ExecuteAsync(dao);
-            }
 
-            // Set new data.
-            Result = true;
+                // Set new data.
+                Result = dao.Result;
+
+                await dal.Commit(transaction);
+            }
         }
 
         #endregion

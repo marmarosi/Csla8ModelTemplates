@@ -52,6 +52,9 @@
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new CommandFailedException(SimpleText.$COMMAND_MODEL$_Failed);
+
+            // Signal successful completion.
+            dao.Result = true;
         }
 
         #endregion

@@ -101,14 +101,15 @@ namespace Csla8ModelTemplates.Models.Simple.Command
             TeamName = dto.TeamName;
             Validate();
 
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 RenameTeamDao dao = new RenameTeamDao(TeamKey, TeamName);
-                await dal.ExecuteAsync(dao);
-            }
 
-            // Set new data.
-            Result = true;
+                // Set new data.
+                Result = dao.Result;
+
+                await dal.Commit(transaction);
+            }
         }
 
         #endregion

@@ -208,7 +208,7 @@
             )
         {
             // Insert values into persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 using (BypassPropertyChecks)
                 {
@@ -219,7 +219,7 @@
                     $ROOT_MODEL$Key = dao.$ROOT_MODEL$Key;
                     Timestamp = dao.Timestamp;
                 }
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
@@ -229,7 +229,7 @@
             )
         {
             // Update values in persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 using (BypassPropertyChecks)
                 {
@@ -239,7 +239,7 @@
                     // Set new data.
                     Timestamp = dao.Timestamp;
                 }
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
@@ -259,10 +259,10 @@
             )
         {
             // Delete values from persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 await dal.DeleteAsync(new $ROOT_MODEL$Criteria($root_variable$Id));
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 

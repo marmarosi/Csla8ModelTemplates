@@ -96,10 +96,10 @@ namespace Csla8ModelTemplates.Models.Simple.Set
             )
         {
             // Update values in persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 await Child_UpdateAsync();
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 

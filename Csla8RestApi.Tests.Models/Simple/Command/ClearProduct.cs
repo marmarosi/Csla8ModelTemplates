@@ -101,14 +101,15 @@ namespace Csla8RestApi.Tests.Models.Simple.Command
             ProductName = dto.ProductName;
             Validate();
 
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 ClearProductDao dao = new ClearProductDao(ProductKey, ProductName);
-                await dal.ExecuteAsync(dao);
-            }
 
-            // Set new data.
-            Result = true;
+                // Set new data.
+                Result = dao.Result;
+
+                await dal.Commit(transaction);
+            }
         }
 
         #endregion

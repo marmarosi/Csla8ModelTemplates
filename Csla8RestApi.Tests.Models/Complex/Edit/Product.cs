@@ -222,7 +222,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             )
         {
             // Insert values into persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 using (BypassPropertyChecks)
                 {
@@ -234,7 +234,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
                     Timestamp = dao.Timestamp;
                 }
                 await FieldManager.UpdateChildrenAsync(this);
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
@@ -244,7 +244,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             )
         {
             // Update values in persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 if (IsSelfDirty)
                 {
@@ -258,7 +258,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
                     }
                 }
                 await FieldManager.UpdateChildrenAsync(this);
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
@@ -280,7 +280,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
             )
         {
             // Delete values from persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 var criteria = new ProductCriteria(productId);
 
@@ -291,7 +291,7 @@ namespace Csla8RestApi.Tests.Models.Complex.Edit
                 await FieldManager.UpdateChildrenAsync(this);
 
                 await dal.DeleteAsync(criteria);
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 

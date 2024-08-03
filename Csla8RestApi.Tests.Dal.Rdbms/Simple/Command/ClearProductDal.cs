@@ -48,6 +48,9 @@ namespace Csla8RestApi.Tests.Dal.Rdbms.Simple.Command
             int count = await DbContext.SaveChangesAsync();
             if (count == 0)
                 throw new CommandFailedException(SimpleText.ClearProduct_Failed);
+
+            // Signal successful completion.
+            dao.Result = true;
         }
 
         #endregion

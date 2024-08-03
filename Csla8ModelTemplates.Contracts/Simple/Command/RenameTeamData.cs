@@ -14,6 +14,7 @@ namespace Csla8ModelTemplates.Contracts.Simple.Command
     public class RenameTeamDao : RenameTeamData
     {
         public long? TeamKey { get; set; }
+        public bool Result { get; set; }
 
         public RenameTeamDao(
             long? teamKey,

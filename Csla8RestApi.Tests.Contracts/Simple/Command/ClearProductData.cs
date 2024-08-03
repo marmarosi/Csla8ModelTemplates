@@ -14,6 +14,7 @@ namespace Csla8RestApi.Tests.Contracts.Simple.Command
     public class ClearProductDao : ClearProductData
     {
         public long? ProductKey { get; set; }
+        public bool Result { get; set; }
 
         public ClearProductDao(
             long? productKey,

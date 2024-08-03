@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Csla8RestApi.Dal
 {
@@ -11,12 +11,12 @@ namespace Csla8RestApi.Dal
         /// Begins a new database transaction.
         /// </summary>
         /// <returns>The database transaction.</returns>
-        public IDbContextTransaction BeginTransaction();
+        public Task<IDbContextTransaction> BeginTransaction();
 
         /// <summary>
         /// Commits the specified transaction when it is not executed in integration test.
         /// </summary>
         /// <param name="transaction">The current database transaction to commit.</param>
-        public void Commit(IDbContextTransaction transaction);
+        public Task Commit(IDbContextTransaction transaction);
     }
 }

@@ -19,21 +19,21 @@ namespace Csla8RestApi.Dal
         /// Begins a new database transaction.
         /// </summary>
         /// <returns>The database transaction.</returns>
-        public IDbContextTransaction BeginTransaction()
+        public async Task<IDbContextTransaction> BeginTransaction()
         {
-            return DbContext.Database.BeginTransaction();
+            return await DbContext.Database.BeginTransactionAsync();
         }
 
         /// <summary>
         /// Commits the specified transaction when it is not executed in integration test.
         /// </summary>
         /// <param name="transaction">The current database transaction to commit.</param>
-        public void Commit(
+        public async Task Commit(
             IDbContextTransaction transaction
             )
         {
             if (!DbContext.IsUnderTest)
-                transaction.Commit();
+                await transaction.CommitAsync();
         }
     }
 }

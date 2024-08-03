@@ -208,7 +208,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             )
         {
             // Insert values into persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 using (BypassPropertyChecks)
                 {
@@ -219,7 +219,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
                     TeamKey = dao.TeamKey;
                     Timestamp = dao.Timestamp;
                 }
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
@@ -229,7 +229,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             )
         {
             // Update values in persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 using (BypassPropertyChecks)
                 {
@@ -239,7 +239,7 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
                     // Set new data.
                     Timestamp = dao.Timestamp;
                 }
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
@@ -259,10 +259,10 @@ namespace Csla8ModelTemplates.Models.Simple.Edit
             )
         {
             // Delete values from persistent storage.
-            using (var transaction = dal.BeginTransaction())
+            using (var transaction = await dal.BeginTransaction())
             {
                 await dal.DeleteAsync(new SimpleTeamCriteria(teamId));
-                dal.Commit(transaction);
+                await dal.Commit(transaction);
             }
         }
 
