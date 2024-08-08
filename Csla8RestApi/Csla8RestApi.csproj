@@ -4,6 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>CSLA 8 REST API models</Title>
+    <Authors>marmarosi</Authors>
+    <Company>marmarosi</Company>
+    <Description>Provides CSLA 8 model and data aaccess templates.</Description>
+    <RepositoryUrl>https://github.com/marmarosi/Csla8ModelTemplates</RepositoryUrl>
+    <PackageTags>CSLA; WebAPI; .NET Core</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
