@@ -1,0 +1,8 @@
+using Csla8RestApi.Dal;
+using Csla8RestApi.Tests.Contracts.Complex.List;
+using Microsoft.EntityFrameworkCore;
+
+namespace Csla8RestApi.Tests.Dal.Rdbms.Complex.List
+{
+    $snippet$
+}

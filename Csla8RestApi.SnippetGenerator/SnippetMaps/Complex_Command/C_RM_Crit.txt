@@ -1,0 +1,10 @@
+Source:         Complex\Command\CountTeamsCriteria.cs
+Title:          Contract | Command model criteria
+Description:    Defines the criteria of a command model.
+Shortcut:       c8ccrmc
+Test:           Contract | +++Criteria
+
+/// count teams by player count: command_name  | count products by part count
+CountTeams:     COMMAND_MODEL | CountProducts
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

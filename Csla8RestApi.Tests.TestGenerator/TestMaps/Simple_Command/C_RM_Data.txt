@@ -1,0 +1,8 @@
+Snippet:        Simple_Command\C_RM_Data.snippet
+Project:        Contract
+FileName:       +++Data
+
+command_name:   clear product
+COMMAND_MODEL:  ClearProduct
+ROOT_MODEL:     Product
+root_variable:  product

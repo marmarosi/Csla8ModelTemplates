@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Paginated List ● Model | Read-only paginated list</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only child collection.</Description>
+            <Shortcut>c8apcc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a page of read-only $root_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$ListItems : ReadOnlyList<$ROOT_MODEL$ListItems, $ROOT_MODEL$ListItem>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$ListItems),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Data Access
+
+        [FetchChild]
+        private void Fetch(
+            List<$ROOT_MODEL$ListItemDao> list,
+            [Inject] IChildDataPortal<$ROOT_MODEL$ListItem> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            foreach (var item in list)
+                Items.Add(itemPortal.FetchChild(item));
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

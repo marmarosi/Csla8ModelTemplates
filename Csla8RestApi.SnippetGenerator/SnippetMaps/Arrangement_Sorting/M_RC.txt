@@ -1,0 +1,9 @@
+Source:         Arrangement\Sorting\SortedTeamList.cs
+Title:          Model | Read-only sorted list
+Description:    Implements a read-only root collection.
+Shortcut:       c8asrc
+Test:           Model | ===List
+
+/// team:       root_name     | product
+/// SortedTeam: ROOT_MODEL    | Product
+SortedTeam:     ROOT_MODEL    | Product

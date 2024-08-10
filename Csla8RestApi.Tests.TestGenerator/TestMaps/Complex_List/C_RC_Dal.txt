@@ -1,0 +1,6 @@
+Snippet:        Complex_List\C_RC_Dal.snippet
+Project:        Contract
+FileName:       I===ListDal
+
+root_name:      product
+ROOT_MODEL:     Product

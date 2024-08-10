@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Junction Edit ● DAL | Editable child list item</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the editable child model.</Description>
+            <Shortcut>c8jecid</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the editable $root_name$-$child_name$ object.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$$CHILD_MODEL$Dal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$$CHILD_MODEL$Dal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$$CHILD_MODEL$Dal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Insert
+
+        /// <summary>
+        /// Creates a new $root_name$-$child_name$ using the specified data.
+        /// </summary>
+        /// <param name="dao">The data of the $root_name$-$child_name$.</param>
+        public async Task InsertAsync(
+            $ROOT_MODEL$$CHILD_MODEL$Dao dao
+            )
+        {
+            // Check unique $root_name$-$child_name$.
+            var $root_variable$$CHILD_MODEL$ = await DbContext.$ROOT_MODEL$$CHILD_MODEL$s
+                .Where(e =>
+                    e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key &&
+                    e.$CHILD_MODEL$Key == dao.$CHILD_MODEL$Key
+                )
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+            if ($root_variable$$CHILD_MODEL$ is not null)
+                throw new DataExistException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_Exists.With(dao.$CHILD_MODEL$Name!));
+
+            // Create the new $root_name$-$child_name$.
+            $CHILD_MODEL$ $child_variable$ = await DbContext.$CHILD_MODEL$s.FindAsync(dao.$CHILD_MODEL$Key)
+                ?? throw new DataExistException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_NotFound.With(dao.$CHILD_MODEL$Name!));
+            $root_variable$$CHILD_MODEL$ = new $ROOT_MODEL$$CHILD_MODEL$
+            {
+                $ROOT_MODEL$Key = dao.$ROOT_MODEL$Key,
+                $CHILD_MODEL$Key = dao.$CHILD_MODEL$Key
+            };
+            await DbContext.$ROOT_MODEL$$CHILD_MODEL$s.AddAsync($root_variable$$CHILD_MODEL$);
+
+            int count = await DbContext.SaveChangesAsync();
+            if (count == 0)
+                throw new InsertFailedException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_InsertFailed.With(dao.$CHILD_MODEL$Name!));
+
+            // Return new data.
+            dao.$CHILD_MODEL$Name = $child_variable$.$CHILD_MODEL$Name;
+        }
+
+        #endregion Insert
+
+        #region Delete
+
+        /// <summary>
+        /// Deletes the specified $root_name$-$child_name$.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$-$child_name$.</param>
+        public async Task DeleteAsync(
+            $ROOT_MODEL$$CHILD_MODEL$Dao dao
+            )
+        {
+            // Get the specified $root_name$-$child_name$.
+            $ROOT_MODEL$$CHILD_MODEL$ $root_variable$$CHILD_MODEL$ = await DbContext.$ROOT_MODEL$$CHILD_MODEL$s
+                .Where(e =>
+                    e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key &&
+                    e.$CHILD_MODEL$Key == dao.$CHILD_MODEL$Key
+                    )
+                .AsNoTracking()
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_NotFound.With(dao.$CHILD_MODEL$Name!));
+
+            // Delete the $root_name$-$child_name$.
+            DbContext.$ROOT_MODEL$$CHILD_MODEL$s.Remove($root_variable$$CHILD_MODEL$);
+
+            int count = await DbContext.SaveChangesAsync();
+            if (count == 0)
+                throw new DeleteFailedException(JunctionText.$ROOT_MODEL$$CHILD_MODEL$_DeleteFailed.With(dao.$CHILD_MODEL$Name!));
+        }
+
+        #endregion Delete
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>child_variable</ID>
+                    <ToolTip>The variable name of a child model instance.</ToolTip>
+                    <Default>child_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

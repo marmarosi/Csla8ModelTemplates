@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Simple Command ● Contract | Command data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of a command model.</Description>
+            <Shortcut>c8scrmo</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the data access object of the $command_name$ command.
+    /// </summary>
+    public abstract class $COMMAND_MODEL$Data
+    {
+        public string? $ROOT_MODEL$Name { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data access object of the $command_name$ command.
+    /// </summary>
+    public class $COMMAND_MODEL$Dao : $COMMAND_MODEL$Data
+    {
+        public long? $ROOT_MODEL$Key { get; set; }
+        public bool Result { get; set; }
+
+        public $COMMAND_MODEL$Dao(
+            long? $root_variable$Key,
+            string? $root_variable$Name
+            )
+        {
+            $ROOT_MODEL$Key = $root_variable$Key;
+            $ROOT_MODEL$Name = $root_variable$Name;
+        }
+    }
+
+    /// <summary>
+    /// Defines the data transfer object of the $command_name$ command.
+    /// </summary>
+    [Serializable]
+    public class $COMMAND_MODEL$Dto : $COMMAND_MODEL$Data
+    {
+        public string? $ROOT_MODEL$Id { get; set; }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

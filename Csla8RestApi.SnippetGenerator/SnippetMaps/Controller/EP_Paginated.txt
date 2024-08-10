@@ -1,0 +1,8 @@
+Source:         Controllers\ArrangementController.cs | Pagination
+Title:          Controller | Paginated list endpoint
+Description:    Defines an endpoint to fetch a read-only paginated collection.
+Shortcut:       c8epp
+Test:           WebApi | PaginatedListController
+
+/// team:       root_name     | product
+PaginatedTeam:  ROOT_MODEL    | Product

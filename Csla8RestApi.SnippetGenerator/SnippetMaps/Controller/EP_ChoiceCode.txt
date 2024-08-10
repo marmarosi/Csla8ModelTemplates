@@ -1,0 +1,8 @@
+Source:         Controllers\SelectionController.cs | Choice by code
+Title:          Controller | Choice by code endpoint
+Description:    Defines an endpoint to fetch a read-only code-name options.
+Shortcut:       c8epx
+Test:           WebApi | ChoiceByCodeController
+
+/// team:       root_name     | product
+TeamByCode:     ROOT_MODEL    | Product

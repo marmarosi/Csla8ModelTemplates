@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Selection by Key ● Model | Read-only key choice</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the read-only root collection.</Description>
+            <Shortcut>c8lkrc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a read-only $root_name$ choice collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$Choice : ReadOnlyList<$ROOT_MODEL$Choice, ChoiceItem<long?>>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$ByKeyChoice),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Gets a choice of $root_name$ options that match the criteria.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="criteria">The criteria $root_name$ choice.</param>
+        /// <returns>The requested $root_name$ choice instance.</returns>
+        public static async Task<$ROOT_MODEL$Choice> GetAsync(
+            IDataPortalFactory factory,
+            $ROOT_MODEL$ChoiceCriteria criteria
+            )
+        {
+            return await factory.GetPortal<$ROOT_MODEL$Choice>().FetchAsync(criteria);
+        }
+
+        #endregion
+
+        #region Data Access
+
+        [Fetch]
+        private async Task FetchAsync(
+            $ROOT_MODEL$ChoiceCriteria criteria,
+            [Inject] I$ROOT_MODEL$ChoiceDal dal,
+            [Inject] IChildDataPortal<ChoiceItem<long?>> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            using (LoadListMode)
+            {
+                List<ChoiceItemDao<long?>> list = await dal.FetchAsync(criteria);
+                foreach (var item in list)
+                    Add(await itemPortal.FetchChildAsync(item));
+            }
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

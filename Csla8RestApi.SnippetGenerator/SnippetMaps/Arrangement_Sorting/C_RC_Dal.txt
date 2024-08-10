@@ -1,0 +1,8 @@
+Source:         Arrangement\Sorting\ISortedTeamListDal.cs
+Title:          Contract | Read-only sorted list DAL interface
+Description:    Defines the DAL interface of a read-only root collection.
+Shortcut:       c8asrci
+Test:           Contract | I===ListDal
+
+/// team:       root_name  | product
+SortedTeam:     ROOT_MODEL | Product

@@ -1,0 +1,13 @@
+Source:         Simple\Command\RenameTeamDal.cs
+Title:          DAL | Command model
+Description:    Implements the data access of the command model.
+Shortcut:       c8scrmd
+Test:           DAL | +++Dal
+
+/// rename team:    command_name   | clear product
+/// team:           root_name      | product
+RenameTeam:         COMMAND_MODEL  | ClearProduct
+SimpleTeam:         ROOT_MODEL     | Product
+Team:               ROOT_MODEL     | Product
+team:               root_variable  | product
+MySqlContext:       DB_CONTEXT     | RdbmsContext

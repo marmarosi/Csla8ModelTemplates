@@ -1,0 +1,10 @@
+Source:         Selection\ByGuid\TeamByGuidChoice.cs
+Title:          Model | Read-only Guid choice
+Description:    Implements the data access of the read-only root collection.
+Shortcut:       c8lgrc
+Test:           Model | ===Choice
+
+/// team:       root_name     | product
+/// Team:       ROOT_MODEL    | Product
+TeamByGuid:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

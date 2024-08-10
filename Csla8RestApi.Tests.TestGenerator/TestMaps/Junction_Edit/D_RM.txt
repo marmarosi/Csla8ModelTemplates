@@ -1,0 +1,9 @@
+Snippet:        Junction_Edit\D_RM.snippet
+Project:        DAL
+FileName:       ===Dal
+
+root_name:      user
+ROOT_MODEL:     User
+root_variable:  user
+CHILD_MODEL:    Role
+DB_CONTEXT:     RdbmsContext

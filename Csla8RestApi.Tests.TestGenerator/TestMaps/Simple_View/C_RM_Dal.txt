@@ -1,0 +1,6 @@
+Snippet:        Simple_View\C_RM_Dal.snippet
+Project:        Contract
+FileName:       I===ViewDal
+
+root_name:      product
+ROOT_MODEL:     Product

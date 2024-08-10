@@ -1,0 +1,11 @@
+Source:         Complex\Edit\TeamPlayerDal.cs
+Title:          DAL | Editable child list item
+Description:    Implements the data access of the editable child model.
+Shortcut:       c8cecid
+Test:           DAL | ===---Dal
+
+/// player:     child_name     | part
+Team:           ROOT_MODEL     | Product
+Player:         CHILD_MODEL    | Part
+player:         child_variable | part
+MySqlContext:   DB_CONTEXT     | RdbmsContext

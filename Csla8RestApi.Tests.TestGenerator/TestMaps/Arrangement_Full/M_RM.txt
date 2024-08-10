@@ -1,0 +1,6 @@
+Snippet:        Arrangement_Full\M_RM.snippet
+Project:        Model
+FileName:       ===List
+
+root_name:      product
+ROOT_MODEL:     Product

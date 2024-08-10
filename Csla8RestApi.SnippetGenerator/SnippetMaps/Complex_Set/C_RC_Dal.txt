@@ -1,0 +1,8 @@
+Source:         Complex\Set\ITeamSetDal.cs
+Title:          Contract | Editable root list DAL interface
+Description:    Defines the DAL interface of an editable root collection.
+Shortcut:       c8csrci
+Test:           Contract | I===SetDal
+
+/// team:       root_name  | product
+Team:           ROOT_MODEL | Product

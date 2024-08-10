@@ -226,7 +226,7 @@ ClientBin/
 *.dbmdl
 *.dbproj.schemaview
 *.jfm
-*.pfx
+# *.pfx
 *.publishsettings
 orleans.codegen.cs
 
@@ -357,3 +357,4 @@ MigrationBackup/
 /Csla8ModelTemplates.WebApiTests/sqlite.db
 /Csla8ModelTemplates.WebApiTests/sqlite.db-shm
 /Csla8ModelTemplates.WebApiTests/sqlite.db-wal
+/SQLite/Csla8mt.db

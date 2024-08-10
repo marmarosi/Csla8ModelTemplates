@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Simple Set ● Model | Editable list</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements an editable root collection.</Description>
+            <Shortcut>c8ssrc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents an editable $root_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$Set : EditableList<$ROOT_MODEL$Set, $ROOT_MODEL$SetItem, $ROOT_MODEL$SetItemDto>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$Set),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Gets the specified $root_name$ set to edit.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="criteria">The criteria of the $root_name$ set.</param>
+        /// <returns>The requested $root_name$ set.</returns>
+        public static async Task<$ROOT_MODEL$Set> GetAsync(
+            IDataPortalFactory factory,
+            $ROOT_MODEL$SetCriteria criteria
+            )
+        {
+            return await factory.GetPortal<$ROOT_MODEL$Set>().FetchAsync(criteria);
+        }
+
+        /// <summary>
+        /// Rebuilds an editable $root_name$ instance from the data transfer object.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="childFactory">The child data portal factory.</param>
+        /// <param name="criteria">The criteria of the $root_name$ set.</param>
+        /// <param name="list">The data transer objects of the $root_name$ set.</param>
+        /// <returns>The $root_name$ set built.</returns>
+        public static async Task<$ROOT_MODEL$Set> BuildAsync(
+            IDataPortalFactory factory,
+            IChildDataPortalFactory childFactory,
+            $ROOT_MODEL$SetCriteria criteria,
+            List<$ROOT_MODEL$SetItemDto> list
+            )
+        {
+            var set = await factory.GetPortal<$ROOT_MODEL$Set>().FetchAsync(criteria);
+            await set.SetValuesById(list, "$ROOT_MODEL$Id", childFactory);
+            return set;
+        }
+
+        #endregion
+
+        #region Data Access
+
+        //[Create]
+        //[RunLocal]
+        //private async Task CreateAsync()
+        //{
+        //    // Load default values.
+        //    Child_Create();
+        //}
+
+        [Fetch]
+        private async Task FetchAsync(
+            $ROOT_MODEL$SetCriteria criteria,
+            [Inject] I$ROOT_MODEL$SetDal dal,
+            [Inject] IChildDataPortal<$ROOT_MODEL$SetItem> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            using (LoadListMode)
+            {
+                List<$ROOT_MODEL$SetItemDao> list = await dal.FetchAsync(criteria);
+                foreach ($ROOT_MODEL$SetItemDao item in list)
+                    Add(await itemPortal.FetchChildAsync(item));
+            }
+        }
+
+        [Update]
+        protected async Task UpdateAsync(
+            [Inject] I$ROOT_MODEL$SetDal dal
+            )
+        {
+            // Update values in persistent storage.
+            using (var transaction = await dal.BeginTransaction())
+            {
+                await Child_UpdateAsync();
+                await dal.Commit(transaction);
+            }
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

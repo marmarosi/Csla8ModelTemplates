@@ -1,0 +1,8 @@
+Source:         Simple\View\ISimpleTeamViewDal.cs
+Title:          Contract | Read-only model DAL interface
+Description:    Defines the DAL interface of a read-only root model.
+Shortcut:       c8svrmi
+Test:           Contract | I===ViewDal
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product

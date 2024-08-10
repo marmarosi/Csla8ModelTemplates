@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex Set ● Contract | Editable root list item data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of an editable child model.</Description>
+            <Shortcut>c8csrio</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the editable $root_name$ set item data.
+    /// </summary>
+    public abstract class $ROOT_MODEL$SetItemData
+    {
+        public string? $ROOT_MODEL$Code { get; set; }
+        public string? $ROOT_MODEL$Name { get; set; }
+        public DateTimeOffset? Timestamp { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data access object of the editable $root_name$ set item object.
+    /// </summary>
+    public class $ROOT_MODEL$SetItemDao : $ROOT_MODEL$SetItemData
+    {
+        public long? $ROOT_MODEL$Key { get; set; }
+        public List<$ROOT_MODEL$Set$CHILD_MODEL$Dao> $CHILD_MODEL$s { get; set; }
+
+        public $ROOT_MODEL$SetItemDao()
+        {
+            $CHILD_MODEL$s = new List<$ROOT_MODEL$Set$CHILD_MODEL$Dao>();
+        }
+    }
+
+    /// <summary>
+    /// Defines the data transfer object of the editable $root_name$ set item object.
+    /// </summary>
+    public class $ROOT_MODEL$SetItemDto : $ROOT_MODEL$SetItemData
+    {
+        public string? $ROOT_MODEL$Id { get; set; }
+        public List<$ROOT_MODEL$Set$CHILD_MODEL$Dto> $CHILD_MODEL$s { get; set; }
+
+        public $ROOT_MODEL$SetItemDto()
+        {
+            $CHILD_MODEL$s = new List<$ROOT_MODEL$Set$CHILD_MODEL$Dto>();
+        }
+
+        public $ROOT_MODEL$SetItemDao ToDao()
+        {
+            return new $ROOT_MODEL$SetItemDao
+            {
+                $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, $ROOT_MODEL$Id),
+                $ROOT_MODEL$Code = $ROOT_MODEL$Code,
+                $ROOT_MODEL$Name = $ROOT_MODEL$Name,
+                $CHILD_MODEL$s = $CHILD_MODEL$sToDao(),
+                Timestamp = Timestamp
+            };
+        }
+
+        protected List<$ROOT_MODEL$Set$CHILD_MODEL$Dao> $CHILD_MODEL$sToDao()
+        {
+            var list = new List<$ROOT_MODEL$Set$CHILD_MODEL$Dao>();
+
+            foreach ($ROOT_MODEL$Set$CHILD_MODEL$Dto $child_variable$ in $CHILD_MODEL$s)
+                list.Add($child_variable$.ToDao());
+
+            return list;
+        }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>child_variable</ID>
+                    <ToolTip>The variable name of a child model instance.</ToolTip>
+                    <Default>child_variable</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

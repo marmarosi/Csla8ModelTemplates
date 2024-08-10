@@ -1,0 +1,9 @@
+Source:         Complex\Edit\ITeamPlayerDal.cs
+Title:          Contract | Editable child list item DAL interface
+Description:    Defines the DAL interface of an editable child model.
+Shortcut:       c8cecii
+Test:           Contract | I===---Dal
+
+/// player:     child_name  | part
+Player:         CHILD_MODEL | Part
+Team:           ROOT_MODEL  | Product

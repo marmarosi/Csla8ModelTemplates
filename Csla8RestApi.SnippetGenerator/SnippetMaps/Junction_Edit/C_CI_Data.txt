@@ -1,0 +1,11 @@
+Source:         Junction\Edit\GroupPersonData.cs
+Title:          Contract | Editable child list item data objects
+Description:    Defines the data objects of an editable child model.
+Shortcut:       c8jecio
+Test:           Contract | ===---Data
+
+/// group:      root_name      | user
+/// person:     child_name     | role
+Group:          ROOT_MODEL     | User
+Person:         CHILD_MODEL    | Role
+person:         child_variable | role

@@ -1,0 +1,6 @@
+Snippet:        Arrangement_Sorting\M_RI.snippet
+Project:        Model
+FileName:       ===ListItem
+
+root_name:      product
+ROOT_MODEL:     Product

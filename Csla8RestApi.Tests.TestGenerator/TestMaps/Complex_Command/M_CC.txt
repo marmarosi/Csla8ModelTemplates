@@ -1,0 +1,6 @@
+Snippet:        Complex_Command\M_CC.snippet
+Project:        Model
+FileName:       +++Results
+
+command_name:   count products
+COMMAND_MODEL:  CountProducts

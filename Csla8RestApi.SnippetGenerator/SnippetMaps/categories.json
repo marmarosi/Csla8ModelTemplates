@@ -1,0 +1,149 @@
+[
+  {
+    "CategoryCode": "e",
+    "CategoryName": "Endpoints",
+    "Models": [
+      {
+        "ModelCode": "ep",
+        "ModelName": "Controller",
+        "Snippets": []
+      }
+    ]
+  },
+  {
+    "CategoryCode": "s",
+    "CategoryName": "Simple Models",
+    "Models": [
+      {
+        "ModelCode": "sl",
+        "ModelName": "Simple List",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "sv",
+        "ModelName": "Simple View",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "se",
+        "ModelName": "Simple Edit",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "ss",
+        "ModelName": "Simple Set",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "sc",
+        "ModelName": "Simple Command",
+        "Snippets": []
+      }
+    ]
+  },
+  {
+    "CategoryCode": "a",
+    "CategoryName": "Arrangement",
+    "Models": [
+      {
+        "ModelCode": "as",
+        "ModelName": "Sorted List",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "ap",
+        "ModelName": "Paginated List",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "ax",
+        "ModelName": "Sorted-Paginated List",
+        "Snippets": []
+      }
+    ]
+  },
+  {
+    "CategoryCode": "l",
+    "CategoryName": "Selection",
+    "Models": [
+      {
+        "ModelCode": "lk",
+        "ModelName": "Selection by Key",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "li",
+        "ModelName": "Selection by ID",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "lg",
+        "ModelName": "Selection by Guid",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "lc",
+        "ModelName": "Selection by Code",
+        "Snippets": []
+      }
+    ]
+  },
+  {
+    "CategoryCode": "c",
+    "CategoryName": "Complex Models",
+    "Models": [
+      {
+        "ModelCode": "cl",
+        "ModelName": "Complex List",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "cv",
+        "ModelName": "Complex View",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "ce",
+        "ModelName": "Complex Edit",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "cs",
+        "ModelName": "Complex Set",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "cc",
+        "ModelName": "Complex Command",
+        "Snippets": []
+      }
+    ]
+  },
+  {
+    "CategoryCode": "t",
+    "CategoryName": "Tree Model",
+    "Models": [
+      {
+        "ModelCode": "tv",
+        "ModelName": "Tree View",
+        "Snippets": []
+      }
+    ]
+  },
+  {
+    "CategoryCode": "j",
+    "CategoryName": "Junction Models",
+    "Models": [
+      {
+        "ModelCode": "jv",
+        "ModelName": "Junction View",
+        "Snippets": []
+      },
+      {
+        "ModelCode": "je",
+        "ModelName": "Junction Edit",
+        "Snippets": []
+      }
+    ]
+  }
+]

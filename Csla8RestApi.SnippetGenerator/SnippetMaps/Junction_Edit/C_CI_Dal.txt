@@ -1,0 +1,10 @@
+Source:         Junction\Edit\IGroupPersonDal.cs
+Title:          Contract | Editable child list item DAL interface
+Description:    Defines the DAL interface of an editable child model.
+Shortcut:       c8jecii
+Test:           Contract | I===---Dal
+
+/// group:      root_name   | user
+/// person:     child_name  | role
+Group:          ROOT_MODEL  | User
+Person:         CHILD_MODEL | Role

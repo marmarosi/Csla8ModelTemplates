@@ -1,0 +1,31 @@
+using Csla8RestApi.Models.Utilities;
+using Csla8RestApi.Tests.Models.Simple.Edit;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Csla8RestApi.Tests.WebApi.Controllers
+{
+    /// <summary>
+    /// Contains the API endpoint for delete.
+    /// </summary>
+    [Route("api/delete")]
+    [ApiController]
+    public class DeleteController : ApiController
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Creates a new instance.
+        /// </summary>
+        /// <param name="logger">The application logging service.</param>
+        /// <param name="csla">The CSLA helper service.</param>
+        public DeleteController(
+            ILogger<DeleteController> logger,
+            ICslaService csla
+            ) : base(logger, csla)
+        { }
+
+        #endregion
+
+        $snippet$
+    }
+}

@@ -1,0 +1,15 @@
+using Csla;
+using Csla.Core;
+using Csla.Data;
+using Csla.Rules;
+using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Models;
+using Csla8RestApi.Models.Utilities;
+using Csla8RestApi.Models.Validations;
+using Csla8RestApi.Tests.Contracts;
+using Csla8RestApi.Tests.Contracts.Complex.Edit;
+
+namespace Csla8RestApi.Tests.Models.Complex.Edit
+{
+    $snippet$
+}

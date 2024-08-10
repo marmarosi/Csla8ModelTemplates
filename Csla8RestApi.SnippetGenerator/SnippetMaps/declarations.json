@@ -1,0 +1,47 @@
+[
+  {
+    "ID": "root_name",
+    "ToolTip": "The description of the root model in comments.",
+    "DefaultValue": "root_name"
+  },
+  {
+    "ID": "ROOT_MODEL",
+    "ToolTip": "The name of the root model.",
+    "DefaultValue": "ROOT_MODEL"
+  },
+  {
+    "ID": "root_variable",
+    "ToolTip": "The variable name of a root model instance.",
+    "DefaultValue": "root_variable"
+  },
+  {
+    "ID": "child_name",
+    "ToolTip": "The description of the child model in comments.",
+    "DefaultValue": "root_variable"
+  },
+  {
+    "ID": "CHILD_MODEL",
+    "ToolTip": "The name of the child model.",
+    "DefaultValue": "CHILD_MODEL"
+  },
+  {
+    "ID": "child_variable",
+    "ToolTip": "The variable name of a child model instance.",
+    "DefaultValue": "child_variable"
+  },
+  {
+    "ID": "command_name",
+    "ToolTip": "The description of the command model in comments.",
+    "DefaultValue": "command_name"
+  },
+  {
+    "ID": "COMMAND_MODEL",
+    "ToolTip": "The name of the command model.",
+    "DefaultValue": "COMMAND_MODEL"
+  },
+  {
+    "ID": "DB_CONTEXT",
+    "ToolTip": "The name of the database context.",
+    "DefaultValue": "DB_CONTEXT"
+  }
+]

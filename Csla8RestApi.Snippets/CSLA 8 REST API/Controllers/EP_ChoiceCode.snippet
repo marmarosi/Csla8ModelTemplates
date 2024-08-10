@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Controller ● Controller | Choice by code endpoint</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines an endpoint to fetch a read-only code-name options.</Description>
+            <Shortcut>c8epx</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[#region Choice by code
+
+        /// <summary>
+        /// Gets the code-name choice of the $root_name$s.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ choice.</param>
+        /// <returns>The code-name choice of the $root_name$s.</returns>
+        [HttpGet("by-code")]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<string?>>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get$ROOT_MODEL$Choice(
+            [FromQuery] $ROOT_MODEL$ChoiceCriteria criteria
+            )
+        {
+            try
+            {
+                var choice = await $ROOT_MODEL$Choice.GetAsync(Factory, criteria);
+                return Ok(choice.ToDto<ChoiceItemDto<string?>>());
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

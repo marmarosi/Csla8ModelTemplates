@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex Set ● Model | Editable root list item</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements an editable child model.</Description>
+            <Shortcut>c8csri</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents an editable $root_name$ object.
+    /// </summary>
+    [Serializable]
+    [ValidationResourceType(typeof(ComplexText), ObjectName = "$ROOT_MODEL$SetItem")]
+    public class $ROOT_MODEL$SetItem : EditableModel<$ROOT_MODEL$SetItem, $ROOT_MODEL$SetItemDto>
+    {
+        #region Properties
+
+        public static readonly PropertyInfo<long?> $ROOT_MODEL$KeyProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Key));
+        public long? $ROOT_MODEL$Key
+        {
+            get => GetProperty($ROOT_MODEL$KeyProperty);
+            private set => SetProperty($ROOT_MODEL$KeyProperty, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$IdProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $ROOT_MODEL$Id
+        {
+            get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
+            set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$CodeProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Code));
+        [Required]
+        [MaxLength(10)]
+        public string? $ROOT_MODEL$Code
+        {
+            get => GetProperty($ROOT_MODEL$CodeProperty);
+            set => SetProperty($ROOT_MODEL$CodeProperty, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$NameProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Name));
+        [Required]
+        [MaxLength(100)]
+        public string? $ROOT_MODEL$Name
+        {
+            get => GetProperty($ROOT_MODEL$NameProperty);
+            set => SetProperty($ROOT_MODEL$NameProperty, value);
+        }
+
+        public static readonly PropertyInfo<$ROOT_MODEL$Set$CHILD_MODEL$s> $CHILD_MODEL$sProperty = RegisterProperty<$ROOT_MODEL$Set$CHILD_MODEL$s>(nameof($CHILD_MODEL$s));
+        public $ROOT_MODEL$Set$CHILD_MODEL$s $CHILD_MODEL$s
+        {
+            get => GetProperty($CHILD_MODEL$sProperty);
+            private set => LoadProperty($CHILD_MODEL$sProperty, value);
+        }
+
+        public static readonly PropertyInfo<DateTimeOffset?> TimestampProperty = RegisterProperty<DateTimeOffset?>(nameof(Timestamp));
+        public DateTimeOffset? Timestamp
+        {
+            get => GetProperty(TimestampProperty);
+            private set => LoadProperty(TimestampProperty, value);
+        }
+
+        #endregion
+
+        #region Business Rules
+
+        //protected override void AddBusinessRules()
+        //{
+        //    // Call base class implementation to add data annotation rules to BusinessRules.
+        //    // NOTE: DataAnnotation rules is always added with Priority = 0.
+        //    base.AddBusinessRules();
+
+        //    // Add validation rules.
+        //    BusinessRules.AddRule(new Required($ROOT_MODEL$NameProperty));
+
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(new IsInRole(
+        //        AuthorizationActions.ReadProperty,
+        //        $ROOT_MODEL$NameProperty,
+        //        "Manager"
+        //        ));
+        //}
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$SetItem),
+        //        new IsInRole(
+        //            AuthorizationActions.EditObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Business Methods
+
+        /// <summary>
+        /// Updates an editable model and its children from the data transfer object.
+        /// </summary>
+        /// <param name="dto">The data transfer object.</param>
+        /// <param name="childFactory">The child data portal factory.</param>
+        public override async Task SetValuesOnBuild(
+            $ROOT_MODEL$SetItemDto dto,
+            IChildDataPortalFactory childFactory
+            )
+        {
+            DataMapper.Map(dto, this, "$CHILD_MODEL$s");
+            await $CHILD_MODEL$s.SetValuesById(dto.$CHILD_MODEL$s, "$CHILD_MODEL$Id", childFactory);
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
+        }
+
+        #endregion
+
+        #region Data Access
+
+        [CreateChild]
+        private async Task CreateAsync(
+            [Inject] IChildDataPortal<$ROOT_MODEL$Set$CHILD_MODEL$s> itemsPortal
+            )
+        {
+            // Set values from data transfer object.
+            $CHILD_MODEL$s = await itemsPortal.CreateChildAsync();
+            //LoadProperty($ROOT_MODEL$CodeProperty, "");
+            await BusinessRules.CheckRulesAsync();
+            await WaitForIdle();
+        }
+
+        [FetchChild]
+        private async Task FetchAsync(
+            $ROOT_MODEL$SetItemDao dao,
+            [Inject] IChildDataPortal<$ROOT_MODEL$Set$CHILD_MODEL$s> itemsPortal
+            )
+        {
+            // Set values from data access object.
+            using (BypassPropertyChecks)
+            {
+                DataMapper.Map(dao, this, "$CHILD_MODEL$s");
+                $CHILD_MODEL$s = await itemsPortal.FetchChildAsync(dao.$CHILD_MODEL$s);
+            }
+        }
+
+        [InsertChild]
+        private async Task InsertAsync(
+            [Inject] I$ROOT_MODEL$SetItemDal dal
+            )
+        {
+            // Insert values into persistent storage.
+            using (BypassPropertyChecks)
+            {
+                var dao = Copy.PropertiesFrom(this).Omit("$CHILD_MODEL$s").ToNew<$ROOT_MODEL$SetItemDao>();
+                await dal.InsertAsync(dao);
+
+                // Set new data.
+                $ROOT_MODEL$Key = dao.$ROOT_MODEL$Key;
+                Timestamp = dao.Timestamp;
+            }
+            await FieldManager.UpdateChildrenAsync(this);
+        }
+
+        [UpdateChild]
+        private async Task UpdateAsync(
+            [Inject] I$ROOT_MODEL$SetItemDal dal
+            )
+        {
+            // Update values in persistent storage.
+            if (IsSelfDirty)
+            {
+                using (BypassPropertyChecks)
+                {
+                    var dao = Copy.PropertiesFrom(this).Omit("$CHILD_MODEL$s").ToNew<$ROOT_MODEL$SetItemDao>();
+                    await dal.UpdateAsync(dao);
+
+                    // Set new data.
+                    Timestamp = dao.Timestamp;
+                }
+            }
+            await FieldManager.UpdateChildrenAsync(this);
+        }
+
+        [DeleteSelfChild]
+        private async Task DeleteSelfAsync(
+            [Inject] I$ROOT_MODEL$SetItemDal dal
+            )
+        {
+            // Delete values from persistent storage.
+            if ($ROOT_MODEL$Key.HasValue)
+            {
+                $CHILD_MODEL$s.Clear();
+                await FieldManager.UpdateChildrenAsync(this);
+
+                var criteria = new $ROOT_MODEL$SetItemCriteria($ROOT_MODEL$Key);
+                await dal.DeleteAsync(criteria);
+            }
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

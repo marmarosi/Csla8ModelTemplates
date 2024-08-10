@@ -1,0 +1,12 @@
+Source:         Junction\View\GroupViewPerson.cs
+Title:          Model | Read-only child list item
+Description:    Implements a read-only child model.
+Shortcut:       c8jvci
+Test:           Model | ===View---
+
+/// group:      root_name     | user
+/// Group:      ROOT_MODEL    | User
+/// person:     child_name    | role
+/// Person:     CHILD_MODEL   | Role
+Group:          ROOT_MODEL    | User
+Person:         CHILD_MODEL   | Role

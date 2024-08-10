@@ -1,0 +1,6 @@
+Snippet:        Complex_Set\C_RI_Dal.snippet
+Project:        Contract
+FileName:       I===SetItemDal
+
+root_name:      product
+ROOT_MODEL:     Product

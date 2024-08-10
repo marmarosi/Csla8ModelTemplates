@@ -1,0 +1,11 @@
+# Generate new migration
+dotnet ef migrations add <NAME> -c MySqlContext -s Csla8ModelTemplates.WebApi -p Csla8ModelTemplates.Dal.MySql
+
+# Undo the last migration
+dotnet ef migrations remove -c MySqlContext -s Csla8ModelTemplates.WebApi -p Csla8ModelTemplates.Dal.MySql
+
+# Update the database schema
+dotnet ef database update -c MySqlContext -s Csla8ModelTemplates.WebApi -p Csla8ModelTemplates.Dal.MySql
+
+# Roll back the database changes
+dotnet ef database update <NAME> -c MySqlContext -s Csla8ModelTemplates.WebApi -p Csla8ModelTemplates.Dal.MySql

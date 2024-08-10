@@ -1,0 +1,9 @@
+Source:         Complex\Edit\TeamPlayerData.cs
+Title:          Contract | Editable child list item data objects
+Description:    Defines the data objects of an editable child model.
+Shortcut:       c8cecio
+Test:           Contract | ===---Data
+
+/// player:     child_name  | part
+Player:         CHILD_MODEL | Part
+Team:           ROOT_MODEL  | Product

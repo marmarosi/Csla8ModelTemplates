@@ -1,0 +1,9 @@
+using Csla8RestApi.Dal;
+using Csla8RestApi.Dal.Exceptions;
+using Csla8RestApi.Tests.Contracts.Junction.View;
+using Microsoft.EntityFrameworkCore;
+
+namespace Csla8RestApi.Tests.Dal.Rdbms.Junction.View
+{
+    $snippet$
+}

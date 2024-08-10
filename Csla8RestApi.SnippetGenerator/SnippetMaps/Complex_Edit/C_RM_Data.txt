@@ -1,0 +1,9 @@
+Source:         Complex\Edit\TeamData.cs
+Title:          Contract | Editable root model data objects
+Description:    Defines the data objects of an editable root model.
+Shortcut:       c6cermo
+Test:           Contract | ===Data
+
+/// team:       root_name   | product
+Team:           ROOT_MODEL  | Product
+Player:         CHILD_MODEL | Part

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex Command ● Contract | Read-only child list item data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of a read-only child model.</Description>
+            <Shortcut>c8cccio</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the $command_name$ list item data.
+    /// </summary>
+    public abstract class $COMMAND_MODEL$ResultData
+    {
+        public int $CHILD_MODEL$Count { get; set; }
+        public int $ROOT_MODEL$CountBy$CHILD_MODEL$Count { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data access object of the $command_name$ list item object.
+    /// </summary>
+    public class $COMMAND_MODEL$ResultDao : $COMMAND_MODEL$ResultData
+    { }
+
+    /// <summary>
+    /// Defines the data transfer object of the $command_name$ list item object.
+    /// </summary>
+    public class $COMMAND_MODEL$ResultDto : $COMMAND_MODEL$ResultData
+    { }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

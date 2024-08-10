@@ -1,0 +1,10 @@
+Source:         Complex\Edit\TeamPlayers.cs
+Title:          Model | Editable child list
+Description:    Implements an editable child collection.
+Shortcut:       c8cecc
+Test:           Model | ===---s
+
+/// player:     child_name    | part
+/// Player:     CHILD_MODEL   | Part
+Team:           ROOT_MODEL    | Product
+Player:         CHILD_MODEL   | Part

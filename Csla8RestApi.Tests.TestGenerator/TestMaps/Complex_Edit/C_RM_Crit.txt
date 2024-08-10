@@ -1,0 +1,7 @@
+Snippet:        Complex_Edit\C_RM_Crit.snippet
+Project:        Contract
+FileName:       ===Criteria
+
+root_name:      product
+ROOT_MODEL:     Product
+root_variable:  product

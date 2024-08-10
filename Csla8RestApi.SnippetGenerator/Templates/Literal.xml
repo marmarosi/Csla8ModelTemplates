@@ -1,0 +1,5 @@
+                <Literal>
+                    <ID>$id$</ID>
+                    <ToolTip>$tooltip$</ToolTip>
+                    <Default>$default$</Default>
+                </Literal>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Tree View ● DAL | Read-only tree</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the read-only root collection.</Description>
+            <Shortcut>c8tvrcd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the read-only $root_name$ tree.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$TreeDal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$TreeDal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$TreeDal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Fetch
+
+        private List<$ROOT_MODEL$NodeDao>? All$ROOT_MODEL$s { get; set; }
+
+        /// <summary>
+        /// Gets the specified $root_name$ tree.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ tree.</param>
+        /// <returns>The requested $root_name$ tree.</returns>
+        public async Task<List<$ROOT_MODEL$NodeDao>> FetchAsync(
+            $ROOT_MODEL$TreeCriteria criteria
+            )
+        {
+            var tree = new List<$ROOT_MODEL$NodeDao>();
+
+            // Get all sub$root_name$s of the root foolder.
+            All$ROOT_MODEL$s = await DbContext.$ROOT_MODEL$s
+                .Where(e =>
+                    e.RootKey == criteria.RootKey
+                )
+                .Select(e => new $ROOT_MODEL$NodeDao
+                {
+                    $ROOT_MODEL$Key = e.$ROOT_MODEL$Key,
+                    ParentKey = e.ParentKey,
+                    $ROOT_MODEL$Order = e.$ROOT_MODEL$Order,
+                    $ROOT_MODEL$Name = e.$ROOT_MODEL$Name
+                })
+                .AsNoTracking()
+                .ToListAsync();
+
+            // Populate the tree.
+            PopulateLevel(1, null, tree);
+
+            // Return the result.
+            return tree;
+        }
+
+        private void PopulateLevel(
+            int level,
+            long? parentKey,
+            List<$ROOT_MODEL$NodeDao> parentChildren
+            )
+        {
+            // Get the $root_name$s of the level.
+            var $root_variable$s = All$ROOT_MODEL$s!
+                .Where(o => o.ParentKey == parentKey)
+                .OrderBy(o => o.$ROOT_MODEL$Order)
+                .ToList();
+
+            foreach ($ROOT_MODEL$NodeDao $root_variable$ in $root_variable$s)
+            {
+                // Create $root_name$ node.
+                $ROOT_MODEL$NodeDao $root_variable$Node = new $ROOT_MODEL$NodeDao
+                {
+                    $ROOT_MODEL$Key = $root_variable$.$ROOT_MODEL$Key,
+                    ParentKey = $root_variable$.ParentKey,
+                    $ROOT_MODEL$Order = $root_variable$.$ROOT_MODEL$Order,
+                    $ROOT_MODEL$Name = $root_variable$.$ROOT_MODEL$Name,
+                    Level = level,
+                    Children = new List<$ROOT_MODEL$NodeDao>()
+                };
+
+                // Add $root_name$ to the parent's children.
+                parentChildren.Add($root_variable$Node);
+
+                // Get the sub$root_name$s of this $root_name$.
+                PopulateLevel(
+                    level + 1,
+                    $root_variable$.$ROOT_MODEL$Key,
+                    $root_variable$Node.Children
+                    );
+            }
+        }
+
+        #endregion GetList
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Sorted-Paginated List ● Contract | Read-only sorted-paginated list criteria</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the criteria of a read-only root model.</Description>
+            <Shortcut>c8axrmc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents the criteria of the read-only paginated sorted $root_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$ListCriteria : PaginatedSortedListCriteria
+    {
+        public string? $ROOT_MODEL$Name { get; set; }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

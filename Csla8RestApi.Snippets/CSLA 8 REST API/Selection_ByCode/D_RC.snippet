@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Selection by Code ● DAL | Read-only code choice</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the read-only root collection.</Description>
+            <Shortcut>c8lcrcd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the read-only $root_name$ choice collection.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$ChoiceDal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$ChoiceDal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$ChoiceDal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Fetch
+
+        /// <summary>
+        /// Gets the choice of the $root_name$s.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ choice.</param>
+        /// <returns>The data transfer object of the requested $root_name$ choice.</returns>
+        public async Task<List<ChoiceItemDao<string?>>> FetchAsync(
+            $ROOT_MODEL$ChoiceCriteria criteria
+            )
+        {
+            var choice = await DbContext.$ROOT_MODEL$s
+                .Where(e =>
+                    criteria.$ROOT_MODEL$Name == null || e.$ROOT_MODEL$Name!.Contains(criteria.$ROOT_MODEL$Name)
+                )
+                .Select(e => new ChoiceItemDao<string?>
+                {
+                    Value = e.$ROOT_MODEL$Code,
+                    Name = e.$ROOT_MODEL$Name
+                })
+                .OrderBy(o => o.Name)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return choice;
+        }
+
+        #endregion GetChoice
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

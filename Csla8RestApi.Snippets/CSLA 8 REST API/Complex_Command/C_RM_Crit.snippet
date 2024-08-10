@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex Command ● Contract | Command model criteria</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the criteria of a command model.</Description>
+            <Shortcut>c8ccrmc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents the criteria of the $command_name$ command.
+    /// </summary>
+    [Serializable]
+    public class $COMMAND_MODEL$Criteria
+    {
+        public string? $ROOT_MODEL$Name { get; set; }
+
+        public $COMMAND_MODEL$Criteria()
+        { }
+
+        public $COMMAND_MODEL$Criteria(
+            string $root_variable$Name
+            )
+        {
+            $ROOT_MODEL$Name = $root_variable$Name;
+        }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>command_name</ID>
+                    <ToolTip>The description of the command model in comments.</ToolTip>
+                    <Default>command_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>COMMAND_MODEL</ID>
+                    <ToolTip>The name of the command model.</ToolTip>
+                    <Default>COMMAND_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

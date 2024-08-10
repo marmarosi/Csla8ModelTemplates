@@ -1,0 +1,6 @@
+Snippet:        Simple_Set\C_RI_Data.snippet
+Project:        Contract
+FileName:       ===SetItemData
+
+root_name:      product
+ROOT_MODEL:     Product

@@ -1,0 +1,6 @@
+Snippet:        Simple_Set\C_RC_Crit.snippet
+Project:        Contract
+FileName:       ===SetCriteria
+
+root_name:      product
+ROOT_MODEL:     Product

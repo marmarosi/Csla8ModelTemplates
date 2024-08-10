@@ -1,0 +1,7 @@
+Snippet:        Controllers\EP_Delete.snippet
+Project:        WebApi
+FileName:       DeleteController
+
+root_name:      product
+root_variable:  product
+ROOT_MODEL:     Product

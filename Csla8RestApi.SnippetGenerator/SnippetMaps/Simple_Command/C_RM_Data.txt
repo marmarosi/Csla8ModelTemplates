@@ -1,0 +1,10 @@
+Source:         Simple\Command\RenameTeamData.cs
+Title:          Contract | Command data objects
+Description:    Defines the data objects of a command model.
+Shortcut:       c8scrmo
+Test:           Contract | +++Data
+
+/// rename team:    command_name  | clear product
+RenameTeam:         COMMAND_MODEL | ClearProduct
+Team:               ROOT_MODEL    | Product
+team:               root_variable | product

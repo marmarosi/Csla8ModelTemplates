@@ -1,0 +1,11 @@
+Source:         Complex\List\TeamListPlayer.cs
+Title:          Model | Read-only child list item
+Description:    Implements a read-only child model.
+Shortcut:       c8clci
+Test:           Model | ===List---
+
+/// player:     child_name    | part
+/// Team:       ROOT_MODEL    | Product
+/// Player:     CHILD_MODEL   | Part
+Team:           ROOT_MODEL    | Product
+Player:         CHILD_MODEL   | Part

@@ -1,0 +1,10 @@
+Source:         Complex\List\TeamListItem.cs
+Title:          Model | Read-only root list item
+Description:    Implements a read-only list item model.
+Shortcut:       c8clri
+Test:           Model | ===ListItem
+
+/// team:       root_name     | product
+///Team:        ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+Player:         CHILD_MODEL   | Part

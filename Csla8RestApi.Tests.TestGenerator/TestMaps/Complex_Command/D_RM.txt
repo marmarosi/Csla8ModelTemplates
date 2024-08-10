@@ -1,0 +1,10 @@
+Snippet:        Complex_Command\D_RM.snippet
+Project:        DAL
+FileName:       +++Dal
+
+command_name:   count products by part count
+COMMAND_MODEL:  CountProducts
+ROOT_MODEL:     Product
+root_variable:  product
+CHILD_MODEL:    Part
+DB_CONTEXT:     RdbmsContext

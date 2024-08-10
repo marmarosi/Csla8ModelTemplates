@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex Set ● DAL | Editable root list</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the editable root collection.</Description>
+            <Shortcut>c8csrcd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the editable $root_name$ collection.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$SetDal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$SetDal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$SetDal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Fetch
+
+        /// <summary>
+        /// Gets the specified $root_name$ set.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ set.</param>
+        /// <returns>The requested $root_name$ set.</returns>
+        public async Task<List<$ROOT_MODEL$SetItemDao>> FetchAsync(
+            $ROOT_MODEL$SetCriteria criteria
+            )
+        {
+            var list = await DbContext.$ROOT_MODEL$s
+                .Include(e => e.$CHILD_MODEL$s)
+                .Where(e =>
+                    criteria.$ROOT_MODEL$Name == null || e.$ROOT_MODEL$Name!.Contains(criteria.$ROOT_MODEL$Name)
+                )
+                .Select(e => new $ROOT_MODEL$SetItemDao
+                {
+                    $ROOT_MODEL$Key = e.$ROOT_MODEL$Key,
+                    $ROOT_MODEL$Code = e.$ROOT_MODEL$Code,
+                    $ROOT_MODEL$Name = e.$ROOT_MODEL$Name,
+                    $CHILD_MODEL$s = e.$CHILD_MODEL$s!
+                        .Select(p => new $ROOT_MODEL$Set$CHILD_MODEL$Dao
+                        {
+                            $CHILD_MODEL$Key = p.$CHILD_MODEL$Key,
+                            $ROOT_MODEL$Key = p.$ROOT_MODEL$Key,
+                            $CHILD_MODEL$Code = p.$CHILD_MODEL$Code,
+                            $CHILD_MODEL$Name = p.$CHILD_MODEL$Name
+                        })
+                        .OrderBy(p => p.$CHILD_MODEL$Name)
+                        .ToList(),
+                    Timestamp = e.Timestamp
+                })
+                .OrderBy(o => o.$ROOT_MODEL$Name)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return list;
+        }
+
+        #endregion GetList
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

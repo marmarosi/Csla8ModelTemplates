@@ -1,0 +1,10 @@
+Source:         Controllers\SimpleController.cs | Read-Set
+Title:          Controller | Read set endpoint
+Description:    Defines an endpoint to fetch an editable collection.
+Shortcut:       c8epq
+Test:           WebApi | ReadSetController
+
+/// team:       root_name     | product
+team:           root_variable | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

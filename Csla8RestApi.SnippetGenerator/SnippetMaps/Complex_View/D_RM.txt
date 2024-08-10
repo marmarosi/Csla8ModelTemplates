@@ -1,0 +1,11 @@
+Source:         Complex\View\TeamViewDal.cs
+Title:          DAL | Read-only model
+Description:    Implements the data access of the read-only root model.
+Shortcut:       c8cvrmd
+Test:           DAL | ===ViewDal
+
+/// team:       root_name     | product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product
+Player:         CHILD_MODEL   | Part
+MySqlContext:   DB_CONTEXT    | RdbmsContext

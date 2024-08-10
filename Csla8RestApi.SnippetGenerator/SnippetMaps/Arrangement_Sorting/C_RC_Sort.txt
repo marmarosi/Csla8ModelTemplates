@@ -1,0 +1,9 @@
+Source:         Arrangement\Sorting\SortedTeamListSortBy.cs
+Title:          Contract | Sorting enumeration
+Description:    Defines the options of sorting.
+Shortcut:       c8asrcs
+Test:           Contract | ===ListSortBy
+
+/// team:       root_name  | product
+SortedTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

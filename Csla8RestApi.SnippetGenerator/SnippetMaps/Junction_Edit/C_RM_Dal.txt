@@ -1,0 +1,8 @@
+Source:         Junction\Edit\IGroupDal.cs
+Title:          Contract | Editable root model DAL interface
+Description:    Defines the DAL interface of an editable root model.
+Shortcut:       c8jermi
+Test:           Contract | I===Dal
+
+/// group:      root_name  | user
+Group:          ROOT_MODEL | User

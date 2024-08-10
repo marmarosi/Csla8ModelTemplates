@@ -1,0 +1,15 @@
+Source:         Simple\Set\SimpleTeamSetItemDal.cs
+Title:          DAL | Editable list item
+Description:    Implements the data access of the editable child model.
+Shortcut:       c8ssrid
+Test:           DAL | ===SetItemDal
+
+/// team:       root_name      | product
+/// SimpleTeam: ROOT_MODEL     | Product
+/// Team:       ROOT_MODEL     | Product
+SimpleTeam:     ROOT_MODEL     | Product
+Team:           ROOT_MODEL     | Product
+team:           root_variable  | product
+Player:         CHILD_MODEL    | Part
+player:         child_variable | part
+MySqlContext:   DB_CONTEXT     | RdbmsContext

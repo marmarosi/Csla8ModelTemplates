@@ -1,0 +1,10 @@
+Source:         Simple\Set\SimpleTeamSetDal.cs
+Title:          DAL | Editable list
+Description:    Implements the data access of the editable root collection.
+Shortcut:       c8ssrcd
+Test:           DAL | ===SetDal
+
+/// team:       root_name      | product
+SimpleTeam:     ROOT_MODEL     | Product
+Team:           ROOT_MODEL     | Product
+MySqlContext:   DB_CONTEXT     | RdbmsContext

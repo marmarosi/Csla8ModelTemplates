@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>API | Read set endpoint</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines a read editable collection endpoint.</Description>
+            <Shortcut>c8ers</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[#region Read-Set
+
+        /// <summary>
+        /// Gets the specified $root_name$ set to edit.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ set.</param>
+        /// <returns>The requested $root_name$ set.</returns>
+        [HttpGet("set")]
+        [ProducesResponseType(typeof(IList<$ROOT_MODEL$SetItemDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get$ROOT_MODEL$Set(
+            [FromQuery] $ROOT_MODEL$SetCriteria criteria
+            )
+        {
+            try
+            {
+                var $root_variable$s = await $ROOT_MODEL$Set.GetAsync(Factory, criteria);
+                return Ok($root_variable$s.ToDto());
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

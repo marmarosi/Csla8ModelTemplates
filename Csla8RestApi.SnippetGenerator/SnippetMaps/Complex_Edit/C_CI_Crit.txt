@@ -1,0 +1,10 @@
+Source:         Complex\Edit\TeamPlayerCriteria.cs
+Title:          Contract | Editable child list item criteria
+Description:    Defines the criteria of an editable child model.
+Shortcut:       c8cecic
+Test:           Contract | ===---Criteria
+
+/// player:     child_name     | part
+Player:         CHILD_MODEL    | Part
+player:         child_variable | part
+Team:           ROOT_MODEL     | Product

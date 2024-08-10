@@ -1,0 +1,7 @@
+Snippet:        Junction_View\C_RM_Crit.snippet
+Project:        Contract
+FileName:       ===ViewCriteria
+
+root_name:      user
+ROOT_MODEL:     User
+root_variable:  user

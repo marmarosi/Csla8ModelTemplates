@@ -1,0 +1,9 @@
+Source:         Controllers\EmptyController.cs
+Title:          Controller | Class
+Description:    Defines a controller to provide endpoints.
+Shortcut:       c8ep-
+Test:           WebApi | EmptyController
+
+/// team:       root_name     | product
+team:           root_variable | Product
+Empty:          ROOT_MODEL    | Product

@@ -1,0 +1,11 @@
+Source:         Arrangement\Pagination\PaginatedTeamListItem.cs
+Title:          Model | Read-only paginated list item
+Description:    Implements a read-only child model.
+Shortcut:       c8apci
+Test:           Model | ===ListItem
+
+/// team:           root_name     | product
+/// PaginatedTeam:  ROOT_MODEL    | Product
+/// Team:           ROOT_MODEL    | Product
+PaginatedTeam:      ROOT_MODEL    | Product
+Team:               ROOT_MODEL    | Product

@@ -1,0 +1,10 @@
+Source:         Controllers\SimpleController.cs | Update
+Title:          Controller | Update endpoint
+Description:    Defines an endpoint to update an editable model.
+Shortcut:       c8epu
+Test:           WebApi | UpdateController
+
+/// team:       root_name     | product
+team:           root_variable | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product

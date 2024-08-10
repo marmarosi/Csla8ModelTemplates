@@ -1,0 +1,7 @@
+Snippet:        Complex_Command\M_RM.snippet
+Project:        Model
+FileName:       +++
+
+command_name:   count products
+COMMAND_MODEL:  CountProducts
+ROOT_MODEL:     Product

@@ -1,0 +1,8 @@
+Source:         Controllers\SelectionController.cs | Choice by key
+Title:          Controller | Choice by key endpoint
+Description:    Defines an endpoint to fetch a read-only key-name options.
+Shortcut:       c8epk
+Test:           WebApi | ChoiceByKeyController
+
+/// team:       root_name     | product
+TeamByKey:      ROOT_MODEL    | Product

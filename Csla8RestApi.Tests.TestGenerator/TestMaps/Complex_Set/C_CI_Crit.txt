@@ -1,0 +1,9 @@
+Snippet:        Complex_Set\C_CI_Crit.snippet
+Project:        Contract
+FileName:       ===Set---Criteria
+
+child_name:     part
+CHILD_MODEL:    Part
+child_variable: part
+ROOT_MODEL:     Product
+root_variable:  product

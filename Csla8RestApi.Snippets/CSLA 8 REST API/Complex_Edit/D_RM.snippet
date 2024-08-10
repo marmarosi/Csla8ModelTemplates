@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex Edit ● DAL | Editable root model</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements the data access of the editable root model.</Description>
+            <Shortcut>c8cermd</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Implements the data access functions of the editable $root_name$ object.
+    /// </summary>
+    [DalImplementation]
+    public class $ROOT_MODEL$Dal : DalBase<$DB_CONTEXT$>, I$ROOT_MODEL$Dal
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Instantiates the data access object.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        public $ROOT_MODEL$Dal(
+            $DB_CONTEXT$ dbContext
+            )
+        {
+            DbContext = dbContext;
+        }
+
+        #endregion Constructor
+
+        #region Fetch
+
+        /// <summary>
+        /// Gets the specified $root_name$.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$.</param>
+        /// <returns>The requested $root_name$.</returns>
+        public async Task<$ROOT_MODEL$Dao> FetchAsync(
+            $ROOT_MODEL$Criteria criteria
+            )
+        {
+            // Get the specified $root_name$.
+            var $root_variable$ = await DbContext.$ROOT_MODEL$s
+                .Include(e => e.$CHILD_MODEL$s)
+                .Where(e =>
+                    e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key
+                 )
+                .Select(e => new $ROOT_MODEL$Dao
+                {
+                    $ROOT_MODEL$Key = e.$ROOT_MODEL$Key,
+                    $ROOT_MODEL$Code = e.$ROOT_MODEL$Code,
+                    $ROOT_MODEL$Name = e.$ROOT_MODEL$Name,
+                    $CHILD_MODEL$s = e.$CHILD_MODEL$s!
+                        .Select(p => new $ROOT_MODEL$$CHILD_MODEL$Dao
+                        {
+                            $CHILD_MODEL$Key = p.$CHILD_MODEL$Key,
+                            $ROOT_MODEL$Key = p.$ROOT_MODEL$Key,
+                            $CHILD_MODEL$Code = p.$CHILD_MODEL$Code,
+                            $CHILD_MODEL$Name = p.$CHILD_MODEL$Name
+                        })
+                        .OrderBy(p => p.$CHILD_MODEL$Name)
+                        .ToList(),
+                    Timestamp = e.Timestamp
+                })
+                .AsNoTracking()
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.$ROOT_MODEL$_NotFound);
+
+            return $root_variable$;
+        }
+
+        #endregion Fetch
+
+        #region Insert
+
+        /// <summary>
+        /// Creates a new $root_name$ using the specified data.
+        /// </summary>
+        /// <param name="dao">The data of the $root_name$.</param>
+        public async Task InsertAsync(
+            $ROOT_MODEL$Dao dao
+            )
+        {
+            // Check unique $root_name$ code.
+            var $root_variable$ = await DbContext.$ROOT_MODEL$s
+                .Where(e =>
+                    e.$ROOT_MODEL$Code == dao.$ROOT_MODEL$Code
+                )
+                .FirstOrDefaultAsync();
+            if ($root_variable$ is not null)
+                throw new DataExistException(ComplexText.$ROOT_MODEL$_$ROOT_MODEL$CodeExists.With(dao.$ROOT_MODEL$Code!));
+
+            // Create the new $root_name$.
+            $root_variable$ = new $ROOT_MODEL$
+            {
+                $ROOT_MODEL$Code = dao.$ROOT_MODEL$Code,
+                $ROOT_MODEL$Name = dao.$ROOT_MODEL$Name
+            };
+            await DbContext.$ROOT_MODEL$s.AddAsync($root_variable$);
+
+            int count = await DbContext.SaveChangesAsync();
+            if (count == 0)
+                throw new InsertFailedException(ComplexText.$ROOT_MODEL$_InsertFailed);
+
+            // Return new data.
+            dao.$ROOT_MODEL$Key = $root_variable$.$ROOT_MODEL$Key;
+            dao.Timestamp = $root_variable$.Timestamp;
+        }
+
+        #endregion Insert
+
+        #region Update
+
+        /// <summary>
+        /// Updates an existing $root_name$ using the specified data.
+        /// </summary>
+        /// <param name="dao">The data of the $root_name$.</param>
+        public async Task UpdateAsync(
+            $ROOT_MODEL$Dao dao
+            )
+        {
+            // Get the specified $root_name$.
+            var $root_variable$ = await DbContext.$ROOT_MODEL$s
+                .Where(e =>
+                    e.$ROOT_MODEL$Key == dao.$ROOT_MODEL$Key
+                )
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.$ROOT_MODEL$_NotFound);
+
+            if ($root_variable$.Timestamp != dao.Timestamp)
+                throw new ConcurrencyException(ComplexText.$ROOT_MODEL$_Concurrency);
+
+            // Check unique $root_name$ code.
+            if ($root_variable$.$ROOT_MODEL$Code != dao.$ROOT_MODEL$Code)
+            {
+                int exist = await DbContext.$ROOT_MODEL$s
+                    .Where(e => e.$ROOT_MODEL$Code == dao.$ROOT_MODEL$Code && e.$ROOT_MODEL$Key != $root_variable$.$ROOT_MODEL$Key)
+                    .CountAsync();
+                if (exist > 0)
+                    throw new DataExistException(ComplexText.$ROOT_MODEL$_$ROOT_MODEL$CodeExists.With(dao.$ROOT_MODEL$Code!));
+            }
+
+            // Update the $root_name$.
+            $root_variable$.$ROOT_MODEL$Code = dao.$ROOT_MODEL$Code;
+            $root_variable$.$ROOT_MODEL$Name = dao.$ROOT_MODEL$Name;
+            $root_variable$.Timestamp = DateTime.Now; // Force update timestamp.
+
+            int count = await DbContext.SaveChangesAsync();
+            if (count == 0)
+                throw new UpdateFailedException(ComplexText.$ROOT_MODEL$_UpdateFailed);
+
+            // Return new data.
+            dao.Timestamp = $root_variable$.Timestamp;
+        }
+
+        #endregion Update
+
+        #region Delete
+
+        /// <summary>
+        /// Deletes the specified $root_name$.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$.</param>
+        public async Task DeleteAsync(
+            $ROOT_MODEL$Criteria criteria
+            )
+        {
+            int count = 0;
+
+            // Get the specified $root_name$.
+            var $root_variable$ = await DbContext.$ROOT_MODEL$s
+                .Where(e =>
+                    e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key
+                 )
+                .AsNoTracking()
+                .FirstOrDefaultAsync()
+                ?? throw new DataNotFoundException(ComplexText.$ROOT_MODEL$_NotFound);
+
+            // Check references.
+            //int dependents = 0;
+
+            //dependents = await DbContext.Others.CountAsync(e => e.$ROOT_MODEL$Key == criteria.$ROOT_MODEL$Key);
+            //if (dependents > 0)
+            //    throw new DeleteFailedException(ComplexText.$ROOT_MODEL$_Delete_Others);
+
+            // Delete references.
+
+            // Delete the $root_name$.
+            DbContext.$ROOT_MODEL$s.Remove($root_variable$);
+
+            count = await DbContext.SaveChangesAsync();
+            if (count == 0)
+                throw new DeleteFailedException(ComplexText.$ROOT_MODEL$_DeleteFailed);
+        }
+
+        #endregion Delete
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>DB_CONTEXT</ID>
+                    <ToolTip>The name of the database context.</ToolTip>
+                    <Default>DB_CONTEXT</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,6 @@
+Snippet:        Simple_Command\C_RM_Dal.snippet
+Project:        Contract
+FileName:       I+++Dal
+
+command_name:   clear product
+COMMAND_MODEL:  ClearProduct

@@ -1,0 +1,189 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;8618</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;8618</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Literal.xml" />
+    <None Remove="Snippet.xml" />
+    <None Remove="SnippetMaps\Arrangement_Full\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Arrangement_Full\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Arrangement_Full\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Arrangement_Full\C_RM_Sort.txt" />
+    <None Remove="SnippetMaps\Arrangement_Pagination\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Arrangement_Pagination\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Arrangement_Pagination\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Arrangement_Sorting\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Arrangement_Sorting\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Arrangement_Sorting\C_RC_Sort.txt" />
+    <None Remove="SnippetMaps\Arrangement_Sorting\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_Command\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_Command\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_Command\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_Edit\C_CI_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_Edit\C_CI_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_Edit\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_Edit\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_Edit\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_Edit\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Complex_List\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_List\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_List\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_List\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_CI_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_CI_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_RI_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_RI_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_Set\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_View\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Complex_View\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Complex_View\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Complex_View\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Junction_Edit\C_CI_Dal.txt" />
+    <None Remove="SnippetMaps\Junction_Edit\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Junction_Edit\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Junction_Edit\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Junction_Edit\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Junction_View\C_CI_Data.txt" />
+    <None Remove="SnippetMaps\Junction_View\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Junction_View\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Junction_View\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Selection_ByCode\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Selection_ByCode\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Selection_ByGuid\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Selection_ByGuid\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Selection_ById\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Selection_ById\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Selection_ByKey\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Selection_ByKey\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_Command\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_Command\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Simple_Edit\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Simple_Edit\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_Edit\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Simple_List\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Simple_List\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_List\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Simple_Set\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Simple_Set\C_RC_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_Set\C_RI_Crit.txt" />
+    <None Remove="SnippetMaps\Simple_Set\C_RI_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_Set\C_RI_Data.txt" />
+    <None Remove="SnippetMaps\Simple_View\C_RM_Crit.txt" />
+    <None Remove="SnippetMaps\Simple_View\C_RM_Dal.txt" />
+    <None Remove="SnippetMaps\Simple_View\C_RM_Data.txt" />
+    <None Remove="SnippetMaps\Tree_View\C_CM_Data.txt" />
+    <None Remove="SnippetMaps\Tree_View\C_RC_Crit.txt" />
+    <None Remove="SnippetMaps\Tree_View\C_RC_Dal.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SnippetMaps\Arrangement_Full\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Arrangement_Full\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Arrangement_Full\C_RM_Sort.txt" />
+    <Content Include="SnippetMaps\Arrangement_Full\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Arrangement_Pagination\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Arrangement_Pagination\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Arrangement_Pagination\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Arrangement_Sorting\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Arrangement_Sorting\C_RC_Sort.txt" />
+    <Content Include="SnippetMaps\Arrangement_Sorting\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Arrangement_Sorting\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_Command\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_Command\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_Command\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_Edit\C_CI_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_Edit\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_Edit\C_CI_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_Edit\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_Edit\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_Edit\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Complex_List\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_List\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_List\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_List\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_CI_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_RI_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_CI_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_RI_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_Set\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_View\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Complex_View\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Complex_View\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Complex_View\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Junction_Edit\C_CI_Dal.txt" />
+    <Content Include="SnippetMaps\Junction_Edit\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Junction_Edit\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Junction_Edit\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Junction_Edit\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Junction_View\C_CI_Data.txt" />
+    <Content Include="SnippetMaps\Junction_View\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Junction_View\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Junction_View\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Selection_ByCode\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Selection_ByCode\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Selection_ByGuid\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Selection_ByGuid\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Selection_ById\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Selection_ById\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Selection_ByKey\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Selection_ByKey\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Simple_Command\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Simple_Command\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Simple_Edit\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Simple_Edit\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Simple_Edit\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Simple_Set\C_RI_Crit.txt" />
+    <Content Include="SnippetMaps\Simple_Set\C_RI_Dal.txt" />
+    <Content Include="SnippetMaps\Simple_Set\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Simple_Set\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Simple_Set\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Simple_View\C_RM_Crit.txt" />
+    <Content Include="SnippetMaps\Simple_View\C_RM_Dal.txt" />
+    <Content Include="SnippetMaps\Simple_View\C_RM_Data.txt" />
+    <Content Include="SnippetMaps\Tree_View\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Tree_View\C_RC_Dal.txt" />
+    <Content Include="SnippetMaps\Tree_View\C_CM_Data.txt" />
+    <Content Include="Templates\Literal.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Snippet.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SnippetMaps\Simple_List\C_RC_Crit.txt" />
+    <Content Include="SnippetMaps\Simple_List\C_RI_Data.txt" />
+    <Content Include="SnippetMaps\Simple_List\C_RC_Dal.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

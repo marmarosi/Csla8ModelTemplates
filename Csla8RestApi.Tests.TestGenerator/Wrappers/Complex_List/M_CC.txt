@@ -1,0 +1,8 @@
+using Csla;
+using Csla8RestApi.Models;
+using Csla8RestApi.Tests.Contracts.Complex.List;
+
+namespace Csla8RestApi.Tests.Models.Complex.List
+{
+    $snippet$
+}

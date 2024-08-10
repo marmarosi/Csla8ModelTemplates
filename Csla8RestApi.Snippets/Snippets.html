@@ -1,0 +1,3006 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    body {
+      font-family: Arial;
+      margin: 0 32px 32px 32px;
+    }
+    .category {
+      border: black 1px solid;
+      padding: 4px 9px;
+      text-align: center;
+      margin-bottom: 5px;
+      width: 1066px;
+    }
+    .model {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #ead8c0;
+      padding: 5px 10px;
+      margin-bottom: 5px;
+      width: 1066px;
+      border-radius: 5px 5px;
+    }
+    .right {
+      display: inline-block;
+      float: right;
+      letter-spacing: 3px;
+      width: 30px;
+    }
+    .snippets {
+      display: none;
+      margin-bottom: 5px;
+    }
+    th {
+      font-weight: normal;
+      padding: 3px 5px;
+      background-color: #fff2e1;
+    }
+    td {
+      text-align: center;
+      padding: 3px 5px;
+    }
+    .left {
+      text-align: left;
+    }
+    .description {
+      width: 340px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .shortcut {
+      width: 80px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .filename {
+      width: 160px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .param {
+      width: 40px;
+      border-bottom: 1px solid #ead8c0;
+    }
+    .cl-abbr {
+      width: 100px;
+    }
+    .cl-param {
+      width: 250px;
+    }
+    .cl-desc {
+      width: 500px;
+    }
+    .cl-example {
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+    <script type="text/javascript">
+        let selectedId = '';
+        function toggle(snippetId) {
+            if (selectedId) {
+                if (selectedId === snippetId) {
+                    const div = document.getElementById(selectedId);
+                    div.style.display = div.style.display === 'none' ? 'block' : 'none';
+                }
+                else {
+                    document.getElementById(selectedId).style.display = 'none';
+                    selectedId = snippetId;
+                    document.getElementById(selectedId).style.display = 'block';
+                }
+            }
+            else {
+                selectedId = snippetId;
+                document.getElementById(selectedId).style.display = 'block';
+            }
+        }
+    </script>
+
+    <h1>CSLA 8 REST API Code Snippets</h1>
+
+    <div class="category">Endpoints</div>
+
+    <div onclick="toggle('ep')" class="model">
+        Controller
+        <div class="right">ep</div>
+    </div>
+    <div id="ep" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Controller | Choice by code endpoint</td>
+                    <td class="left">c8epx</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Choice by Guid endpoint</td>
+                    <td class="left">c8epg</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Choice by ID endpoint</td>
+                    <td class="left">c8epi</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Choice by key endpoint</td>
+                    <td class="left">c8epk</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Command endpoint</td>
+                    <td class="left">c8epm</td>
+                    <td class="left">===Controller</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Class</td>
+                    <td class="left">c8ep-</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Create endpoint</td>
+                    <td class="left">c8epc</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Delete endpoint</td>
+                    <td class="left">c8epd</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | List endpoint</td>
+                    <td class="left">c8epl</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | New endpoint</td>
+                    <td class="left">c8epn</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Paginated list endpoint</td>
+                    <td class="left">c8epp</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Read endpoint</td>
+                    <td class="left">c8epr</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Read set endpoint</td>
+                    <td class="left">c8epq</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Tree endpoint</td>
+                    <td class="left">c8ept</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Update endpoint</td>
+                    <td class="left">c8epu</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | Update set endpoint</td>
+                    <td class="left">c8eps</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Controller | View endpoint</td>
+                    <td class="left">c8epv</td>
+                    <td class="left">===Controller</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category">Simple Models</div>
+
+    <div onclick="toggle('sl')" class="model">
+        Simple List
+        <div class="right">sl</div>
+    </div>
+    <div id="sl" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only list criteria</td>
+                    <td class="left">c8slrcc</td>
+                    <td class="left">===ListCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only list DAL interface</td>
+                    <td class="left">c8slrci</td>
+                    <td class="left">I===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only list item data objects</td>
+                    <td class="left">c8slrio</td>
+                    <td class="left">===ListItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only list</td>
+                    <td class="left">c8slrcd</td>
+                    <td class="left">===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only list</td>
+                    <td class="left">c8slrc</td>
+                    <td class="left">===List</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only list item</td>
+                    <td class="left">c8slri</td>
+                    <td class="left">===ListItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only model data objects</td>
+                    <td class="left">c8slrio</td>
+                    <td class="left">===ViewData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('sv')" class="model">
+        Simple View
+        <div class="right">sv</div>
+    </div>
+    <div id="sv" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only model criteria</td>
+                    <td class="left">c8svrmc</td>
+                    <td class="left">===ViewCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only model DAL interface</td>
+                    <td class="left">c8svrmi</td>
+                    <td class="left">I===ViewDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only model</td>
+                    <td class="left">c8svrmd</td>
+                    <td class="left">===ViewDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only model</td>
+                    <td class="left">c8svrm</td>
+                    <td class="left">===View</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('se')" class="model">
+        Simple Edit
+        <div class="right">se</div>
+    </div>
+    <div id="se" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Editable model criteria</td>
+                    <td class="left">c8sermc</td>
+                    <td class="left">===Criteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable model DAL interface</td>
+                    <td class="left">c8sermi</td>
+                    <td class="left">I===Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable model data objects</td>
+                    <td class="left">c8sermo</td>
+                    <td class="left">===Data</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable model</td>
+                    <td class="left">c8sermd</td>
+                    <td class="left">===Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable model</td>
+                    <td class="left">c8serm</td>
+                    <td class="left">===</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('ss')" class="model">
+        Simple Set
+        <div class="right">ss</div>
+    </div>
+    <div id="ss" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Editable list criteria</td>
+                    <td class="left">c8ssrcc</td>
+                    <td class="left">===SetCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable list DAL interface</td>
+                    <td class="left">c8ssrci</td>
+                    <td class="left">I===SetDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable list item criteria</td>
+                    <td class="left">c8ssric</td>
+                    <td class="left">===SetItemCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable list item DAL interface</td>
+                    <td class="left">c8ssrii</td>
+                    <td class="left">I===SetItemDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable list item data objects</td>
+                    <td class="left">c8ssrio</td>
+                    <td class="left">===SetItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable list</td>
+                    <td class="left">c8ssrcd</td>
+                    <td class="left">===SetDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable list item</td>
+                    <td class="left">c8ssrid</td>
+                    <td class="left">===SetItemDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable list</td>
+                    <td class="left">c8ssrc</td>
+                    <td class="left">===Set</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable list item</td>
+                    <td class="left">c8ssri</td>
+                    <td class="left">===SetItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('sc')" class="model">
+        Simple Command
+        <div class="right">sc</div>
+    </div>
+    <div id="sc" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Command model DAL interface</td>
+                    <td class="left">c8scrmi</td>
+                    <td class="left">I+++Dal</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Command data objects</td>
+                    <td class="left">c8scrmo</td>
+                    <td class="left">+++Data</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Command model</td>
+                    <td class="left">c8scrmd</td>
+                    <td class="left">+++Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Command model</td>
+                    <td class="left">c8scrm</td>
+                    <td class="left">+++</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category">Arrangement</div>
+
+    <div onclick="toggle('as')" class="model">
+        Sorted List
+        <div class="right">as</div>
+    </div>
+    <div id="as" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only sorted list DAL interface</td>
+                    <td class="left">c8asrci</td>
+                    <td class="left">I===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only sorted list criteria</td>
+                    <td class="left">c8asrcc</td>
+                    <td class="left">===ListCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only sorted list DAL interface</td>
+                    <td class="left">c8asrci</td>
+                    <td class="left">I===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Sorting enumeration</td>
+                    <td class="left">c8asrcs</td>
+                    <td class="left">===ListSortBy</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only sorted list item data objects</td>
+                    <td class="left">c8ascmo</td>
+                    <td class="left">===ListItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only sorted list</td>
+                    <td class="left">c8asrcd</td>
+                    <td class="left">===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only sorted list</td>
+                    <td class="left">c8asrc</td>
+                    <td class="left">===List</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only sorted list item</td>
+                    <td class="left">c8asri</td>
+                    <td class="left">===ListItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('ap')" class="model">
+        Paginated List
+        <div class="right">ap</div>
+    </div>
+    <div id="ap" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only paginated list item data objects</td>
+                    <td class="left">c8apcio</td>
+                    <td class="left">===ListItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only paginated list criteria</td>
+                    <td class="left">c8aprmc</td>
+                    <td class="left">===ListCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only paginated list</td>
+                    <td class="left">c8aprcd</td>
+                    <td class="left">===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only paginated list</td>
+                    <td class="left">c8apcc</td>
+                    <td class="left">===ListItems</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only paginated list item</td>
+                    <td class="left">c8apci</td>
+                    <td class="left">===ListItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only list container</td>
+                    <td class="left">c8aprm</td>
+                    <td class="left">===List</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('ax')" class="model">
+        Sorted-Paginated List
+        <div class="right">ax</div>
+    </div>
+    <div id="ax" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only sorted-paginated list item data objects</td>
+                    <td class="left">c8axcio</td>
+                    <td class="left">===ListItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only sorted-paginated list criteria</td>
+                    <td class="left">c8axrmc</td>
+                    <td class="left">===ListCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only sorted-paginated list DAL interface</td>
+                    <td class="left">c8axrmi</td>
+                    <td class="left">I===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Sorting enumeration</td>
+                    <td class="left">c8axrms</td>
+                    <td class="left">===ListSortBy</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only sorted-paginated list</td>
+                    <td class="left">c8axrmd</td>
+                    <td class="left">===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only sorted-paginated list</td>
+                    <td class="left">c8axcc</td>
+                    <td class="left">===ListItems</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only sorted-paginated list item</td>
+                    <td class="left">c8axci</td>
+                    <td class="left">===ListItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only list container</td>
+                    <td class="left">c8axrm</td>
+                    <td class="left">===List</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category">Selection</div>
+
+    <div onclick="toggle('lk')" class="model">
+        Selection by Key
+        <div class="right">lk</div>
+    </div>
+    <div id="lk" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only key choice criteria</td>
+                    <td class="left">c8lkrcc</td>
+                    <td class="left">===ChoiceCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only key choice DAL interface</td>
+                    <td class="left">c8lkrci</td>
+                    <td class="left">I===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only key choice</td>
+                    <td class="left">c8lkrcd</td>
+                    <td class="left">===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only key choice</td>
+                    <td class="left">c8lkrc</td>
+                    <td class="left">===Choice</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('li')" class="model">
+        Selection by ID
+        <div class="right">li</div>
+    </div>
+    <div id="li" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only ID choice criteria</td>
+                    <td class="left">c8lircc</td>
+                    <td class="left">===ChoiceCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only ID choice DAL interface</td>
+                    <td class="left">c8lirci</td>
+                    <td class="left">I===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only ID choice</td>
+                    <td class="left">c8lircd</td>
+                    <td class="left">===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only ID choice</td>
+                    <td class="left">c8lirc</td>
+                    <td class="left">===Choice</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('lg')" class="model">
+        Selection by Guid
+        <div class="right">lg</div>
+    </div>
+    <div id="lg" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only Guid choice criteria</td>
+                    <td class="left">c8lgrcc</td>
+                    <td class="left">===ChoiceCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only Guid choice DAL interface</td>
+                    <td class="left">c8lgrci</td>
+                    <td class="left">I===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only Guid choice</td>
+                    <td class="left">c8lgrcd</td>
+                    <td class="left">===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only Guid choice</td>
+                    <td class="left">c8lgrc</td>
+                    <td class="left">===Choice</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('lc')" class="model">
+        Selection by Code
+        <div class="right">lc</div>
+    </div>
+    <div id="lc" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only code choice criteria</td>
+                    <td class="left">c8lcrcc</td>
+                    <td class="left">===ChoiceCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only code choice DAL interface</td>
+                    <td class="left">c8lcrci</td>
+                    <td class="left">I===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only code choice</td>
+                    <td class="left">c8lcrcd</td>
+                    <td class="left">===ChoiceDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only code choice</td>
+                    <td class="left">c8lcrc</td>
+                    <td class="left">===Choice</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category">Complex Models</div>
+
+    <div onclick="toggle('cl')" class="model">
+        Complex List
+        <div class="right">cl</div>
+    </div>
+    <div id="cl" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only child list item data objects</td>
+                    <td class="left">c8clcio</td>
+                    <td class="left">===List---Data</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root list criteria</td>
+                    <td class="left">c8clrcc</td>
+                    <td class="left">===ListCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root list DAL interface</td>
+                    <td class="left">c8clrci</td>
+                    <td class="left">I===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root list item data objects</td>
+                    <td class="left">c8clrio</td>
+                    <td class="left">===ListItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only root list</td>
+                    <td class="left">c8clrcd</td>
+                    <td class="left">===ListDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list</td>
+                    <td class="left">c8clcc</td>
+                    <td class="left">===List---s</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list item</td>
+                    <td class="left">c8clci</td>
+                    <td class="left">===List---</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only root list</td>
+                    <td class="left">c8clrc</td>
+                    <td class="left">===List</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only root list item</td>
+                    <td class="left">c8clri</td>
+                    <td class="left">===ListItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('cv')" class="model">
+        Complex View
+        <div class="right">cv</div>
+    </div>
+    <div id="cv" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only child list item data objects</td>
+                    <td class="left">c8cvcio</td>
+                    <td class="left">===View---Data</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root model criteria</td>
+                    <td class="left">c8cvrmc</td>
+                    <td class="left">===ViewCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root model DAL interface</td>
+                    <td class="left">c8cvrmi</td>
+                    <td class="left">I===ViewDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root model data objects</td>
+                    <td class="left">c8cvrmo</td>
+                    <td class="left">===ViewData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only model</td>
+                    <td class="left">c8cvrmd</td>
+                    <td class="left">===ViewDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list</td>
+                    <td class="left">c8cvcc</td>
+                    <td class="left">===View---s</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list item</td>
+                    <td class="left">c8cvci</td>
+                    <td class="left">===View---</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only root model</td>
+                    <td class="left">c8cvrm</td>
+                    <td class="left">===View</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('ce')" class="model">
+        Complex Edit
+        <div class="right">ce</div>
+    </div>
+    <div id="ce" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Editable child list item criteria</td>
+                    <td class="left">c8cecic</td>
+                    <td class="left">===---Criteria</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable child list item DAL interface</td>
+                    <td class="left">c8cecii</td>
+                    <td class="left">I===---Dal</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable child list item data objects</td>
+                    <td class="left">c8cecio</td>
+                    <td class="left">===---Data</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root model criteria</td>
+                    <td class="left">c8cermc</td>
+                    <td class="left">===Criteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root model DAL interface</td>
+                    <td class="left">c8cermi</td>
+                    <td class="left">I===Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root model data objects</td>
+                    <td class="left">c6cermo</td>
+                    <td class="left">===Data</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable child list item</td>
+                    <td class="left">c8cecid</td>
+                    <td class="left">===---Dal</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable root model</td>
+                    <td class="left">c8cermd</td>
+                    <td class="left">===Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable child list</td>
+                    <td class="left">c8cecc</td>
+                    <td class="left">===---s</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable child list item</td>
+                    <td class="left">c8ceci</td>
+                    <td class="left">===---</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable root model</td>
+                    <td class="left">c8cerm</td>
+                    <td class="left">===</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('cs')" class="model">
+        Complex Set
+        <div class="right">cs</div>
+    </div>
+    <div id="cs" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Editable child list item criteria</td>
+                    <td class="left">c8cscic</td>
+                    <td class="left">===Set---Criteria</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable child list item DAL interface</td>
+                    <td class="left">c8cscii</td>
+                    <td class="left">I===Set---Dal</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable child list item data objects</td>
+                    <td class="left">c8cscio</td>
+                    <td class="left">===Set---Data</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root list criteria</td>
+                    <td class="left">c8csrcc</td>
+                    <td class="left">===SetCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root list DAL interface</td>
+                    <td class="left">c8csrci</td>
+                    <td class="left">I===SetDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root list item criteria</td>
+                    <td class="left">c8csric</td>
+                    <td class="left">===SetItemCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root list item DAL interface</td>
+                    <td class="left">c8csrii</td>
+                    <td class="left">I===SetItemDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root list item data objects</td>
+                    <td class="left">c8csrio</td>
+                    <td class="left">===SetItemData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable child list item</td>
+                    <td class="left">c8cscid</td>
+                    <td class="left">===Set---Dal</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable root list</td>
+                    <td class="left">c8csrcd</td>
+                    <td class="left">===SetDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable root list item</td>
+                    <td class="left">c8csrid</td>
+                    <td class="left">===SetItemDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable child list</td>
+                    <td class="left">c8cscc</td>
+                    <td class="left">===Set---s</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable child list item</td>
+                    <td class="left">c8csci</td>
+                    <td class="left">===Set---</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable root list</td>
+                    <td class="left">c8csrc</td>
+                    <td class="left">===Set</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable root list item</td>
+                    <td class="left">c8csri</td>
+                    <td class="left">===SetItem</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('cc')" class="model">
+        Complex Command
+        <div class="right">cc</div>
+    </div>
+    <div id="cc" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only child list item data objects</td>
+                    <td class="left">c8cccio</td>
+                    <td class="left">+++ResultData</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Command model criteria</td>
+                    <td class="left">c8ccrmc</td>
+                    <td class="left">+++Criteria</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Command model DAL interface</td>
+                    <td class="left">c8ccrmi</td>
+                    <td class="left">I+++Dal</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Command model</td>
+                    <td class="left">c8ccrmd</td>
+                    <td class="left">+++Dal</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list</td>
+                    <td class="left">c8cccc</td>
+                    <td class="left">+++Results</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list item</td>
+                    <td class="left">c8ccci</td>
+                    <td class="left">+++Result</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Command model</td>
+                    <td class="left">c8ccrm</td>
+                    <td class="left">+++</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category">Tree Model</div>
+
+    <div onclick="toggle('tv')" class="model">
+        Tree View
+        <div class="right">tv</div>
+    </div>
+    <div id="tv" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only tree node data objects</td>
+                    <td class="left">c8tvcmo</td>
+                    <td class="left">===NodeData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only tree criteria</td>
+                    <td class="left">c8tvrcc</td>
+                    <td class="left">===TreeCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only tree DAL interface</td>
+                    <td class="left">c8tvrci</td>
+                    <td class="left">I===TreeDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only tree</td>
+                    <td class="left">c8tvrcd</td>
+                    <td class="left">===TreeDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child collection</td>
+                    <td class="left">c8tvcc</td>
+                    <td class="left">===Nodes</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only tree node</td>
+                    <td class="left">c8tvcm</td>
+                    <td class="left">===Node</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only root collection</td>
+                    <td class="left">c8tvrc</td>
+                    <td class="left">===Tree</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="category">Junction Models</div>
+
+    <div onclick="toggle('jv')" class="model">
+        Junction View
+        <div class="right">jv</div>
+    </div>
+    <div id="jv" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Read-only child list item data objects</td>
+                    <td class="left">c8jvcio</td>
+                    <td class="left">===View---Data</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root model criteria</td>
+                    <td class="left">c8jvrmc</td>
+                    <td class="left">===ViewCriteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root model DAL interface</td>
+                    <td class="left">c8jvrmi</td>
+                    <td class="left">I===ViewDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Read-only root model data objects</td>
+                    <td class="left">c8jvrmo</td>
+                    <td class="left">===ViewData</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Read-only root model</td>
+                    <td class="left">c8jvrmd</td>
+                    <td class="left">===ViewDal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list</td>
+                    <td class="left">c8jvcc</td>
+                    <td class="left">===View---s</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only child list item</td>
+                    <td class="left">c8jvci</td>
+                    <td class="left">===View---</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Read-only root model</td>
+                    <td class="left">c8jvrm</td>
+                    <td class="left">===View</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div onclick="toggle('je')" class="model">
+        Junction Edit
+        <div class="right">je</div>
+    </div>
+    <div id="je" class="snippets">
+        <table>
+            <thead>
+                <tr>
+                    <th class="description">Snippet</th>
+                    <th class="shortcut">Shortcut</th>
+                    <th class="filename">File Name</th>
+                    <th class="param">rn</th>
+                    <th class="param">RM</th>
+                    <th class="param">rv</th>
+                    <th class="param">cn</th>
+                    <th class="param">CM</th>
+                    <th class="param">cv</th>
+                    <th class="param">cmd</th>
+                    <th class="param">CMD</th>
+                    <th class="param">ctx</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Contract | Editable child list item DAL interface</td>
+                    <td class="left">c8jecii</td>
+                    <td class="left">I===---Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable child list item data objects</td>
+                    <td class="left">c8jecio</td>
+                    <td class="left">===---Data</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root model criteria</td>
+                    <td class="left">c6jermc</td>
+                    <td class="left">===Criteria</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root model DAL interface</td>
+                    <td class="left">c8jermi</td>
+                    <td class="left">I===Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Contract | Editable root model data objects</td>
+                    <td class="left">c8jermo</td>
+                    <td class="left">===Data</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable child list item</td>
+                    <td class="left">c8jecid</td>
+                    <td class="left">===---Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">DAL | Editable root model</td>
+                    <td class="left">c8jermd</td>
+                    <td class="left">===Dal</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable child list</td>
+                    <td class="left">c8jecc</td>
+                    <td class="left">===---s</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable child list item</td>
+                    <td class="left">c8jeci</td>
+                    <td class="left">===---</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left">Model | Editable root model</td>
+                    <td class="left">c8jerm</td>
+                    <td class="left">===</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                    <td></td>
+                    <td>x</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <h3>Column labels</h3>
+    <p>The following table explains the columns containing the snippet parameters to be replaced during code generation:</p>
+    <table>
+        <thead>
+            <tr>
+                <th class="cl-abbr">Abbreviation</th>
+                <th class="cl-param">Stands for parameter</th>
+                <th class="cl-desc">Description</th>
+                <th class="cl-example">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">rn</td>
+                <td class="left">root_name</td>
+                <td class="left">textual description of the root model in comments</td>
+                <td class="left">order</td>
+            </tr>
+            <tr>
+                <td class="left">RM</td>
+                <td class="left">ROOT_MODEL</td>
+                <td class="left">the name of the root model</td>
+                <td class="left">Order</td>
+            </tr>
+            <tr>
+                <td class="left">rv</td>
+                <td class="left">root_variable</td>
+                <td class="left">the name of the variable for the root model</td>
+                <td class="left">order</td>
+            </tr>
+            <tr>
+                <td class="left">cn</td>
+                <td class="left">child_name</td>
+                <td class="left">textual description of the child model in comments</td>
+                <td class="left">order line</td>
+            </tr>
+            <tr>
+                <td class="left">CM</td>
+                <td class="left">CHILD_MODEL</td>
+                <td class="left">the name of the child model</td>
+                <td class="left">OrderLine</td>
+            </tr>
+            <tr>
+                <td class="left">cv</td>
+                <td class="left">child_variable</td>
+                <td class="left">the name of the variable for the child model</td>
+                <td class="left">orderLine</td>
+            </tr>
+            <tr>
+                <td class="left">cmd</td>
+                <td class="left">command_name</td>
+                <td class="left">textual description of the command in comments</td>
+                <td class="left">set order status</td>
+            </tr>
+            <tr>
+                <td class="left">CMD</td>
+                <td class="left">COMMAND_MODEL</td>
+                <td class="left">the name of the command model</td>
+                <td class="left">SetOrderStatus</td>
+            </tr>
+            <tr>
+                <td class="left">ctx</td>
+                <td class="left">DB_CONTEXT</td>
+                <td class="left">the name of the database context</td>
+                <td class="left">ShopDbContext</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>File names</h3>
+    <div>The file name column shows the suggested file name for the particular building block, where:</div>
+    <table>
+        <tbody>
+            <tr>
+                <td class="left">===</td>
+                <td class="left">represents the root model name</td>
+            </tr>
+            <tr>
+                <td class="left">---</td>
+                <td class="left">represents the child model name</td>
+            </tr>
+            <tr>
+                <td class="left">+++</td>
+                <td class="left">represents the command model name</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

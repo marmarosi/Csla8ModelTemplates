@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProcessorArchitecture>amd64</ProcessorArchitecture>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IBM.EntityFrameworkCore-lnx" Version="8.0.0.200" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Csla8ModelTemplates.Contracts\Csla8ModelTemplates.Contracts.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Dal\Csla8ModelTemplates.Dal.csproj" />
+    <ProjectReference Include="..\Csla8ModelTemplates.Entities\Csla8ModelTemplates.Entities.csproj" />
+    <ProjectReference Include="..\Csla8RestApi\Csla8RestApi.csproj" />
+  </ItemGroup>
+
+</Project>

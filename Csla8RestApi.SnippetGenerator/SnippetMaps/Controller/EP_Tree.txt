@@ -1,0 +1,8 @@
+Source:         Controllers\TreeController.cs | Tree
+Title:          Controller | Tree endpoint
+Description:    Defines an endpoint to fetch a read-only tree.
+Shortcut:       c8ept
+Test:           WebApi | TreeController
+
+/// folder:     root_name     | message
+Folder:         ROOT_MODEL    | Message

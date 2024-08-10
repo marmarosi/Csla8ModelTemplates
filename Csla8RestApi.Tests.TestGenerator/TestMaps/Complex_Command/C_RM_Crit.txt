@@ -1,0 +1,8 @@
+Snippet:        Complex_Command\C_RM_Crit.snippet
+Project:        Contract
+FileName:       +++Criteria
+
+command_name:   count products by part count
+COMMAND_MODEL:  CountProducts
+ROOT_MODEL:     Product
+root_variable:  product

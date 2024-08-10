@@ -1,0 +1,6 @@
+Snippet:        Tree_View\M_CM.snippet
+Project:        Model
+FileName:       ===Node
+
+root_name:      message
+ROOT_MODEL:     Message

@@ -1,0 +1,9 @@
+Source:         Junction\View\GroupViewCriteria.cs
+Title:          Contract | Read-only root model criteria
+Description:    Defines the criteria of a read-only root model.
+Shortcut:       c8jvrmc
+Test:           Contract | ===ViewCriteria
+
+/// group:      root_name     | user
+Group:          ROOT_MODEL    | User
+group:          root_variable | user

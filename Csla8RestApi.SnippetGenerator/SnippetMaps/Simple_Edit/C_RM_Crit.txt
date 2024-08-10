@@ -1,0 +1,10 @@
+Source:         Simple\Edit\SimpleTeamCriteria.cs
+Title:          Contract | Editable model criteria
+Description:    Defines the criteria of an editable root model.
+Shortcut:       c8sermc
+Test:           Contract | ===Criteria
+
+/// team:       root_name     | product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

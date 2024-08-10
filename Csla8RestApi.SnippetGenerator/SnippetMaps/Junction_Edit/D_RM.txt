@@ -1,0 +1,12 @@
+Source:         Junction\Edit\GroupDal.cs
+Title:          DAL | Editable root model
+Description:    Implements the data access of the editable root model.
+Shortcut:       c8jermd
+Test:           DAL | ===Dal
+
+/// group:      root_name     | user
+/// Group:      ROOT_MODEL    | User
+Group:          ROOT_MODEL    | User
+group:          root_variable | user
+Person:         CHILD_MODEL   | Role
+MySqlContext:   DB_CONTEXT    | RdbmsContext

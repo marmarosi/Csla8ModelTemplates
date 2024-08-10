@@ -1,0 +1,11 @@
+Source:         Complex\Edit\Team.cs
+Title:          Model | Editable root model
+Description:    Implements an editable root model.
+Shortcut:       c8cerm
+Test:           Model | ===
+
+/// team:       root_name     | product
+/// Team:       ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product
+Player:         CHILD_MODEL   | Part

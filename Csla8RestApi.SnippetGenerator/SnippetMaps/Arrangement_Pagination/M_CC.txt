@@ -1,0 +1,9 @@
+Source:         Arrangement\Pagination\PaginatedTeamListItems.cs
+Title:          Model | Read-only paginated list
+Description:    Implements a read-only child collection.
+Shortcut:       c8apcc
+Test:           Model | ===ListItems
+
+/// team:           root_name     | product
+/// PaginatedTeam:  ROOT_MODEL    | Product
+PaginatedTeam:      ROOT_MODEL    | Product

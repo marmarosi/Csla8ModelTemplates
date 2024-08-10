@@ -1,0 +1,6 @@
+Snippet:        Simple_List\M_RC.snippet
+Project:        Model
+FileName:       ===List
+
+root_name:      product
+ROOT_MODEL:     Product

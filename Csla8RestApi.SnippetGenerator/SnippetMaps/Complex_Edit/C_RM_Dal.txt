@@ -1,0 +1,8 @@
+Source:         Complex\Edit\ITeamDal.cs
+Title:          Contract | Editable root model DAL interface
+Description:    Defines the DAL interface of an editable root model.
+Shortcut:       c8cermi
+Test:           Contract | I===Dal
+
+/// team:       root_name  | product
+Team:           ROOT_MODEL | Product

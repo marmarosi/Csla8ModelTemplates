@@ -1,0 +1,8 @@
+Source:         Simple\Command\IRenameTeamDal.cs
+Title:          Contract | Command model DAL interface
+Description:    Defines the DAL interface of a command model.
+Shortcut:       c8scrmi
+Test:           Contract | I+++Dal
+
+/// rename team:    command_name  | clear product
+RenameTeam:         COMMAND_MODEL | ClearProduct

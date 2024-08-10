@@ -1,0 +1,13 @@
+Source:         Complex\Set\TeamSetPlayer.cs
+Title:          Model | Editable child list item
+Description:    Implements an editable child model.
+Shortcut:       c8csci
+Test:           Model | ===Set---
+
+/// player:     child_name     | part
+/// Team:       ROOT_MODEL     | Product
+/// Player:     CHILD_MODEL    | Part
+Team:           ROOT_MODEL     | Product
+team:           root_variable  | product
+Player:         CHILD_MODEL    | Part
+player:         child_variable | part

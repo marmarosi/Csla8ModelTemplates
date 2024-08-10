@@ -1,0 +1,11 @@
+Source:         Complex\Set\TeamSetItemDal.cs
+Title:          DAL | Editable root list item
+Description:    Implements the data access of the editable child model.
+Shortcut:       c8csrid
+Test:           DAL | ===SetItemDal
+
+/// team:       root_name      | product
+/// Team:       ROOT_MODEL    | Product
+Team:           ROOT_MODEL     | Product
+team:           root_variable  | product
+MySqlContext:   DB_CONTEXT     | RdbmsContext

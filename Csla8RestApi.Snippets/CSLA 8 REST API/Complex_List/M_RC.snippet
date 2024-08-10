@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex List ● Model | Read-only root list</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only root collection.</Description>
+            <Shortcut>c8clrc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a read-only $root_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$List : ReadOnlyList<$ROOT_MODEL$List, $ROOT_MODEL$ListItem>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$List),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Gets a list of $root_name$s.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="criteria">The criteria of the $root_name$ list.</param>
+        /// <returns>The requested $root_name$ list.</returns>
+        public static async Task<$ROOT_MODEL$List> GetAsync(
+            IDataPortalFactory factory,
+            $ROOT_MODEL$ListCriteria criteria
+            )
+        {
+            return await factory.GetPortal<$ROOT_MODEL$List>().FetchAsync(criteria);
+        }
+
+        #endregion
+
+        #region Data Access
+
+        [Fetch]
+        private async Task FetchAsync(
+            $ROOT_MODEL$ListCriteria criteria,
+            [Inject] I$ROOT_MODEL$ListDal dal,
+            [Inject] IChildDataPortal<$ROOT_MODEL$ListItem> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            using (LoadListMode)
+            {
+                List<$ROOT_MODEL$ListItemDao> list = await dal.FetchAsync(criteria);
+                foreach (var item in list)
+                    Add(await itemPortal.FetchChildAsync(item));
+            }
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

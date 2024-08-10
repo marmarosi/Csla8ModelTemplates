@@ -1,0 +1,4 @@
+namespace Csla8RestApi.Tests.Contracts.Simple.View
+{
+    $snippet$
+}

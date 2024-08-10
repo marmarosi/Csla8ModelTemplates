@@ -1,0 +1,12 @@
+Source:         Complex\Edit\TeamPlayer.cs
+Title:          Model | Editable child list item
+Description:    Implements an editable child model.
+Shortcut:       c8ceci
+Test:           Model | ===---
+
+/// player:     child_name     | part
+/// Player:     CHILD_MODEL    | Part
+Team:           ROOT_MODEL     | Product
+team:           root_variable  | product
+Player:         CHILD_MODEL    | Part
+player:         child_variable | part

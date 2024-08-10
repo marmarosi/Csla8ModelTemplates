@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_List.snippet
+Project:        WebApi
+FileName:       ListController
+
+root_name:      product
+ROOT_MODEL:     Product

@@ -1,0 +1,9 @@
+Source:         Junction\Edit\GroupCriteria.cs
+Title:          Contract | Editable root model criteria
+Description:    Defines the criteria of an editable root model.
+Shortcut:       c6jermc
+Test:           Contract | ===Criteria
+
+/// group:      root_name     | user
+Group:          ROOT_MODEL    | User
+group:          root_variable | user

@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_Paginated.snippet
+Project:        WebApi
+FileName:       PaginatedListController
+
+root_name:      product
+ROOT_MODEL:     Product

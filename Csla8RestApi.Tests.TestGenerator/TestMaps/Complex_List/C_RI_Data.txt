@@ -1,0 +1,7 @@
+Snippet:        Complex_List\C_RI_Data.snippet
+Project:        Contract
+FileName:       ===ListItemData
+
+root_name:      product
+ROOT_MODEL:     Product
+CHILD_MODEL:    Part

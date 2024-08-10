@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Junction View ● Model | Read-only root model</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only root model.</Description>
+            <Shortcut>c8jvrm</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents a read-only $root_name$ object.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$View : ReadOnlyModel<$ROOT_MODEL$View>
+    {
+        #region Properties
+
+        public static readonly PropertyInfo<long?> $ROOT_MODEL$KeyProperty = RegisterProperty<long?>(nameof($ROOT_MODEL$Key));
+        public long? $ROOT_MODEL$Key
+        {
+            get => GetProperty($ROOT_MODEL$KeyProperty);
+            private set => LoadProperty($ROOT_MODEL$KeyProperty, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$IdProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $ROOT_MODEL$Id
+        {
+            get => KeyHash.Encode(ID.$ROOT_MODEL$, $ROOT_MODEL$Key);
+            private set => $ROOT_MODEL$Key = KeyHash.Decode(ID.$ROOT_MODEL$, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$CodeProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Code));
+        public string? $ROOT_MODEL$Code
+        {
+            get => GetProperty($ROOT_MODEL$CodeProperty);
+            private set => LoadProperty($ROOT_MODEL$CodeProperty, value);
+        }
+
+        public static readonly PropertyInfo<string?> $ROOT_MODEL$NameProperty = RegisterProperty<string?>(nameof($ROOT_MODEL$Name));
+        public string? $ROOT_MODEL$Name
+        {
+            get => GetProperty($ROOT_MODEL$NameProperty);
+            private set => LoadProperty($ROOT_MODEL$NameProperty, value);
+        }
+
+        public static readonly PropertyInfo<$ROOT_MODEL$View$CHILD_MODEL$s> $CHILD_MODEL$sProperty = RegisterProperty<$ROOT_MODEL$View$CHILD_MODEL$s>(nameof($CHILD_MODEL$s));
+        public $ROOT_MODEL$View$CHILD_MODEL$s $CHILD_MODEL$s
+        {
+            get => GetProperty($CHILD_MODEL$sProperty);
+            private set => LoadProperty($CHILD_MODEL$sProperty, value);
+        }
+
+        #endregion
+
+        #region Business Rules
+
+        //protected override void AddBusinessRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        new IsInRole(
+        //            AuthorizationActions.ReadProperty,
+        //            $ROOT_MODEL$NameProperty,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($ROOT_MODEL$View),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Gets the specified read-only $root_name$ instance.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="$root_name$Id">The identifier of the $root_name$.</param>
+        /// <returns>The requested read-only $root_name$ instance.</returns>
+        public static async Task<$ROOT_MODEL$View> GetAsync(
+            IDataPortalFactory factory,
+            string $root_variable$Id
+            )
+        {
+            return await factory.GetPortal<$ROOT_MODEL$View>().FetchAsync(new $ROOT_MODEL$ViewCriteria($root_variable$Id));
+        }
+
+        #endregion
+
+        #region Data Access
+
+        [Fetch]
+        private async Task FetchAsync(
+            $ROOT_MODEL$ViewCriteria criteria,
+            [Inject] I$ROOT_MODEL$ViewDal dal,
+            [Inject] IChildDataPortal<$ROOT_MODEL$View$CHILD_MODEL$s> itemsPortal
+            )
+        {
+            // Load values from persistent storage.
+            $ROOT_MODEL$ViewDao dao = await dal.FetchAsync(criteria);
+            DataMapper.Map(dao, this, "$CHILD_MODEL$s");
+            $CHILD_MODEL$s = await itemsPortal.FetchChildAsync(dao.$CHILD_MODEL$s);
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>root_variable</ID>
+                    <ToolTip>The variable name of a root model instance.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

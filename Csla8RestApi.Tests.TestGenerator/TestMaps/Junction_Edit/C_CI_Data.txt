@@ -1,0 +1,9 @@
+Snippet:        Junction_Edit\C_CI_Data.snippet
+Project:        Contract
+FileName:       ===---Data
+
+root_name:      user
+child_name:     role
+ROOT_MODEL:     User
+CHILD_MODEL:    Role
+child_variable: role

@@ -1,0 +1,10 @@
+Source:         Arrangement\Pagination\PaginatedTeamListDal.cs
+Title:          DAL | Read-only paginated list
+Description:    Implements the data access of the read-only root collection.
+Shortcut:       c8aprcd
+Test:           DAL | ===ListDal
+
+/// team:       root_name     | product
+PaginatedTeam:  ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+MySqlContext:   DB_CONTEXT    | RdbmsContext

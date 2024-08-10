@@ -1,0 +1,6 @@
+Snippet:        Junction_Edit\C_RM_Dal.snippet
+Project:        Contract
+FileName:       I===Dal
+
+root_name:      user
+ROOT_MODEL:     User

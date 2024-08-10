@@ -1,0 +1,8 @@
+Source:         Controllers\SelectionController.cs | Choice by Guid
+Title:          Controller | Choice by Guid endpoint
+Description:    Defines an endpoint to fetch a read-only Guid-name options.
+Shortcut:       c8epg
+Test:           WebApi | ChoiceByGuidController
+
+/// team:       root_name     | product
+TeamByGuid:     ROOT_MODEL    | Product

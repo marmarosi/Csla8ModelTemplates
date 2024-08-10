@@ -1,0 +1,9 @@
+Source:         Simple\Set\SimpleTeamSetCriteria.cs
+Title:          Contract | Editable list criteria
+Description:    Defines the criteria of an editable root collection.
+Shortcut:       c8ssrcc
+Test:           Contract | ===SetCriteria
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

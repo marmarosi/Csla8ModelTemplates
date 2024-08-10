@@ -1,0 +1,50 @@
+# Create a volume for the database container to ensure data persists after the container is stopped.
+volumes:
+  oracle-21:
+
+services:
+  # Database Service
+  csla8mt-oracle.database:
+    container_name: oracle-21
+    # Pull the latest Oracle image.
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    # Map port 1521 on the Oracle container to port 1521 in the host.
+    ports:
+      - "1521:1521"
+    # Specify where the persisted data should be stored.
+    volumes:
+      - oracle-21:/opt/oracle/oradata
+    restart: always
+    # Specify environment variables for Oracle.
+    environment: 
+      ORACLE_PWD: KsytkxvbFRJ2sM
+  # API Service
+  csla8mt-oracle.webapi:
+    container_name: csla8mt-oracle
+    # Pull the latest Web API image.
+    image: csla8mt-oracle
+    build:
+      context: .
+      # Use the Docker file in that directory.
+      dockerfile: Csla8ModelTemplates.WebApi/Dockerfile
+    # This service depends on the database service specifed above.
+    depends_on: 
+      - csla8mt-oracle.database
+    # Map port 80 in the API container to port 8080 in the host
+    # Map port 443 in the API container to port 8081 in the host
+    ports:
+      - "8080:80"
+      - "8081:443"
+    restart: always
+    # Specify environment variables for the API service.
+    environment: 
+      #- DBHOST=database
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Development.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
+      - ORACLE_CONNSTR=Data Source=csla8mt-oracle.database:1521/XE;User Id=SYSTEM;Password=KsytkxvbFRJ2sM
+    volumes:
+      - ./Https:/https/:ro

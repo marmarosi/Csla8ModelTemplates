@@ -1,0 +1,12 @@
+Source:         Simple\Edit\SimpleTeam.cs
+Title:          Model | Editable model
+Description:    Implements an editable root model.
+Shortcut:       c8serm
+Test:           Model | ===
+
+/// team:       root_name     | product
+/// SimpleTeam: ROOT_MODEL    | Product
+/// Team:       ROOT_MODEL    | Product
+SimpleTeam:     ROOT_MODEL    | Product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

@@ -1,0 +1,13 @@
+Source:         Junction\Edit\GroupPersonDal.cs
+Title:          DAL | Editable child list item
+Description:    Implements the data access of the editable child model.
+Shortcut:       c8jecid
+Test:           DAL | ===---Dal
+
+/// group:      root_name      | user
+/// person:     child_name     | role
+Group:          ROOT_MODEL     | User
+group:          root_variable  | user
+Person:         CHILD_MODEL    | Role
+person:         child_variable | role
+MySqlContext:   DB_CONTEXT     | RdbmsContext

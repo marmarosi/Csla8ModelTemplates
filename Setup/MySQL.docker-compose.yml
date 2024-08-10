@@ -1,0 +1,52 @@
+# Create a volume for the database container to ensure data persists after the container is stopped.
+volumes:
+  mysql-80:
+
+services:
+  # Database Service
+  csla8mt-mysql.database:
+    container_name: mysql-80
+    # Pull the latest MySQL image.
+    image: mysql:8.0.22
+    # Map port 3306 on the MySQL container to port 3306 in the host.
+    ports:
+      - "3306:3306"
+    # Specify where the persisted data should be stored.
+    volumes:
+      - mysql-80:/var/lib/mysql
+    restart: always
+    # Specify environment variables for MySQL.
+    environment: 
+      MYSQL_ROOT_PASSWORD: v%gRTNEQV$
+      MYSQL_USER: csla8mt
+      MYSQL_PASSWORD: 1raCRcojsu8h5Qx1
+      MYSQL_DATABASE: Csla8mt
+  # API Service
+  csla8mt-mysql.webapi:
+    container_name: csla8mt-mysql
+    # Pull the latest Web API image.
+    image: csla8mt-mysql
+    build:
+      context: .
+      # Use the Docker file in that directory.
+      dockerfile: Csla8ModelTemplates.WebApi/Dockerfile
+    # This service depends on the database service specifed above.
+    depends_on: 
+      - csla8mt-mysql.database
+    # Map port 80 in the API container to port 8080 in the host
+    # Map port 443 in the API container to port 8081 in the host
+    ports:
+      - "8080:80"
+      - "8081:443"
+    restart: always
+    # Specify environment variables for the API service.
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Development.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=kzfoStYF0po3aMV9
+      - MYSQL_CONNSTR=server=csla8mt-mysql.database;database=Csla8mt;uid=csla8mt;pwd=1raCRcojsu8h5Qx1
+    volumes:
+      - ./Https:/https/:ro

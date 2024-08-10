@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Tree View ● Contract | Read-only tree node data objects</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines the data objects of a read-only child model.</Description>
+            <Shortcut>c8tvcmo</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Defines the read-only $root_name$ node data.
+    /// </summary>
+    public abstract class $ROOT_MODEL$NodeData
+    {
+        public int? $ROOT_MODEL$Order { get; set; }
+        public string? $ROOT_MODEL$Name { get; set; }
+        public int? Level { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data access object of the read-only $root_name$ node object.
+    /// </summary>
+    public class $ROOT_MODEL$NodeDao : $ROOT_MODEL$NodeData
+    {
+        public long? $ROOT_MODEL$Key { get; set; }
+        public long? ParentKey { get; set; }
+        public List<$ROOT_MODEL$NodeDao>? Children { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the data transfer object of the read-only $root_name$ node object.
+    /// </summary>
+    public class $ROOT_MODEL$NodeDto : $ROOT_MODEL$NodeData
+    {
+        public string? $ROOT_MODEL$Id { get; set; }
+        public string? ParentId { get; set; }
+        public List<$ROOT_MODEL$NodeDto>? Children { get; set; }
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

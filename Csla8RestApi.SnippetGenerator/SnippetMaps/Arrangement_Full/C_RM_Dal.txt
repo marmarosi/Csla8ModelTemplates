@@ -1,0 +1,8 @@
+Source:         Arrangement\Full\IArrangedTeamListDal.cs
+Title:          Contract | Read-only sorted-paginated list DAL interface
+Description:    Defines the DAL interface of a read-only root model.
+Shortcut:       c8axrmi
+Test:           Contract | I===ListDal
+
+/// team:       root_name  | product
+ArrangedTeam:   ROOT_MODEL | Product

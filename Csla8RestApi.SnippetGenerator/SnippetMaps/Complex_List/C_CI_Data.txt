@@ -1,0 +1,9 @@
+Source:         Complex\List\TeamListPlayerData.cs
+Title:          Contract | Read-only child list item data objects
+Description:    Defines the data objects of a read-only child model.
+Shortcut:       c8clcio
+Test:           Contract | ===List---Data
+
+/// player:     child_name  | part
+Player:         CHILD_MODEL | Part
+Team:           ROOT_MODEL  | Product

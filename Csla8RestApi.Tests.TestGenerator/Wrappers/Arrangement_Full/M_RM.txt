@@ -1,0 +1,9 @@
+using Csla;
+using Csla8RestApi.Dal.Contracts;
+using Csla8RestApi.Models;
+using Csla8RestApi.Tests.Contracts.Arrangement.Full;
+
+namespace Csla8RestApi.Tests.Models.Arrangement.Full
+{
+    $snippet$
+}

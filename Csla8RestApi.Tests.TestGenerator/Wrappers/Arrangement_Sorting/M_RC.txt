@@ -1,0 +1,8 @@
+using Csla;
+using Csla8RestApi.Models;
+using Csla8RestApi.Tests.Contracts.Arrangement.Sorting;
+
+namespace Csla8RestApi.Tests.Models.Arrangement.Sorting
+{
+    $snippet$
+}

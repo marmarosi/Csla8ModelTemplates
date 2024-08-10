@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>API | Controller</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines a REST API controller class.</Description>
+            <Shortcut>c8e</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Contains the API endpoints for $root_name$s.
+    /// </summary>
+    [Route("api/$root_name$")]
+    [ApiController]
+    public class $ROOT_MODEL$Controller : ApiController
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Creates a new instance.
+        /// </summary>
+        /// <param name="logger">The application logging service.</param>
+        /// <param name="csla">The CSLA helper service.</param>
+        public $ROOT_MODEL$Controller(
+            ILogger<$ROOT_MODEL$Controller> logger,
+            ICslaService csla
+            ) : base(logger, csla)
+        { }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

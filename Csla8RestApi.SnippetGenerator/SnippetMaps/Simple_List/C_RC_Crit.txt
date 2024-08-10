@@ -1,0 +1,9 @@
+Source:         Simple\List\SimpleTeamListCriteria.cs
+Title:          Contract | Read-only list criteria
+Description:    Defines the criteria of a read-only root collection.
+Shortcut:       c8slrcc
+Test:           Contract | ===ListCriteria
+
+/// team:       root_name  | product
+SimpleTeam:     ROOT_MODEL | Product
+Team:           ROOT_MODEL | Product

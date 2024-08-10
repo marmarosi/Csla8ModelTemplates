@@ -1,0 +1,6 @@
+Snippet:        Controllers\EP_ChoiceGuid.snippet
+Project:        WebApi
+FileName:       ChoiceByGuidController
+
+root_name:      product
+ROOT_MODEL:     Product

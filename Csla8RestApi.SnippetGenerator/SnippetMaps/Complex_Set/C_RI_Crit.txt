@@ -1,0 +1,9 @@
+Source:         Complex\Set\TeamSetItemCriteria.cs
+Title:          Contract | Editable root list item criteria
+Description:    Defines the criteria of an editable child model.
+Shortcut:       c8csric
+Test:           Contract | ===SetItemCriteria
+
+/// team:       root_name     | product
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product

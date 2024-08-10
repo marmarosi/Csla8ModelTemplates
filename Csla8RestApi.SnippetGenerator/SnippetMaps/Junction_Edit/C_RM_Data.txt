@@ -1,0 +1,9 @@
+Source:         Junction\Edit\GroupData.cs
+Title:          Contract | Editable root model data objects
+Description:    Defines the data objects of an editable root model.
+Shortcut:       c8jermo
+Test:           Contract | ===Data
+
+/// group:      root_name   | user
+Group:          ROOT_MODEL  | User
+Person:         CHILD_MODEL | Role

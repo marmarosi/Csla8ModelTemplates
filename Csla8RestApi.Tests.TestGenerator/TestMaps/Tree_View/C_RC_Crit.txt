@@ -1,0 +1,6 @@
+Snippet:        Tree_View\C_RC_Crit.snippet
+Project:        Contract
+FileName:       ===TreeCriteria
+
+root_name:      message
+ROOT_MODEL:     Message

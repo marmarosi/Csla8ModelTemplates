@@ -1,0 +1,12 @@
+Source:         Complex\Command\CountTeamsDal.cs
+Title:          DAL | Command model
+Description:    Implements the data access of the command model.
+Shortcut:       c8ccrmd
+Test:           DAL | +++Dal
+
+/// count teams by player count: command_name | count products by part count
+CountTeams:     COMMAND_MODEL | CountProducts
+Team:           ROOT_MODEL    | Product
+team:           root_variable | product
+Player:         CHILD_MODEL   | Part
+MySqlContext:   DB_CONTEXT    | RdbmsContext

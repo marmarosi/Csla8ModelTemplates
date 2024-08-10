@@ -1,0 +1,7 @@
+Snippet:        Simple_Set\D_RC.snippet
+Project:        DAL
+FileName:       ===SetDal
+
+root_name:      product
+ROOT_MODEL:     Product
+DB_CONTEXT:     RdbmsContext

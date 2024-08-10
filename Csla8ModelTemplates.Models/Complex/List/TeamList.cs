@@ -1,0 +1,67 @@
+using Csla;
+using Csla8ModelTemplates.Contracts.Complex.List;
+using Csla8RestApi.Models;
+
+namespace Csla8ModelTemplates.Models.Complex.List
+{
+    /// <summary>
+    /// Represents a read-only team collection.
+    /// </summary>
+    [Serializable]
+    public class TeamList : ReadOnlyList<TeamList, TeamListItem>
+    {
+        #region Business Rules
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof(TeamList),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Factory Methods
+
+        /// <summary>
+        /// Gets a list of teams.
+        /// </summary>
+        /// <param name="factory">The data portal factory.</param>
+        /// <param name="criteria">The criteria of the team list.</param>
+        /// <returns>The requested team list.</returns>
+        public static async Task<TeamList> GetAsync(
+            IDataPortalFactory factory,
+            TeamListCriteria criteria
+            )
+        {
+            return await factory.GetPortal<TeamList>().FetchAsync(criteria);
+        }
+
+        #endregion
+
+        #region Data Access
+
+        [Fetch]
+        private async Task FetchAsync(
+            TeamListCriteria criteria,
+            [Inject] ITeamListDal dal,
+            [Inject] IChildDataPortal<TeamListItem> itemPortal
+            )
+        {
+            // Load values from persistent storage.
+            using (LoadListMode)
+            {
+                List<TeamListItemDao> list = await dal.FetchAsync(criteria);
+                foreach (var item in list)
+                    Add(await itemPortal.FetchChildAsync(item));
+            }
+        }
+
+        #endregion
+    }
+}

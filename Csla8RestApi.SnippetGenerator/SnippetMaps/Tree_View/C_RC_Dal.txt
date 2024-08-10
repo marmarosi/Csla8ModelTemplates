@@ -1,0 +1,8 @@
+Source:         Tree\View\IFolderTreeDal.cs
+Title:          Contract | Read-only tree DAL interface
+Description:    Defines the DAL interface of a read-only root collection.
+Shortcut:       c8tvrci
+Test:           Contract | I===TreeDal
+
+/// folder:     root_name  | message
+Folder:         ROOT_MODEL | Message

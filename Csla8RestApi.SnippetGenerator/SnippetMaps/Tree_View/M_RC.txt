@@ -1,0 +1,9 @@
+Source:         Tree\View\FolderTree.cs
+Title:          Model | Read-only root collection
+Description:    Implements a read-only root collection.
+Shortcut:       c8tvrc
+Test:           Model | ===Tree
+
+/// folder:     root_name     | message
+/// Folder:     ROOT_MODEL    | Message
+Folder:         ROOT_MODEL    | Message

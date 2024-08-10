@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Complex View ● Model | Read-only child list item</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Implements a read-only child model.</Description>
+            <Shortcut>c8cvci</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[/// <summary>
+    /// Represents an item in a read-only $child_name$ collection.
+    /// </summary>
+    [Serializable]
+    public class $ROOT_MODEL$View$CHILD_MODEL$ : ReadOnlyModel<$ROOT_MODEL$View$CHILD_MODEL$>
+    {
+        #region Properties
+
+        public static readonly PropertyInfo<long?> $CHILD_MODEL$KeyProperty = RegisterProperty<long?>(nameof($CHILD_MODEL$Key));
+        public long? $CHILD_MODEL$Key
+        {
+            get => GetProperty($CHILD_MODEL$KeyProperty);
+            private set => LoadProperty($CHILD_MODEL$KeyProperty, value);
+        }
+
+        public static readonly PropertyInfo<string?> $CHILD_MODEL$IdProperty = RegisterProperty<string?>(nameof($CHILD_MODEL$Id), RelationshipTypes.PrivateField);
+        public string? $CHILD_MODEL$Id
+        {
+            get => KeyHash.Encode(ID.$CHILD_MODEL$, $CHILD_MODEL$Key);
+            private set => $CHILD_MODEL$Key = KeyHash.Decode(ID.$CHILD_MODEL$, value);
+        }
+
+        public static readonly PropertyInfo<string?> $CHILD_MODEL$CodeProperty = RegisterProperty<string?>(nameof($CHILD_MODEL$Code));
+        public string? $CHILD_MODEL$Code
+        {
+            get => GetProperty($CHILD_MODEL$CodeProperty);
+            private set => LoadProperty($CHILD_MODEL$CodeProperty, value);
+        }
+
+        public static readonly PropertyInfo<string?> $CHILD_MODEL$NameProperty = RegisterProperty<string?>(nameof($CHILD_MODEL$Name));
+        public string? $CHILD_MODEL$Name
+        {
+            get => GetProperty($CHILD_MODEL$NameProperty);
+            private set => LoadProperty($CHILD_MODEL$NameProperty, value);
+        }
+
+        #endregion
+
+        #region Business Rules
+
+        //protected override void AddBusinessRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        new IsInRole(
+        //            AuthorizationActions.ReadProperty,
+        //            $CHILD_MODEL$NameProperty,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        //private static void AddObjectAuthorizationRules()
+        //{
+        //    // Add authorization rules.
+        //    BusinessRules.AddRule(
+        //        typeof($CHILD_MODEL$View),
+        //        new IsInRole(
+        //            AuthorizationActions.GetObject,
+        //            "Manager"
+        //            )
+        //        );
+        //}
+
+        #endregion
+
+        #region Data Access
+
+        [FetchChild]
+        private async Task FetchAsync(
+            $ROOT_MODEL$View$CHILD_MODEL$Dao dao
+            )
+        {
+            // Load values from persistent storage.
+            await Task.Run(() =>
+            {
+                DataMapper.Map(dao, this);
+            });
+        }
+
+        #endregion
+    }$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>child_name</ID>
+                    <ToolTip>The description of the child model in comments.</ToolTip>
+                    <Default>root_variable</Default>
+                </Literal>
+                <Literal>
+                    <ID>CHILD_MODEL</ID>
+                    <ToolTip>The name of the child model.</ToolTip>
+                    <Default>CHILD_MODEL</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

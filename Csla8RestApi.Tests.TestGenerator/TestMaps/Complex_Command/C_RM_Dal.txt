@@ -1,0 +1,6 @@
+Snippet:        Complex_Command\C_RM_Dal.snippet
+Project:        Contract
+FileName:       I+++Dal
+
+command_name:   count products by part count
+COMMAND_MODEL:  CountProducts

@@ -1,0 +1,6 @@
+Snippet:        Arrangement_Full\M_CC.snippet
+Project:        Model
+FileName:       ===ListItems
+
+root_name:      product
+ROOT_MODEL:     Product

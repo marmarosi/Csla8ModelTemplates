@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Controller ● Controller | Choice by key endpoint</Title>
+            <Author>Mármarosi József</Author>
+            <Description>Defines an endpoint to fetch a read-only key-name options.</Description>
+            <Shortcut>c8epk</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[#region Choice by key
+
+        /// <summary>
+        /// Gets the key-name choice of the $root_name$s.
+        /// </summary>
+        /// <param name="criteria">The criteria of the $root_name$ choice.</param>
+        /// <returns>The key-name choice of the $root_name$s.</returns>
+        [HttpGet("by-key")]
+        [ProducesResponseType(typeof(List<ChoiceItemDto<long?>>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get$ROOT_MODEL$Choice(
+            [FromQuery] $ROOT_MODEL$ChoiceCriteria criteria
+            )
+        {
+            try
+            {
+                var choice = await $ROOT_MODEL$Choice.GetAsync(Factory, criteria);
+                return Ok(choice.ToDto<ChoiceItemDto<long?>>());
+            }
+            catch (Exception ex)
+            {
+                return HandleError(ex);
+            }
+        }
+
+        #endregion$end$]]>
+            </Code>
+            <Declarations>
+                <Literal>
+                    <ID>root_name</ID>
+                    <ToolTip>The description of the root model in comments.</ToolTip>
+                    <Default>root_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>ROOT_MODEL</ID>
+                    <ToolTip>The name of the root model.</ToolTip>
+                    <Default>ROOT_MODEL</Default>
+                </Literal>
+            </Declarations>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
