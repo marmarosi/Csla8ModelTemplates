@@ -2,24 +2,18 @@ const fs = require('fs');
 
 const versionArgs = process.argv.slice( 2 );
 const projects = [
-  'Contracts',
-  'CslaExtensions',
-  'Dal',
-  'Dal.Db2',
-  'Dal.Firebird',
-  'Dal.MySql',
-  'Dal.Oracle',
-  'Dal.PostgreSql',
-  'Dal.Sqlite',
-  'Dal.SqlServer',
-  'Endpoints',
-  'EndpointTests',
-  'Models',
-  'Resources',
-  'WebApi',
-  'WebApiTests'
+  '',
+  'SnippetGenerator',
+  'Snippets',
+  'Tests.Contracts',
+  'Tests.Dal',
+  'Tests.Dal.Rdbms',
+  'Tests.Entities',
+  'Tests.Models',
+  'Tests.TestGenerator',
+  'Tests.WebApi'
   ];
-const appName = 'Csla8ModelTemplates';
+const appName = 'Csla8RestApi';
 const tmplPath = `./${appName}._/${appName}._.csproj`;
 const OTag = '<Version>';
 const CTag = '</Version>';
@@ -206,5 +200,7 @@ function getNext(
 function name(
   project
 ) {
-	return (`${appName}.${project}`).padEnd( 36 );
+	return project === ''
+      ? appName.padEnd( 36 )
+	  : (`${appName}.${project}`).padEnd( 36 );
 }
