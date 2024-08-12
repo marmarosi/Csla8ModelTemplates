@@ -16,8 +16,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{133DDFA6-0FE4-4290-8D02-4CE922B55163}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
+		mt-version.js = mt-version.js
+		ra-version.js = ra-version.js
 		README.md = README.md
-		version.js = version.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{080CFDEE-4A09-4F2E-8C6B-4BC7DCD6C086}"
@@ -97,7 +98,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Https", "Https", "{51DB9FE3
 		Https\Development.pfx = Https\Development.pfx
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csla8ModelTemplates.Dal.Sqlite", "Csla8ModelTemplates.Dal.SQLite\Csla8ModelTemplates.Dal.Sqlite.csproj", "{880EA94A-92EE-45EB-A81D-D32B58C3EDC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csla8ModelTemplates.Dal.Sqlite", "Csla8ModelTemplates.Dal.SQLite\Csla8ModelTemplates.Dal.Sqlite.csproj", "{880EA94A-92EE-45EB-A81D-D32B58C3EDC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
