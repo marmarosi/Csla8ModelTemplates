@@ -1,0 +1,1 @@
+import{ɵ as o,a as u,b as r,c as s,d as _}from"./index-CH4RD9oS.js";let l=(()=>{var e;class a{}return e=a,e.ɵfac=function(t){return new(t||e)},e.ɵcmp=o({type:e,selectors:[["ng-component"]],standalone:!0,features:[u],decls:2,vars:0,template:function(t,c){t&1&&(r(0,"h2"),s(1,"About"),_())},encapsulation:2}),a})();export{l as default};
