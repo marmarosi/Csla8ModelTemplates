@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>9b2ae12b-d192-4048-9d73-e71397938077</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -32,7 +32,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
     <PackageReference Include="Net.IBM.Data.Db2-lnx" Version="8.0.0.200" Condition="$([MSBuild]::IsOsPlatform('Linux'))" />
     <PackageReference Include="Net.IBM.Data.Db2-osx" Version="8.0.0.200" Condition="$([MSBuild]::IsOsPlatform('OSX'))" />
     <PackageReference Include="Net.IBM.Data.Db2" Version="8.0.0.200" Condition="$([MSBuild]::IsOsPlatform('Windows'))" />
