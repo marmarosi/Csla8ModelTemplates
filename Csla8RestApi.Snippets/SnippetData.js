@@ -310,19 +310,6 @@ const data = [
         commandName: '',
         commandModel: '',
         dbContext: ''
-      }, {
-        title: 'Contract | Read-only model data objects',
-        shortcut: 'c8slrio',
-        fileName: '===ViewData',
-        rootName: 'x',
-        rootModel: 'x',
-        rootVariable: '',
-        childName: '',
-        childModel: '',
-        childVariable: '',
-        commandName: '',
-        commandModel: '',
-        dbContext: ''
       }]
     }, {
       name: 'Simple View',
@@ -344,6 +331,19 @@ const data = [
         title: 'Contract | Read-only model DAL interface',
         shortcut: 'c8svrmi',
         fileName: 'I===ViewDal',
+        rootName: 'x',
+        rootModel: 'x',
+        rootVariable: '',
+        childName: '',
+        childModel: '',
+        childVariable: '',
+        commandName: '',
+        commandModel: '',
+        dbContext: ''
+      }, {
+        title: 'Contract | Read-only model data objects',
+        shortcut: 'c8svrio',
+        fileName: '===ViewData',
         rootName: 'x',
         rootModel: 'x',
         rootVariable: '',
